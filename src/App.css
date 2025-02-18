@@ -1,0 +1,42 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+#root {
+  text-align: center;
+  overflow-x: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+a{
+  text-decoration: none;
+}
+#particles-js{
+  z-index: 50;
+  position:absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+/* For Webkit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3498; /* Scrollbar color */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e3a8a; /* Scrollbar color on hover */
+}
+
+
+.my-scrollbar::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
