@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
-import { useCourse } from "../Context/courseData";
+import { useCourse } from "../../Context/courseData";
 
 const AdmissionModal = ({ isOpen, closeModal }) => {
   const [studentData, setStudentData] = useState({});
@@ -22,19 +22,16 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (studentData.stream == "Science") {
-      console.log(coursesData.science);
+    if (studentData.stream === "Science") {
       setCourse(coursesData.science);
     }
-    if (studentData.stream == "Commerce") {
-      console.log(coursesData.commerce);
+    if (studentData.stream === "Commerce") {
       setCourse(coursesData.commerce);
     }
-    if (studentData.stream == "Humanities") {
-      console.log(coursesData.commerce);
+    if (studentData.stream === "Humanities") {
       setCourse(coursesData.humanities);
     }
-  }, [studentData]);
+  }, [studentData, coursesData]);
 
   const handleSave = () => {
     Swal.fire({
@@ -63,7 +60,6 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
 
         fetch(
           "https://script.google.com/macros/s/AKfycbxsdxL0fooufrcqwW5VEGSAgVWtYexmV-CoUguotifyETrOZJbU6j4HQ7C8HOjF6Gs/exec",
-
           {
             method: "POST",
             body: formDataSend,
@@ -84,7 +80,6 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
             closeModal();
           })
           .catch((error) => {
-            console.error("Error:", error);
             Swal.fire(
               "Error!",
               "Something went wrong while submitting the form. Please try again later.",
@@ -99,27 +94,31 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center px-4 items-center z-50"
+      className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50"
       onClick={closeModal}
     >
       <div
-        className="bg-white p-6 rounded-lg max-w-xl w-full shadow-lg"
+        className="bg-white p-8 rounded-lg max-w-lg w-full shadow-lg transform transition-all"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Enquiry Form</h2>
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+          Admission Enquiry Form
+        </h2>
 
-        <div className="space-y-3">
+        <div className="space-y-1">
           {/* Student Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Full Name
             </label>
             <input
-              className="mt-1 w-full border rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+              type="text"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={studentData.name}
               onChange={(e) =>
                 setStudentData({ ...studentData, name: e.target.value })
               }
+              placeholder="Enter your full name"
             />
           </div>
 
@@ -130,11 +129,12 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
             </label>
             <input
               type="tel"
-              className="mt-1 w-full border rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={studentData.phone}
               onChange={(e) =>
                 setStudentData({ ...studentData, phone: e.target.value })
               }
+              placeholder="Enter your phone number"
             />
           </div>
 
@@ -144,7 +144,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
               Stream
             </label>
             <select
-              className="mt-1 w-full border rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={studentData.stream}
               onChange={(e) =>
                 setStudentData({ ...studentData, stream: e.target.value })
@@ -164,7 +164,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
                 Course
               </label>
               <select
-                className="mt-1 w-full border rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={studentData.course}
                 onChange={(e) =>
                   setStudentData({ ...studentData, course: e.target.value })
@@ -186,7 +186,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
               Preferred College Location
             </label>
             <input
-              className="mt-1 w-full border rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={studentData.college_location}
               onChange={(e) =>
                 setStudentData({
@@ -194,6 +194,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
                   college_location: e.target.value,
                 })
               }
+              placeholder="Enter preferred location"
             />
           </div>
 
@@ -203,26 +204,27 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
               Additional Remarks (optional)
             </label>
             <textarea
-              className="mt-1 block w-full border rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               rows="3"
               value={studentData.remarks}
               onChange={(e) =>
                 setStudentData({ ...studentData, remarks: e.target.value })
               }
+              placeholder="Add any additional remarks"
             />
           </div>
         </div>
 
-        <div className="flex justify-end mt-6 space-x-4">
+        <div className="flex justify-end mt-4 space-x-4">
           <button
             onClick={closeModal}
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+            className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleSave}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Submit
           </button>

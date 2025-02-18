@@ -1,30 +1,47 @@
 import { useParams } from "react-router-dom";
-import { useCourse } from "../../components/Context/courseData";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { useCourse } from "../../Context/courseData";
+import { useEffect, useState } from "react";
+import Back from "../../components/Back/Back";
 
 export default function CollegeList() {
-  const { addonName } = useParams(); // Get addon name from URL
-  const { commerceCourses } = useCourse();
+  const { addonName } = useParams(); // Get the addonName from the URL
+  const { commerceCourses, scienceCourses, humanitiesCourses } = useCourse(); // Get all courses from context
 
-  // Find colleges for the selected addon course
-  const selectedColleges =
-    commerceCourses
-      .flatMap((course) => course.addons)
-      .find((addon) => addon.name === addonName)?.colleges || [];
+  const [selectedColleges, setSelectedColleges] = useState([]);
+
+  useEffect(() => {
+    // Find the addon course by name in the selected category (Commerce, Science, Humanities)
+    const allCourses = [
+      ...commerceCourses,
+      ...scienceCourses,
+      ...humanitiesCourses,
+    ];
+
+    const foundAddon = allCourses
+      .flatMap((course) => course.addons) // Flatten the array to search through all addons
+      .find((addon) => addon.name === addonName); // Find the addon by its name
+
+    if (foundAddon) {
+      setSelectedColleges(foundAddon.colleges); // Set the colleges for the selected addon
+    }
+  }, [addonName, commerceCourses, scienceCourses, humanitiesCourses]); // Trigger when addonName or course data changes
 
   return (
     <>
+      <Back />
+
       <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] flex flex-col items-center pt-30">
         <h1 className="text-white text-2xl md:text-4xl font-extrabold text-center">
-           Colleges Offering {addonName}
+          Colleges Offering {addonName}
         </h1>
 
-        {/* <div className="bg-white p-6 rounded-lg shadow-xl w-full mx-50 md:w-[75%] mt-10"> */}
-        <div className="mx-4 sm:mx-10 md:mx-40 bg-white backdrop-blur-lg p-2 mb-30 rounded-lg shadow-xs w-fit md:min-w-3xl mt-6">
+        <div className="mx-4 sm:mx-10 md:mx-40 bg-white backdrop-blur-lg p-2 mb-10 rounded-lg shadow-xs w-fit md:min-w-3xl mt-12">
+        <p class="text-lg text-gray-700 font-medium mt-4 mb-6 text-center">Choose the college that aligns with your interests.</p>
 
-          <ul className="p-0 m-0">
+          <ul className="p-5 m-0">
             {selectedColleges.length > 0 ? (
               selectedColleges.map((college, index) => (
                 <li
@@ -45,11 +62,13 @@ export default function CollegeList() {
                 </li>
               ))
             ) : (
-              <p className="text-center text-gray-600">No colleges found for this course.</p>
+              <p className="text-center text-gray-600">
+                No colleges found for this course.
+              </p>
             )}
           </ul>
         </div>
-      <Footer/>
+        <Footer />
       </div>
     </>
   );

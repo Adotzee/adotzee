@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import hat from "../assets/hat.png";
 import text from "../assets/textlogo.png";
 import logo from "../assets/logo-removebg.png";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
+  const navigate=useNavigate()
 
   useEffect(() => {
     let lastScrollTop = 0;
@@ -36,7 +38,7 @@ function Navbar() {
         className={`bg-gray-500 bg-opacity-75 flex justify-between rounded-md items-center shadow-lg px-5 py-0 transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-28"}`}
       >
         {/* Logo Section */}
-        <div className="flex items-center">
+        <div onClick={()=>navigate("/")} className="flex cursor-pointer items-center">
           <img
             src={hat}
             alt="Logo"
@@ -59,19 +61,19 @@ function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 me-20">
-          {["About", "Admission", "Contact"].map((item) => (
-            <a
-              key={item}
-              href={`/#${item.toLowerCase()}`}
-              className="text-gray-50 hover:text-gray-900 relative 
-                after:content-[''] after:absolute after:left-0 after:-bottom-1 
-                after:w-0 after:h-[3px] after:bg-primary
-                after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
+  {["About", "Admission", "Contact"].map((item) => (
+    <a
+      key={item}
+      href={item === "Admission" ? "/admission" : `/#${item.toLowerCase()}`}
+      className="text-gray-50 hover:text-gray-900 relative 
+        after:content-[''] after:absolute after:left-0 after:-bottom-1 
+        after:w-0 after:h-[3px] after:bg-primary
+        after:transition-all after:duration-300 hover:after:w-full"
+    >
+      {item}
+    </a>
+  ))}
+</nav>
       </header>
 
       <div

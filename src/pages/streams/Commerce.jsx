@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar";
-import { useCourse } from "../../components/Context/courseData";
-import Counts from "./Counts";
+import Counts from "../../components/Stat/Counts";
 import Footer from "../../components/Footer";
+import { useCourse } from "../../Context/courseData";
+import Back from "../../components/Back/Back";
 
 export default function Commerce() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -14,6 +15,7 @@ export default function Commerce() {
 
   return (
     <>
+      <Back />
       <Navbar />
       <div className="flex flex-col items-center min-h-screen min-w-screen bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] w-full pt-10">
         <h1 className="pt-10 md:pt15 mt-0 text-white text-2xl md:text-4xl font-extrabold text-center">
@@ -21,12 +23,13 @@ export default function Commerce() {
         </h1>
 
         <p className="text-white text-lg p-3">
-          🎓 Over <span className="text-yellow-400 font-bold">24+</span> students have started their careers with us!
+          🎓 Over <span className="text-yellow-400 font-bold">24+</span>{" "}
+          students have started their careers with us!
         </p>
 
         <div className="mx-4 sm:mx-10 md:mx-40 bg-primary/50 backdrop-blur-lg p-10 mb-30 rounded-2xl shadow-2xl w-fit md:min-w-5xl mt-10">
           <h1 className="text-4xl font-extrabold mb-8 text-white text-center">
-          Commerce Degree Courses
+            Commerce Degree Courses
           </h1>
 
           {/* <p className="text-center text-white text-lg mb-5">
@@ -40,12 +43,24 @@ export default function Commerce() {
                 <div
                   className={`cursor-pointer p-4 border border-white/40 rounded-lg shadow-md text-lg font-semibold 
                   transition-all duration-300 ease-in-out flex items-center justify-between gap-3
-                  ${selectedCategory === course.category ? "bg-white text-black font-bold" : "bg-transparent text-white hover:bg-white/20"}`}
-                  onClick={() => setSelectedCategory((prev) => (prev === course.category ? "" : course.category))}
+                  ${
+                    selectedCategory === course.category
+                      ? "bg-white text-black font-bold"
+                      : "bg-transparent text-white hover:bg-white/20"
+                  }`}
+                  onClick={() =>
+                    setSelectedCategory((prev) =>
+                      prev === course.category ? "" : course.category
+                    )
+                  }
                 >
                   📚 {course.category}
                   <FontAwesomeIcon
-                    icon={selectedCategory === course.category ? faChevronUp : faChevronDown}
+                    icon={
+                      selectedCategory === course.category
+                        ? faChevronUp
+                        : faChevronDown
+                    }
                     className="transition-transform duration-300"
                   />
                 </div>
@@ -80,7 +95,7 @@ export default function Commerce() {
           </div>
         </div>
         <Counts />
-       <Footer/>
+        <Footer />
       </div>
     </>
   );

@@ -7,7 +7,7 @@ function Footer() {
     <p>&copy; All Rights Reserved. ADOTZEE</p>
   </div>
 
-  <div className="flex space-x-3 mt-0 pb-10 items-center justify-center">
+  <div className="flex space-x-3 mt-0 md:pb-10 pb-2 items-center justify-center">
     <a
       href="https://www.facebook.com/share/1WeqyuRjTd/?mibextid=wwXIfr"
       rel="noopener noreferrer"

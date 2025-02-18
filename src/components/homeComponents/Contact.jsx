@@ -74,7 +74,7 @@ export default function Contact() {
   return (
     <div
       id="contact"
-      className="bg-blue-100 min-h-screen flex flex-col items-center py-10"
+      className="bg-blue-100  flex flex-col items-center py-10"
     >
       <div className="w-full max-w-4xl flex flex-col items-center">
         <h1 className="text-4xl text-gray-600 font-bold mb-4">
@@ -140,7 +140,7 @@ export default function Contact() {
             <textarea
               name="message"
               placeholder="Your message here"
-              className="p-3 rounded-lg border-0 focus:ring-none bg-gray-2/50 placeholder-gray-600 focus:outline-none w-fit  md:w-[95%] h-32"
+              className="p-3 rounded-lg border-0 resize-none focus:ring-none bg-gray-2/50 placeholder-gray-600 focus:outline-none w-fit  md:w-[95%] h-32"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.message}

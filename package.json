@@ -27,6 +27,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
     "@unocss/preset-wind": "^65.4.3",
+    "aos": "^2.3.4",
     "formik": "^2.4.6",
     "framer-motion": "^12.4.3",
     "react": "^18.3.1",
