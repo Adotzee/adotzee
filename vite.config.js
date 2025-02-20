@@ -7,4 +7,8 @@ export default defineConfig({
     react(),
     UnoCSS(), // Add UnoCSS plugin here
   ],
+  build: {
+    minify: "esbuild", // Faster build
+    assetsInlineLimit: 4096, // Optimize small assets
+  },
 });

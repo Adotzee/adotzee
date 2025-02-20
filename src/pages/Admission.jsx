@@ -15,6 +15,11 @@ function Admission() {
 
   return (
     <div className=' bg-gradient-to-br from-[#6a85b6] to-[#bac8e0]'>
+       <Helmet>
+                <title>Degree Admissions - Apply Now | Adotzee</title>
+                <meta name="description" content="Apply for degree courses easily through Adotzee. Find the best colleges and courses in Kerala." />
+                <link rel="canonical" href="https://www.adotzee.in/admissions" />
+            </Helmet>
       <Navbar />  
       
       <div className=" bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] flex flex-col items-center pt-20">
