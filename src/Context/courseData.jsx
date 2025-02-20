@@ -105,155 +105,339 @@ export const CourseProvider = ({ children }) => {
   ];
   const commerceCourses = [
     {
-      category: "BBA",
-      addons: [
+      "category": "BBA",
+      "addons": [
         {
-          name: "BBA",
-          colleges: [
-            "Acharya College Bangalore",
-            "Srinivas University Mangalore",
-            "Brindavan College Bangalore",
-            "Cmr College Bangalore",
-            "Sea College Bangalore",
-            "KRUPANIDHI COLLEGE BANGALORE",
-            "PRESIDENCY UNIVERSITY BANGALORE",
-            "S-VYASA BANGALORE",
-            "HKBK COLLEGE BANGALORE",
-            "RR COLLEGE BANGALORE",
-          ],
+          "name": "BBA",
+          "colleges": [
+            "Acharya",
+            "Presidency",
+            "Krupanidhi",
+            "Srinivas",
+            "MS Ramiyah",
+            "Yenepoya Mangalore",
+            "Jain University",
+            "Brindavan",
+            "SEA",
+            "S-Vyasa",
+            "HKBK",
+            "RR Institution",
+            "Karnataka College",
+            "Christian College",
+            "MVM College"
+          ]
         },
         {
-          name: "BBA + LOGISTICS",
-          colleges: ["Presidency University Bangalore"],
+          "name": "BBA + Business Analytics",
+          "colleges": ["Acharya", "Presidency", "Jain University", "Brindavan"]
         },
         {
-          name: "BBA + BUSINESS ANALYST",
-          colleges: [
-            "PRESIDENCY UNIVERSITY BANGALORE",
-            "BRINDAVAN COLLEGE BANGALORE",
-            "CMR UNIVERSITY BANGALORE",
-            "ACHARYA COLLEGE BANGALORE",
-          ],
+          "name": "BBA + Digital Marketing",
+          "colleges": ["Acharya", "Presidency"]
         },
         {
-          name: "BBA + HOSPITAL ADMINISTRATION",
-          colleges: [
-            "SRINIVAS COLLEGE MANGALORE",
-            "BRINDAVAN COLLEGE BANGALORE",
-          ],
+          "name": "BBA + Logistics and Digital Marketing",
+          "colleges": ["Brindavan"]
         },
         {
-          name: "BBA + SPORTS MANAGEMENT",
-          colleges: ["S-VYASA COLLEGE BANGALORE"],
+          "name": "BBA + Aviation",
+          "colleges": [
+            "Krupanidhi",
+            "Srinivas",
+            "Acharya",
+            "East West College of Management",
+            "IZEE Business School",
+            "Brindavan",
+            "Presidency",
+            "RR Institution",
+            "MVM College"
+          ]
         },
         {
-          name: "BBA + DIGITAL MARKETING",
-          colleges: [
-            "CMR COLLEGE BANGALORE",
-            "PRESIDENCY UNIVERSITY BANGALORE",
-            "ACHARYA COLLEGE BANGALORE",
-          ],
+          "name": "BBA + Logistics and Aviation",
+          "colleges": [
+            "Yenepoya Bangalore",
+            "Brindavan",
+            "Yenepoya Mangalore",
+            "Krupanidhi",
+            "S-Vyasa",
+            "Srinivas"
+          ]
         },
         {
-          name: "BBA + HOSPITAL ADMINISTRATION WITH MINOR IN MEDICAL TOURISM",
-          colleges: [
-            "YENEPOYA UNIVERSITY MANGALORE",
-            "YENEPOYA UNIVERSITY BANGALORE",
-          ],
+          "name": "BBA + Hospital Administration",
+          "colleges": [
+            "Srinivas",
+            "Brindavan",
+            "Yenepoya Bangalore",
+            "Yenepoya Mangalore"
+          ]
         },
         {
-          name: "BBA + LOGISTICS AND DIGITAL MARKETING",
-          colleges: ["BRINDAVAN COLLEGE BANGALORE"],
+          "name": "BBA + Sports Management",
+          "colleges": ["S-Vyasa", "Jain University"]
         },
         {
-          name: "BBA + LOGISTICS AND AVIATION",
-          colleges: [
-            "YENEPOYA COLLEGE BANGALORE",
-            "BRINDAVAN COLLEGE BANGALORE",
-            "YENEPOYA COLLEGE MANGALORE",
-          ],
+          "name": "BBA Hospitality Management",
+          "colleges": ["Yenepoya Mangalore"]
         },
         {
-          name: "BBA + HR",
-          colleges: ["PRESIDENCY UNIVERSITY BANGALORE"],
+          "name": "BBA IATA",
+          "colleges": ["Christian College"]
         },
         {
-          name: "BBA + AVIATION",
-          colleges: [
-            "KRUPANIDHI COLLEGE BANGALORE",
-            "PRESIDENCY UNIVERSITY BANGALORE",
-            "SRINIVAS UNIVERSITY MANGALORE",
-            "ACHARYA COLLEGE BANGALORE",
-            "EAST WEST COLLEGE BANGALORE",
-            "IZEE BUSINESS SCHOOL BANGALORE",
-            "BRINDAVAN COLLEGE BANGALORE",
-            "RR COLLEGE BANGALORE",
-          ],
+          "name": "BBA Aviation Airport Management",
+          "colleges": ["Karnataka College"]
         },
         {
-          name: "BBA + AVIATION AND LOGISTICS",
-          colleges: [
-            "KRUPANIDHI COLLEGE BANGALORE",
-            "S-VYASA COLLEGE BANGALORE",
-            "SRINIVAS COLLEGE MANGALORE",
-            "BRINDAVAN COLLEGE BANGALORE",
-          ],
+          "name": "BBA Finance & Accounts",
+          "colleges": ["Jain University"]
         },
         {
-          name: "BBA + LOGISTICS, SUPPLY CHAIN MANAGEMENT AND PORT MANAGEMENT",
-          colleges: [
-            "YENEPOYA UNIVERSITY BANGALORE",
-            "YENEPOYA UNIVERSITY MANGALORE",
-            "S-VYASA COLLEGE BANGALORE",
-          ],
+          "name": "BBA Strategic Finance/Event Management",
+          "colleges": ["Jain University"]
         },
         {
-          name: "BBA + BUSINESS MANAGEMENT, DIGITAL MARKETING AND BUSINESS ANALYTICS",
-          colleges: [
-            "S-VYASA COLLEGE BANGALORE",
-            "KRUPANIDHI COLLEGE BANGALORE",
-            "YENEPOYA COLLEGE MANGALORE",
-          ],
+          "name": "BBA Branding & Advertising",
+          "colleges": ["Jain University"]
         },
         {
-          name: "BBA + ENTREPRENEURSHIP, INNOVATION AND BUSINESS ANALYTICS",
-          colleges: [
-            "S-VYASA COLLEGE BANGALORE",
-            "YENEPOYA UNIVERSITY MANGALORE",
-            "YENEPOYA UNIVERSITY BANGALORE",
-          ],
+          "name": "BBA Global Business",
+          "colleges": ["Jain University"]
         },
         {
-          name: "BBA + PORT AND SHIPPING MANAGEMENT INCLUDE LOGISTICS",
-          colleges: ["SRINIVAS COLLEGE MANGALORE"],
+          "name": "BBA Digital Business",
+          "colleges": ["Jain University"]
         },
         {
-          name: "BBA + STARTUP, ENTREPRENEURSHIP & FINTECH (WITH INTERNATIONAL BUSINESS & BUSINESS ANALYTICS)",
-          colleges: ["SRINIVAS COLLEGE MANGALORE"],
+          "name": "BBA + Operations & SCM",
+          "colleges": ["Presidency"]
         },
         {
-          name: "BBA + ENTREPRENEURSHIP, DEVELOPMENT AND SMALL BUSINESS MANAGEMENT",
-          colleges: ["KRUPANIDHI COLLEGE BANGALORE"],
+          "name": "BBA + Logistics, Supply Chain Management and Port Management",
+          "colleges": ["Yenepoya Bangalore", "S-Vyasa", "Yenepoya Mangalore"]
         },
         {
-          name: "BBA + AVIATION IN LOGISTICS & SUPPLY CHAIN MANAGEMENT",
-          colleges: ["IZEE BUSINESS SCHOOL BANGALORE"],
+          "name": "BBA + Business Management, Digital Marketing and Business Analytics",
+          "colleges": ["S-Vyasa", "Krupanidhi", "Yenepoya Mangalore"]
         },
         {
-          name: "BBA + AVIATION IN LOGISTICS & SUPPLY CHAIN MANAGEMENT GLOBAL",
-          colleges: ["IZEE BUSINESS SCHOOL BANGALORE"],
+          "name": "BBA + Entrepreneurship, Innovation and Business Analytics",
+          "colleges": ["Yenepoya Mangalore", "S-Vyasa"]
         },
-      ],
+        {
+          "name": "BBA + Port and Shipping Management including Logistics",
+          "colleges": ["Srinivas"]
+        },
+        {
+          "name": "BBA + Startup, Entrepreneurship & Fintech (With International Business & Business Analytics)",
+          "colleges": ["Srinivas"]
+        },
+        {
+          "name": "BBA + Entrepreneurship, Development and Small Business Management",
+          "colleges": ["Krupanidhi"]
+        },
+        {
+          "name": "BBA + Entrepreneurship & Innovation with Minor in Business in Association with Institute of Analytics, UK",
+          "colleges": ["Yenepoya Bangalore", "Yenepoya Mangalore"]
+        },
+        {
+          "name": "BBA + Aviation in Logistics & Supply Chain Management",
+          "colleges": ["IZEE Business School", "RR Institution", "S-Vyasa"]
+        },
+        {
+          "name": "BBA + Aviation in Logistics & Supply Chain Management Global",
+          "colleges": ["IZEE Business School (With International Study Tour)"]
+        },
+        {
+          "name": "BBA International Business, Digital Marketing and Business Analytics",
+          "colleges": ["S-Vyasa"]
+        }
+      ]
     },
     {
-      category: "BCA",
-      addons: [
+      "category": "B.COM",
+      "addons": [
         {
-          name: "BCA + AI",
-          colleges: ["PRESIDENCY UNIVERSITY BANGALORE"],
+          "name": "B.COM",
+          "colleges": [
+            "Acharya",
+            "JAIN UNIVERSITY",
+            "MS RAMIYAH",
+            "Srinivas",
+            "EAST WEST COLLEGE OF MANAGEMENT",
+            "BRINDAVEN",
+            "KARANATAKA COLLEGE",
+            "CHRISTIAN COLLEGE",
+            "MVM COLLEGE"
+          ]
         },
-      ],
-    },
+        {
+          "name": "B.COM INTERNATIONAL ACCOUNTING WITH INTEGRATED ACCA",
+          "colleges": [
+            "YENEPOYA MNGLR",
+            "SRINIVAS",
+            "S-VYASA"
+          ]
+        },
+        {
+          "name": "B.COM CA",
+          "colleges": [
+            "EAST WEST COLLEGE OF MANAGEMENT",
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.COM (CA FOUNDATION)",
+          "colleges": [
+            "PRESIDENCY"
+          ]
+        },
+        {
+          "name": "B.COM-CMA",
+          "colleges": [
+            "ACHARYA",
+            "EAST WEST COLLEGE OF MANAGEMENT",
+            "BRINDAVEN"
+          ]
+        },
+        {
+          "name": "B.COM (IN CORPORATE ACCOUNTING INTEGRATED WITH CMA – US)",
+          "colleges": [
+            "PRESIDENCY"
+          ]
+        },
+        {
+          "name": "B.COM ACCA",
+          "colleges": [
+            "ACHARYA",
+            "KRIPANIDHI",
+            "PRESIDENCY",
+            "BRINDAVEN",
+            "EAST WEST COLLEGE OF MANAGEMENT",
+            "CHRISTIAN COLLEGE"
+          ]
+        },
+        {
+          "name": "B.COM BUSINESS ANALYTICS",
+          "colleges": [
+            "ACHARYA",
+            "PRESIDENCY"
+          ]
+        },
+        {
+          "name": "B.COM LOGISTICS",
+          "colleges": [
+            "BRINDAVEN",
+            "CHRISTIAN COLLEGE"
+          ]
+        },
+        {
+          "name": "B.COM LOGISTICS & AVIATION",
+          "colleges": [
+            "BRINDAVEN",
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.COM LOGISTICS & DIGITAL MARKETING",
+          "colleges": [
+            "BRINDAVEN"
+          ]
+        },
+        {
+          "name": "B.COM SHIPPING & LOGISTICS MANAGEMENT",
+          "colleges": [
+            "EAST WEST COLLEGE OF MANAGEMENT"
+          ]
+        },
+        {
+          "name": "B.COM SAP",
+          "colleges": [
+            "IZEE BUSINESS SCHOOL"
+          ]
+        },
+        {
+          "name": "B.COM ACCOUNTING AND TAXATION",
+          "colleges": [
+            "IZEE BUSINESS SCHOOL",
+            "PRESIDENCY"
+          ]
+        },
+        {
+          "name": "B.COM TALLY WITH GST",
+          "colleges": [
+            "IZEE BUSINESS SCHOOL"
+          ]
+        },
+        {
+          "name": "B.COM BANKING",
+          "colleges": [
+            "BRINDAVEN"
+          ]
+        },
+        {
+          "name": "B.COM BANKING & FINANCE",
+          "colleges": [
+            "PRESIDENCY"
+          ]
+        },
+        {
+          "name": "B.COM (AVIATION, LOGISTIC & SUPPLY CHAIN)",
+          "colleges": [
+            "RR INSTITUTION"
+          ]
+        },
+        {
+          "name": "B.Com. International Accounting & Finance with ACCA",
+          "colleges": [
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.Com International Management Accounting - CMA, US",
+          "colleges": [
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.Com International Corporate Accounting - CPA, US",
+          "colleges": [
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.Com. Business & Finance",
+          "colleges": [
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.Com Finance, Taxation & Auditing - Microsoft (Data Analytics)",
+          "colleges": [
+            "YENEPOYA MNGLR"
+          ]
+        },
+        {
+          "name": "B.COM SCM",
+          "colleges": [
+            "MVM COLLEGE"
+          ]
+        },
+        {
+          "name": "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING / INVESTMENT BANKING CMA",
+          "colleges": [
+            "JAIN UNIVERSITY"
+          ]
+        },
+        {
+          "name": "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA / CPA / RM / LSCM / FT",
+          "colleges": [
+            "JAIN UNIVERSITY"
+          ]
+        }
+      ]
+    }
   ];
   const humanitiesCourses = [
     {

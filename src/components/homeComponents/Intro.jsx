@@ -38,12 +38,10 @@ function Intro() {
             </span>
             .
           </p>
-          <p className="text-md sm:text-lg md:text-xl text-gray-500 mb-6">
+          <h1 className="text-md sm:text-lg md:text-xl text-gray-500 mb-6">
             Choose the Stream for Future{" "}
             <span className="animate-bounce">↓</span>
-          </p>
-
-          {/* Call-to-Action Buttons with AOS */}
+          </h1>
           <div
             className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
             data-aos="zoom-in"
