@@ -3,7 +3,6 @@ import React from "react";
 function About() {
   return (
     <>
-      {/* About Section */}
       <section
         id="about"
         className="p-8  md:p-16 flex flex-col md:flex-row items-center gap-8"
