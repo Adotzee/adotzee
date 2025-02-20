@@ -25,7 +25,7 @@ function App() {
         <Route path="/science" element={<Science />} />
         <Route path="/commerce" element={<Commerce />} />
         <Route path="/humanities" element={<Humanities />} />
-        <Route path="/:addonName" element={<CollegeList />} />
+        <Route path="/college/:addonName" element={<CollegeList />} />
         <Route path="/admission" element={<Admission/>}/>
       </Routes>
     </CourseProvider>

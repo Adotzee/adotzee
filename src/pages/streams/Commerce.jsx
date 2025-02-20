@@ -77,7 +77,7 @@ export default function Commerce() {
                           key={idx}
                           className="p-3 bg-white/30 text-white rounded-lg shadow-md 
                           transition-transform hover:scale-101 cursor-pointer flex justify-between items-center"
-                          onClick={() => navigate(`/${addon.name}`)} // Navigate to CollegeList page
+                          onClick={() => navigate(`/college/${addon.name}`)} // Navigate to CollegeList page
                         >
                           <span className="md:text-lg text-size-sm font-medium text-left">
                             📖 {addon.name}
