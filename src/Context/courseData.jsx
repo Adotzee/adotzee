@@ -437,7 +437,95 @@ export const CourseProvider = ({ children }) => {
           ]
         }
       ]
+    },
+    {
+      "category": "BVA",
+      "addons": [
+        {
+          "name": "BVA",
+          "colleges": ["Acharya (Bangalore)"]
+        },
+        {
+          "name": "BVA - Game Art and Animation",
+          "colleges": ["Acharya (Bangalore)"]
+        },
+        {
+          "name": "BVA - Graphics and Communication Design",
+          "colleges": ["Acharya (Bangalore)"]
+        },
+        {
+          "name": "BVA - Product Design",
+          "colleges": ["Acharya (Bangalore)", "MS Ramaiah (Bangalore)"]
+        },
+        {
+          "name": "BVA - Interior and Spatial Design",
+          "colleges": ["Acharya (Bangalore)"]
+        },
+        {
+          "name": "BVA - Fashion Design",
+          "colleges": ["MS Ramaiah (Bangalore)"]
+        },
+        {
+          "name": "BVA - Interaction Design",
+          "colleges": ["MS Ramaiah (Bangalore)"]
+        },
+        {
+          "name": "BVA - Fashion and Apparel Design",
+          "colleges": ["Acharya (Bangalore)"]
+        }
+      ]
+    },
+    {
+      "category": "BA",
+      "addons": [
+        {
+          "name": "BA - Criminology",
+          "colleges": ["Acharya (Bangalore)", "SEA (Bangalore)"]
+        },
+        {
+          "name": "BA - Journalism & Mass Communication",
+          "colleges": ["Srinivas (Bangalore)", "Presidency (Bangalore)"]
+        },
+        {
+          "name": "BA - Economics",
+          "colleges": ["SEA (Bangalore)", "Jain University (Bangalore)"]
+        },
+        {
+          "name": "BA - Psychology",
+          "colleges": ["SEA (Bangalore)", "Presidency (Bangalore)"]
+        },
+        {
+          "name": "BA - History",
+          "colleges": ["SEA (Bangalore)"]
+        },
+        {
+          "name": "BA - Political Science",
+          "colleges": ["SEA (Bangalore)"]
+        },
+        {
+          "name": "BA / B.Des - Animation",
+          "colleges": ["Yenepoya (Mangalore)"]
+        },
+        {
+          "name": "BA / B.Des - Graphic Design",
+          "colleges": ["Yenepoya (Mangalore)"]
+        },
+        {
+          "name": "BA / B.Des - Visual Effects",
+          "colleges": ["Yenepoya (Mangalore)"]
+        },
+        {
+          "name": "BA / B.Des - Fashion Design",
+          "colleges": ["Yenepoya (Mangalore)"]
+        },
+        {
+          "name": "BA - Sports Studies",
+          "colleges": ["Yenepoya (Mangalore)"]
+        }
+      ]
     }
+    
+    
   ];
   const humanitiesCourses = [
     {
@@ -593,6 +681,31 @@ export const CourseProvider = ({ children }) => {
       "Diploma in Business Management",
     ],
   };
+
+  const collegeLocations = {
+    "Acharya": "Bengaluru",
+    "Presidency": "Bengaluru",
+    "Krupanidhi": "Bengaluru",
+    "Srinivas": "Bengaluru",
+    "MS Ramiyah": "Bengaluru",
+    "Yenepoya Mangalore": "Mangalore",
+    "Jain University": "Bengaluru",
+    "Brindavan": "Bengaluru",
+    "SEA": "Bengaluru",
+    "S-Vyasa": "Bengaluru",
+    "HKBK": "Bengaluru",
+    "RR Institution": "Bengaluru",
+    "Karnataka College": "Bengaluru",
+    "Christian College": "Bengaluru",
+    "MVM College": "Bengaluru",
+    "Yenepoya Bangalore": "Bengaluru",
+    "East West College of Management": "Bengaluru",
+    "IZEE Business School": "Bengaluru",
+    "MS Ramaiah": "Bengaluru",
+    "SEA (Bangalore)": "Bengaluru",
+    "Yenepoya (Mangalore)": "Mangalore"
+  };
+  
   
   return (
     <CourseContext.Provider
@@ -601,6 +714,7 @@ export const CourseProvider = ({ children }) => {
         scienceCourses,
         commerceCourses,
         humanitiesCourses,
+        collegeLocations,
       }}
     >
       {children}

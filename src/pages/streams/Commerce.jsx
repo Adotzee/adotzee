@@ -32,11 +32,7 @@ export default function Commerce() {
             Commerce Degree Courses
           </h1>
 
-          {/* <p className="text-center text-white text-lg mb-5">
-            📢 **Secure Your Admission Today!**
-          </p> */}
-
-          {/* Category List */}
+  
           <div className="flex flex-col gap-6">
             {commerceCourses.map((course, index) => (
               <div key={index} className="w-full">
@@ -82,6 +78,7 @@ export default function Commerce() {
                           <span className="md:text-lg text-size-sm font-medium text-left">
                             📖 {addon.name}
                           </span>
+                        
                           <span className="text-sm text-white/80 text-right">
                             🔍 Click for Colleges
                           </span>

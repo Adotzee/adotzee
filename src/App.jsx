@@ -18,7 +18,6 @@ ReactGA.send("pageview");
 function App() {
   return (
     <HelmetProvider>
-
     <CourseProvider>
       <Routes>
         <Route path="/" element={<Home />} />
