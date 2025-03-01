@@ -6,7 +6,7 @@ function Footer() {
     <>
     <div className="w-full mt-8 text-center text-gray-700">
     <FooterLogo/>
-    <p>&copy; All Rights Reserved. ADOTZEE</p>
+    <p className='mt-0'>&copy; All Rights Reserved. ADOTZEE</p>
   </div>
 
   <div className="flex space-x-3 mt-0 md:pb-10 pb-2 items-center justify-center">

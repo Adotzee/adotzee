@@ -73,9 +73,9 @@ const Counts = () => {
 
   return (
     <div className="bg-gradient-to-r from-blue-50 to-gray-100 py-16 md:py-36 w-full">
-      <div className="container mx-auto ">
+      <div className=" mx-auto ">
         <div
-          className="flex md:flex-row flex-col mx-auto  space-y-12 md:space-y-0 md:space-x-12 justify-center w-[95%] items-center"
+          className="flex md:flex-row flex-col mx-10 md:mx-0  space-y-12 md:space-y-0 md:space-x-12 justify-center md:w-full  items-center"
           data-aos="fade-up" // AOS animation for the container fade-up
         >
           {stats.map((stat, index) => (

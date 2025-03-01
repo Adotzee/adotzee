@@ -10,9 +10,9 @@ function Back() {
   return (
     <div
       onClick={handleBackClick}
-      className="z-50 cursor-pointer fixed md:top-8 top-19 left-10 text-white rounded-full h-10 w-10 shadow-lg hover:text-black focus:outline-none flex items-center justify-center"
+      className="z-50 cursor-pointer fixed md:top-8 top-19 md:left-10 left-5 bg-gray-600/25 text-white rounded-full h-10 w-10 shadow-lg hover:text-black focus:outline-none flex items-center justify-center"
     >
-      <i className="fa-solid fa-chevron-left"></i>
+      <i className="fa-solid fa-chevron-left opacity-100"></i>
     </div>
   );
 }

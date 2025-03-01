@@ -64,7 +64,7 @@ export default function Commerce() {
                 {/* Show Addon Courses Under Selected Category */}
                 {selectedCategory === course.category && (
                   <div className="mt-3 bg-white/20 p-4 rounded-lg">
-                    <h3 className="text-white text-lg font-semibold text-center mb-2">
+                    <h3 className="text-white text-lg font-semibold text-center mb-8">
                       🎯 Click an Addon Course to See Colleges
                     </h3>
                     <ul className="list-none flex flex-col gap-3 m-0 p-0">
