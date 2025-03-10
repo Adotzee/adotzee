@@ -4,10 +4,10 @@ import "./Error404.css";
 
 export default function Error404() {
   return (
-    <div className="align-middle flex justify-center px-auto py-auto  max-h-screen overflow-hidden">
+    <div className="align-middle some flex justify-center px-auto py-auto  max-h-screen overflow-hidden">
     <div className="noise"></div>
     <div className="overlay"></div>
-    <div className="terminal my-auto py-auto">
+    <div className="terminal my-auto py-auto min-h-screen">
       <h1>
         Error <span className="errorcode">404</span>
       </h1>
