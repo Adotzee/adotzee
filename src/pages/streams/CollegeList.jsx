@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Back from "../../components/Back/Back";
 
 export default function CollegeList() {
-  const { addonName } = useParams(); // Get the addonName from the URL
+  const { addonName } = useParams();
   const { commerceCourses, scienceCourses, humanitiesCourses, collegeLocations , dotzeeChoiceColleges } = useCourse(); // Get all courses from context
 
   const [selectedColleges, setSelectedColleges] = useState([]);
@@ -25,7 +25,9 @@ export default function CollegeList() {
       setSelectedColleges(foundAddon.colleges);
     }
   }, [addonName, commerceCourses, scienceCourses, humanitiesCourses ]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Back />
@@ -46,18 +48,18 @@ export default function CollegeList() {
               selectedColleges.map((college, index) => (
                 <li
                 key={index}
-                className="p-4 border border-gray-300 rounded-lg flex justify-between items-center bg-white overflow-hidden shadow-md transition-all duration-300 
+                className="p-4 pt-5 md:pt-4 border border-gray-300 rounded-lg flex justify-between items-center bg-white overflow-hidden shadow-md transition-all duration-300 
                 hover:bg-blue-100 hover:shadow-lg transform hover:scale-101 relative"
               >
-                {dotzeeChoiceColleges.includes(college.toUpperCase()) && (
+                {!addonName.toUpperCase().includes("NURSING") && dotzeeChoiceColleges.includes(college.toUpperCase()) &&  (
                   <p className="absolute top-0 left-0 m-0 px-2 py-0.5 bg-yellow-500 text-white text-xs font-semibold rounded-br-lg">
                     ⭐ Adotzee's Choice
                   </p>
                 )}
               
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2 md:space-x-4">
                   <span className="text-xl">🎓</span>
-                  <span className="text-[#041C32] md:text-lg text-sm font-semibold">
+                  <span className="text-[#041C32] font-semibold   md:text-lg text-size-sm font-medium text-left">
                     {college}
                   </span>
                   <span className="text-gray-500 text-xs md:text-sm flex items-center">

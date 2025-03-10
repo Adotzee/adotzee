@@ -5,7 +5,16 @@ function Footer() {
   return (
     <>
     <div className="w-full mt-8 text-center text-gray-700">
-    <FooterLogo/>
+    <div className="flex justify-center">
+          <div 
+            className="transition-all duration-300"
+            style={{ 
+              width: window.innerWidth < 768 ? '60px' : '120px' 
+            }}
+          >
+            <FooterLogo />
+          </div>
+        </div>
     <p className='mt-0'>&copy; All Rights Reserved. ADOTZEE</p>
   </div>
 

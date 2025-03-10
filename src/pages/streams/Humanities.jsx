@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,14 @@ import Back from "../../components/Back/Back";
 export default function Humanities() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigate(); // Initialize navigation
-  const { humanitiesCourses } = useCourse(); // Get humanitiesCourses from the context
+  const { humanitiesCourses } = useCourse();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(
+    () => localStorage.setItem("selectedCategory", selectedCategory),
+    [selectedCategory]
+  );
 
   return (
     <>

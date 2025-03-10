@@ -22,7 +22,7 @@ function Intro() {
         </div>
 
         <div
-          className="w-full md:mt-10 max-w-4xl bg-white shadow-xl mx-10 rounded-3xl p-6 sm:p-8 md:p-10 relative z-10"
+          className="w-full md:mt-10 mt-5 max-w-4xl bg-white shadow-xl mx-10 rounded-3xl p-6 sm:p-8 md:p-10 relative z-10"
           data-aos="fade-up"
         >
           <h1 className="text-2xl sm:text-2xl md:text-5xl font-extrabold leading-tight mb-4">
@@ -38,13 +38,13 @@ function Intro() {
             </span>
             .
           </p>
-          <h1 className="text-md sm:text-lg md:text-xl text-gray-500 mb-6">
+          <h1 className="text-size-4xl md:text-xl text-gray-500 mb-6">
             Choose the Stream for Future{" "}
             <span className="animate-bounce">↓</span>
           </h1>
           <div
             className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
-            data-aos="zoom-in"
+            data-aos="zoom-out"
           >
             <button
               onClick={() => navigate("/science")}

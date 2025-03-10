@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,14 @@ export default function Science() {
   const navigate = useNavigate(); // Initialize navigation
   const { scienceCourses } = useCourse(); // Get scienceCourses from the context
 
+  useEffect(
+    () => localStorage.setItem("selectedCategory", selectedCategory),
+    [selectedCategory]
+  );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Back />
@@ -23,7 +31,8 @@ export default function Science() {
         </h1>
 
         <p className="text-white text-lg p-3">
-          🎓 Over <span className="text-yellow-400 font-bold">24+</span> students have started their careers with us!
+          🎓 Over <span className="text-yellow-400 font-bold">24+</span>{" "}
+          students have started their careers with us!
         </p>
 
         <div className="mx-4 sm:mx-10 md:mx-40 bg-primary/50 backdrop-blur-lg p-10 mb-30 rounded-2xl shadow-2xl w-fit md:min-w-5xl mt-10">
@@ -38,12 +47,24 @@ export default function Science() {
                 <div
                   className={`cursor-pointer p-4 border border-white/40 rounded-lg shadow-md text-lg font-semibold 
                   transition-all duration-300 ease-in-out flex items-center justify-between gap-3
-                  ${selectedCategory === course.category ? "bg-white text-black font-bold" : "bg-transparent text-white hover:bg-white/20"}`}
-                  onClick={() => setSelectedCategory((prev) => (prev === course.category ? "" : course.category))}
+                  ${
+                    selectedCategory === course.category
+                      ? "bg-white text-black font-bold"
+                      : "bg-transparent text-white hover:bg-white/20"
+                  }`}
+                  onClick={() =>
+                    setSelectedCategory((prev) =>
+                      prev === course.category ? "" : course.category
+                    )
+                  }
                 >
                   📚 {course.category}
                   <FontAwesomeIcon
-                    icon={selectedCategory === course.category ? faChevronUp : faChevronDown}
+                    icon={
+                      selectedCategory === course.category
+                        ? faChevronUp
+                        : faChevronDown
+                    }
                     className="transition-transform duration-300"
                   />
                 </div>

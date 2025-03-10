@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar";
@@ -9,9 +9,20 @@ import { useCourse } from "../../Context/courseData";
 import Back from "../../components/Back/Back";
 
 export default function Commerce() {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const navigate = useNavigate(); // Initialize navigation
+  const [selectedCategory, setSelectedCategory] = useState(
+    localStorage.getItem("selectedCategory") || ""
+  );
+  const navigate = useNavigate();
   const { commerceCourses } = useCourse();
+
+  useEffect(
+    () => localStorage.setItem("selectedCategory", selectedCategory),
+    [selectedCategory]
+  );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -32,7 +43,6 @@ export default function Commerce() {
             Commerce Degree Courses
           </h1>
 
-  
           <div className="flex flex-col gap-6">
             {commerceCourses.map((course, index) => (
               <div key={index} className="w-full">
@@ -78,7 +88,7 @@ export default function Commerce() {
                           <span className="md:text-lg text-size-sm font-medium text-left">
                             📖 {addon.name}
                           </span>
-                        
+
                           <span className="text-sm text-white/80 text-right">
                             🔍 Click for Colleges
                           </span>
