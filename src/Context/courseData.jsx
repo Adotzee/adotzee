@@ -54,6 +54,195 @@ export const CourseProvider = ({ children }) => {
         },
       ],
     },
+    {
+      category: "Paramedical",
+      addons: [
+        {
+          name: "Imaging Technology",
+          colleges: [
+            "RR Institution",
+            "Yenepoya",
+            "Acharya",
+            "Christian College",
+            "MVM College",
+            "Manipal University",
+            "Maurya Group Of Institutions",
+          ],
+        },
+        {
+          name: "Nuclear Medicine Technology",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "Bachelor of Ayurvedic Medicine & Surgery (BAMS)",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "Optometry",
+          colleges: [],
+        },
+        {
+          name: "Bachelor of Hospital Administration",
+          colleges: [
+            "Yenepoya",
+            "Acharya",
+            "MVM College",
+          ],
+        },
+        {
+          name: "Cardio Vascular Technology",
+          colleges: [
+            "Yenepoya",
+            "Manipal University",
+          ],
+        },
+        {
+          name: "Bachelor of Homeopathic Medicine & Surgery (BHMS)",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "B.Sc Respiratory Therapy",
+          colleges: [
+            "Yenepoya",
+            "Acharya",
+            "Christian College",
+            "MVM College",
+            "Manipal University",
+            "Maurya Group Of Institutions",
+            "Koshys",
+          ],
+        },
+        {
+          name: "B.Sc Renal Dialysis Technology",
+          colleges: [
+            "RR Institution",
+            "Yenepoya",
+            "Acharya",
+            "Christian College",
+            "MVM College",
+            "Koshys",
+          ],
+        },
+        {
+          name: "B.Sc Intensive Care Technology and Medical Instrumentation",
+          colleges: [],
+        },
+        {
+          name: "Cardiac Care Technology",
+          colleges: [
+            "RR Institution",
+            "MS Ramiyah",
+            "Christian College",
+          ],
+        },
+        {
+          name: "B.Sc Perfusion Technology",
+          colleges: [
+            "RR Institution",
+            "Yenepoya",
+            "Christian College",
+            "MVM College",
+          ],
+        },
+        {
+          name: "Bachelor in Naturopathy & Yogic Science",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "B.Sc Optometry",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "B.Sc Neuroscience",
+          colleges: [
+            "Yenepoya",
+            "MVM College",
+          ],
+        },
+        {
+          name: "B.Sc Emergency Medicine",
+          colleges: [],
+        },
+        {
+          name: "B.Sc Medical Laboratory Technology",
+          colleges: [
+            "RR Institution",
+            "MVM College",
+            "Maurya College Of Nursing",
+            "Acharya",
+            "Yenepoya",
+            "Pes",
+            "Koshys",
+          ],
+        },
+        {
+          name: "B.Sc Radiotherapy Technology",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "Bachelor of Physician Associate",
+          colleges: [
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "Emergency Trauma Care",
+          colleges: [
+            "RR Institution",
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "B.Sc Nutrition & Dietetics",
+          colleges: [
+            "Christian College",
+          ],
+        },
+        {
+          name: "Bachelor of Naturopathy & Yogic Sciences",
+          colleges: [
+            "MVM College",
+          ],
+        },
+        {
+          name: "Bachelor of Public Health",
+          colleges: [
+            "MVM College",
+          ],
+        },
+        {
+          name: "Bachelor of Physiotherapy",
+          colleges: [
+            "Manipal University",
+          ],
+        },
+        {
+          name: "B.Sc Renal Replacement Therapy & Dialysis Technology",
+          colleges: [
+            "Manipal University",
+          ],
+        },
+        {
+          name: "B.Sc Radiotherapy Technology",
+          colleges: [
+            "Manipal University",
+          ],
+        },
+      ],
+    },
+    
 
     {
       category: "Engineering Courses",
@@ -859,6 +1048,26 @@ export const CourseProvider = ({ children }) => {
       "B.Sc Biotechnology",
       "BCA (Bachelor of Computer Applications)",
       "B.Sc Nursing",
+      "B.Sc Data Science",
+      "B.Sc Radiotherapy Technology",
+      "B.Sc Emergency Medicine",
+      "B.Sc Medical Laboratory Technology",
+      "B.Sc Optometry",
+      "B.Sc Neuroscience",
+      "B.Sc Perfusion Technology",
+      "B.Sc Respiratory Therapy",
+      "B.Sc Renal Dialysis Technology",
+      "B.Sc Intensive Care Technology and Medical Instrumentation",
+      "B.Sc Nutrition & Dietetics",
+      "B.Sc Nuclear Medicine Technology",
+      "B.Sc Cardiovascular Technology",
+      "B.Sc Renal Replacement Therapy & Dialysis Technology",
+      "B.Sc Radiotherapy Technology",
+      "B.Sc Emergency Trauma Care",
+      "B.Sc Physician Associate",
+      "Bachelor in Naturopathy & Yogic Science",
+      "Bachelor of Ayurvedic Medicine & Surgery (BAMS)",
+      "Bachelor of Homeopathic Medicine & Surgery (BHMS)",
       "M.Sc Physics",
       "M.Sc Chemistry",
       "M.Sc Mathematics",
@@ -867,7 +1076,14 @@ export const CourseProvider = ({ children }) => {
       "MCA (Master of Computer Applications)",
       "Diploma in Medical Laboratory Technology (DMLT)",
       "Diploma in Radiology",
+      "Diploma in Nuclear Medicine Technology",
+      "Diploma in Cardio Vascular Technology",
+      "Diploma in Imaging Technology",
+      "Diploma in Hospital Administration",
+      "Diploma in Emergency Trauma Care",
+      "Diploma in Dietetics & Nutrition",
     ],
+    
 
     humanities: [
       "B.A History",
@@ -882,18 +1098,75 @@ export const CourseProvider = ({ children }) => {
       "M.A English Literature",
       "Diploma in Journalism",
       "Diploma in Psychology",
+      "B.A Journalism & Mass Communication",
+      "B.A Criminology",
+      "B.A Art History",
+      "B.A Public Administration",
+      "B.A Anthropology",
+      "B.A Linguistics",
+      "B.A International Relations",
+      "B.A Social Work",
+      "B.A Counseling Psychology",
+      "M.A Counseling Psychology",
+      "M.A Economics",
+      "Diploma in Public Administration",
+      "Diploma in International Relations"
     ],
+    
 
     commerce: [
       "B.Com (Bachelor of Commerce)",
       "BBA (Bachelor of Business Administration)",
       "BMS (Bachelor of Management Studies)",
       "B.Com Banking & Finance",
+      "B.Com International Accounting",
+      "B.Com Logistics",
+      "B.Com Shipping & Logistics Management",
+      "B.Com Accounting and Finance",
+      "B.Com E-Commerce",
+      "B.Com Investment Banking",
+      "B.Com Marketing Management",
+      "BBA General",
+      "BBA Aviation",
+      "BBA Logistics and Supply Chain Management",
+      "BBA Business Analytics",
+      "BBA Finance",
+      "BBA Human Resource Management",
+      "BBA Marketing",
+      "BBA Digital Marketing",
+      "BBA Tourism & Travel Management",
+      "BMS Financial Services",
+      "BMS Tourism & Hospitality Management",
+      "BMS Aviation Management",
+      "BMS International Business",
+      "BMS Event Management",
+      "BMS Marketing Management",
       "M.Com (Master of Commerce)",
+      "M.Com General",
+      "M.Com Accounting and Finance",
+      "M.Com Banking and Insurance",
+      "M.Com Taxation",
+      "M.Com International Business",
+      "M.Com Business Analytics",
       "MBA (Master of Business Administration)",
+      "MBA General",
+      "MBA Marketing Management",
+      "MBA Finance Management",
+      "MBA Human Resource Management",
+      "MBA Operations Management",
+      "MBA International Business",
+      "MBA Supply Chain Management",
+      "MBA Digital Marketing",
+      "MBA Event Management",
       "Diploma in Financial Accounting",
       "Diploma in Business Management",
+      "Diploma in Banking & Finance",
+      "Diploma in Taxation",
+      "Diploma in Marketing Management",
+      "Diploma in Entrepreneurship",
+      "Diploma in Import & Export Management"
     ],
+    
   };
 
   const collegeLocations = {

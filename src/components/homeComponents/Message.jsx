@@ -60,7 +60,7 @@ function Message() {
           
           className="md:z-49 z-40 animate-bounce fixed bottom-4 right-4 bg-secondary text-white p-3 rounded-full shadow-lg hover:shadow-xl transition duration-300"
         >
-          <i className="fa-solid fa-message text-white text-2xl"></i>
+          <i className="fa-solid fa-message text-blue-600 text-2xl"></i>
         </a>
       </div>
       <AdmissionModal isOpen={isModalOpen} closeModal={closeModal} />

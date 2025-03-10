@@ -11,6 +11,7 @@ import { CourseProvider } from "./Context/courseData";
 import Admission from "./pages/Admission";
 import { HelmetProvider } from "react-helmet-async";
 import ReactGA from "react-ga4";
+import Error404 from "./pages/404/Error404";
 
 ReactGA.initialize("G-ZT2XPNZF9Q");
 ReactGA.send("pageview");
@@ -26,6 +27,7 @@ function App() {
         <Route path="/humanities" element={<Humanities />} />
         <Route path="/college/:addonName" element={<CollegeList />} />
         <Route path="/admission" element={<Admission/>}/>
+        <Route path="*" element={<Error404/>} />
       </Routes>
     </CourseProvider>
     </HelmetProvider>

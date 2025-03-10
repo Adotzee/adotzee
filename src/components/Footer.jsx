@@ -1,20 +1,19 @@
-import React, { lazy } from 'react'
+import { Skeleton } from '@mui/material';
+import React, { lazy, Suspense } from 'react'
 const FooterLogo = lazy(() => import("../components/LazyImages/FooterLogo"));
 
 function Footer() {
   return (
     <>
     <div className="w-full mt-8 text-center text-gray-700">
-    <div className="flex justify-center">
-          <div 
-            className="transition-all duration-300"
-            style={{ 
-              width: window.innerWidth < 768 ? '60px' : '120px' 
-            }}
-          >
+            <Suspense  fallback={
+              <div className="flex items-center">
+                <Skeleton  height={40} width={40} />
+              </div>
+            } >
             <FooterLogo />
-          </div>
-        </div>
+            </Suspense>
+          
     <p className='mt-0'>&copy; All Rights Reserved. ADOTZEE</p>
   </div>
 

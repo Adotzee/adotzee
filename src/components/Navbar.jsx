@@ -2,7 +2,6 @@ import { Skeleton } from "@mui/material";
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Lazy load images
 const HatImage = lazy(() => import("../components/LazyImages/HatImage"));
 const TextImage = lazy(() => import("../components/LazyImages/TextImage"));
 const LogoImage = lazy(() => import("../components/LazyImages/LogoImage"));
