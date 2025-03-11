@@ -242,8 +242,6 @@ export const CourseProvider = ({ children }) => {
         },
       ],
     },
-    
-
     {
       category: "Engineering Courses",
       addons: [
@@ -379,6 +377,573 @@ export const CourseProvider = ({ children }) => {
         {
           name: "AI & Robotics Engineering",
           colleges: ["Acharya"],
+        },
+      ],
+    },
+    {
+      category: "B.Sc Courses",
+      addons: [
+        {
+          name: "B.Sc Physics",
+          colleges: [
+            "Acharya",
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Physics (Data Science)",
+          colleges: [
+            "Acharya"
+          ],
+        },
+        {
+          name: "B.Sc Maths",
+          colleges: [
+            "Acharya",
+            "Mathematics"
+          ],
+        },
+        {
+          name: "B.Sc Maths (Data Science)",
+          colleges: [
+            "Acharya"
+          ],
+        },
+        {
+          name: "B.Sc Computer Science",
+          colleges: [
+            "Acharya"
+          ],
+        },
+        {
+          name: "B.Sc Computer Science (Data Science)",
+          colleges: [
+            "Acharya"
+          ],
+        },
+        {
+          name: "B.Sc Artificial Intelligence, DS & Software Systems",
+          colleges: [
+            "Acharya"
+          ],
+        },
+        {
+          name: "B.Sc (ANI, DFM, Gaming)",
+          colleges: [
+            "Jain University"
+          ],
+        },
+        {
+          name: "B.Sc Visual Communications",
+          colleges: [
+            "Jain University",
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc FS",
+          colleges: [
+            "Jain University"
+          ],
+        },
+        {
+          name: "B.Sc Psychology",
+          colleges: [
+            "Jain University",
+            "RR College",
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc CMBT/BGBT",
+          colleges: [
+            "Jain University"
+          ],
+        },
+        {
+          name: "B.Sc PMCS/Renewable Energy",
+          colleges: [
+            "Jain University"
+          ],
+        },
+        {
+          name: "B.Sc ID",
+          colleges: [
+            "Jain University"
+          ],
+        },
+        {
+          name: "B.Sc Forensic Science",
+          colleges: [
+            "Krupanidhi",
+            "RR College"
+          ],
+        },
+        {
+          name: "B.Sc Physical Science",
+          colleges: [
+            "Ramaiah"
+          ],
+        },
+        {
+          name: "B.Sc Life Science",
+          colleges: [
+            "Ramaiah"
+          ],
+        },
+        {
+          name: "B.Sc Biotechnology",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Chemistry",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Fashion Designing",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Physical Education and Sports",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Statistics",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Defence and Strategic Studies",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+        {
+          name: "B.Sc Economics",
+          colleges: [
+            "SRM Main Campus"
+          ],
+        },
+      ],
+    },
+    {
+      category: "BBA",
+      addons: [
+        {
+          name: "BBA",
+          colleges: [
+            "Acharya",
+            "Presidency",
+            "Krupanidhi",
+            "Srinivas University",
+            "MS Ramaiah",
+            "Yenepoya",
+            "Jain University",
+            "Brindavan",
+            "SEA College",
+            "S-Vyasa",
+            "HKBK",
+            "RR Institution",
+            "Karnataka College",
+            "Christian College",
+            "MVM College",
+          ],
+        },
+        {
+          name: "BBA + Business Analytics",
+          colleges: ["Acharya", "Presidency", "Jain University", "Brindavan"],
+        },
+        {
+          name: "BBA + Digital Marketing",
+          colleges: ["Acharya", "Presidency"],
+        },
+        {
+          name: "BBA + Logistics and Digital Marketing",
+          colleges: ["Brindavan"],
+        },
+        {
+          name: "BBA + Aviation",
+          colleges: [
+            "Krupanidhi",
+            "Srinivas University",
+            "Acharya",
+            "East West College of Management",
+            "IZEE Business School",
+            "Brindavan",
+            "Presidency",
+            "RR Institution",
+            "MVM College",
+          ],
+        },
+        {
+          name: "BBA + Logistics and Aviation",
+          colleges: [
+            "Yenepoya Bangalore",
+            "Brindavan",
+            "Yenepoya",
+            "Krupanidhi",
+            "S-Vyasa",
+            "Srinivas University",
+          ],
+        },
+        {
+          name: "BBA + Hospital Administration",
+          colleges: [
+            "Srinivas University",
+            "Brindavan",
+            "Yenepoya Bangalore",
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "BBA + Sports Management",
+          colleges: ["S-Vyasa", "Jain University"],
+        },
+        {
+          name: "BBA Hospitality Management",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BBA IATA",
+          colleges: ["Christian College"],
+        },
+        {
+          name: "BBA Aviation Airport Management",
+          colleges: ["Karnataka College"],
+        },
+        {
+          name: "BBA Finance & Accounts",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Strategic Finance/Event Management",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Branding & Advertising",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Global Business",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Digital Business",
+          colleges: ["Jain University"],
+        },
+      ],
+    },
+    {
+      category: "B.COM",
+      addons: [
+        {
+          name: "B.COM",
+          colleges: [
+            "Acharya",
+            "Jain University",
+            "MS Ramaiah",
+            "Srinivas University",
+            "East West College of Management",
+            "Brindavan",
+            "Karnataka College",
+            "Christian College",
+            "MVM College",
+          ],
+        },
+        {
+          name: "B.COM INTERNATIONAL ACCOUNTING WITH INTEGRATED ACCA",
+          colleges: ["Yenepoya", "Srinivas University", "S-Vyasa"],
+        },
+        {
+          name: "B.COM ACCA",
+          colleges: [
+            "Acharya",
+            "Krupanidhi",
+            "Presidency",
+            "Brindavan",
+            "East West College of Management",
+            "Christian College",
+          ],
+        },
+        {
+          name: "B.COM BUSINESS ANALYTICS",
+          colleges: ["Acharya", "Presidency"],
+        },
+        {
+          name: "B.COM LOGISTICS",
+          colleges: ["Brindavan", "Christian College"],
+        },
+        {
+          name: "B.COM LOGISTICS & AVIATION",
+          colleges: ["Brindavan", "Yenepoya"],
+        },
+        {
+          name: "B.COM SHIPPING & LOGISTICS MANAGEMENT",
+          colleges: ["East West College of Management"],
+        },
+        {
+          name: "B.COM SAP",
+          colleges: ["IZEE Business School"],
+        },
+        {
+          name: "B.COM BANKING",
+          colleges: ["Brindavan"],
+        },
+        {
+          name: "B.COM BANKING & FINANCE",
+          colleges: ["Presidency"],
+        },
+        {
+          name: "B.COM (AVIATION, LOGISTIC & SUPPLY CHAIN)",
+          colleges: ["RR Institution"],
+        },
+        {
+          name: "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING / INVESTMENT BANKING CMA",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA / CPA / RM / LSCM / FT",
+          colleges: ["Jain University"],
+        },
+      ],
+    },
+    {
+      category: "BCA",
+      addons: [
+        {
+          name: "BCA",
+          colleges: [
+            "Acharya",
+            "Krupanidhi",
+            "Presidency",
+            "Yenepoya",
+            "Brindavan",
+            "RR Institution",
+            "S-Vyasa",
+            "Karnataka College",
+            "MVM College",
+          ],
+        },
+        {
+          name: "BCA Data Science",
+          colleges: ["Acharya", "Hkbk", "Presidency"],
+        },
+        {
+          name: "BCA Cloud Computing",
+          colleges: ["Acharya", "Hkbk"],
+        },
+        {
+          name: "BCA AI And ML",
+          colleges: ["Izee", "Brindavan", "Hkbk", "Presidency"],
+        },
+        {
+          name: "BCA AI",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BCA AI, ML & Robotics",
+          colleges: ["East West", "S-Vyasa"],
+        },
+        {
+          name: "BCA Artificial Intelligence & Python",
+          colleges: ["T-John", "Kripanidhi"],
+        },
+        {
+          name: "BCA Cyber Security",
+          colleges: ["Hkbk"],
+        },
+        {
+          name: "BCA Cloud Computing & Ethical Hacking",
+          colleges: ["East West", "Izee"],
+        },
+        {
+          name: "BCA Cloud Computing, Cyber Security & Digital Forensic",
+          colleges: ["Srinivas University", "S-Vyasa"],
+        },
+        {
+          name: "BCA Global",
+          colleges: ["Izee"],
+        },
+        {
+          name: "BCA Robotics, AI And Virtual Reality",
+          colleges: ["Srinivas University"],
+        },
+        {
+          name: "BCA Cloud Computing, Ethical Hacking & Cyber Security",
+          colleges: ["Srinivas University", "S-Vyasa", "Brindavan"],
+        },
+        {
+          name: "BCA AI, Cloud Computing & DevOps",
+          colleges: ["Srinivas University", "S-Vyasa", "Brindavan"],
+        },
+        {
+          name: "BCA AI, ML, Robotics & IOT",
+          colleges: ["Srinivas University"],
+        },
+        {
+          name: "BCA Metaverse, Blockchain Technology And Virtual Reality",
+          colleges: ["Srinivas University"],
+        },
+        {
+          name: "BCA Robotics",
+          colleges: ["Hkbk"],
+        },
+        {
+          name: "BCA Big Data Analytics",
+          colleges: ["Kripanidhi"],
+        },
+        {
+          name: "BCA Cybersecurity And Ethical Hacking",
+          colleges: ["Kripanidhi"],
+        },
+        {
+          name: "BCA AWS Cloud Practitioner",
+          colleges: ["Kripanidhi"],
+        },
+        {
+          name: "BCA Data Analytics",
+          colleges: ["Hkbk", "Jain University"],
+        },
+        {
+          name: "BCA Cloud Computing & Digital Marketing",
+          colleges: ["RR Institution", "Christian College"],
+        },
+        {
+          name: "BCA AI, ML & Full Stack Development",
+          colleges: ["RR Institution"],
+        },
+        {
+          name: "BCA Cyber Security And Block Chain Technique",
+          colleges: ["RR Institution"],
+        },
+        {
+          name: "BCA Data Analytics, Data Science & Advanced Python Development",
+          colleges: ["RR Institution"],
+        },
+        {
+          name: "BCA AWS Cloud, Artificial Intelligence & Data Analytics",
+          colleges: ["Srinivas University"],
+        },
+        {
+          name: "BCA Digital Marketing With Cloud Computing",
+          colleges: ["RR Institution"],
+        },
+        {
+          name: "BCA Robotic Automation, Artificial Intelligence & Deep Learning",
+          colleges: ["Srinivas University"],
+        },
+        {
+          name: "BCA Cybersecurity, Ethical Hacking & Data Analytics",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA AI, ML & Cloud Computing",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Cloud Computing, Cyber Security & Digital Forensics",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA AI, DevOps & Full Stack Development",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Data Science, Big Data Analytics & Full Stack Development",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA AI, Robotics & IOT",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Data Science, AI & ML",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Data Science & Digital Forensic",
+          colleges: ["Izee"],
+        },
+        {
+          name: "BCA Cyber Security, Ethical Hacking & Digital Forensic",
+          colleges: ["S-Vyasa"],
+        },
+        {
+          name: "BCA Data Science, AI & Big Data Analytics",
+          colleges: ["S-Vyasa"],
+        },
+        {
+          name: "BCA AI, Robotics & IOT",
+          colleges: ["S-Vyasa"],
+        },
+        {
+          name: "BCA AI, Data Science And Software Systems",
+          colleges: ["S-Vyasa"],
+        },
+        {
+          name: "BCA Cybersecurity & Ethical Hacking",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Data Science, Artificial Intelligence & Machine Learning",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA AI & DevOps",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Data Science & Big Data Analytics",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Artificial Intelligence, Robotics & Internet Of Things",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Cybersecurity & Ethical Hacking",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Artificial Intelligence & Machine Learning",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BCA Artificial Intelligence & Cloud Computing",
+          colleges: ["Yenepoya", "Christian College"],
+        },
+        {
+          name: "BCA Data Science & Artificial Intelligence",
+          colleges: ["Yenepoya", "Karnataka College"],
+        },
+        {
+          name: "BCA Cloud Computing & Cybersecurity",
+          colleges: ["Yenepoya", "Christian College"],
+        },
+        {
+          name: "BCA IT For Healthcare",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BCA AI With Futurense",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BCA Electives With Comptia",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BCA Specialization (CT & IS/MA & CT/MA & IS With Comptia)",
+          colleges: ["Jain University"],
         },
       ],
     },
@@ -1037,6 +1602,7 @@ export const CourseProvider = ({ children }) => {
         },
       ],
     },
+   
   ];
   const coursesData = {
     science: [
@@ -1210,6 +1776,7 @@ export const CourseProvider = ({ children }) => {
     "Mother Teresa College": "Mysore",
     "Smt.Padma G Madegowda College": "Mysore",
     "Manipal University": "Bengaluru",
+    "SRM Main Campus": "Chennai"
   };
 
   const dotzeeChoiceColleges = [
