@@ -455,13 +455,13 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "B.Sc CMBT/BGBT",
+          name: "B.Sc CMBT BGBT",
           colleges: [
             "Jain University"
           ],
         },
         {
-          name: "B.Sc PMCS/Renewable Energy",
+          name: "B.Sc PMCS Renewable Energy",
           colleges: [
             "Jain University"
           ],
@@ -625,7 +625,7 @@ export const CourseProvider = ({ children }) => {
           colleges: ["Jain University"],
         },
         {
-          name: "BBA Strategic Finance/Event Management",
+          name: "BBA Strategic Finance, Event Management",
           colleges: ["Jain University"],
         },
         {
@@ -707,11 +707,11 @@ export const CourseProvider = ({ children }) => {
           colleges: ["RR Institution"],
         },
         {
-          name: "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING / INVESTMENT BANKING CMA",
+          name: "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING , INVESTMENT BANKING CMA",
           colleges: ["Jain University"],
         },
         {
-          name: "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA / CPA / RM / LSCM / FT",
+          name: "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA , CPA , RM , LSCM , FT",
           colleges: ["Jain University"],
         },
       ],
@@ -942,7 +942,7 @@ export const CourseProvider = ({ children }) => {
           colleges: ["Jain University"],
         },
         {
-          name: "BCA Specialization (CT & IS/MA & CT/MA & IS With Comptia)",
+          name: "BCA Specialization (CT & IS, MA & CT, MA & IS With Comptia)",
           colleges: ["Jain University"],
         },
       ],
@@ -1040,7 +1040,7 @@ export const CourseProvider = ({ children }) => {
           colleges: ["Jain University"],
         },
         {
-          name: "BBA Strategic Finance/Event Management",
+          name: "BBA Strategic Finance, Event Management",
           colleges: ["Jain University"],
         },
         {
@@ -1122,11 +1122,11 @@ export const CourseProvider = ({ children }) => {
           colleges: ["RR Institution"],
         },
         {
-          name: "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING / INVESTMENT BANKING CMA",
+          name: "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING , INVESTMENT BANKING CMA",
           colleges: ["Jain University"],
         },
         {
-          name: "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA / CPA / RM / LSCM / FT",
+          name: "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA , CPA , RM , LSCM , FT",
           colleges: ["Jain University"],
         },
       ],
@@ -1357,7 +1357,7 @@ export const CourseProvider = ({ children }) => {
           colleges: ["Jain University"],
         },
         {
-          name: "BCA Specialization (CT & IS/MA & CT/MA & IS With Comptia)",
+          name: "BCA Specialization (CT & IS, MA & CT, MA & IS With Comptia)",
           colleges: ["Jain University"],
         },
       ],
@@ -1786,6 +1786,8 @@ export const CourseProvider = ({ children }) => {
     "ACHARYA",
     "PRESIDENCY",
     "KRUPANIDHI",
+    "SRM Main Campus",
+    "Manipal University"
   ];
 
   return (

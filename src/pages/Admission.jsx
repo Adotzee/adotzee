@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Counts from '../components/Stat/Counts';
+import { Helmet } from 'react-helmet-async';
  // Assuming you have a Footer component
 
 function Admission() {
@@ -17,7 +18,7 @@ function Admission() {
     <div className=' bg-gradient-to-br from-[#6a85b6] to-[#bac8e0]'>
        <Helmet>
                 <title>Degree Admissions - Apply Now | Adotzee</title>
-                <meta name="description" content="Apply for degree courses easily through Adotzee. Find the best colleges and courses in Kerala." />
+                <meta name="description" content="Apply for degree courses easily through Adotzee. Find the best colleges and courses in Bengaluru." />
                 <link rel="canonical" href="https://www.adotzee.in/admissions" />
             </Helmet>
       <Navbar />  

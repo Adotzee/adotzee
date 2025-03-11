@@ -17,7 +17,7 @@ function Home() {
         <title>Adotzee - Your Degree Admission Guide</title>
         <meta
           name="description"
-          content="Find the best degree courses and college admissions in Kerala. Join the student community."
+          content="Find the best degree courses and college admissions in Bengaluru. Join the student community."
         />
         <link rel="canonical" href="https://www.adotzee.in/" />
       </Helmet>
