@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Navbar from "../../components/common/Navbar";
 import { useCourse } from "../../Context/courseData";
 import { useEffect, useState } from "react";
-import Back from "../../components/Back/Back";
+import Back from "../../components/common/Back";
+import Footer from "../../components/common/Footer";
 
 export default function CollegeList() {
   const { addonName } = useParams();

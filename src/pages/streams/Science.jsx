@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar";
 import Counts from "../../components/Stat/Counts";
-import Footer from "../../components/Footer";
+import Footer from "../../components/common/Footer";
 import { useCourse } from "../../Context/courseData";
-import Back from "../../components/Back/Back";
+import Back from "../../components/common/Back";
 
 export default function Science() {
   const [selectedCategory, setSelectedCategory] = useState("");

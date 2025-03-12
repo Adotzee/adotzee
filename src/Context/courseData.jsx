@@ -735,15 +735,15 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Science",
-          colleges: ["Acharya", "Hkbk", "Presidency"],
+          colleges: ["Acharya", "HKBK", "Presidency"],
         },
         {
           name: "BCA Cloud Computing",
-          colleges: ["Acharya", "Hkbk"],
+          colleges: ["Acharya", "HKBK"],
         },
         {
           name: "BCA AI And ML",
-          colleges: ["Izee", "Brindavan", "Hkbk", "Presidency"],
+          colleges: ["Izee", "Brindavan", "HKBK", "Presidency"],
         },
         {
           name: "BCA AI",
@@ -759,7 +759,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cyber Security",
-          colleges: ["Hkbk"],
+          colleges: ["HKBK"],
         },
         {
           name: "BCA Cloud Computing & Ethical Hacking",
@@ -795,7 +795,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Robotics",
-          colleges: ["Hkbk"],
+          colleges: ["HKBK"],
         },
         {
           name: "BCA Big Data Analytics",
@@ -811,7 +811,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Analytics",
-          colleges: ["Hkbk", "Jain University"],
+          colleges: ["HKBK", "Jain University"],
         },
         {
           name: "BCA Cloud Computing & Digital Marketing",
@@ -1150,15 +1150,15 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Science",
-          colleges: ["Acharya", "Hkbk", "Presidency"],
+          colleges: ["Acharya", "HKBK", "Presidency"],
         },
         {
           name: "BCA Cloud Computing",
-          colleges: ["Acharya", "Hkbk"],
+          colleges: ["Acharya", "HKBK"],
         },
         {
           name: "BCA AI And ML",
-          colleges: ["Izee", "Brindavan", "Hkbk", "Presidency"],
+          colleges: ["Izee", "Brindavan", "HKBK", "Presidency"],
         },
         {
           name: "BCA AI",
@@ -1174,7 +1174,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cyber Security",
-          colleges: ["Hkbk"],
+          colleges: ["HKBK"],
         },
         {
           name: "BCA Cloud Computing & Ethical Hacking",
@@ -1210,7 +1210,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Robotics",
-          colleges: ["Hkbk"],
+          colleges: ["HKBK"],
         },
         {
           name: "BCA Big Data Analytics",
@@ -1226,7 +1226,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Analytics",
-          colleges: ["Hkbk", "Jain University"],
+          colleges: ["HKBK", "Jain University"],
         },
         {
           name: "BCA Cloud Computing & Digital Marketing",
@@ -1497,112 +1497,32 @@ export const CourseProvider = ({ children }) => {
 
   const humanitiesCourses = [
     {
-      category: "BA English",
+      category: "BA",
       addons: [
-        {
-          name: "BA English (Hons)",
-          colleges: ["Literature Institute", "Creative Writing University"],
-        },
-        {
-          name: "BA English Literature",
-          colleges: ["Classic Literature Academy", "Modern English University"],
-        },
-        {
-          name: "BA Linguistics",
-          colleges: [
-            "Language Studies Institute",
-            "Linguistics Research University",
-          ],
-        },
-      ],
+        { name: "BA", colleges: ["KRUPANIDHI", "RAMAIAH"] },
+        { name: "BA (Criminology)", colleges: ["ACHARYA", "SEA COLLEGE"] },
+        { name: "BA (Psychology)", colleges: ["ACHARYA", "PRESIDENCY", "ABBS"] },
+        { name: "BA (English)", colleges: ["ACHARYA", "SRM KTR"] },
+        { name: "BA (History)", colleges: ["SEA COLLEGE"] },
+        { name: "BA (Journalism)", colleges: ["ACHARYA", "SEA COLLEGE"] },
+        { name: "BA (Animation)", colleges: ["YENEPOYA MANGLORE"] },
+        { name: "BA (Graphic Design)", colleges: ["YENEPOYA MANGLORE"] },
+        { name: "BA (Visual Effects)", colleges: ["YENEPOYA MANGLORE"] },
+        { name: "BA (Fashion Design)", colleges: ["YENEPOYA MANGLORE"] },
+        { name: "BA (Sports Studies)", colleges: ["YENEPOYA MANGLORE"] },
+        { name: "BA (Journalism and Mass Communication)", colleges: ["PRESIDENCY UNIVERSITY", "SRM KTR"] },
+        { name: "BA (Sociology)", colleges: ["ABBS"] },
+        { name: "BA (Political Science)", colleges: ["ABBS", "SEA COLLEGE"] },
+        { name: "BA CPJ (Criminology, Psychology & Journalism)", colleges: ["KOSHYS"] },
+        { name: "BA (Tourism)", colleges: ["SEA COLLEGE"] }
+      ]
     },
     {
-      category: "BA History",
+      category:"BSW",
       addons: [
-        {
-          name: "BA History (Hons)",
-          colleges: ["Ancient History Institute", "World History University"],
-        },
-        {
-          name: "BA Archaeology",
-          colleges: [
-            "Archaeological Research Academy",
-            "Heritage Studies University",
-          ],
-        },
-        {
-          name: "BA Art History",
-          colleges: ["Art History Institute", "Cultural Studies University"],
-        },
-      ],
-    },
-    {
-      category: "BA Psychology",
-      addons: [
-        {
-          name: "BA Psychology (Hons)",
-          colleges: [
-            "Behavioral Sciences Institute",
-            "Cognitive Psychology University",
-          ],
-        },
-        {
-          name: "BA Clinical Psychology",
-          colleges: ["Mental Health Academy", "Therapeutic Studies University"],
-        },
-        {
-          name: "BA Counseling Psychology",
-          colleges: ["Counseling Institute", "Human Behavior University"],
-        },
-      ],
-    },
-    {
-      category: "BA Sociology",
-      addons: [
-        {
-          name: "BA Sociology (Hons)",
-          colleges: [
-            "Social Sciences Institute",
-            "Sociology Research University",
-          ],
-        },
-        {
-          name: "BA Anthropology",
-          colleges: [
-            "Cultural Anthropology Academy",
-            "Human Studies University",
-          ],
-        },
-        {
-          name: "BA Social Work",
-          colleges: [
-            "Community Development Institute",
-            "Social Welfare University",
-          ],
-        },
-      ],
-    },
-    {
-      category: "BA Political Science",
-      addons: [
-        {
-          name: "BA Political Science (Hons)",
-          colleges: [
-            "Political Theory Institute",
-            "Global Politics University",
-          ],
-        },
-        {
-          name: "BA International Relations",
-          colleges: ["Diplomacy Academy", "Global Affairs University"],
-        },
-        {
-          name: "BA Public Administration",
-          colleges: ["Governance Institute", "Public Policy University"],
-        },
-      ],
-    },
-   
+        {name:"BSW", colleges:["SEA College", "ACHARYA"]}
+      ]
+    }
   ];
   const coursesData = {
     science: [

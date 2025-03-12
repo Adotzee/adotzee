@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar";
 import Counts from "../../components/Stat/Counts";
-import Footer from "../../components/Footer";
+import Footer from "../../components/common/Footer";
 import { useCourse } from "../../Context/courseData";
-import Back from "../../components/Back/Back";
+import Back from "../../components/common/Back";
 
 export default function Humanities() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -22,7 +22,7 @@ export default function Humanities() {
 
   return (
     <>
-      <Back />
+      <Back/>
       <Navbar />
       <div className="flex flex-col items-center min-h-screen min-w-screen bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] w-full pt-10">
         <h1 className="pt-10 md:pt15 mt-0 text-white text-2xl md:text-4xl font-extrabold text-center">
