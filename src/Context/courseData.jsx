@@ -9,10 +9,10 @@ export const useCourse = () => {
 export const CourseProvider = ({ children }) => {
   const scienceCourses = [
     {
-      category: "B.Sc Nursing",
+      category: " Nursing",
       addons: [
         {
-          name: "General Nursing",
+          name: "Bsc Nursing",
           colleges: [
             "MS Ramaiah",
             "RR Institution",
@@ -23,7 +23,7 @@ export const CourseProvider = ({ children }) => {
             "Christian College",
             "Maurya Group Of Institutions",
             "Oxford Institutions Of Medical Science",
-            "Koshys",
+            "Koshys College",
             "JSS College",
             "Adichunchanagiri College",
             "BGS Apollo",
@@ -39,6 +39,21 @@ export const CourseProvider = ({ children }) => {
             "Vishwa Bharathi College",
             "Mother Teresa College",
             "Smt.Padma G Madegowda College",
+            "Bangalore City Group of Institutins",
+            "East Point Medical College",
+            "Hillside College",
+            "Lakshmi Devi College",
+            "Manjushree College",
+            "Sapthagiri Medical College",
+            "Surya College",
+            "SRM Main Campus",
+            "Annai Meenakshi College",
+            "Indiana College(Female only)",
+            "Karavali College",
+            "NET College",
+            "Alphonsa College",
+            "Cauvery College",
+            "Maurya College",
           ],
         },
         {
@@ -49,7 +64,28 @@ export const CourseProvider = ({ children }) => {
             "Acharya",
             "Karnataka College",
             "Christian College",
-            "Koshys",
+            "Koshys College",
+            "JSS College",
+            "Adichunchanagiri College",
+            "BGS Apollo",
+            "Cauvery College",
+            "Gopala Gawda College",
+            "Vikram College",
+            "St.Joseph College",
+            "Vidya Vikas College",
+            "St.Alphonsa College",
+            "Sigma College",
+            "Heritage City College",
+            "Suyog College",
+            "Vishwa Bharathi College",
+            "Jes Mother Teresa College",
+            "Smt.Padma G Madegowda College",
+            "East Point Medical College",
+            "Hillside College",
+            "Krupanidhi College",
+            "Lakshmi Devi College",
+            "Manjushree College",
+            "Surya College"
           ],
         },
       ],
@@ -67,6 +103,17 @@ export const CourseProvider = ({ children }) => {
             "MVM College",
             "Manipal University",
             "Maurya Group Of Institutions",
+            "Akash College",
+            "Hillside College",
+            "Manjushree College",
+            "Sapthagiri Medical College",
+            "SEA College",
+            "SRM Main Campus",
+            "Indiana College",
+            "Karaval College",
+            "NET College",
+            "Alphonsa College",
+            "Maurya College",
           ],
         },
         {
@@ -79,11 +126,15 @@ export const CourseProvider = ({ children }) => {
           name: "Bachelor of Ayurvedic Medicine & Surgery (BAMS)",
           colleges: [
             "Yenepoya",
+            "Hillside College",
           ],
         },
         {
-          name: "Optometry",
-          colleges: [],
+          name: "bsc biotechnology",
+          colleges: [
+             "Abbs",
+             "MS Ramiyah",
+          ],
         },
         {
           name: "Bachelor of Hospital Administration",
@@ -115,7 +166,12 @@ export const CourseProvider = ({ children }) => {
             "MVM College",
             "Manipal University",
             "Maurya Group Of Institutions",
-            "Koshys",
+            "Koshys College",
+            "Akash College",
+            "Manjushree College",
+            "Sapthagiri Medical College",
+            "Karavali College",
+            "Maurya College",
           ],
         },
         {
@@ -126,12 +182,15 @@ export const CourseProvider = ({ children }) => {
             "Acharya",
             "Christian College",
             "MVM College",
-            "Koshys",
+            "Koshys College",
+            "Akash College",
+            "Hillside College",
+            "Manjushree College",
+            "Sapthagiri Medical College",
+            "SRM Main Campus",
+            "Indiana College",
+            "karavali College",
           ],
-        },
-        {
-          name: "B.Sc Intensive Care Technology and Medical Instrumentation",
-          colleges: [],
         },
         {
           name: "Cardiac Care Technology",
@@ -139,6 +198,13 @@ export const CourseProvider = ({ children }) => {
             "RR Institution",
             "MS Ramiyah",
             "Christian College",
+            "Akash College",
+            "East Point Medical College",
+            "Sapthagiri Medical College",
+            "SRM Main Campus",
+            "United College",
+            "Indiana College",
+            "Karvali College",
           ],
         },
         {
@@ -148,6 +214,11 @@ export const CourseProvider = ({ children }) => {
             "Yenepoya",
             "Christian College",
             "MVM College",
+            "Akash College",
+            "East Point Medical College",
+            "Sapthagiri Medical College",
+            "SRM Main Campus",
+            "Indiana College",
           ],
         },
         {
@@ -160,6 +231,11 @@ export const CourseProvider = ({ children }) => {
           name: "B.Sc Optometry",
           colleges: [
             "Yenepoya",
+            "Akash College",
+            "Manjushree College",
+            "SRM Main Campus",
+            "United College",
+            "Karavali College",
           ],
         },
         {
@@ -167,11 +243,16 @@ export const CourseProvider = ({ children }) => {
           colleges: [
             "Yenepoya",
             "MVM College",
+            "Akash College",
+            "SRM Main Campus",
+
           ],
         },
         {
-          name: "B.Sc Emergency Medicine",
-          colleges: [],
+          name: "B.Sc Microbiology",
+          colleges: [
+            "SRM Main Campus",
+          ],
         },
         {
           name: "B.Sc Medical Laboratory Technology",
@@ -182,13 +263,24 @@ export const CourseProvider = ({ children }) => {
             "Acharya",
             "Yenepoya",
             "Pes",
-            "Koshys",
+            "Koshys College",
+            "Akash College",
+            "East Point Medical College",
+            "Hillside College",
+            "Sapthagiri Medical College",
+            "SRM Main Campus",
+            "Indiana College",
+            "Karavali College",
+            "Alphonsa College",
+            "Maurya College",
           ],
         },
         {
           name: "B.Sc Radiotherapy Technology",
           colleges: [
             "Yenepoya",
+            "Akash College",
+            "Maurya College",
           ],
         },
         {
@@ -202,12 +294,15 @@ export const CourseProvider = ({ children }) => {
           colleges: [
             "RR Institution",
             "Yenepoya",
+            "East Point Medical College",
+            "Indiana College",
           ],
         },
         {
           name: "B.Sc Nutrition & Dietetics",
           colleges: [
             "Christian College",
+            "SRM Main Campus",
           ],
         },
         {
@@ -226,6 +321,19 @@ export const CourseProvider = ({ children }) => {
           name: "Bachelor of Physiotherapy",
           colleges: [
             "Manipal University",
+            "Acharya",
+            "East Point Medical College",
+            "Christian College",
+            "Hillside College",
+            "Krupanidhi",
+            "Lakshmi Devi College",
+            "Pes",
+            "MVM College",
+            "Yenepoya",
+            "Sapthagiri Medical College",
+            "S-Vyasa",
+            "Indiana College",
+            "NET College",
           ],
         },
         {
@@ -240,6 +348,118 @@ export const CourseProvider = ({ children }) => {
             "Manipal University",
           ],
         },
+        {
+            name: "B.Sc Genetics",
+            colleges: [
+              "Abbs",
+            ],
+        },
+        {
+            name: "bsc Anesthesia& Operation Theatre Technology ",
+            colleges: [
+                "Acharya",
+               "Akash College",
+               "East Point Medical College",
+               "Hillside College",
+               "Manjushree College",
+               "pes",
+               "RR Institition",
+               "MS Ramiyah",
+               "Yenepoya",
+               "MVM College",
+               "Sapthagiri Medical College",
+               "SEA College",
+               "SRM Main Campus",
+               "United College",
+               "Indiana College",
+               "Karavali College", 
+               "Alphonsa College", 
+               "Maurya College",         
+             ],
+        },
+        {
+            name: "bsc Emergrncy Medicine",
+            colleges: [
+               "Akash College",
+            ],
+        },
+        {
+            name: "Bach.Occupatational Therapy",
+            colleges: [
+                "East Point Medical College",
+                "Yenepoya",
+                "Acharya",
+                "MVM College",
+                "Indiana College",
+                "Maurya College",
+            ],
+        },
+        {
+            name: "Bsc Dialysis Therapy Technology",
+            colleges: [
+               "Pes",
+            ],
+        },
+        {
+            name: "Bsc Medical Rediology & Imaging Technology",
+            colleges: [
+               "Pes",
+            ],
+        },
+        {
+            name: "Bsc Emergrncy Medical Technology",
+            colleges: [
+               "Pes",
+            ],
+        },
+        {
+            name: "Bsc Clinical Psychology",
+            colleges: [
+               "S-Vyasa",
+            ],
+        },
+        {
+            name: "Bsc Accident & Emergency Care Technology",
+            colleges: [
+               "SRM Main Campus",
+               "United College",
+            ],
+        },
+        {
+            name: "Bsc Critical Care Technology",
+            colleges: [
+               "SRM Main Campus",
+            ],
+        },
+        {
+            name: "Bsc Medical Record Science",
+            colleges: [
+               "SRM Main Campus",
+            ],
+        },
+        {
+            name: "Bsc Cardic Pulmonary Perfusion Care Technology",
+            colleges: [
+              "United College",
+            ],
+        },
+        {
+            name: "Bsc Radiography&Imaging Technology",
+            colleges: [
+              "United College",
+            ],
+        },
+        {
+            name: "Bsc Physician Assistant",
+            colleges: [
+              "United College",
+            ],
+          },
+
+        
+
+
+        
       ],
     },
     {
@@ -549,20 +769,15 @@ export const CourseProvider = ({ children }) => {
             "Karnataka College",
             "Christian College",
             "MVM College",
-            "Abbs",
-            "Akash College",
-            "Harsha Institutions",
-            "Hillside Institutions",
-            "Koshys College",                                                                                                                                                                                                                                              "East Point",
           ],
         },
         {
           name: "BBA + Business Analytics",
-          colleges: ["Acharya", "Presidency", "Jain University", "Brindavan","Abbs","IZEE Business School","United Business School"],
+          colleges: ["Acharya", "Presidency", "Jain University", "Brindavan"],
         },
         {
           name: "BBA + Digital Marketing",
-          colleges: ["Acharya", "Presidency","United Business School","SRM Main Campus"],
+          colleges: ["Acharya", "Presidency"],
         },
         {
           name: "BBA + Logistics and Digital Marketing",
@@ -580,15 +795,7 @@ export const CourseProvider = ({ children }) => {
             "Presidency",
             "RR Institution",
             "MVM College",
-            "Akash College",
-            "Hkbk",
-            "Koshys College",
-            "United Business School"
           ],
-        },
-        {
-          name: "BBA Logistics",
-          colleges: ["Hkbk","Krupanidhi"],
         },
         {
           name: "BBA + Logistics and Aviation",
@@ -599,8 +806,6 @@ export const CourseProvider = ({ children }) => {
             "Krupanidhi",
             "S-Vyasa",
             "Srinivas University",
-            "Abbs",
-            "Koshys College",                                                                 "JCT College",
           ],
         },
         {
@@ -648,39 +853,6 @@ export const CourseProvider = ({ children }) => {
           name: "BBA Digital Business",
           colleges: ["Jain University"],
         },
-        {
-          name: "BBA Logistics & Supply Chain Management",
-          colleges: ["Akash College","IZEE Business School"],
-        },
-        {
-          name: "BBA Aviation+Logistics&Supply Chain Management",
-          colleges: ["IZEE Business School","United Business School"],
-        },
-        {
-          name: "BBA Supply chain management",
-          colleges: ["Hkbk"],
-        },
-        {
-          name: "BBA Digital&Social media Marketing",
-          colleges: ["IZEE Business School"],
-        },
-        {
-          name: "BBA Entrepreneurship",
-          colleges: ["IZEE Business School"],
-        },
-        {
-          name: "BBA HR Analytics",
-          colleges: ["United Business School"],
-        },
-        {
-          name: "BBA Business Administration",
-          colleges: ["SRM Main Campus"],
-        },
-        {
-          name: "BBA Retail Management",
-          colleges: ["United Coimbatore"],
-        },
-  
       ],
     },
     {

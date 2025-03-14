@@ -90,7 +90,7 @@ export default function Contact() {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="bg-white p-6 rounded-2xl shadow-md max-w-4xl min-w-sm md:w-full flex flex-col md:flex-row justify-end"
+        className="mx-4 sm:mx-10 bg-white p-6 rounded-2xl shadow-md max-w-4xl min-w-sm md:w-full flex flex-col md:flex-row justify-end"
       >
         <form
           onSubmit={(e) => {
