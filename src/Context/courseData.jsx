@@ -398,22 +398,15 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "B.Sc Maths",
-          colleges: [
-            "Acharya",
-            "Mathematics"
-          ],
+          colleges: ["Acharya","Mathematics"],
         },
         {
           name: "B.Sc Maths (Data Science)",
-          colleges: [
-            "Acharya"
-          ],
+          colleges: ["Acharya"],
         },
         {
           name: "B.Sc Computer Science",
-          colleges: [
-            "Acharya"
-          ],
+          colleges: ["Acharya"],
         },
         {
           name: "B.Sc Computer Science (Data Science)",
@@ -535,161 +528,161 @@ export const CourseProvider = ({ children }) => {
         },
       ],
     },
-{
-    category: "BBA",
-    addons: [
-      {
-        name: "BBA",
-        colleges: [
-          "Acharya",
-          "Presidency",
-          "Krupanidhi",
-          "Srinivas University",
-          "MS Ramaiah",
-          "Yenepoya",
-          "Jain University",
-          "Brindavan",
-          "SEA College",
-          "S-Vyasa",
-          "HKBK",
-          "RR Institution",
-          "Karnataka College",
-          "Christian College",
-          "MVM College",
-          "Abbs",
-          "Akash College",
-          "Harsha Institutions",
-          "Hillside Institutions",
-          "Koshys College",                                                                                                                                                                                                                                              "East Point",
-        ],
-      },
-      {
-        name: "BBA + Business Analytics",
-        colleges: ["Acharya", "Presidency", "Jain University", "Brindavan","Abbs","IZEE Business School","United Business School"],
-      },
-      {
-        name: "BBA + Digital Marketing",
-        colleges: ["Acharya", "Presidency","United Business School","SRM Main Campus"],
-      },
-      {
-        name: "BBA + Logistics and Digital Marketing",
-        colleges: ["Brindavan"],
-      },
-      {
-        name: "BBA + Aviation",
-        colleges: [
-          "Krupanidhi",
-          "Srinivas University",
-          "Acharya",
-          "East West College of Management",
-          "IZEE Business School",
-          "Brindavan",
-          "Presidency",
-          "RR Institution",
-          "MVM College",
-          "Akash College",
-          "Hkbk",
-          "Koshys College",
-          "United Business School"
-        ],
-      },
-      {
-        name: "BBA Logistics",
-        colleges: ["Hkbk","Krupanidhi"],
-      },
-      {
-        name: "BBA + Logistics and Aviation",
-        colleges: [
-          "Yenepoya Bangalore",
-          "Brindavan",
-          "Yenepoya",
-          "Krupanidhi",
-          "S-Vyasa",
-          "Srinivas University",
-          "Abbs",
-          "Koshys College",                                                                 "JCT College",
-        ],
-      },
-      {
-        name: "BBA + Hospital Administration",
-        colleges: [
-          "Srinivas University",
-          "Brindavan",
-          "Yenepoya Bangalore",
-          "Yenepoya",
-        ],
-      },
-      {
-        name: "BBA + Sports Management",
-        colleges: ["S-Vyasa", "Jain University"],
-      },
-      {
-        name: "BBA Hospitality Management",
-        colleges: ["Yenepoya"],
-      },
-      {
-        name: "BBA IATA",
-        colleges: ["Christian College"],
-      },
-      {
-        name: "BBA Aviation Airport Management",
-        colleges: ["Karnataka College"],
-      },
-      {
-        name: "BBA Finance & Accounts",
-        colleges: ["Jain University"],
-      },
-      {
-        name: "BBA Strategic Finance, Event Management",
-        colleges: ["Jain University"],
-      },
-      {
-        name: "BBA Branding & Advertising",
-        colleges: ["Jain University"],
-      },
-      {
-        name: "BBA Global Business",
-        colleges: ["Jain University"],
-      },
-      {
-        name: "BBA Digital Business",
-        colleges: ["Jain University"],
-      },
-      {
-        name: "BBA Logistics & Supply Chain Management",
-        colleges: ["Akash College","IZEE Business School"],
-      },
-      {
-        name: "BBA Aviation+Logistics&Supply Chain Management",
-        colleges: ["IZEE Business School","United Business School"],
-      },
-      {
-        name: "BBA Supply chain management",
-        colleges: ["Hkbk"],
-      },
-      {
-        name: "BBA Digital&Social media Marketing",
-        colleges: ["IZEE Business School"],
-      },
-      {
-        name: "BBA Entrepreneurship",
-        colleges: ["IZEE Business School"],
-      },
-      {
-        name: "BBA HR Analytics",
-        colleges: ["United Business School"],
-      },
-      {
-        name: "BBA Business Administration",
-        colleges: ["SRM Main Campus"],
-      },
-      {
-        name: "BBA Retail Management",
-        colleges: ["United Coimbatore"],
-      },
-
-    ],
-  },
+    {
+      category: "BBA",
+      addons: [
+        {
+          name: "BBA",
+          colleges: [
+            "Acharya",
+            "Presidency",
+            "Krupanidhi",
+            "Srinivas University",
+            "MS Ramaiah",
+            "Yenepoya",
+            "Jain University",
+            "Brindavan",
+            "SEA College",
+            "S-Vyasa",
+            "HKBK",
+            "RR Institution",
+            "Karnataka College",
+            "Christian College",
+            "MVM College",
+            "Abbs",
+            "Akash College",
+            "Harsha Institutions",
+            "Hillside Institutions",
+            "Koshys College",                                                                                                                                                                                                                                              "East Point",
+          ],
+        },
+        {
+          name: "BBA + Business Analytics",
+          colleges: ["Acharya", "Presidency", "Jain University", "Brindavan","Abbs","IZEE Business School","United Business School"],
+        },
+        {
+          name: "BBA + Digital Marketing",
+          colleges: ["Acharya", "Presidency","United Business School","SRM Main Campus"],
+        },
+        {
+          name: "BBA + Logistics and Digital Marketing",
+          colleges: ["Brindavan"],
+        },
+        {
+          name: "BBA + Aviation",
+          colleges: [
+            "Krupanidhi",
+            "Srinivas University",
+            "Acharya",
+            "East West College of Management",
+            "IZEE Business School",
+            "Brindavan",
+            "Presidency",
+            "RR Institution",
+            "MVM College",
+            "Akash College",
+            "Hkbk",
+            "Koshys College",
+            "United Business School"
+          ],
+        },
+        {
+          name: "BBA Logistics",
+          colleges: ["Hkbk","Krupanidhi"],
+        },
+        {
+          name: "BBA + Logistics and Aviation",
+          colleges: [
+            "Yenepoya Bangalore",
+            "Brindavan",
+            "Yenepoya",
+            "Krupanidhi",
+            "S-Vyasa",
+            "Srinivas University",
+            "Abbs",
+            "Koshys College",                                                                 "JCT College",
+          ],
+        },
+        {
+          name: "BBA + Hospital Administration",
+          colleges: [
+            "Srinivas University",
+            "Brindavan",
+            "Yenepoya Bangalore",
+            "Yenepoya",
+          ],
+        },
+        {
+          name: "BBA + Sports Management",
+          colleges: ["S-Vyasa", "Jain University"],
+        },
+        {
+          name: "BBA Hospitality Management",
+          colleges: ["Yenepoya"],
+        },
+        {
+          name: "BBA IATA",
+          colleges: ["Christian College"],
+        },
+        {
+          name: "BBA Aviation Airport Management",
+          colleges: ["Karnataka College"],
+        },
+        {
+          name: "BBA Finance & Accounts",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Strategic Finance, Event Management",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Branding & Advertising",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Global Business",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Digital Business",
+          colleges: ["Jain University"],
+        },
+        {
+          name: "BBA Logistics & Supply Chain Management",
+          colleges: ["Akash College","IZEE Business School"],
+        },
+        {
+          name: "BBA Aviation+Logistics&Supply Chain Management",
+          colleges: ["IZEE Business School","United Business School"],
+        },
+        {
+          name: "BBA Supply chain management",
+          colleges: ["Hkbk"],
+        },
+        {
+          name: "BBA Digital&Social media Marketing",
+          colleges: ["IZEE Business School"],
+        },
+        {
+          name: "BBA Entrepreneurship",
+          colleges: ["IZEE Business School"],
+        },
+        {
+          name: "BBA HR Analytics",
+          colleges: ["United Business School"],
+        },
+        {
+          name: "BBA Business Administration",
+          colleges: ["SRM Main Campus"],
+        },
+        {
+          name: "BBA Retail Management",
+          colleges: ["United Coimbatore"],
+        },
+  
+      ],
+    },
     {
       category: "B.COM",
       addons: [
@@ -1019,15 +1012,20 @@ export const CourseProvider = ({ children }) => {
             "Karnataka College",
             "Christian College",
             "MVM College",
+            "Abbs",
+            "Akash College",
+            "Harsha Institutions",
+            "Hillside Institutions",
+            "Koshys College",                                                                                                                                                                                                                                              "East Point",
           ],
         },
         {
           name: "BBA + Business Analytics",
-          colleges: ["Acharya", "Presidency", "Jain University", "Brindavan"],
+          colleges: ["Acharya", "Presidency", "Jain University", "Brindavan","Abbs","IZEE Business School","United Business School"],
         },
         {
           name: "BBA + Digital Marketing",
-          colleges: ["Acharya", "Presidency"],
+          colleges: ["Acharya", "Presidency","United Business School","SRM Main Campus"],
         },
         {
           name: "BBA + Logistics and Digital Marketing",
@@ -1045,7 +1043,15 @@ export const CourseProvider = ({ children }) => {
             "Presidency",
             "RR Institution",
             "MVM College",
+            "Akash College",
+            "Hkbk",
+            "Koshys College",
+            "United Business School"
           ],
+        },
+        {
+          name: "BBA Logistics",
+          colleges: ["Hkbk","Krupanidhi"],
         },
         {
           name: "BBA + Logistics and Aviation",
@@ -1056,6 +1062,8 @@ export const CourseProvider = ({ children }) => {
             "Krupanidhi",
             "S-Vyasa",
             "Srinivas University",
+            "Abbs",
+            "Koshys College",                                                                 "JCT College",
           ],
         },
         {
@@ -1103,6 +1111,39 @@ export const CourseProvider = ({ children }) => {
           name: "BBA Digital Business",
           colleges: ["Jain University"],
         },
+        {
+          name: "BBA Logistics & Supply Chain Management",
+          colleges: ["Akash College","IZEE Business School"],
+        },
+        {
+          name: "BBA Aviation+Logistics&Supply Chain Management",
+          colleges: ["IZEE Business School","United Business School"],
+        },
+        {
+          name: "BBA Supply chain management",
+          colleges: ["Hkbk"],
+        },
+        {
+          name: "BBA Digital&Social media Marketing",
+          colleges: ["IZEE Business School"],
+        },
+        {
+          name: "BBA Entrepreneurship",
+          colleges: ["IZEE Business School"],
+        },
+        {
+          name: "BBA HR Analytics",
+          colleges: ["United Business School"],
+        },
+        {
+          name: "BBA Business Administration",
+          colleges: ["SRM Main Campus"],
+        },
+        {
+          name: "BBA Retail Management",
+          colleges: ["United Coimbatore"],
+        },
+  
       ],
     },
     {
