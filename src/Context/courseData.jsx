@@ -132,8 +132,8 @@ export const CourseProvider = ({ children }) => {
         {
           name: "bsc biotechnology",
           colleges: [
-            "Abbs",
-            "MS Ramiyah",
+             "Abbs",
+             "MS Ramiyah",
           ],
         },
         {
@@ -349,117 +349,117 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "B.Sc Genetics",
-          colleges: [
-            "Abbs",
-          ],
+            name: "B.Sc Genetics",
+            colleges: [
+              "Abbs",
+            ],
         },
         {
-          name: "bsc Anesthesia& Operation Theatre Technology ",
-          colleges: [
-            "Acharya",
-            "Akash College",
-            "East Point Medical College",
-            "Hillside College",
-            "Manjushree College",
-            "pes",
-            "RR Institition",
-            "MS Ramiyah",
-            "Yenepoya",
-            "MVM College",
-            "Sapthagiri Medical College",
-            "SEA College",
-            "SRM Main Campus",
-            "United College",
-            "Indiana College",
-            "Karavali College",
-            "Alphonsa College",
-            "Maurya College",
-          ],
+            name: "bsc Anesthesia& Operation Theatre Technology ",
+            colleges: [
+                "Acharya",
+               "Akash College",
+               "East Point Medical College",
+               "Hillside College",
+               "Manjushree College",
+               "pes",
+               "RR Institition",
+               "MS Ramiyah",
+               "Yenepoya",
+               "MVM College",
+               "Sapthagiri Medical College",
+               "SEA College",
+               "SRM Main Campus",
+               "United College",
+               "Indiana College",
+               "Karavali College", 
+               "Alphonsa College", 
+               "Maurya College",         
+             ],
         },
         {
-          name: "bsc Emergrncy Medicine",
-          colleges: [
-            "Akash College",
-          ],
+            name: "bsc Emergrncy Medicine",
+            colleges: [
+               "Akash College",
+            ],
         },
         {
-          name: "Bach.Occupatational Therapy",
-          colleges: [
-            "East Point Medical College",
-            "Yenepoya",
-            "Acharya",
-            "MVM College",
-            "Indiana College",
-            "Maurya College",
-          ],
+            name: "Bach.Occupatational Therapy",
+            colleges: [
+                "East Point Medical College",
+                "Yenepoya",
+                "Acharya",
+                "MVM College",
+                "Indiana College",
+                "Maurya College",
+            ],
         },
         {
-          name: "Bsc Dialysis Therapy Technology",
-          colleges: [
-            "Pes",
-          ],
+            name: "Bsc Dialysis Therapy Technology",
+            colleges: [
+               "Pes",
+            ],
         },
         {
-          name: "Bsc Medical Rediology & Imaging Technology",
-          colleges: [
-            "Pes",
-          ],
+            name: "Bsc Medical Rediology & Imaging Technology",
+            colleges: [
+               "Pes",
+            ],
         },
         {
-          name: "Bsc Emergrncy Medical Technology",
-          colleges: [
-            "Pes",
-          ],
+            name: "Bsc Emergrncy Medical Technology",
+            colleges: [
+               "Pes",
+            ],
         },
         {
-          name: "Bsc Clinical Psychology",
-          colleges: [
-            "S-Vyasa",
-          ],
+            name: "Bsc Clinical Psychology",
+            colleges: [
+               "S-Vyasa",
+            ],
         },
         {
-          name: "Bsc Accident & Emergency Care Technology",
-          colleges: [
-            "SRM Main Campus",
-            "United College",
-          ],
+            name: "Bsc Accident & Emergency Care Technology",
+            colleges: [
+               "SRM Main Campus",
+               "United College",
+            ],
         },
         {
-          name: "Bsc Critical Care Technology",
-          colleges: [
-            "SRM Main Campus",
-          ],
+            name: "Bsc Critical Care Technology",
+            colleges: [
+               "SRM Main Campus",
+            ],
         },
         {
-          name: "Bsc Medical Record Science",
-          colleges: [
-            "SRM Main Campus",
-          ],
+            name: "Bsc Medical Record Science",
+            colleges: [
+               "SRM Main Campus",
+            ],
         },
         {
-          name: "Bsc Cardic Pulmonary Perfusion Care Technology",
-          colleges: [
-            "United College",
-          ],
+            name: "Bsc Cardic Pulmonary Perfusion Care Technology",
+            colleges: [
+              "United College",
+            ],
         },
         {
-          name: "Bsc Radiography&Imaging Technology",
-          colleges: [
-            "United College",
-          ],
+            name: "Bsc Radiography&Imaging Technology",
+            colleges: [
+              "United College",
+            ],
         },
         {
-          name: "Bsc Physician Assistant",
-          colleges: [
-            "United College",
-          ],
-        },
+            name: "Bsc Physician Assistant",
+            colleges: [
+              "United College",
+            ],
+          },
+
+        
 
 
-
-
-
+        
       ],
     },
     {
@@ -467,14 +467,14 @@ export const CourseProvider = ({ children }) => {
       addons: [
         {
           name: "Computer Science & Engineering",
-          colleges: ["Yenepoya",
-            "Acharya",
+          colleges: ["Yenepoya", 
+            "Acharya", 
             "Presidency University",
-            "RR Institution",
+            "RR Institution", 
             "MS Ramaiah",
             "Akash College",
             "East Point College",
-            "Jain University",
+            "Jain University", 
             "SEA COLLEGE",
             "S VYASA ",
             "Kumaraguru College",
@@ -482,28 +482,38 @@ export const CourseProvider = ({ children }) => {
             "Hindhusthan College",
             "JCT College",
             "Karavali College",
-          ],
+            "Dhanalakshmi Srinivasan College",
+            "CMS College",
+            "Easa College",
+            "Karpagam College",
+            "Rathinam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+            "Dhaanish Ahmed Institute",
+            "Park College",
+            "Tamilnadu College",
+        ],
         },
         {
           name: "Computer Science (Data Science)",
-          colleges: ["Yenepoya",
-            "Acharya",
+          colleges: ["Yenepoya", 
+            "Acharya", 
             "Jain University",
             "Presidency University",
-            "S-VYASA",
+            "S-VYASA", 
             "SEA College",
             "Akash College",
             "East Point College",
             "SRM Main Campus",
-
+    
           ],
         },
         {
-          name: "CSE AI",
-          colleges: ["Jain University",
-            "SRM Main Campus",
-            "Karavali College",
-          ],
+            name: "CSE AI",
+            colleges: ["Jain University",
+                "SRM Main Campus",
+                "Karavali College",
+            ],
         },
         {
           name: "CSE AI & ML",
@@ -520,95 +530,124 @@ export const CourseProvider = ({ children }) => {
             "Jain University",
             "SRM Main Campus",
             "Hindhusthan College",
+            "CMS College",
+            "Easa College",
+            "Rathinam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+            "Dhaanish Ahmed Institute",
+            "Park College",
           ],
         },
         {
-          name: "Computer Science Software Engineering",
-          colleges: ["Yenepoya",
-            "S-VYASA",
-            "Jain University",
-            "RR Institution",
-          ],
+            name: "Computer Science Software Engineering",
+            colleges: ["Yenepoya",
+              "S-VYASA",
+                "Jain University",
+                "RR Institution",
+            ],
         },
         {
-          name: "CSE Cyber Security",
-          colleges: ["Yenepoya",
-            "Jain University",
-            "Presidency University",
-            "SRM Main Campus",
-            "S-VYASA",
-            "RR Institution",
-            "Akash College",
-            "Hindhusthan College"
-          ],
+            name: "CSE Cyber Security",
+            colleges: ["Yenepoya",
+              "Jain University",
+                "Presidency University",
+                "SRM Main Campus",
+                "S-VYASA",
+                "RR Institution",
+                "Akash College",
+                "Hindhusthan College",
+                "Dhanalakshmi Srinivasan College",
+                "Easa College",
+                "Karpagam College",
+                "Rathinam College",
+                "Nehru Institution",
+                "Sri Shakthi Institute",
+                "Dhaanish Ahmed Institute"
+            ],
         },
         {
-          name: "CS Engineering in Big Data",
-          colleges: ["Presidency University",
-            "SRM Main Campus",
-          ],
+            name: "CS Engineering in Big Data",
+            colleges: ["Presidency University",
+                "SRM Main Campus",
+            ],
         },
         {
-          name: "AI & Data Science Engineering",
-          colleges: ["SEA College",
-            "Kumaraguru College",
-            "Hindhusthan College",
-            "JCT College",
-          ],
+            name: "AI & Data Science Engineering",
+            colleges: [
+              "Presidancy University",
+              "Akash College",
+              "SEA COLLEGE",
+              "Dhanalakshmi Srinivasan College", 
+              "SEA College",
+              "Kumaraguru College",
+              "Hindhusthan College",
+              "JCT College",
+              "CMS College",
+              "Easa College",
+              "Karpagam College",
+              "Rathinam College",
+              "Nehru Institution",
+              "Sri Shakthi Institute",
+              "Dhaanish Ahmed Institute", 
+              "Park College",
+              "Tamilnadu College",
+            ],
         },
         {
-          name: "CSE Internet Of Things",
-          colleges: ["Jain University", "Presidency University", "RR Institution"],
+            name: "CSE Internet Of Things",
+            colleges: ["Jain University","Presidency University","RR Institution"],
         },
         {
-          name: "IoT & Cyber Security Engineering",
-          colleges: ["SEA College",
-            "East Point College", "RR Institution",
-          ],
+            name: "IoT & Cyber Security Engineering",
+            colleges: ["SEA College",
+                "East Point College","RR Institution",
+            ],
         },
         {
-          name: "AI & Robotics Engineering",
-          colleges: ["Acharya", "Presidency University"],
+            name: "AI & Robotics Engineering",
+            colleges: ["Acharya","Presidency University"],
         },
         {
-          name: "CSE AI&Data Science",
-          colleges: ["Akash College", "Presidency College", "SEA COLLEGE", "KUMARAGURU COLLEGE",],
+            name: "CSE Cloud Technology & Information Security",
+            colleges: ["Jain University"],
         },
         {
-          name: "CSE Cloud Technology & Information Security",
-          colleges: ["Jain University"],
+            name: "CSE Cloud Technology & Mobial Application",
+            colleges: ["Jain University"],
         },
         {
-          name: "CSE Cloud Technology & Mobial Application",
-          colleges: ["Jain University"],
+            name: "CSE Block Chain Technology",
+            colleges: [
+                "Jain University",
+                "Presidency University",
+                "SRM Main Campus",
+                 ],
         },
         {
-          name: "CSE Block Chain Technology",
-          colleges: [
-            "Jain University",
-            "Presidency University",
-            "SRM Main Campus",
-          ],
+            name: "CSE DevOps",
+            colleges: ["Presidancy University"],
         },
         {
-          name: "CSE DevOps",
-          colleges: ["Presidancy University"],
+            name: "CSE Business System",
+            colleges: [
+                "Srm Main Campus",
+                "JCT College",
+                "Nehru Institution",
+            ],
         },
         {
-          name: "CSE Business System",
-          colleges: [
-            "Srm Main Campus",
-            "JCT College",
-          ],
+            name: "CSE Cloud Computing",
+            colleges: ["Srm Main Campus"],
         },
         {
-          name: "CSE Cloud Computing",
-          colleges: ["Srm Main Campus"],
+            name: "CSE Gaming Technology",
+            colleges: ["Srm Main Campus"],
         },
         {
-          name: "CSE Gaming Technology",
-          colleges: ["Srm Main Campus"],
-        },
+          name: "Computer And Communication Engineering",
+          colleges: ["Nehru Institution"],
+      },
         {
           name: "Mechanical Engineering",
           colleges: [
@@ -624,28 +663,44 @@ export const CourseProvider = ({ children }) => {
             "Hindhusthan College",
             "JCT College",
             "Karavali College",
+            "CMS College",
+            "Easa College",
+            "Karpagam College",
+            "Rathinam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+            "Park College",
+            "Tamilnadu College",
           ],
         },
         {
-          name: "Mechatronics Engneering",
-          colleges:
+            name: "Mechatronics Engneering",
+            colleges:
             [
-              "Hindhusthan College",
+                "Hindhusthan College",
+                "Rathinam College",
+                "Nehru Institution",
             ],
         },
         {
           name: "Electrical & Electronics Engineering",
           colleges:
-            [
-              "Yenepoya",
-              "RR Institution",
-              "Presidency university",
-              "MS Ramaiah",
-              "Kumaraguru College",
-              "SRM Main Campus",
-              "Hindhusthan College",
-              "JCT College",
-            ],
+           [
+            "Yenepoya", 
+            "RR Institution", 
+            "Presidency university",
+            "MS Ramaiah",
+            "Kumaraguru College",
+            "SRM Main Campus",
+            "Hindhusthan College",
+            "JCT College",
+            "Dhanalakshmi Srinivasan College",
+            "Easa College",
+            "Karpagam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+            "Tamilnadu College",
+           ],
         },
         {
           name: "Electronics & Communication Engineering",
@@ -661,13 +716,24 @@ export const CourseProvider = ({ children }) => {
             "SRM Main Campus",
             "Hindhusthan College",
             "JCT College",
+            "Dhanalakshmi Srinivasan College ",
+            "CMS College",
+            "Easa College",
+            "Karpagam College",
+            "Rathinam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+            "Dhaanish Ahmed Institute",
+            "Park College",
+            "Tamilnadu College",
           ],
         },
         {
-          name: "Electronics & Instrumentation Engineering",
-          colleges: [
+        name: "Electronics & Instrumentation Engineering",
+        colleges: [ 
             "Kumaraguru College",
             "Hindhusthan College",
+            "Tamilnadu College",
           ],
         },
         {
@@ -684,12 +750,18 @@ export const CourseProvider = ({ children }) => {
             "SRM Main Campus",
             "Hindhusthan College",
             "JCT College",
+            "Dhanalakshmi Srinivasan College",
+            "Karpagam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+            "Park College",
+            "Tamilnadu College",
           ],
         },
         {
-          name: "Civil Engneering With Computer Applications",
-          colleges: ["SRM Main Campus"],
-        },
+            name: "Civil Engneering With Computer Applications",
+            colleges: ["SRM Main Campus"],
+          },
         {
           name: "Information Science & Engineering",
           colleges: [
@@ -705,45 +777,78 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "Food Technology",
-          colleges:
+            name: "Food Technology",
+            colleges:
             [
-              "Hindhusthan College",
-              "JCT College",
+                "Hindhusthan College",
+                "JCT College",
+                "Dhanalakshmi Srinivasan College",
+                "Nehru Institution",
+                "Sri Shakthi Institute",
+                "Dhaanish Ahmed Institute"
             ],
         },
         {
-          name: "Information Technology",
-          colleges:
+            name: "Information Technology",
+            colleges:
             [
-              "Hindhusthan College",
+                "Hindhusthan College",
+                "Easa College",
+                "CMS College",
+                "Karpagam College",
+                "Rathinam College",
+                "Nehru Institution",
+                "Sri Shakthi Institute",
+                "Dhaanish Ahmed Institute",
+                "Tamilnadu College",
             ],
         },
         {
-          name: "Nano Technology",
-          colleges: ["SRM Main Campus"],
+            name: "Nano Technology",
+            colleges: ["SRM Main Campus"],
         },
         {
           name: "Aeronautical Engineering",
-          colleges: ["Acharya", "Kumaraguru College", "Hindhusthan College", "Karavali College"],
+          colleges: [
+            "Acharya",
+            "Kumaraguru College",
+            "Hindhusthan College",
+            "Karavali College",
+            "Hindusthan College",
+            "Nehru Institution",
+          ],
         },
         {
           name: "Mechatronics Engineering",
-          colleges: ["Acharya", "Kumaraguru College"],
+          colleges: ["Acharya","Kumaraguru College"],
         },
         {
           name: "Bio Technology Engineering",
-          colleges: ["Acharya", "Kumaraguru College", "SRM Man Campus"],
-        },
-        {
-          name: "Bio Medical Engneering",
-          colleges: ["SRM Main Campus", "Hindhusthan College"],
-        },
-        {
-          name: "BioTech& BioMedical Engneering",
           colleges: [
-            "JCT College",
-          ],
+            "Acharya",
+            "Kumaraguru College",
+            "SRM Man Campus",
+            "Rathinam College",
+            "Sri Shakthi Institute",
+           ],
+        },
+        {
+            name: "Bio Medical Engneering",
+            colleges: [
+              "SRM Main Campus",
+              "Hindhusthan College",
+              "Dhanalakshmi Srinivasan College",
+              "Easa College",
+              "Hindusthan College",
+              "Sri Shakthi Institute",
+              "Dhaanish Ahmed Institute"
+            ],
+        },
+        {
+            name: "BioTech& BioMedical Engneering",
+            colleges: [
+                "JCT College",
+            ],
         },
         {
           name: "Electric Vehicle Technology",
@@ -766,21 +871,26 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "Chemical Engneering",
-          colleges: [
-            "SRM Main Campus",
-            "Hindhusthan College",
-          ],
+            name: "Chemical Engneering",
+            colleges: [
+                "SRM Main Campus",
+                "Hindhusthan College",
+                "Hindusthan College",
+            ],
         },
         {
-          name: "Petrochemical Technology",
-          colleges: [
-            "JCT College",
-          ],
+            name: "Petrochemical Technology",
+            colleges: [
+              "JCT College",
+            ],
         },
         {
           name: "Aerospace Engineering",
-          colleges: ["MS Ramaiah"],
+          colleges: [
+            "MS Ramaiah",
+            "Park College",
+
+          ],
         },
         {
           name: "Automotive Engineering",
@@ -792,19 +902,46 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "Agricultural Engineering",
-          colleges: ["SEA College", "Hindhusthan College"],
+          colleges: [
+            "SEA College",
+            "Hindhusthan College",
+            "Dhanalakshmi Srinivasan College",
+            "Easa College",
+            "Rathinam College",
+            "Nehru Institution",
+            "Sri Shakthi Institute",
+          ],
         },
         {
-          name: "Automobile Engineering",
-          colleges: ["Kumaraguru College", "SRM Main Campus", "Hindhusthan College"],
+            name: "Automobile Engineering",
+            colleges: [
+              "Kumaraguru College",
+              "SRM Main Campus",
+              "Hindhusthan College",
+              "Tamilnadu College",
+              
+            ],
         },
         {
-          name: "B.Tech Fasion Technology",
-          colleges: ["Kumaraguru College"],
+            name: "B.Tech Fasion Technology",
+            colleges: ["Kumaraguru College"],
         },
         {
           name: "B.Tech Textile Technology",
           colleges: ["Kumaraguru College"],
+        },
+        {
+          name: "Robotics&Automation",
+          colleges: [
+            "Dhaanish Ahmed Institute",
+          ],
+        },
+        {
+          name: "Environmental Engineering",
+          colleges:
+           [
+            "Park College",
+           ],
         },
       ],
     },
@@ -827,7 +964,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "B.Sc Maths",
-          colleges: ["Acharya", "SEA College"],
+          colleges: ["Acharya","SEA College"],
         },
         {
           name: "B.Sc Maths (Data Science)",
@@ -835,7 +972,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "B.Sc Computer Science",
-          colleges: ["Acharya", "SEA College", "United Institutions"],
+          colleges: ["Acharya","SEA College","United Institutions"],
         },
         {
           name: "B.Sc Computer Science Data Science",
@@ -1149,15 +1286,15 @@ export const CourseProvider = ({ children }) => {
         {
           name: "B.COM",
           colleges: [
-            "Acharya",
+            "Acharya","Akash Institution","Presidancy University",
             "Jain University",
-            "MS Ramaiah",
-            "Srinivas University",
+            "MS Ramaiah","Christ",
+            "Srinivas University","SEA College ",
             "East West College of Management",
-            "Brindavan",
-            "Karnataka College",
+            "Brindavan","RR Institution",
+            "Karnataka College","Uinted College",
             "Christian College",
-            "MVM College",
+            "MVM College","Harsha",
           ],
         },
         {
@@ -1168,31 +1305,100 @@ export const CourseProvider = ({ children }) => {
           name: "B.COM ACCA",
           colleges: [
             "Acharya",
-            "Krupanidhi",
-            "Presidency",
-            "Brindavan",
+            "Krupanidhi","JAI BHARATH",
+            "Presidency","Jain University","S VYASA",
+            "Brindavan","RAMAIHA college","Yenapoya ",
             "East West College of Management",
-            "Christian College",
+            "Christian College",,
+            "Abbs",
+            "United Institution",
           ],
         },
         {
-          name: "B.COM BUSINESS ANALYTICS",
-          colleges: ["Acharya", "Presidency"],
+          name: "B.COM CMA",
+          colleges: ["Abbs",
+            "Acharya","Krupanidhi","Yenapoya ",
+          ],
+        },
+        {
+          name: "B.COM Information Technology",
+          colleges: ["United college"],
+        },
+        {
+          name: "B.COM Business Analytics",
+          colleges: ["Acharya", "Presidency University","United College",],
+        },
+        {
+          name: "B.COM Data Analytics & Financial Modeling",
+          colleges: ["Acharya", "Presidency University"],
+        },
+        {
+          name: "B.COM Financial Analyst",
+          colleges: ["Abbs",],
+        },
+        {
+          name: "B.COM Accounting & Taxation",
+          colleges: ["Abbs","IZEE Business School"],
+        },
+        {
+          name: "B.COM Accounting ",
+          colleges: ["SRM Main Campus",],
+        },
+        {
+          name: "B.COM Corporate Secretaryship",
+          colleges: ["SRM Main Campus"],
+        },
+        {
+          name: "B.COM Commerce ",
+          colleges: ["SRM Main Campus"],
+        },
+        {
+          name: "B.COM International Accounting",
+          colleges: ["SRM Main Campus"],
+        },
+        {
+          name: "B.COM Professional Accounting",
+          colleges: ["SRM Main Campus","United College"],
+        },
+        {
+          name: "B.COM Computer Application",
+          colleges: ["SRM Main Campus","United College"],
+        },
+        {
+          name: "B.COM Coaching for CA",
+          colleges: ["SRM Main Campus","Yenepoya"],
         },
         {
           name: "B.COM LOGISTICS",
-          colleges: ["Brindavan", "Christian College"],
+          colleges: ["Brindavan", "Christian College","Krupanidhi", ]
         },
         {
           name: "B.COM LOGISTICS & AVIATION",
-          colleges: ["Brindavan", "Yenepoya"],
+          colleges: ["Brindavan", "Yenepoya","JCT college",],
+        },
+        {
+          name: "B.COM Logistics & Supply Chain Management",
+          colleges: ["United Institution","SEA College","JCT college",],
         },
         {
           name: "B.COM SHIPPING & LOGISTICS MANAGEMENT",
           colleges: ["East West College of Management"],
         },
         {
+          name: "B.COM (AVIATION, LOGISTIC & SUPPLY CHAIN)",
+          colleges: ["RR Institution"],
+        },
+        {
           name: "B.COM SAP",
+          colleges: ["IZEE Business School"],
+        },
+        {
+          name: "B.COM SCM",
+          colleges: ["MVM college"],
+        },
+        {
+          name: "B.COM Tally with GST",
+
           colleges: ["IZEE Business School"],
         },
         {
@@ -1201,12 +1407,9 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "B.COM BANKING & FINANCE",
-          colleges: ["Presidency"],
+          colleges: ["Presidency University"],
         },
-        {
-          name: "B.COM (AVIATION, LOGISTIC & SUPPLY CHAIN)",
-          colleges: ["RR Institution"],
-        },
+
         {
           name: "B.COM IAF WITH ACCA, CORPORATE ACCOUNTING , INVESTMENT BANKING CMA",
           colleges: ["Jain University"],
@@ -1214,6 +1417,10 @@ export const CourseProvider = ({ children }) => {
         {
           name: "B.COM GLOBAL PROFESSIONAL QUALIFICATION - BA , CPA , RM , LSCM , FT",
           colleges: ["Jain University"],
+        },
+        {
+          name: "B.COM Power Bi& Advanced Exel",
+          colleges: ["United Institution"],
         },
       ],
     },
@@ -1252,7 +1459,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Science",
-          colleges: ["Acharya", "HKBK", "Presidency University", "Koshys Institution", "SRM Main Campus"],
+          colleges: ["Acharya", "HKBK", "Presidency University","Koshys Institution","SRM Main Campus"],
         },
         {
           name: "BCA Data Science & Ethical Hacking",
@@ -1260,19 +1467,19 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cloud Computing",
-          colleges: ["Acharya", "HKBK", "Koshys Institution"],
+          colleges: ["Acharya", "HKBK","Koshys Institution"],
         },
         {
           name: "BCA AI And ML",
-          colleges: ["Izee", "Koshys Institution", "Brindavan", "HKBK", "Presidency University", "Akash College", "SEA College"],
+          colleges: ["Izee","Koshys Institution", "Brindavan", "HKBK", "Presidency University","Akash College","SEA College"],
         },
         {
           name: "BCA AI",
-          colleges: ["Jain University", "HKBK"],
+          colleges: ["Jain University","HKBK"],
         },
         {
           name: "BCA AI, ML & Robotics",
-          colleges: ["East West", "S-Vyasa", "United International", "Yenepoya"],
+          colleges: ["East West", "S-Vyasa","United International","Yenepoya"],
         },
         {
           name: "BCA Artificial Intelligence & Python",
@@ -1304,7 +1511,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cloud Computing, Ethical Hacking & Cyber Security",
-          colleges: ["Srinivas University", "S-Vyasa", "Brindavan", "Yenepoya"],
+          colleges: ["Srinivas University", "S-Vyasa", "Brindavan","Yenepoya"],
         },
         {
           name: "BCA AI, Cloud Computing & DevOps",
@@ -1336,7 +1543,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Analytics",
-          colleges: ["HKBK", "Jain University", "Ramaiah"],
+          colleges: ["HKBK", "Jain University","Ramaiah"],
         },
         {
           name: "BCA Cloud Computing & Digital Marketing",
@@ -1356,7 +1563,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cloud, Artificial Intelligence & Data Analytics",
-          colleges: ["Srinivas University", "Yenepoya"],
+          colleges: ["Srinivas University","Yenepoya"],
         },
         {
           name: "BCA Robotic Automation, Artificial Intelligence & Deep Learning",
@@ -1392,7 +1599,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Science, AI & ML",
-          colleges: ["Yenepoya", "Abbs"],
+          colleges: ["Yenepoya","Abbs"],
         },
         {
           name: "BCA Data Science & Digital Forensic",
@@ -1400,7 +1607,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cyber Security, Ethical Hacking & Digital Forensic",
-          colleges: ["S-Vyasa", "Yenepoya"],
+          colleges: ["S-Vyasa","Yenepoya"],
         },
         {
           name: "BCA Data Science, AI & Big Data Analytics",
@@ -1416,7 +1623,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cybersecurity & Ethical Hacking",
-          colleges: ["Yenepoya", "Akash"],
+          colleges: ["Yenepoya","Akash"],
         },
         {
           name: "BCA Data Science, Artificial Intelligence & Machine Learning",
@@ -1448,12 +1655,12 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Science & AI",
-          colleges: ["Yenepoya", "Karnataka College", "Akash", "United International", "Krupanidhi", "JCT College"],
+          colleges: ["Yenepoya", "Karnataka College","Akash","United International","Krupanidhi","JCT College"],
         },
-
+  
         {
           name: "BCA Cloud Computing & Cybersecurity",
-          colleges: ["Yenepoya", "SEA College", "Christian College", "Abbs", "Christian Institute", "United International"],
+          colleges: ["Yenepoya","SEA College","Christian College","Abbs","Christian Institute","United International"],
         },
         {
           name: "BCA IT For Healthcare",
@@ -1768,7 +1975,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA AI And ML",
-          colleges: ["Izee", "Brindavan", "HKBK", "Presidency"],
+          colleges: ["IZEE Business School", "Brindavan", "HKBK", "Presidency"],
         },
         {
           name: "BCA AI",
@@ -1788,7 +1995,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cloud Computing & Ethical Hacking",
-          colleges: ["East West", "Izee"],
+          colleges: ["East West", "IZEE Business School"],
         },
         {
           name: "BCA Cloud Computing, Cyber Security & Digital Forensic",
@@ -1796,7 +2003,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Global",
-          colleges: ["Izee"],
+          colleges: ["IZEE Business School"],
         },
         {
           name: "BCA Robotics, AI And Virtual Reality",
@@ -1896,7 +2103,7 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Data Science & Digital Forensic",
-          colleges: ["Izee"],
+          colleges: ["IZEE Business School"],
         },
         {
           name: "BCA Cyber Security, Ethical Hacking & Digital Forensic",
@@ -2123,7 +2330,7 @@ export const CourseProvider = ({ children }) => {
         { name: "BA (Journalism and Mass Communication)", colleges: ["PRESIDENCY UNIVERSITY", "SRM KTR"] },
         { name: "BA (Sociology)", colleges: ["ABBS"] },
         { name: "BA (Political Science)", colleges: ["ABBS", "SEA COLLEGE"] },
-        { name: "BA CPJ (Criminology, Psychology & Journalism)", colleges: ["KOSHYS"] },
+        { name: "BA CPJ (Criminology, Psychology & Journalism)", colleges: ["Koshys College"] },
         { name: "BA (Tourism)", colleges: ["SEA COLLEGE"] }
       ]
     },
@@ -2444,7 +2651,8 @@ export const CourseProvider = ({ children }) => {
     "Maurya Group Of Institutions": "Mysore",
     Pes: "Bengaluru",
     "Oxford Institutions Of Medical Science": "Benagaluru",
-    Koshys: "Bengaluru",
+    "Koshys College": "Bengaluru",
+    "Koshys Institution": "Bengaluru",
     "JSS College": "Mysore",
     "Adichunchanagiri College": "Mysore",
     "BGS Apollo": "Mysore",
