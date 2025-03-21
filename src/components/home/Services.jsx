@@ -4,10 +4,10 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS CSS
 
 function Services() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
   // Initialize AOS when the component mounts
   useEffect(() => {
@@ -19,14 +19,17 @@ function Services() {
 
   function ServiceCard({ title, description }) {
     return (
-      <div
-        onClick={() => setIsModalOpen(true)}
+      <a
+      
+       href={`https://wa.me/918281060462?text=I%20Need%20Know%20About%20Your%20${title}%20Scheme`}
+          target="_blank"
+        // onClick={() => setIsModalOpen(true)}
         className="cursor-pointer p-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:scale-101 duration-300 transition transform shadow-xl hover:shadow-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600"
-        data-aos="fade-up" // AOS animation for fade-up effect
+        data-aos="fade-up" 
       >
         <h3 className="text-2xl font-semibold mb-2">{title}</h3>
         <p className="text-lg">{description}</p>
-      </div>
+      </a>
     );
   }
 
@@ -35,18 +38,18 @@ function Services() {
       <section
         id="services"
         className="bg-gradient-to-r from-blue-100 to-blue-300 text-white py-16 px-8 flex flex-col items-center"
-        data-aos="fade-up" // AOS animation for section fade-in
+        data-aos="fade-up"
       >
         <h2
           className="text-4xl text-gray-700 font-bold mb-2"
-          data-aos="fade-down" // AOS animation for header fade-down
+          data-aos="fade-down" 
         >
           Our Services
         </h2>
 
         <p
           className="text-md mb-8 text-gray-500"
-          data-aos="fade-up" // AOS animation for paragraph fade-in
+          data-aos="fade-up"
         >
           Tailored services to enhance your admission experience.
         </p>
@@ -70,12 +73,12 @@ function Services() {
           />
         </div>
 
-        <AdmissionModal isOpen={isModalOpen} closeModal={closeModal} />
+        {/* <AdmissionModal isOpen={isModalOpen} closeModal={closeModal} /> */}
       </section>
 
       <div
         className="flex flex-col items-center text-white p-10 text-center pt-20 shadow-2xl"
-        data-aos="fade-up" // AOS animation for this div fade-up
+        data-aos="fade-up" 
       >
         <h2 className="text-3xl font-bold text-white">
           Not sure what you need to apply?

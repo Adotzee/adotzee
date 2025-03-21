@@ -23,7 +23,7 @@ const ParticlesBackground = () => {
         },
         modes: {
           grab: { distance: 120, links: { opacity: 0.5 } },
-          push: { quantity: 1 }, // Adds 5 particles per click
+          push: { quantity: 2 }, // Adds 5 particles per click
           repulse: { distance: 200 },
         },
       },

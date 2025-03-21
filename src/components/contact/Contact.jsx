@@ -90,7 +90,7 @@ export default function Contact() {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="mx-4 sm:mx-10 bg-white p-6 rounded-2xl shadow-md max-w-4xl min-w-sm md:w-full flex flex-col md:flex-row justify-end"
+        className="mx-5 bg-white p-6 rounded-2xl shadow-md max-w-4xl  md:w-full flex flex-col md:flex-row justify-end"
       >
         <form
           onSubmit={(e) => {
@@ -104,7 +104,7 @@ export default function Contact() {
               type="text"
               name="name"
               placeholder="Your name here"
-              className="p-3 rounded-lg border-0 bg-gray-2/50 placeholder-gray-600  focus:ring-none focus:outline-none w-[95%] "
+              className="p-3 rounded-lg border-0 bg-gray-2/50 placeholder-gray-600  focus:ring-none focus:outline-none w-[90%] "
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.name}
@@ -123,7 +123,7 @@ export default function Contact() {
               inputMode="numeric"
               pattern="[0-9]*"
               placeholder="Your Phone Number here"
-              className="p-3 rounded-lg border-0 focus:ring-none bg-gray-2/50 placeholder-gray-600  focus:outline-none  w-[95%]"
+              className="p-3 rounded-lg border-0 focus:ring-none bg-gray-2/50 placeholder-gray-600  focus:outline-none  w-[90%]"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.number}
@@ -139,7 +139,7 @@ export default function Contact() {
             <textarea
               name="message"
               placeholder="Your message here"
-              className="p-3 rounded-lg border-0 resize-none focus:ring-none align-text-top bg-gray-2/50 placeholder-gray-600 focus:outline-none w-[95%] h-32"
+              className="p-3 rounded-lg border-0 resize-none focus:ring-none align-text-top bg-gray-2/50 placeholder-gray-600 focus:outline-none w-[90%] h-32"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.message}
@@ -153,7 +153,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className={`py-2 px-4 md:w-full rounded-lg focus:outline-none  md:w-[10%] transition 
+            className={`py-2 px-4 md:w-[94%] md:ml-3 rounded-lg focus:outline-none  md:w-[10%] transition 
               ${formik.isValid && formik.dirty ? 
                 "bg-blue-500 text-gray-300 hover:bg-blue-600" : 
                 "bg-blue-200 text-gray-500 cursor-not-allowed"}`}

@@ -26,6 +26,7 @@
     "@tailwindcss/vite": "^4.0.0",
     "@tsparticles/all": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
+    "@tsparticles/shape-image": "^3.8.1",
     "@tsparticles/slim": "^3.8.1",
     "@unocss/preset-wind": "^65.4.3",
     "aos": "^2.3.4",
