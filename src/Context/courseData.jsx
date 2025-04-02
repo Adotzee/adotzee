@@ -137,7 +137,7 @@ export const CourseProvider = ({ children }) => {
              "Manjushree College",
              "pes",
              "RR Institition",
-             "MS Ramiyah",
+             "MS Ramaiah",
              "Yenepoya",
              "MVM College",
              "Sapthagiri Medical College",
@@ -198,7 +198,7 @@ export const CourseProvider = ({ children }) => {
           name: "bsc biotechnology",
           colleges: [
              "Abbs",
-             "MS Ramiyah",
+             "MS Ramaiah",
              "JSS College",
           ],
         },
@@ -268,7 +268,7 @@ export const CourseProvider = ({ children }) => {
           name: "Cardiac Care Technology",
           colleges: [
             "RR Institution",
-            "MS Ramiyah",
+            "MS Ramaiah",
             "Christian College",
             "Akash College",
             "East Point Medical College",
@@ -2844,7 +2844,7 @@ export const CourseProvider = ({ children }) => {
       ],
     },
     {
-      category: " Nursing",
+      category: "Nursing",
       addons: [
         {
           name: "GNM - General Nursing and Midwifery",
@@ -3548,7 +3548,7 @@ export const CourseProvider = ({ children }) => {
     Krupanidhi: "Bengaluru",
     "Srinivas University": "Mangalore",
     "MS Ramaiah": "Bengaluru",
-    Yenepoya: "Mangalore",
+    "Yenepoya Mangalore": "Mangalore",
     "Jain University": "Bengaluru",
     Brindavan: "Bengaluru",
     "SEA College": "Bengaluru",
@@ -3635,6 +3635,12 @@ export const CourseProvider = ({ children }) => {
     "Manipal University"
   ];
 
+  const paraAdotzeeChoiceColleges = [
+    "JAIN UNIVERSITY",
+    "YENEPOYA",
+
+  ]
+
   return (
     <CourseContext.Provider
       value={{
@@ -3644,6 +3650,7 @@ export const CourseProvider = ({ children }) => {
         humanitiesCourses,
         collegeLocations,
         dotzeeChoiceColleges,
+        paraAdotzeeChoiceColleges,
       }}
     >
       {children}
