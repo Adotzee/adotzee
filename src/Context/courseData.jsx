@@ -128,7 +128,7 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "bsc Anesthesia & Operation Theatre Technology ",
+          name: "BSC Anesthesia and Operation Theatre Technology",
           colleges: [
               "Acharya",
              "Akash College",

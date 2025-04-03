@@ -41,7 +41,7 @@ export default function CollegeList() {
           Colleges Offering {addonName}
         </h1>
 
-        <div className="mx-4 sm:mx-5 md:mx-40 bg-white/80 backdrop-blur-lg p-6 mb-10 rounded-xl shadow-lg w-fit md:min-w-4xl max-w-4xl mt-10">
+        <div className="mx-4 sm:mx-5 md:mx-40 bg-white/80 backdrop-blur-lg p-6 mb-10 rounded-xl shadow-lg w-fit md:min-w-4xl max-w-5/6 min-w-5/6 md:max-w-4xl mt-10">
           <p className="text-lg text-gray-700 font-medium mt-2 mb-6 text-center">
             Choose the college that aligns with your interests.
           </p>
