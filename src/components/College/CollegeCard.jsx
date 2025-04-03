@@ -6,7 +6,6 @@ const CollegeCard = ({
   college, 
   location, 
   isAdotzeeChoice, 
-  onDetailsClick,
   addonName 
 }) => {
   return (
@@ -61,44 +60,21 @@ const CollegeCard = ({
         
         {/* Action button */}
         <div className="mt-4 md:mt-0 md:ml-4 flex items-center justify-end">
-          <button
-            onClick={onDetailsClick}
+          <a
+             href={`https://wa.me/918281060462?text=${encodeURIComponent(
+              `I need to know about ${addonName} in ${college}`
+            )}`}
+            target='_blank'
+              rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 hover:from-blue-700 hover:to-blue-800 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
             Fees & Details
-          </button>
+          </a>
         </div>
       </div>
     </div>
   );
-};
+}
+export default CollegeCard;
 
-// Example usage for your component
-// const CollegeListItem = ({ 
-//   college, 
-//   collegeLocations, 
-//   isAdotzeeChoice, 
-//   addonName 
-// }) => {
-//   const handleDetailsClick = () => {
-//     window.open(
-//       `https://wa.me/918281060462?text=${encodeURIComponent(
-//         `I need to know about ${addonName} in ${college}`
-//       )}`,
-//       '_blank'
-//     );
-//   };
-
-//   return (
-//     <CollegeCard
-//       college={college}
-//       location={collegeLocations[college] || "Location not specified"}
-//       isAdotzeeChoice={isAdotzeeChoice}
-//       onDetailsClick={handleDetailsClick}
-//       addonName={addonName}
-//     />
-//   );
-// };
-
-export { CollegeCard };

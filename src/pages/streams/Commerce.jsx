@@ -205,7 +205,7 @@ export default function Commerce() {
                                 View Colleges
                                 <FontAwesomeIcon 
                                 icon={faArrowRight}
-                                  size={14}
+                                  size="lg"
                                   className="group-hover:translate-x-1 transition-transform duration-300" 
                                 />
                               </div>

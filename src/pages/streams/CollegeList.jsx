@@ -4,9 +4,7 @@ import { useCourse } from "../../Context/courseData";
 import { useEffect, useState } from "react";
 import Back from "../../components/common/Back";
 import Footer from "../../components/common/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGraduationCap, faLocationDot, faStar, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { CollegeCard } from "../../components/College/CollegeCard";
+import CollegeCard from "../../components/College/CollegeCard";
 
 export default function CollegeList() {
   const { addonName } = useParams();
@@ -20,15 +18,6 @@ export default function CollegeList() {
       ...scienceCourses,
       ...humanitiesCourses,
     ];
-
-    const handleDetailsClick = () => {
-      window.open(
-        `https://wa.me/918281060462?text=${encodeURIComponent(
-          `I need to know about ${addonName} in ${college}`
-        )}`,
-        '_blank'
-      );
-    };
 
     const foundAddon = allCourses
       .flatMap((course) => course.addons)
@@ -68,7 +57,7 @@ export default function CollegeList() {
                     addonName.toUpperCase().includes("NURSING") && paraAdotzeeChoiceColleges.includes(college.toUpperCase()) ||
                     !addonName.toUpperCase().includes("NURSING") && !addonName.toUpperCase().includes("Paramedical") && dotzeeChoiceColleges.includes(college.toUpperCase())
                   }
-                  onDetailsClick={() => handleDetailsClick()}
+                  // onDetailsClick={()=>DetailsClick(addonName, college)}
                   addonName={addonName}
                 />
               ))
