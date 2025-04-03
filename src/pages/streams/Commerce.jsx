@@ -4,15 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faChevronDown, 
   faChevronUp, 
-  faArrowRight, 
   faBookOpen, 
   faGraduationCap,
   faSearch,
   faStar,
   faUniversity,
-  faCertificate,
   faGlobe,
-  faTag
+  faArrowRight,
+  faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/common/Navbar";
 import Counts from "../../components/Stat/Counts";
@@ -28,7 +27,6 @@ export default function Commerce() {
   const navigate = useNavigate();
   const { commerceCourses } = useCourse();
 
-  // Filter courses based on search term
   const filteredCourses = commerceCourses.map(courseCategory => ({
     ...courseCategory,
     addons: courseCategory.addons.filter(addon => 
@@ -67,11 +65,11 @@ export default function Commerce() {
               <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-40 h-1.5 bg-blue-600 rounded-full"></div>
             </div>
 
-            <div className="bg-white shadow-lg rounded-full py-3 px-6 mb-12 transform hover:scale-105 transition-transform duration-300">
+            <div className="bg-white shadow-lg rounded-full md:py-3 px-6 mb-12 transform hover:scale-105 transition-transform duration-300">
               <p className="text-gray-700 text-center flex items-center text-base sm:text-lg">
                 <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-blue-600" />
-                Over <span className="text-blue-600 font-bold mx-2">24,000+</span>
-                students have earned global qualifications with us
+                Over <span className="text-blue-600 font-bold mx-2 ">24+</span>
+                students have Joined with us
               </p>
             </div>
           </div>
@@ -79,7 +77,7 @@ export default function Commerce() {
 
         {/* Search Bar */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-          <div className="relative">
+          <div className="relative flex justfy-between">
             <input
               type="text"
               placeholder="Search for specialized programs..."
@@ -94,9 +92,9 @@ export default function Commerce() {
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm("")}
-                className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-600 bg-white "
               >
-                Clear
+                <FontAwesomeIcon icon={faXmark} />
               </button>
             )}
           </div>
@@ -104,7 +102,7 @@ export default function Commerce() {
 
         {/* Main Content Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-xl">
+          <div className="mx-4 sm:mx-5 md:mx-18 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-xl">
             {/* Header */}
             <div className="bg-gray-800 py-7">
               <div className="flex items-center justify-center space-x-3">
@@ -194,7 +192,7 @@ export default function Commerce() {
                                 >
                                   {/* Card Header */}
                                   <div className="bg-gray-800 p-4">
-                                    <div className="flex items-center justify-between">
+                                    <div className="flex items-center group cursor-pointer justify-between">
                                       <div className="flex items-center">
                                       <div className="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center mr-3 shrink-0">
                                         <FontAwesomeIcon icon={faBookOpen} className="text-white" />
@@ -203,9 +201,10 @@ export default function Commerce() {
                                         {addon.name}
                                       </h3>
                                       </div>
-                                      <div className="bg-blue-700/40 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1 group-hover:bg-blue-700/70 transition-colors duration-300">
+                                      <div className="bg-blue-400/40 text-white px-3  py-1 rounded-full text-sm flex items-center gap-1 group-hover:bg-blue-700/70 transition-colors duration-300">
                                 View Colleges
-                                <faArrowRight
+                                <FontAwesomeIcon 
+                                icon={faArrowRight}
                                   size={14}
                                   className="group-hover:translate-x-1 transition-transform duration-300" 
                                 />
