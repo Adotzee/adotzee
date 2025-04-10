@@ -1,292 +1,183 @@
-import { useEffect, useState, Suspense, lazy, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
+import {
+  faChevronDown,
+  faChevronUp,
   faGraduationCap,
+  faUniversity,
+  faBookOpen,
   faSearch,
-  faGlobe,
-  faXmark
+  faTimes,
+  faExternalLinkAlt,
+  faInfoCircle,
+  faFilter
 } from "@fortawesome/free-solid-svg-icons";
-import { 
-  Skeleton, 
-  CircularProgress, 
-  Fade, 
-  useMediaQuery,
-} from "@mui/material";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Navbar from "../../components/common/Navbar";
+import Counts from "../../components/Stat/Counts";
+import Footer from "../../components/common/Footer";
 import { useCourse } from "../../Context/courseData";
-import LinearLoading from "../../components/common/LinearLoading";
-import CategoryItem from "../../components/College/stream/CategoryItem";
-
-// Create Material UI theme to match your application's style
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#2563eb', // blue-600
-    },
-    secondary: {
-      main: '#1f2937', // gray-800
-    },
-  },
-  components: {
-    MuiCircularProgress: {
-      styleOverrides: {
-        root: {
-          color: '#2563eb',
-        },
-      },
-    },
-    MuiSkeleton: {
-      styleOverrides: {
-        root: {
-          backgroundColor: 'rgba(226, 232, 240, 0.6)',
-        },
-      },
-    },
-  },
-});
-
-// Lazy load components with prefetching
-const Navbar = lazy(() => {
-  // Simulate prefetching
-  import("../../components/common/Navbar");
-  return import("../../components/common/Navbar");
-});
-
-const Back = lazy(() => import("../../components/common/Back"));
-const Counts = lazy(() => import("../../components/Stat/Counts"));
-const Footer = lazy(() => import("../../components/common/Footer"));
-
-// Loading fallback components
-const LoadingFallback = () => (
-  <div className="flex justify-center items-center py-12">
-    <CircularProgress color="primary" size={36} />
-  </div>
-);
-
-// More detailed skeleton loader for courses
-const CourseSkeletonLoader = () => (
-  <div className="rounded-xl overflow-hidden shadow-lg mb-8">
-    <div className="p-5 sm:p-6 rounded-xl bg-gray-50">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <Skeleton variant="circular" width={48} height={48} animation="wave" />
-          <div className="ml-4">
-            <Skeleton variant="text" width={180} height={30} animation="wave" />
-            <Skeleton variant="text" width={100} height={20} animation="wave" />
-          </div>
-        </div>
-        <Skeleton variant="circular" width={40} height={40} animation="wave" />
-      </div>
-    </div>
-  </div>
-);
-
-
-
-
-
+import Back from "../../components/common/Back";
 
 export default function Science() {
-  const [selectedCategory, setSelectedCategory] = useState(
-    localStorage.getItem("selectedCategory") || "" );
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const { scienceCourses } = useCourse();
-  
-  // Media query for responsive design
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const inputRef = useRef(null);
 
-  // Prevent unnecessary recalculations with useMemo
-  const filteredCourses = useMemo(() => {
-    const searchTermLower = searchTerm.toLowerCase();
-    return scienceCourses
-      .map(courseCategory => ({
-        ...courseCategory,
-        addons: (courseCategory.addons || []).filter(addon => 
-          addon?.name?.toLowerCase()?.includes(searchTermLower)
-        )
-      }))
-      .filter(courseCategory => 
-        courseCategory.category?.toLowerCase()?.includes(searchTermLower) || 
-        courseCategory.addons.length > 0
-      );
-  }, [scienceCourses, searchTerm]);
-
-  // Handle category selection with useCallback
-  const handleCategorySelect = useCallback((category) => {
-    setSelectedCategory(prev => prev === category ? "" : category);
-  }, []);
-
-  const clearSearch = useCallback(() => {
-    setSearchTerm("");
-  }, []);
-
-  // Store selected category in localStorage
-  useEffect(() => {
-    if (selectedCategory) {
-      localStorage.setItem("selectedCategory", selectedCategory);
-    }
-  }, [selectedCategory]);
-
-  // Initial data loading with abort controller for cleanup
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    const controller = new AbortController();
-    
-    // Simulate data loading
-    const timer = setTimeout(() => {
-      if (!controller.signal.aborted) {
-        setLoading(false);
-      }
-    }, 800);
-    
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
+    if (showSearch && inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
 
-  // Intersection Observer for lazy loading images
-  useEffect(() => {
-    const imgObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          const src = img.getAttribute('data-src');
-          if (src) {
-            img.setAttribute('src', src);
-            img.removeAttribute('data-src');
-            imgObserver.unobserve(img);
-          }
-        }
-      });
-    }, { rootMargin: '50px' });
-  }, [loading, filteredCourses]);
+  const filteredCourses = searchTerm.trim()
+    ? scienceCourses
+        .map((c) => ({
+          ...c,
+          addons: c.addons.filter((a) =>
+            a.name && a.name.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          
+        }))
+        .filter((c) => c.addons.length)
+    : scienceCourses;
+
+  const toggleCategory = (category) => {
+    setSelectedCategory((prev) => (prev === category ? "" : category));
+  };
+
+  const highlightText = (text, keyword) => {
+    const parts = text.split(new RegExp(`(${keyword})`, "gi"));
+    return parts.map((part, i) =>
+      part.toLowerCase() === keyword.toLowerCase() ? (
+        <span key={i} className="bg-yellow-300/30 text-white font-bold px-1 rounded">{part}</span>
+      ) : (
+        part
+      )
+    );
+  };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Suspense fallback={<LinearLoading />}>
-        <Back />
-      </Suspense>
-      
-      <Suspense fallback={<LinearLoading />}>
-        <Navbar />
-      </Suspense>
-
-      {/* Main container with light theme */}
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 pb-16">
-        {/* Hero Section */}
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
-          <div className="flex flex-col items-center">
-            <Fade in={true} timeout={800}>
-              <div className="relative mb-8 animate-fadeIn">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 text-center leading-tight">
-                  Professional Commerce Degrees
-                </h1>
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-40 h-1.5 bg-blue-600 rounded-full"></div>
-              </div>
-            </Fade>
-
-              <div className="bg-white shadow-lg rounded-full md:py-3 px-6 mb-12 transform hover:scale-105 transition-transform duration-1000">
-                <p className="text-gray-700 text-center flex items-center text-base sm:text-lg">
-                  <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-blue-600" />
-                  Over <span className="text-blue-600 font-bold mx-2 ">24+</span>
-                  students have Joined with us
-                </p>
-              </div>
-          </div>
+    <>
+      <Back />
+      <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] pt-10 px-4 pb-10">
+        {/* Hero */}
+        <div className="text-center text-white mb-8">
+          <h1 className="text-3xl md:text-4xl md:mt-15 font-bold">Explore Science Career Options</h1>
+          <p className="mt-2 text-lg flex justify-center items-center">
+            <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
+            Over <span className="text-yellow-400 font-bold mx-1">24+</span> students started careers with us!
+          </p>
         </div>
-        <div className="max-w-3xl mx-auto  px-4 sm:px-4 lg:px-8 mb-10">
-                  <div className="relative flex justfy-between">
-                    <input
-                      type="text"
-                      placeholder="Search for specialized programs..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full bg-white  border-0 rounded-full py-2.5 md:py-4 pl-14 pr-6 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-md text-lg"
-                    />
-                    <FontAwesomeIcon 
-                      icon={faSearch} 
-                      className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" 
-                    />
-                    {searchTerm && (
-                      <button
-                        onClick={() => setSearchTerm("")}
-                        className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-600 bg-white "
-                      >
-                        <FontAwesomeIcon icon={faXmark} />
-                      </button>
-                    )}
-                  </div>
-                </div>
 
-        {/* Main Content Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="mx-4 sm:mx-5 md:mx-18 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-xl">
-            {/* Header */}
-            <div className="bg-gray-800 py-7">
-              <div className="flex items-center justify-center space-x-3">
-                <FontAwesomeIcon icon={faGlobe} className="text-blue-400 text-2xl sm:text-3xl" />
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                  Commerce Programs
-                </h2>
+        {/* Search Bar & Header */}
+        <div className="max-w-4xl mx-auto bg-primary/50 backdrop-blur-lg p-6 rounded-xl shadow-xl mb-10">
+          <div className="flex justify-between items-center flex-wrap gap-4 mb-4 w-full">
+            <h2 className="text-2xl font-bold text-white text-center w-full md:w-auto flex-1">
+              Science Degree Courses
+            </h2>
+            <div className="relative">
+              <div
+                className={`flex items-center bg-white/30 p-2 rounded-full transition-all duration-300 ${showSearch ? "w-64" : "w-4"}`}
+              >
+                <FontAwesomeIcon
+                  icon={showSearch ? faTimes : faSearch}
+                  className="text-white cursor-pointer"
+                  onClick={() => {
+                    if (showSearch) setSearchTerm("");
+                    setShowSearch(!showSearch);
+                  }}
+                />
+                {showSearch && (
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder="Search courses..."
+                    className="ml-2 bg-transparent border-none outline-none text-white placeholder-white/70 w-full"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                )}
               </div>
             </div>
+          </div>
 
-            {/* Course Categories */}
-            <div className="p-5 sm:p-8">
-              {loading ? (
-                // Skeleton loaders while content is loading
-                <div className="grid gap-8">
-                  {Array.from({ length: isMobile ? 3 : 5 }).map((_, idx) => (
-                    <CourseSkeletonLoader key={idx} />
-                  ))}
+          {searchTerm && (
+            <div className="mb-4 flex justify-between items-center bg-white/20 p-3 rounded-md">
+              <div className="text-white">
+                <FontAwesomeIcon icon={faFilter} className="mr-2" />
+                Filtering: <span className="font-bold">"{searchTerm}"</span>
+              </div>
+              <button onClick={() => setSearchTerm("")} className="text-white hover:text-gray-600 bg-black/10 rounded-md">
+                <FontAwesomeIcon icon={faTimes} className="mr-1" />
+                Clear
+              </button>
+            </div>
+          )}
+
+          {filteredCourses.length === 0 && (
+            <div className="text-white text-center p-6 bg-white/20 rounded-md">
+              <FontAwesomeIcon icon={faSearch} className="text-2xl mb-2" />
+              <p>No courses found for "{searchTerm}"</p>
+            </div>
+          )}
+
+          {/* Course Categories */}
+          {filteredCourses.map((course, index) => (
+            <div key={index} className="mb-4">
+              <div
+                className={`cursor-pointer p-4 rounded-md flex justify-between items-center ${selectedCategory === course.category
+                  ? "bg-white text-primary font-bold"
+                  : "bg-white/20 text-white hover:bg-white/30"}`}
+                onClick={() => toggleCategory(course.category)}
+              >
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faUniversity} />
+                  {course.category}
+                  <span className="bg-white/20 px-2 rounded-full text-sm whitespace-nowrap overflow-hidden text-ellipsis">{course.addons.length} courses</span>
                 </div>
-              ) : filteredCourses.length > 0 ? (
-                <div className="grid gap-8">
-                  {filteredCourses.map((course, index) => (
-                    <CategoryItem 
-                      key={`${course.category}-${index}`}
-                      course={course}
-                      selectedCategory={selectedCategory}
-                      onCategorySelect={handleCategorySelect}
-                    />
-                  ))}
+                <FontAwesomeIcon
+                  icon={selectedCategory === course.category ? faChevronUp : faChevronDown}
+                />
+              </div>
+
+              {selectedCategory === course.category && (
+                <div className="mt-3 bg-white/20 p-4 rounded-md">
+                  <h3 className="text-white mb-3 flex items-center justify-center">
+                    <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
+                    Click a course to view colleges
+                  </h3>
+                  <ul className="grid grid-cols-1 p-0 md:grid-cols-2 gap-3">
+                    {course.addons.map((addon, idx) => (
+                      <li
+                        key={idx}
+                        className="bg-white/30 text-white p-3 rounded-md flex justify-between items-center hover:bg-white/40 cursor-pointer"
+                        onClick={() => navigate(`/college/${addon.name}`)}
+                      >
+                        <span className="flex items-center">
+                          <FontAwesomeIcon icon={faBookOpen} className="mr-2" />
+                          {searchTerm ? highlightText(addon.name, searchTerm) : addon.name}
+                        </span>
+                        <div className="flex underline items-center gap-1 text-xs whitespace-nowrap">
+                          <p>click for colleges</p>
+                          <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ) : (
-                <Fade in={true}>
-                  <div className="bg-gray-50 rounded-xl p-8 text-center">
-                    <div className="text-gray-700 text-lg mb-4">No programs match your search criteria</div>
-                    <button 
-                      onClick={clearSearch}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-8 rounded-full transition-colors duration-200"
-                    >
-                      Reset Search
-                    </button>
-                  </div>
-                </Fade>
               )}
             </div>
-          </div>
-        </div>
-        
-        {/* Intersection Observer based lazy loading for components at the bottom */}
-        <div>
-          <Suspense fallback={<LinearLoading />}>
-            <Counts />
-          </Suspense>
-        </div>
-        
-        
-        <div>
-          <Suspense fallback={<LinearLoading/>}>
-            <Footer />
-          </Suspense>
+          ))}
         </div>
       </div>
-    </ThemeProvider>
+      <Counts />
+      <Footer />
+    </>
   );
 }

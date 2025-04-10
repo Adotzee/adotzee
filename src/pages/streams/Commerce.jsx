@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-  faChevronDown, 
-  faChevronUp, 
-  faBookOpen, 
+import {
+  faChevronDown,
+  faChevronUp,
   faGraduationCap,
-  faSearch,
-  faStar,
   faUniversity,
-  faGlobe,
-  faArrowRight,
-  faXmark
+  faBookOpen,
+  faSearch,
+  faTimes,
+  faExternalLinkAlt,
+  faInfoCircle,
+  faFilter
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/common/Navbar";
 import Counts from "../../components/Stat/Counts";
@@ -20,230 +20,177 @@ import { useCourse } from "../../Context/courseData";
 import Back from "../../components/common/Back";
 
 export default function Commerce() {
-  const [selectedCategory, setSelectedCategory] = useState(
-    localStorage.getItem("selectedCategory") || ""
-  );
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const { commerceCourses } = useCourse();
+  const inputRef = useRef(null);
 
-  const filteredCourses = commerceCourses.map(courseCategory => ({
-    ...courseCategory,
-    addons: courseCategory.addons.filter(addon => 
-      addon.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  })).filter(courseCategory => 
-    courseCategory.category.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    courseCategory.addons.length > 0
-  );
-
-
-  // Store selected category in localStorage
-  useEffect(() => {
-    localStorage.setItem("selectedCategory", selectedCategory);
-  }, [selectedCategory]);
-
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (showSearch && inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
+
+  const filteredCourses = searchTerm.trim()
+  ? scienceCourses
+      .map((c) => ({
+        ...c,
+        addons: Array.isArray(c.addons)
+          ? c.addons.filter(
+              (a) =>
+                a &&
+                typeof a.name === "string" &&
+                a.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+          : [],
+      }))
+      .filter((c) => c.addons.length)
+  : scienceCourses;
+
+
+
+  const toggleCategory = (category) => {
+    setSelectedCategory((prev) => (prev === category ? "" : category));
+  };
+
+  const highlightText = (text, keyword) => {
+    const parts = text.split(new RegExp(`(${keyword})`, "gi"));
+    return parts.map((part, i) =>
+      part.toLowerCase() === keyword.toLowerCase() ? (
+        <span key={i} className="bg-yellow-300/30 text-white font-bold px-1 rounded">{part}</span>
+      ) : (
+        part
+      )
+    );
+  };
 
   return (
     <>
       <Back />
       <Navbar />
-
-      {/* Main container with light theme */}
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 pb-16">
-        {/* Hero Section */}
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
-          <div className="flex flex-col items-center">
-            <div className="relative mb-8 animate-fadeIn">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 text-center leading-tight">
-                Professional Commerce Degrees
-              </h1>
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-40 h-1.5 bg-blue-600 rounded-full"></div>
-            </div>
-
-            <div className="bg-white shadow-lg rounded-full md:py-3 px-6 mb-12 transform hover:scale-105 transition-transform duration-300">
-              <p className="text-gray-700 text-center flex items-center text-base sm:text-lg">
-                <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-blue-600" />
-                Over <span className="text-blue-600 font-bold mx-2 ">24+</span>
-                students have Joined with us
-              </p>
-            </div>
-          </div>
+      <div className="min-h-screen bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] pt-10 px-4 pb-10">
+        {/* Hero */}
+        <div className="text-center  text-white mb-8">
+          <h1 className="text-3xl md:text-4xl md:mt-15 font-bold">Find Your Path in Commerce</h1>
+          <p className="mt-2 text-lg flex justify-center items-center">
+            <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
+            Over <span className="text-yellow-400 font-bold mx-1">24+</span> students started careers with us!
+          </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-          <div className="relative flex justfy-between">
-            <input
-              type="text"
-              placeholder="Search for specialized programs..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white  border-0 rounded-full py-4 pl-14 pr-6 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-md text-lg"
-            />
-            <FontAwesomeIcon 
-              icon={faSearch} 
-              className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" 
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-600 bg-white "
+        {/* Search Bar & Header */}
+        <div className="max-w-4xl mx-auto bg-primary/50 backdrop-blur-lg p-6 rounded-xl shadow-xl mb-10">
+          <div className="flex justify-between items-center flex-wrap gap-4 mb-4 w-full">
+            <h2 className="text-2xl font-bold text-white text-center w-full md:w-auto flex-1">
+              Commerce Degree Courses
+            </h2>
+            <div className="relative">
+              <div
+                className={`flex items-center bg-white/30 p-2 rounded-full transition-all duration-300 ${showSearch ? "w-64" : "w-4"
+                  }`}
               >
-                <FontAwesomeIcon icon={faXmark} />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Main Content Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="mx-4 sm:mx-5 md:mx-18 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-xl">
-            {/* Header */}
-            <div className="bg-gray-800 py-7">
-              <div className="flex items-center justify-center space-x-3">
-                <FontAwesomeIcon icon={faGlobe} className="text-blue-400 text-2xl sm:text-3xl" />
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                  Commerce Programs
-                </h2>
+                <FontAwesomeIcon
+                  icon={showSearch ? faTimes : faSearch}
+                  className="text-white cursor-pointer"
+                  onClick={() => {
+                    if (showSearch) setSearchTerm("");
+                    setShowSearch(!showSearch);
+                  }}
+                />
+                {showSearch && (
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder="Search courses..."
+                    className="ml-2 bg-transparent border-none outline-none text-white placeholder-white/70 w-full"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                )}
               </div>
             </div>
+          </div>
 
-            {/* Course Categories */}
-            <div className="p-5 sm:p-8">
-              {filteredCourses.length > 0 ? (
-                <div className="grid gap-8">
-                  {filteredCourses.map((course, index) => (
-                    <div key={index} className="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:shadow-xl">
-                      {/* Category Header */}
-                      <div
-                        className={`cursor-pointer p-5 sm:p-6 rounded-xl
-                          transition-all duration-300 flex items-center justify-between
-                          ${selectedCategory === course.category
-                            ? "bg-blue-50 shadow-md"
-                            : "bg-gray-50 hover:bg-gray-100"
-                          }`}
-                        onClick={() =>
-                          setSelectedCategory((prev) =>
-                            prev === course.category ? "" : course.category
-                          )
-                        }
-                      >
-                        <div className="flex items-center">
-                          <div className={`flex items-center justify-center w-12 h-12 rounded-full mr-4 
-                            ${selectedCategory === course.category ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"}
-                            transition-all duration-300`}>
-                            <FontAwesomeIcon icon={faUniversity} className="text-lg" />
-                          </div>
-                          <div>
-                            <span className={`font-semibold text-lg sm:text-xl ${selectedCategory === course.category ? "text-blue-700" : "text-gray-800"}`}>
-                              {course.category}
-                            </span>
-                            <div className="mt-1">
-                              <span className="text-sm bg-blue-100 text-blue-700 float-left px-2 py-0.5 rounded-full">
-                                {course.addons.length} programs
-                              </span>
-                            </div>
-                          </div>
-                        </div>
 
-                        <div className={`flex items-center justify-center w-10 h-10 rounded-full 
-                          ${selectedCategory === course.category ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"}
-                          transition-all duration-300`}>
-                          <FontAwesomeIcon
-                            icon={selectedCategory === course.category ? faChevronUp : faChevronDown}
-                            className="transition-transform duration-300"
-                          />
-                        </div>
-                      </div>
+          {searchTerm && (
+            <div className="mb-4 flex justify-between items-center bg-white/20 p-3 rounded-md">
+              <div className="text-white">
+                <FontAwesomeIcon icon={faFilter} className="mr-2" />
+                Filtering: <span className="font-bold">"{searchTerm}"</span>
+              </div>
+              <button onClick={() => setSearchTerm("")} className="text-white hover:text-gray-600 bg-black/10 rounded-md">
+                <FontAwesomeIcon icon={faTimes} className="mr-1" />
+                Clear
+              </button>
+            </div>
+          )}
 
-                      {/* Addon Courses */}
-                      {selectedCategory === course.category && (
-                        <div className="mt-3 p-5 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 animate-fadeIn">
-                          <div className="bg-blue-100 rounded-lg p-4 mb-6 flex items-center justify-center">
-                            <span className="text-gray-800 text-base sm:text-lg font-medium flex items-center">
-                              <FontAwesomeIcon icon={faStar} className="mr-2 text-blue-600" />
-                              Programs
-                            </span>
-                          </div>
+          {filteredCourses.length === 0 && (
+            <div className="text-white text-center p-6 bg-white/20 rounded-md">
+              <FontAwesomeIcon icon={faSearch} className="text-2xl mb-2" />
+              <p>No courses found for "{searchTerm}"</p>
+            </div>
+          )}
 
-                          <div className="grid grid-cols-1 gap-5">
-                            {course.addons.map((addon, idx) => {
-                              
-                              return (
-                                <div
-                                  key={idx}
-                                  className="bg-white rounded-xl overflow-hidden
-                                  transition-all duration-300 hover:shadow-lg border border-gray-200
-                                  transform hover:-translate-y-1"
-                                  onClick={() => navigate(`/college/${addon.name}`)}
-                                  tabIndex="0"
-                                  role="button"
-                                  aria-label={`View colleges for ${addon.name}`}
-                                  onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
-                                      navigate(`/college/${addon.name}`);
-                                    }
-                                  }}
-                                >
-                                  {/* Card Header */}
-                                  <div className="bg-gray-800 p-4">
-                                    <div className="flex items-center group cursor-pointer justify-between">
-                                      <div className="flex items-center">
-                                      <div className="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center mr-3 shrink-0">
-                                        <FontAwesomeIcon icon={faBookOpen} className="text-white" />
-                                      </div>
-                                      <h3 className="text-white font-semibold text-lg leading-tight">
-                                        {addon.name}
-                                      </h3>
-                                      </div>
-                                      <div className="bg-blue-400/40 text-white px-3  py-1 rounded-full text-sm flex items-center gap-1 group-hover:bg-blue-700/70 transition-colors duration-300">
-                                View Colleges
-                                <FontAwesomeIcon 
-                                icon={faArrowRight}
-                                  size="lg"
-                                  className="group-hover:translate-x-1 transition-transform duration-300" 
-                                />
-                              </div>
-                                    </div>
-                                    {/* <div className="p-4"> */}
-                                    
-                                  {/* </div> */}
-                                  </div>
-
-                                  {/* Card Body */}
-                                 
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+          {/* Course Categories */}
+          {filteredCourses.map((course, index) => (
+            <div key={index} className="mb-4">
+              <div
+                className={`cursor-pointer p-4 rounded-md flex justify-between items-center ${selectedCategory === course.category
+                    ? "bg-white text-primary font-bold"
+                    : "bg-white/20 text-white hover:bg-white/30"
+                  }`}
+                onClick={() => toggleCategory(course.category)}
+              >
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faUniversity} />
+                  {course.category}
+                  <span className="bg-white/20 px-2 rounded-full text-sm whitespace-nowrap overflow-hidden text-ellipsis">{course.addons.length} courses</span>
                 </div>
-              ) : (
-                <div className="bg-gray-50 rounded-xl p-8 text-center">
-                  <div className="text-gray-700 text-lg mb-4">No programs match your search criteria</div>
-                  <button 
-                    onClick={() => setSearchTerm("")}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-8 rounded-full transition-colors duration-200"
-                  >
-                    Reset Search
-                  </button>
+                <FontAwesomeIcon
+                  icon={selectedCategory === course.category ? faChevronUp : faChevronDown}
+                />
+              </div>
+
+              {selectedCategory === course.category && (
+                <div className="mt-3 bg-white/20 p-4 rounded-md">
+                  <h3 className="text-white mb-3 flex items-center justify-center">
+                    <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
+                    Click a course to view colleges
+                  </h3>
+                  <ul className="grid grid-cols-1 p-0 md:grid-cols-2 gap-3">
+                    {course.addons.map((addon, idx) => (
+                      <li
+                        key={idx}
+                        className="bg-white/30 text-white p-3 rounded-md flex justify-between items-center hover:bg-white/40 cursor-pointer"
+                        onClick={() => navigate(`/college/${addon.name}`)}
+                      >
+                        <span className="flex items-center">
+                          <FontAwesomeIcon icon={faBookOpen} className="mr-2" />
+                          {searchTerm ? highlightText(addon.name, searchTerm) : addon.name}
+                        </span>
+                        <div className="flex underline items-center gap-1 text-xs">
+                          <p className="">click for colleges</p>
+                          <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </div>
+
+
+
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
-          </div>
+          ))}
         </div>
-        
-        <Counts />
-        <Footer />
+
       </div>
+      <Counts />
+      <Footer />
     </>
   );
 }

@@ -5,31 +5,99 @@ import { useEffect, useState } from "react";
 import Back from "../../components/common/Back";
 import Footer from "../../components/common/Footer";
 import CollegeCard from "../../components/College/CollegeCard";
+import { Skeleton } from "@mui/material";
+import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 
-export default function CollegeList() {
+// Lazy loaded college card with skeleton fallback
+const LazyCollegeCard = ({ college, location, isAdotzeeChoice, addonName, scrollPosition }) => {
+  return (
+    <LazyLoadComponent
+      scrollPosition={scrollPosition}
+      threshold={400}
+      placeholder={
+        <Skeleton 
+          variant="rounded" 
+          width="100%" 
+          height={200} 
+          animation="wave"
+          sx={{ bgcolor: 'rgba(200, 200, 200, 0.2)' }}
+        />
+      }
+    >
+      <CollegeCard
+        college={college}
+        location={location}
+        isAdotzeeChoice={isAdotzeeChoice}
+        addonName={addonName}
+      />
+    </LazyLoadComponent>
+  );
+};
+
+const CollegeListWithLazyLoading = ({ scrollPosition }) => {
   const { addonName } = useParams();
-  const { commerceCourses, scienceCourses, humanitiesCourses, collegeLocations, dotzeeChoiceColleges, paraAdotzeeChoiceColleges } = useCourse(); // Get all courses from context
+  const { 
+    commerceCourses, 
+    scienceCourses, 
+    humanitiesCourses, 
+    collegeLocations, 
+    dotzeeChoiceColleges, 
+    paraAdotzeeChoiceColleges 
+  } = useCourse();
 
   const [selectedColleges, setSelectedColleges] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const [visibleColleges, setVisibleColleges] = useState(8);
+  
   useEffect(() => {
-    const allCourses = [
-      ...commerceCourses,
-      ...scienceCourses,
-      ...humanitiesCourses,
-    ];
+    setLoading(true);
 
-    const foundAddon = allCourses
-      .flatMap((course) => course.addons)
-      .find((addon) => addon.name === addonName);
-    if (foundAddon) {
-      setSelectedColleges(foundAddon.colleges);
-    }
+    const loadColleges = async () => {
+      await new Promise(resolve => setTimeout(resolve, 500)); // short delay for smoother transition
+      
+      const allCourses = [
+        ...commerceCourses,
+        ...scienceCourses,
+        ...humanitiesCourses,
+      ];
+
+      const foundAddon = allCourses
+        .flatMap((course) => course.addons)
+        .find((addon) => addon.name === addonName);
+        
+      if (foundAddon) {
+        setSelectedColleges(foundAddon.colleges);
+      }
+
+      setLoading(false);
+    };
+    
+    loadColleges();
   }, [addonName, commerceCourses, scienceCourses, humanitiesCourses]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  const loadMoreColleges = () => {
+    setVisibleColleges(prev => prev + 8);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >= 
+        document.documentElement.offsetHeight - 200 &&
+        !loading &&
+        visibleColleges < selectedColleges.length
+      ) {
+        loadMoreColleges();
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, visibleColleges, selectedColleges.length]);
 
   return (
     <>
@@ -46,32 +114,64 @@ export default function CollegeList() {
             Choose the college that aligns with your interests.
           </p>
 
-          <ul className="p-0 space-y-4">
-            {selectedColleges.length > 0 ? (
-              selectedColleges.map((college, index) => (
-                <CollegeCard
+          {loading ? (
+            <div className="space-y-4">
+              {[...Array(6)].map((_, index) => (
+                <Skeleton 
                   key={index}
-                  college={college}
-                  location={collegeLocations[college] || "Location not specified"}
-                  isAdotzeeChoice={
-                    addonName.toUpperCase().includes("NURSING") && paraAdotzeeChoiceColleges.includes(college.toUpperCase()) ||
-                    !addonName.toUpperCase().includes("NURSING") && !addonName.toUpperCase().includes("Paramedical") && dotzeeChoiceColleges.includes(college.toUpperCase())
-                  }
-                  // onDetailsClick={()=>DetailsClick(addonName, college)}
-                  addonName={addonName}
+                  variant="rounded" 
+                  width="100%" 
+                  height={200} 
+                  animation="wave"
+                  sx={{ bgcolor: 'rgba(200, 200, 200, 0.3)' }}
                 />
-              ))
-            ) : (
-              <p className="text-center text-gray-600">
-                No colleges found for this course.
-              </p>
-            )}
-          </ul>
+              ))}
+            </div>
+          ) : (
+            <>
+              {selectedColleges.length > 0 ? (
+                <ul className="p-0 space-y-4">
+                  {selectedColleges.slice(0, visibleColleges).map((college, index) => (
+                    <LazyCollegeCard
+                      key={index}
+                      college={college}
+                      location={collegeLocations[college] || "Location not specified"}
+                      isAdotzeeChoice={
+                        addonName.toUpperCase().includes("NURSING") && paraAdotzeeChoiceColleges.includes(college.toUpperCase()) ||
+                        !addonName.toUpperCase().includes("NURSING") && !addonName.toUpperCase().includes("Paramedical") && dotzeeChoiceColleges.includes(college.toUpperCase())
+                      }
+                      addonName={addonName}
+                      scrollPosition={scrollPosition}
+                    />
+                  ))}
+                </ul>
+              ) : (
+                <div className="text-center p-10 bg-white/40 rounded-lg">
+                  <p className="text-gray-600 text-xl">
+                    No colleges found for this course.
+                  </p>
+                </div>
+              )}
+
+              {visibleColleges < selectedColleges.length && (
+                <div className="text-center mt-6 p-4">
+                  <Skeleton 
+                    variant="rounded" 
+                    width={200} 
+                    height={20} 
+                    animation="wave"
+                    sx={{ bgcolor: 'rgba(200, 200, 200, 0.4)', margin: 'auto' }}
+                  />
+                  <p className="text-gray-500 mt-2 text-sm">Loading more colleges...</p>
+                </div>
+              )}
+            </>
+          )}
         </div>
         <Footer />
       </div>
     </>
   );
-}
+};
 
-
+export default trackWindowScroll(CollegeListWithLazyLoading);
