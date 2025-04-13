@@ -139,15 +139,17 @@ export default function Commerce() {
           {filteredCourses.map((course, index) => (
             <div key={index} className="mb-4">
               <div
-                className={`cursor-pointer p-4 rounded-md flex justify-between items-center ${selectedCategory === course.category
+                className={`cursor-pointer p-4 border border-white/40 rounded-lg shadow-md flex justify-between items-center ${selectedCategory === course.category
                     ? "bg-white text-primary font-bold"
-                    : "bg-white/20 text-white hover:bg-white/30"
+                    : "bg-transparent text-white hover:bg-white/20"
                   }`}
                 onClick={() => toggleCategory(course.category)}
               >
                 <div className="flex items-center gap-3">
                   <FontAwesomeIcon icon={faUniversity} />
+                  <p className="font-semibold text-md md:text-lg" >
                   {course.category}
+                    </p>
                   <span className="bg-white/20 px-2 rounded-full text-sm whitespace-nowrap overflow-hidden text-ellipsis">{course.addons.length} courses</span>
                 </div>
                 <FontAwesomeIcon
