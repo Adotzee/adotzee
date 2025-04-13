@@ -170,10 +170,13 @@ export default function Commerce() {
                       >
                         <span className="flex items-center">
                           <FontAwesomeIcon icon={faBookOpen} className="mr-2" />
+                          <p className="font-semibold text-sm md:text-md" >
                           {searchTerm ? highlightText(addon.name, searchTerm) : addon.name}
+
+                          </p>
                         </span>
                         <div className="flex underline items-center gap-1 text-xs">
-                          <p className="">click for colleges</p>
+                          <p className="font-semibold">click for colleges</p>
                           <FontAwesomeIcon icon={faExternalLinkAlt} />
                         </div>
 

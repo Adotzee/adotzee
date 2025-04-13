@@ -160,8 +160,10 @@ export default function Humanities() {
                       >
                         <span className="flex items-center">
                           <FontAwesomeIcon icon={faBookOpen} className="mr-2" />
+                          <p className="font-semibold text-sm md:text-md" >
                           {searchTerm ? highlightText(addon.name, searchTerm) : addon.name}
-                        </span>
+
+                          </p>                        </span>
                         <div className="flex underline items-center gap-1 text-xs whitespace-nowrap">
                           <p>click for colleges</p>
                           <FontAwesomeIcon icon={faExternalLinkAlt} />
