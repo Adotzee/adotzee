@@ -35,7 +35,7 @@ export default function Commerce() {
   }, []);
 
   const filteredCourses = searchTerm.trim()
-  ? scienceCourses
+  ? commerceCourses
       .map((c) => ({
         ...c,
         addons: Array.isArray(c.addons)
@@ -48,7 +48,7 @@ export default function Commerce() {
           : [],
       }))
       .filter((c) => c.addons.length)
-  : scienceCourses;
+  : commerceCourses;
 
 
 
