@@ -67,7 +67,7 @@ export default function Humanities() {
       <div className="min-h-screen bg-gradient-to-br from-[#6a85b6] to-[#bac8e0] pt-10 px-4 pb-10">
         {/* Hero */}
         <div className="text-center text-white mb-8">
-          <h1 className="text-3xl md:text-4xl md:mt-15 font-bold">Explore Humanities Career Options</h1>
+          <h1 className="text-3xl md:text-4xl mt-20 md:mt-15 font-bold">Explore Humanities Career Options</h1>
           <p className="mt-2 text-lg flex justify-center items-center">
             <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
             Over <span className="text-yellow-400 font-bold mx-1">24+</span> students started careers with us!
@@ -138,8 +138,9 @@ export default function Humanities() {
               >
                 <div className="flex items-center gap-3">
                   <FontAwesomeIcon icon={faUniversity} />
+                  <p className="font-semibold text-md md:text-lg" >
                   {course.category}
-                  <span className="bg-white/20 px-2 rounded-full text-sm whitespace-nowrap overflow-hidden text-ellipsis">{course.addons.length} courses</span>
+                    </p>                  <span className="bg-white/20 px-2 rounded-full text-sm whitespace-nowrap overflow-hidden text-ellipsis">{course.addons.length} courses</span>
                 </div>
                 <FontAwesomeIcon
                   icon={selectedCategory === course.category ? faChevronUp : faChevronDown}
