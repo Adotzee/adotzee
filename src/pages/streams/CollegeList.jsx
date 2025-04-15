@@ -15,10 +15,10 @@ const LazyCollegeCard = ({ college, location, isAdotzeeChoice, addonName, scroll
       scrollPosition={scrollPosition}
       threshold={400}
       placeholder={
-        <Skeleton 
-          variant="rounded" 
-          width="100%" 
-          height={200} 
+        <Skeleton
+          variant="rounded"
+          width="100%"
+          height={200}
           animation="wave"
           sx={{ bgcolor: 'rgba(200, 200, 200, 0.2)' }}
         />
@@ -36,57 +36,57 @@ const LazyCollegeCard = ({ college, location, isAdotzeeChoice, addonName, scroll
 
 const CollegeListWithLazyLoading = ({ scrollPosition }) => {
   const { addonName } = useParams();
-  const { 
-    commerceCourses, 
-    scienceCourses, 
-    humanitiesCourses, 
-    collegeLocations, 
-    dotzeeChoiceColleges, 
-    paraAdotzeeChoiceColleges 
+  const {
+    commerceCourses,
+    scienceCourses,
+    humanitiesCourses,
+    collegeLocations,
+    dotzeeChoiceColleges,
+    paraAdotzeeChoiceColleges
   } = useCourse();
 
   const [selectedColleges, setSelectedColleges] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleColleges, setVisibleColleges] = useState(8);
-  
+
   useEffect(() => {
     setLoading(true);
 
     const loadColleges = async () => {
       await new Promise(resolve => setTimeout(resolve, 500)); // short delay for smoother transition
-      
+
       const allCourses = [
-        ...commerceCourses,
         ...scienceCourses,
+        ...commerceCourses,
         ...humanitiesCourses,
       ];
+      const allAddons = allCourses.reduce(
+        (acc, course) => acc.concat(course.addons || []),
+        []
+      );
 
-      const foundAddon = allCourses
-        .flatMap((course) => course.addons)
-        .find((addon) => addon.name === addonName);
-        
-      if (foundAddon) {
-        setSelectedColleges(foundAddon.colleges);
-      }
+      const matchingAddons = allAddons.find(addon => addon.name === addonName);
+      console.log(matchingAddons)
+      setSelectedColleges(matchingAddons.colleges);
 
       setLoading(false);
     };
-    
+
     loadColleges();
   }, [addonName, commerceCourses, scienceCourses, humanitiesCourses]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const loadMoreColleges = () => {
-    setVisibleColleges(prev => prev + 8);
+    setVisibleColleges(prev => prev + 4);
   };
 
   useEffect(() => {
     const handleScroll = () => {
       if (
-        window.innerHeight + document.documentElement.scrollTop >= 
+        window.innerHeight + document.documentElement.scrollTop >=
         document.documentElement.offsetHeight - 200 &&
         !loading &&
         visibleColleges < selectedColleges.length
@@ -94,10 +94,13 @@ const CollegeListWithLazyLoading = ({ scrollPosition }) => {
         loadMoreColleges();
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [loading, visibleColleges, selectedColleges.length]);
+  useEffect(() => {
+    console.log(selectedColleges)
+  })
 
   return (
     <>
@@ -116,12 +119,12 @@ const CollegeListWithLazyLoading = ({ scrollPosition }) => {
 
           {loading ? (
             <div className="space-y-4">
-              {[...Array(6)].map((_, index) => (
-                <Skeleton 
+              {[...Array(8)].map((_, index) => (
+                <Skeleton
                   key={index}
-                  variant="rounded" 
-                  width="100%" 
-                  height={200} 
+                  variant="rounded"
+                  width="100%"
+                  height={200}
                   animation="wave"
                   sx={{ bgcolor: 'rgba(200, 200, 200, 0.3)' }}
                 />
@@ -131,7 +134,7 @@ const CollegeListWithLazyLoading = ({ scrollPosition }) => {
             <>
               {selectedColleges.length > 0 ? (
                 <ul className="p-0 space-y-4">
-                  {selectedColleges.slice(0, visibleColleges).map((college, index) => (
+                  {selectedColleges.map((college, index) => (
                     <LazyCollegeCard
                       key={index}
                       college={college}
@@ -155,10 +158,10 @@ const CollegeListWithLazyLoading = ({ scrollPosition }) => {
 
               {visibleColleges < selectedColleges.length && (
                 <div className="text-center mt-6 p-4">
-                  <Skeleton 
-                    variant="rounded" 
-                    width={200} 
-                    height={20} 
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={20}
                     animation="wave"
                     sx={{ bgcolor: 'rgba(200, 200, 200, 0.4)', margin: 'auto' }}
                   />
