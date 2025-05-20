@@ -17,7 +17,7 @@ export const CourseProvider = ({ children }) => {
             "MS Ramaiah",
             "RR Institution",
             "Pes",
-            "Yenepoya",
+            "Yenepoya University",
             "Karnataka College",
             "Christian College",
             "Maurya Group Of Institutions",
@@ -130,7 +130,7 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "bsc Anesthesia & Operation Theatre Technology ",
+          name: "bsc Anesthesia & Operation Theatre Technology",
           colleges: [
             "Akash College",
             "East Point Medical College",
@@ -1186,10 +1186,6 @@ export const CourseProvider = ({ children }) => {
           ],
         },
         {
-          name: "BBA + Aviation & Cabin Crew",
-          colleges: ["Sambhram Institute"],
-        },
-        {
           name: "BBA + Logistics and Aviation",
           colleges: [
             "Yenepoya Bangalore",
@@ -1265,15 +1261,6 @@ export const CourseProvider = ({ children }) => {
         {
           name: "BBA Logistics,Suplly Chain MNGMT & Tourism Administration",
           colleges: ["Sambhram Institute"],
-        },
-        {
-          name: "BBA + Logistics,SCM & Digital Marketing",
-          colleges: [
-            {
-              name: "BBA + Logistics & SCM",
-              colleges: ["Jai Bharath"],
-            },
-          ],
         },
        
       ],
@@ -1392,35 +1379,43 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA Cloud Computing",
-          colleges: ["HKBK"],
+          colleges: ["HKBK","East West College","IZEE Business School","Srinivas University", "S-Vyasa"],
         },
         {
           name: "BCA AI And ML",
-          colleges: ["IZEE Business School", "Brindavan", "HKBK", "Presidency University"],
+          colleges: ["IZEE Business School", "Brindavan", "HKBK", "Presidency University","East West College"],
         },
         {
           name: "BCA AI",
-          colleges: ["Jain University"],
+          colleges: [
+            "Jain University",
+            "Krupanidhi",
+            "Srinivas University",
+
+          ],
         },
         {
-          name: "BCA AI, ML & Robotics",
-          colleges: ["East West College", "S-Vyasa"],
-        },
-        {
-          name: "BCA Artificial Intelligence & Python",
+          name: "BCA AI & Python",
           colleges: ["T-John", "Kripanidhi"],
         },
         {
           name: "BCA Cyber Security",
-          colleges: ["HKBK"],
+          colleges: [
+                    "HKBK",
+                    "S-Vyasa",
+                    "Kripanidhi",
+                    "Srinivas University",
+                    "S-Vyasa",
+
+          ],
         },
         {
-          name: "BCA Cloud Computing & Ethical Hacking",
-          colleges: ["East West College", "IZEE Business School"],
-        },
-        {
-          name: "BCA Cloud Computing, Cyber Security & Digital Forensic",
-          colleges: ["Srinivas University", "S-Vyasa"],
+          name: "BCA Ethical Hacking ",
+          colleges: [
+            "S-Vyasa",
+            "Kripanidhi",
+            "IZEE Business School",
+          ],
         },
         {
           name: "BCA Global",
@@ -1516,7 +1511,11 @@ export const CourseProvider = ({ children }) => {
         },
         {
           name: "BCA AI, Robotics & IOT",
-          colleges: ["Yenepoya University"],
+          colleges: [
+            "Yenepoya University",
+            "S-Vyasa",
+          
+          ],
         },
         {
           name: "BCA Data Science, AI & ML",
@@ -1527,15 +1526,7 @@ export const CourseProvider = ({ children }) => {
           colleges: ["IZEE Business School"],
         },
         {
-          name: "BCA Cyber Security, Ethical Hacking & Digital Forensic",
-          colleges: ["S-Vyasa"],
-        },
-        {
           name: "BCA Data Science, AI & Big Data Analytics",
-          colleges: ["S-Vyasa"],
-        },
-        {
-          name: "BCA AI, Robotics & IOT",
           colleges: ["S-Vyasa"],
         },
         {
@@ -1587,15 +1578,7 @@ export const CourseProvider = ({ children }) => {
           colleges: ["Jain University"],
         },
         {
-          name: "BCA AI With Futurense",
-          colleges: ["Jain University"],
-        },
-        {
           name: "BCA Electives With Comptia",
-          colleges: ["Jain University"],
-        },
-        {
-          name: "BCA Specialization (CT & IS, MA & CT, MA & IS With Comptia)",
           colleges: ["Jain University"],
         },
       ],
