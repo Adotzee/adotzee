@@ -22,7 +22,7 @@ function Intro() {
         </div>
 
         <div
-          className="w-full md:mt-10 mt-5 max-w-4xl bg-white shadow-xl mx-10 rounded-3xl p-6 sm:p-8 md:p-10 relative z-10"
+          className="w-full md:mt-10 mt-3 max-w-4xl bg-white shadow-xl rounded-3xl p-6 sm:p-8 md:p-10 relative z-10"
           data-aos="fade-up"
         >
           <h1 className="text-2xl sm:text-2xl md:text-5xl font-extrabold leading-tight mb-4">
@@ -39,7 +39,7 @@ function Intro() {
             .
           </p>
           <h1 className="text-size-4xl md:text-xl text-gray-500 mb-6">
-            Choose the Stream for Future{" "}
+            Choose Your Academic Path{" "}
             <span className="animate-bounce">↓</span>
           </h1>
           <div
@@ -50,21 +50,21 @@ function Intro() {
               onClick={() => navigate("/science")}
               className="bg-blue-700 hover:bg-blue-500 hover:text-gray-200 text-white px-5 py-3 sm:px-6 sm:py-3 rounded-full font-semibold shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-              Do Degree in Science
+              Science Stream
             </button>
 
             <button
               onClick={() => navigate("/commerce")}
               className="bg-primary hover:bg-blue-700 hover:text-gray-200 text-white px-5 py-3 sm:px-6 sm:py-3 rounded-full font-semibold shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-              Do Degree in Commerce
+              Commerce Stream
             </button>
 
             <button
               onClick={() => navigate("/humanities")}
               className="bg-blue-700 hover:bg-blue-500 hover:text-gray-200 text-white px-5 py-3 sm:px-6 sm:py-3 rounded-full font-semibold shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-              Do Degree in Humanities
+              Humanities Stream
             </button>
           </div>
         </div>
