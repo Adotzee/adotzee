@@ -12,9 +12,6 @@ export default defineConfig({
       logo: '#052949',
       good: '#23a8f2',
     },
-    shortcuts: {
-    'app-base': 'bg-light text-gray-900',
-  },
     fontFamily: {
       serif: ['Georgia', 'serif'], // For Georgia Bold
       playfair: ['"Playfair Display"', 'serif'], // For Playfair Display Bold

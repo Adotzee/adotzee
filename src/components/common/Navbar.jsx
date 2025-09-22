@@ -54,12 +54,11 @@ function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 me-20">
-          {["About", "Admission", "Contact", "Hostels"].map((item) => (
+          {["About", "Admission", "Contact"].map((item) => (
             <a
               key={item}
               href={
-                item === "Admission" || "Hostels"
-                      ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`
+                item === "Admission" ? "/admission" : `/#${item.toLowerCase()}`
               }
               className="text-gray-50 hover:text-gray-900 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
@@ -82,12 +81,12 @@ function Navbar() {
               <button onClick={toggleMenu} className="self-end text-2xl mb-5 bg-transparent">
               <i className="fa-solid fa-xmark"></i>
               </button>
-              {["Home", "About", "Admission", "Contact", "Hostels"].map((item) => (
+              {["Home", "About", "Admission", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={
-                    item === "Admission" || "Hostels"
-                      ? `/${item.toLowerCase()}`
+                    item === "Admission"
+                      ? "/admission"
                       : `/#${item.toLowerCase()}`
                   }
                   className="text-gray-600 hover:text-white py-3 text-lg w-full text-center rounded-md bg-opacity-20 hover:bg-blue-700 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg mb-2"                  onClick={() => setIsMenuOpen(false)}
