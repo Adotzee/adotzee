@@ -32,8 +32,8 @@ ReactGA.initialize("G-ZT2XPNZF9Q");
 ReactGA.send("pageview");
 
 function App() {
-  const isAdminSubdomain = window.location.hostname === "admin.adotzee.in";
-  // const isAdminSubdomain = true;
+  const hostname = window.location.hostname;
+  const isAdminSubdomain = hostname.startsWith("admin."); // admin.adotzee.in
 
   return (
     <HelmetProvider>
@@ -62,13 +62,6 @@ function App() {
                   <Route path="/admission" element={<Admission />} />
                   <Route path="/sample" element={<CourseSelectionUI />} />
                   <Route path="/sam" element={<CourseBrowserApp />} />
-                  <Route path="/admin/*" element={<AdminLayout />}>
-                    <Route index element={<Dashboard />} />
-                    <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="courses" element={<CourseManagement />} />
-                    <Route path="colleges" element={<CollegeManagement />} />
-                    <Route path="addons" element={<AddonManagement />} />
-                  </Route>
                   <Route path="*" element={<NotFoundPage />} />
                 </>
               )}
