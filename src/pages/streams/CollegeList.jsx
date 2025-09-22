@@ -64,7 +64,7 @@ const CollegeListWithLazyLoading = ({ scrollPosition }) => {
         (acc, course) => acc.concat(course.addons || []),
         []
       );
-
+      console.log(addonName)
       const matchingAddons = allAddons.find(addon => addon.name === addonName);
       console.log(matchingAddons)
       setSelectedColleges(matchingAddons.colleges);
@@ -98,9 +98,7 @@ const CollegeListWithLazyLoading = ({ scrollPosition }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [loading, visibleColleges, selectedColleges.length]);
-  useEffect(() => {
-    console.log(selectedColleges)
-  })
+
 
   return (
     <>

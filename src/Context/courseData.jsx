@@ -2946,7 +2946,6 @@ export const CourseProvider = ({ children }) => {
     "Aj Institute": "Mangaluru",
     "BGS Medical College": "Benagaluru",
     "Brindavan College": "Benagaluru",
-    "JSS College": "Benagaluru",
     "Rajarajeswari Medical College": "Benagaluru",
     "Sai Nursing College": "Benagaluru",
     "Sambhram College": "Benagaluru",
