@@ -7,7 +7,6 @@ import LinearLoading from "./components/common/LinearLoading";
 import NotFoundPage from "./pages/404/404";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
-import TawkToChat from "./components/contact/TawkToWidget";
 import { Toaster } from "react-hot-toast";
 import './App.css';
 
@@ -40,7 +39,6 @@ function App() {
     <HelmetProvider>
       <CourseProvider>
         <Suspense fallback={<LinearLoading />}>
-          <TawkToChat />
           <Router>
             <Routes>
               {isAdminSubdomain ? (
