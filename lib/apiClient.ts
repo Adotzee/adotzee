@@ -6,7 +6,6 @@ export interface ApiResponse<T> {
     message: string;
     data: T;
 }
-
 export const apiClient = axios.create({
     baseURL: API_BASE_URL,
     headers: {
@@ -14,7 +13,6 @@ export const apiClient = axios.create({
     },
     timeout: 15000,
 });
-
 // Request Interceptor
 apiClient.interceptors.request.use(
     (config) => {

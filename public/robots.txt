@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /search
+
+# Host
+Host: https://adotzee.in
+
+# Sitemaps
+Sitemap: https://adotzee.in/sitemap.xml
