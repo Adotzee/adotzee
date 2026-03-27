@@ -10,7 +10,7 @@ export function Courses() {
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 text-center md:text-left">
                     <div>
                         <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-4">
-                            Popular Courses.
+                            Trending Courses.
                         </h2>
                         <p className="text-xl text-[#0F172A] font-medium opacity-70 max-w-xl">
                             Find the right degree program after Plus Two to kickstart your career.

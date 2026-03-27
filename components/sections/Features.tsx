@@ -37,10 +37,10 @@ export function Features() {
                 className="container mx-auto px-6 max-w-[1240px] relative z-10"
             >
                 <motion.div variants={itemVariants} className="text-center mb-24">
-                    <span className="text-blue-600 font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Core Capabilities</span>
-                    <h2 className="text-5xl md:text-8xl font-black text-slate-900 tracking-[-0.04em] leading-[0.9] mb-8">
-                        Powered by <br /> 
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">Intelligence.</span>
+                    <span className="text-blue-600 font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Smart Features</span>
+                    <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-[-0.04em] leading-[0.9] mb-8">
+                        Smart Features for Your <br />
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">College Journey.</span>
                     </h2>
                     <div className="w-24 h-1.5 bg-blue-600 rounded-full mx-auto" />
                 </motion.div>

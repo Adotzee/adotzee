@@ -29,13 +29,10 @@ export function Colleges() {
                 {/* Heading */}
                 <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
                     <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-6 relative inline-block">
-                        Top Partner Colleges
+                        Top Ranked Colleges in Bangalore
                         <div className="absolute -bottom-4 left-1/2 w-24 h-1 bg-brand-accent rounded-full transform -translate-x-1/2" />
                     </h2>
 
-                    <p className="text-xl text-[#0F172A] font-medium opacity-70 leading-loose">
-                        Get admission in verified institutions across Bangalore, Mangalore, and Mysore.
-                    </p>
                 </div>
 
                 {/* Colleges Grid */}

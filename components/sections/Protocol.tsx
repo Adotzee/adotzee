@@ -10,9 +10,7 @@ export function Protocol() {
                     <h2 className="text-4xl md:text-6xl font-black text-[#0F172A] tracking-tighter mb-4">
                         Simple Admission Process
                     </h2>
-                    <p className="text-xl text-[#0F172A] font-medium opacity-70 leading-loose">
-                        A smooth, expert-led journey from choosing a course to finalizing your college enrollment.
-                    </p>
+
                 </div>
 
                 <div className="relative max-w-4xl mx-auto">

@@ -9,30 +9,27 @@ export function CTA() {
     return (
         <section className="py-20 md:py-40 bg-transparent relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-[900px] relative z-10 text-center">
-                <div className="bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-24 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-700 ease-out">
+                <div className="p-10 md:p-20">
 
-                    <div className="inline-block mb-10 px-6 py-2 rounded-full border border-[#60A5FA]/40 bg-blue-50/50 backdrop-blur-sm shadow-sm relative z-10">
+                    <div className="inline-block mb-8 px-6 py-2 rounded-full border border-[#60A5FA]/40 bg-blue-50/50 backdrop-blur-sm shadow-sm">
                         <span className="text-xs font-black tracking-widest uppercase text-[#2563EB]">
                             South India Admission Authority
                         </span>
                     </div>
 
-                    <h2 className="text-5xl md:text-7xl font-black text-[#0F172A] tracking-tighter mb-8 relative z-10">
+                    <h2 className="text-4xl md:text-6xl font-black text-[#0F172A] tracking-tighter mb-6">
                         Ready to find your college?
                     </h2>
 
-                    <p className="text-xl text-[#0F172A] opacity-80 font-medium mb-12 max-w-2xl mx-auto leading-loose relative z-10">
+                    <p className="text-xl text-[#0F172A] opacity-70 font-medium mb-10 max-w-2xl mx-auto leading-loose">
                         Talk to an expert today for direct admission guidance to premier colleges in Bangalore, Mangalore, Mysore, and Coimbatore.
                     </p>
 
-                    <Link href={COMPANY_INFO.socials.whatsapp} target="_blank" className="relative z-10">
+                    <Link href={COMPANY_INFO.socials.whatsapp} target="_blank">
                         <Button className="h-14 md:h-16 px-10 md:px-12 rounded-full bg-brand-accent hover:bg-brand-accent/80 text-white font-bold text-lg md:text-xl transition-all shadow-brand-glow hover:shadow-brand-glow-lg hover:-translate-y-1">
                             Talk to an Admission Expert
                         </Button>
                     </Link>
-
-                    {/* Vaporwave Hover Mesh inside CTA */}
-                    <div className="absolute bottom-0 left-1/2 w-full h-full bg-gradient-to-t from-[#E0F2FE]/80 to-transparent blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -translate-x-1/2 pointer-events-none mix-blend-multiply" />
                 </div>
             </div>
 
