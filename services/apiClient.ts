@@ -6,7 +6,7 @@ export interface ApiResponse<T> {
     data: T;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://adotzee-backend.onrender.com/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.adotzee.in/api";
 
 export const apiClient = axios.create({
     baseURL: API_BASE_URL,
