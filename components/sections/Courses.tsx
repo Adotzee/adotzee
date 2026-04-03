@@ -2,8 +2,15 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function Courses() {
+    const router = useRouter();
+
+    const handleCourseSelect = (courseId: number, courseName: string) => {
+        router.push(`/addons?courseId=${courseId}&courseName=${encodeURIComponent(courseName)}&streamName=Science&stream=1`);
+    };
+
     return (
         <section className="py-16 md:py-24 bg-transparent relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
@@ -20,17 +27,18 @@ export function Courses() {
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                     {[
-                        { title: "Computer Applications (BCA)", tags: ["Technology", "3 Years"], span: "md:col-span-6" },
-                        { title: "Business Administration (BBA)", tags: ["Management", "3 Years"], span: "md:col-span-3" },
-                        { title: "B.Tech Computer Science", tags: ["Engineering", "4 Years"], span: "md:col-span-3" },
-                        { title: "Allied Health Sciences", tags: ["Medicine", "4 Years"], span: "md:col-span-4" },
-                        { title: "Commerce (B.Com)", tags: ["Accounting", "3 Years"], span: "md:col-span-8" }
+                        { id: 9, title: "Computer Applications (BCA)", tags: ["Technology", "3 Years"], span: "md:col-span-6" },
+                        { id: 10, title: "Business Administration (BBA)", tags: ["Management", "3 Years"], span: "md:col-span-3" },
+                        { id: 8, title: "B.Tech Computer Science", tags: ["Engineering", "4 Years"], span: "md:col-span-3" },
+                        { id: 7, title: "Allied Health Sciences", tags: ["Medicine", "4 Years"], span: "md:col-span-4" },
+                        { id: 11, title: "Commerce (B.Com)", tags: ["Accounting", "3 Years"], span: "md:col-span-8" }
                     ].map((course, i) => (
-                        <div
+                        <button
                             key={i}
-                            className={`${course.span} group relative bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-3xl p-10 flex flex-col justify-between hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 overflow-hidden`}
+                            onClick={() => handleCourseSelect(course.id, course.title)}
+                            className={`${course.span} group relative bg-blue-100 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-3xl p-10 flex flex-col justify-between hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 overflow-hidden text-left`}
                         >
-                            <div className="flex justify-between items-start mb-12 relative z-10">
+                            <div className="flex justify-between items-start mb-12 relative z-10 w-full">
                                 <div className="flex flex-wrap gap-2">
                                     {course.tags.map((tag, j) => (
                                         <span key={j} className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 bg-white rounded-full border border-white shadow-sm text-[#2563EB]">
@@ -49,7 +57,7 @@ export function Courses() {
 
                             {/* Hover Vaporwave Glow */}
                             <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#E0F2FE] rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 mix-blend-multiply pointer-events-none" />
-                        </div>
+                        </button>
                     ))}
                 </div>
             </div>
@@ -58,3 +66,4 @@ export function Courses() {
         </section>
     );
 }
+

@@ -1,7 +1,6 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
 import { GraduationCap, Clock, ArrowLeft, CheckCircle2, TrendingUp, Sparkles, Building2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

@@ -1,13 +1,11 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
-import { Building2, MapPin, Star, GraduationCap, CheckCircle, Phone, Mail, Globe, Sparkles, ShieldCheck } from "lucide-react";
+import { MapPin, Star, GraduationCap, CheckCircle, Phone, Mail, Globe, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useUiStore } from "@/store/useUiStore";
 import { Badge } from "@/components/ui/badge";
-import { College, Course } from "@/types";
 
 import { useCollege, useCourses } from "@/hooks/useData";
 import { Loader2 } from "lucide-react";

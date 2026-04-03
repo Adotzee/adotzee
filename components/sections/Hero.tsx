@@ -26,10 +26,10 @@ export function Hero() {
             <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-indigo-50 rounded-full blur-[120px] opacity-60 animate-pulse" />
 
             <motion.div
-                className="relative z-10 w-full max-w-6xl mx-auto px-6 mt-30 mb-30"
+                className="relative z-10 w-full max-w-5xl mx-auto px-6 mt-30 mb-30"
             >
 
-                <div className="bg-white/80 backdrop-blur-xl border border-slate-200 rounded-[2.5rem] shadow-xl p-8 md:p-14 text-center">
+                <div className="bg-white/80 backdrop-blur-xl  rounded-[2.5rem] shadow-xl p-4 md:p-10 text-center">
 
 
                     <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-none">
@@ -37,7 +37,7 @@ export function Hero() {
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">After Plus Two</span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-slate-700 mb-6 max-w-2xl font-semibold leading-relaxed">
+                    <p className="text-xl md:text-2xl text-slate-700 mb-6 font-semibold leading-relaxed">
                         Explore Top-Rated Courses &amp; Premier Colleges
                     </p>
 
@@ -51,18 +51,17 @@ export function Hero() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mt-6">
-                        { [
-                            { id: 'Science', name: 'Science', emoji: '🔬', bg: 'bg-[#E3F2FD]', border: 'border-blue-200', hover: 'hover:bg-blue-100' },
-                            { id: 'Commerce', name: 'Commerce', emoji: '📈', bg: 'bg-[#FFF3E0]', border: 'border-orange-200', hover: 'hover:bg-orange-100' },
-                            { id: 'Humanities', name: 'Humanities', emoji: '🎨', bg: 'bg-[#E8F5E9]', border: 'border-green-200', hover: 'hover:bg-green-100' }
+                        {[
+                            { id: 'Science', name: 'Science', bg: 'bg-[#E3F2FD]', border: 'border-blue-200', hover: 'hover:bg-blue-100' },
+                            { id: 'Commerce', name: 'Commerce', bg: 'bg-[#FFF3E0]', border: 'border-orange-200', hover: 'hover:bg-orange-100' },
+                            { id: 'Humanities', name: 'Humanities', bg: 'bg-[#E8F5E9]', border: 'border-green-200', hover: 'hover:bg-green-100' }
                         ].map(s => (
                             <button
                                 key={s.id}
                                 onClick={() => handleStreamSelect(s.id, s.name)}
                                 aria-label={`Select ${s.name} stream`}
-                                className={`${s.bg} ${s.border} ${s.hover} border-2 p-6 py-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col items-center gap-3`}
+                                className={`${s.bg} ${s.border} ${s.hover} border-2 p-0 w-full py-2 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col items-center gap-3`}
                             >
-                                <span className="text-4xl">{s.emoji}</span>
                                 <span className="text-2xl font-black text-slate-800">{s.name}</span>
                             </button>
                         ))}

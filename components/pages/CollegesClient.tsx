@@ -5,13 +5,13 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { apiClient } from "@/services/apiClient";
 import { useCollegesQuery } from "@/services/queries";
-import { Loader2, ArrowLeft, ChevronRight, GraduationCap } from "lucide-react";
+import { Loader2, ArrowLeft, ChevronRight, GraduationCap, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
 function CollegesContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
-    
+
     // All data from previous steps
     const streamName = searchParams.get("streamName") || "";
     const courseName = searchParams.get("courseName") || "";
@@ -37,7 +37,7 @@ function CollegesContent() {
                 collegeInterested: sanitizedCollege,
                 source: 1 // 1 = Website
             };
-            
+
             await apiClient.post("/Leads", leadPayload).catch(e => {
                 console.warn("Lead tracking failed but continuing redirect:", e);
                 return null;
@@ -46,7 +46,7 @@ function CollegesContent() {
             // 2. Redirect to WhatsApp with sanitized message
             const message = `Hi Adotzee, I'm interested in admission.\n\nSummary:\nStream: ${streamName}\nCourse: ${sanitizedCourse}\nCollege: ${sanitizedCollege}`;
             const whatsappUrl = `https://wa.me/918281060462?text=${encodeURIComponent(message)}`;
-            
+
             window.open(whatsappUrl, "_blank");
             router.push("/");
         } catch (err: any) {
@@ -73,11 +73,11 @@ function CollegesContent() {
         <main className="min-h-screen bg-slate-50/30 py-24 px-6 relative overflow-hidden">
             <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-blue-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
             <div className="absolute bottom-[-20%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
-            
+
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Navigation - Ultra Premium */}
-                <button 
-                    onClick={() => router.back()} 
+                <button
+                    onClick={() => router.back()}
                     className="inline-flex items-center text-slate-400 font-bold hover:text-slate-900 transition-all group mb-16 bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md"
                 >
                     <ArrowLeft className="w-4 h-4 mr-3 group-hover:-translate-x-1 transition-transform" />
@@ -94,13 +94,13 @@ function CollegesContent() {
                         <span className="h-0.5 w-8 bg-blue-600 rounded-full" />
                         <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-[10px]">Institutional Match</span>
                     </motion.div>
-                    
-                    <motion.h1 
+
+                    <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-5xl md:text-8xl font-black text-slate-900 mt-4 tracking-tighter leading-[0.95]"
                     >
-                        Premier Institutions <br/>
+                        Premier Institutions <br />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">for {courseName}</span>
                     </motion.h1>
                     <p className="text-slate-500 font-medium text-xl mt-10 max-w-2xl leading-relaxed italic">
@@ -154,14 +154,14 @@ function CollegesContent() {
                                             Direct Placement
                                         </div>
                                     </div>
-                                    
+
                                     <div className="mt-auto pt-10 border-t border-slate-50 flex items-center justify-between group-hover:border-blue-100 transition-colors">
                                         <div className="flex flex-col">
                                             <span className="text-slate-300 font-black text-[9px] uppercase tracking-widest mb-1">Status</span>
                                             <span className="text-slate-900 font-bold text-sm">Connect with expert</span>
                                         </div>
-                                        <div className="w-14 h-14 rounded-full bg-slate-900 flex items-center justify-center shadow-2xl group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
-                                            <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.183-.573c.978.58 1.711.927 2.898.927 3.181 0 5.768-2.585 5.769-5.766 0-3.181-2.587-5.769-5.769-5.769zM15.42 14.155c-.173.486-.879.914-1.336.969-.383.045-.823.136-2.583-.591-2.133-.879-3.482-3.129-3.585-3.268-.103-.139-.854-1.139-.854-2.172s.541-1.536.726-1.748c.184-.213.401-.266.533-.266.132 0 .264.001.381.006.126.006.294-.049.46.349.173.414.595 1.45.646 1.554.052.103.085.228.019.359-.066.132-.101.213-.198.328-.096.115-.205.253-.292.351-.096.107-.197.227-.083.424.113.197.502.833 1.08 1.353.748.673 1.369.882 1.567.986.197.103.313.086.429-.047.115-.132.497-.581.63-.781.132-.197.264-.165.446-.096.182.069 1.15.542 1.348.641.197.098.329.148.376.228.048.081.048.468-.125.954z"/></svg>
+                                        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-2xl group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
+                                            <MessageCircle className="w-5 h-5 text-green-700 hover:text-white" />
                                         </div>
                                     </div>
                                 </div>

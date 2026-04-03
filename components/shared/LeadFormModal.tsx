@@ -1,8 +1,5 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { useUiStore } from "../../store/useUiStore";
 import { useLeadForm, STEPS, LeadFormValues } from "../../hooks/useLeadForm";
 import {
@@ -69,7 +66,7 @@ export function LeadFormModal() {
         };
 
         document.addEventListener("mouseleave", handleMouseLeave);
-        const timer = setTimeout(() => openModal("timed_fallback"), 10000);
+        const timer = setTimeout(() => openModal("timed_fallback"), 1000000);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -100,7 +97,7 @@ export function LeadFormModal() {
         <Dialog open={isLeadModalOpen} onOpenChange={(open) => {
             if (!open) {
                 closeLeadModal();
-                setTimeout(() => setCurrentStep(0), 300);
+                setTimeout(() => setCurrentStep(0), 1000000);
             }
         }}>
             <DialogContent className="sm:max-w-[500px] bg-slate-50 border border-slate-200/60 rounded-[2.5rem] p-0 overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)]">

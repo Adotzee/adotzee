@@ -45,13 +45,13 @@ export function Navbar() {
                 className={`fixed top-0 left-0 right-0 z-50 flex justify-center mt-4 md:mt-6 px-4`}
             >
                 <div className={`
-                    flex items-center justify-between px-4 md:px-6 py-2 md:py-3 transition-all duration-500
+                    flex items-center gap-4 justify-between px-4 md:px-6 py-2 md:py-3 transition-all duration-500
                     ${scrolled
                         ? "w-full max-w-3xl bg-white/70 backdrop-blur-2xl shadow-floating rounded-full "
                         : "w-full max-w-6xl rounded-2xl shadow-xl bg-black/20 backdrop-blur-2xl p-4 md:p-10"
                     }
                 `}>
-                    <Link href="/" className="flex items-center gap-2 shrink-0">
+                    <Link href="/" className="flex items-center gap-1 shrink-0">
                         <Image
                             src="/Logos/AdotzeeLogoNoBG2.png"
                             alt="Adotzee Logo"
@@ -75,19 +75,19 @@ export function Navbar() {
                     <div className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-brand-soft">
                         <Link href="/courses" className="relative group px-2 py-1">
                             <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Courses</span>
-                            <motion.span className="absolute inset-0 bg-blue-50 rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
+                            <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
                         </Link>
                         <Link href="/colleges" className="relative group px-2 py-1">
                             <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Colleges</span>
-                            <motion.span className="absolute inset-0 bg-blue-50 rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
+                            <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
                         </Link>
                         <Link href="/addons" className="relative group px-2 py-1">
                             <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Add-ons</span>
-                            <motion.span className="absolute inset-0 bg-blue-50 rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
+                            <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
                         </Link>
                         <Link href="/recommendations" className="relative group px-2 py-1">
                             <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Recommendations</span>
-                            <motion.span className="absolute inset-0 bg-blue-50 rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
+                            <motion.span className="absolute inset-0 rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
                         </Link>
                     </div>
 

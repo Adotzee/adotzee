@@ -28,8 +28,8 @@ export function Features() {
     };
 
     return (
-        <section className="py-24 md:py-32 bg-transparent relative overflow-hidden">
-            <motion.div 
+        <section className="py-24 md:py-32 bg-blue-100 relative overflow-hidden">
+            <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -48,17 +48,17 @@ export function Features() {
                 {/* 12-Column Floating Bento Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
                     {/* Large Main Feature (Span 8 Cols) */}
-                    <motion.div 
+                    <motion.div
                         variants={itemVariants}
                         className="md:col-span-8 bg-white/40 backdrop-blur-3xl border border-white/80 shadow-[0_40px_80px_-15px_rgba(37,99,235,0.08)] rounded-[4rem] p-12 md:p-16 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-700 ease-[0.22,1,0.36,1] relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-linear-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        
+
                         <div className="relative z-10">
                             <div className="w-20 h-20 rounded-[2rem] bg-white flex items-center justify-center mb-12 shadow-[0_15px_40px_rgba(37,99,235,0.1)] group-hover:rotate-6 transition-transform">
                                 <Brain className="w-10 h-10 text-blue-600" />
                             </div>
-                            <h3 className="text-4xl font-black text-slate-900 mb-6 tracking-tighter">Elite Admission<br/>Guidance.</h3>
+                            <h3 className="text-4xl font-black text-slate-900 mb-6 tracking-tighter">Elite Admission<br />Guidance.</h3>
                             <p className="text-slate-500 font-medium leading-relaxed max-w-md text-xl">
                                 Our veteran counselors help you navigate the complex terrain of course selection & campus life across the country.
                             </p>
@@ -73,7 +73,7 @@ export function Features() {
 
                     {/* Small Vertical Feature Stack (Span 4 Cols) */}
                     <div className="md:col-span-4 flex flex-col gap-10">
-                        <motion.div 
+                        <motion.div
                             variants={itemVariants}
                             className="flex-1 bg-white/40 backdrop-blur-3xl border border-white/80 shadow-[0_40px_80px_-15px_rgba(37,99,235,0.08)] rounded-[3.5rem] p-12 group hover:-translate-y-2 transition-all duration-500 ease-out"
                         >
@@ -86,7 +86,7 @@ export function Features() {
                             </p>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             variants={itemVariants}
                             className="flex-1 bg-white/40 backdrop-blur-3xl border border-white/80 shadow-[0_40px_80px_-15px_rgba(37,99,235,0.08)] rounded-[3.5rem] p-12 group hover:-translate-y-2 transition-all duration-500 ease-out"
                         >

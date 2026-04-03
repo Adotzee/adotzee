@@ -79,7 +79,7 @@ export function useLeadForm() {
 
       setTimeout(() => {
         window.open(whatsappUrl, "_blank");
-      }, 800);
+      }, 180000);
     } catch (error) {
       console.error("Failed to submit lead", error);
       toast.error("Something went wrong. Please try again.");
