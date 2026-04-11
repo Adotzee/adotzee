@@ -10,8 +10,8 @@ export const ENDPOINTS = {
         GET_BY_ID: (id: string) => `/Colleges/${id}`,
     },
     ADDONS: {
-        GET_ALL: "/AddonCourses",
-        GET_BY_ID: (id: string) => `/AddonCourses/${id}`,
+        GET_ALL: "/Addons",
+        GET_BY_ID: (id: string) => `/Addons/${id}`,
     },
     SEARCH: {
         GLOBAL: "/Search", // ?q={query}

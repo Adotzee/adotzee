@@ -1,10 +1,19 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import CoursesClient from "@/components/pages/CoursesClient";
 import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, CourseSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { courseService } from "@/features/courses/courseService";
+import { Course } from "@/types";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563EB",
 };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -38,7 +47,18 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export default async function CoursesPage({ searchParams }: Props) {
   const params = await searchParams;
+  const stream = params.stream ? String(params.stream) : "";
   const streamName = params.streamName ? String(params.streamName) : "Academic Stream";
+
+  // Pre-fetch courses on the server
+  let initialCourses: Course[] = [];
+  try {
+    if (stream) {
+      initialCourses = await courseService.getByStream(stream);
+    }
+  } catch (error) {
+    console.error("Server-side Course Fetch Error:", error);
+  }
 
   const breadcrumbData = BreadcrumbSchema([
     { name: "Home", url: COMPANY_INFO.fullUrl },
@@ -57,7 +77,7 @@ export default async function CoursesPage({ searchParams }: Props) {
     <>
       <JsonLd data={breadcrumbData} />
       <JsonLd data={courseData} />
-      <CoursesClient />
+      <CoursesClient initialData={initialCourses} />
     </>
   );
 }

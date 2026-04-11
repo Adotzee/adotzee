@@ -3,12 +3,18 @@
 import { motion } from "framer-motion";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { apiClient } from "@/services/apiClient";
-import { useCollegesQuery } from "@/services/queries";
-import { Loader2, ArrowLeft, ChevronRight, GraduationCap, MessageCircle } from "lucide-react";
+import { apiClient } from "@/lib/apiClient";
+import { useCollegesQuery } from "@/features/common/queries";
+import { Loader2, ArrowLeft, ChevronRight, GraduationCap, MessageCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { SkeletonList } from "../shared/SkeletonCard";
+import { College } from "@/types";
 
-function CollegesContent() {
+interface CollegesClientProps {
+    initialData?: College[];
+}
+
+function CollegesContent({ initialData }: CollegesClientProps) {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -18,7 +24,7 @@ function CollegesContent() {
     const addonId = searchParams.get("addonId") || "";
     const addonName = searchParams.get("addonName") || "None";
 
-    const { data: colleges = [], isLoading, error } = useCollegesQuery(addonId);
+    const { data: colleges = initialData || [], isLoading, error } = useCollegesQuery(addonId);
     const [submitting, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -33,6 +39,7 @@ function CollegesContent() {
             // 1. Execute POST /api/Leads
             const leadPayload = {
                 fullName: "Interactive Selection Student",
+                PhoneNumber: "0000000000", // Required by backend validation
                 courseInterested: sanitizedCourse,
                 collegeInterested: sanitizedCollege,
                 source: 1 // 1 = Website
@@ -109,27 +116,43 @@ function CollegesContent() {
                 </div>
 
                 {/* Content */}
-                {isLoading || submitting ? (
-                    <div className="flex flex-col items-center justify-center py-40">
-                        <div className="relative mb-12">
-                            <div className="w-24 h-24 border-4 border-slate-100 border-t-blue-600 rounded-full animate-spin" />
-                            <GraduationCap className="w-10 h-10 text-blue-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                        </div>
-                        <p className="text-slate-400 font-black uppercase tracking-[0.4em] text-[10px] animate-pulse">
-                            {submitting ? "Finalizing Official Request..." : "Evaluating Institutional Data..."}
-                        </p>
+                {isLoading && colleges.length === 0 ? (
+                    <div className="py-20">
+                        <SkeletonList count={3} />
                     </div>
                 ) : error || submitError ? (
-                    <div className="bg-white p-20 rounded-[4rem] border-2 border-red-50 shadow-2xl text-center max-w-3xl mx-auto">
-                        <div className="w-20 h-20 bg-red-50 rounded-[2rem] flex items-center justify-center mx-auto mb-10">
-                            <span className="text-red-500 font-black text-3xl">!</span>
+                    <div className="bg-white p-12 md:p-16 rounded-[4rem] border-2 border-slate-50 shadow-2xl text-center max-w-3xl mx-auto relative overflow-hidden">
+                        {(error as any)?.isDatabaseError && (
+                            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-orange-400 to-amber-500" />
+                        )}
+                        <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${(error as any)?.isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
+                            <span className={`text-3xl ${(error as any)?.isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
                         </div>
-                        <p className="text-slate-900 font-black text-2xl mb-4">Request Interrupted</p>
-                        <p className="text-slate-500 font-medium mb-12">{(error ? (error as any).message : submitError)}</p>
-                        <button onClick={() => window.location.reload()} className="bg-slate-900 text-white px-16 py-5 rounded-[2rem] font-black hover:bg-black transition-all shadow-xl shadow-slate-200">System Reboot</button>
+                        <h2 className="text-3xl font-black text-slate-900 mb-4">
+                            {(error as any)?.isDatabaseError ? "System Optimization" : "Request Interrupted"}
+                        </h2>
+                        <p className="text-slate-500 font-medium mb-12 text-lg">
+                            {(error ? (error as any).message : submitError) || "Something went wrong while fetching colleges."}
+                        </p>
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                            <button
+                                onClick={() => window.location.reload()}
+                                className="bg-slate-900 text-white px-12 py-5 rounded-3xl font-bold hover:bg-black transition-all shadow-xl shadow-slate-200 w-full md:w-auto"
+                            >
+                                Try Refreshing
+                            </button>
+                            {(error as any)?.isDatabaseError && (
+                                <Link
+                                    href="/"
+                                    className="bg-white text-slate-600 border border-slate-100 px-12 py-5 rounded-3xl font-bold hover:bg-slate-50 transition-all w-full md:w-auto"
+                                >
+                                    Go to Home
+                                </Link>
+                            )}
+                        </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div className="grid grid-cols-1 gap-8">
                         {colleges.length > 0 ? colleges.map((college: any, idx: number) => (
                             <motion.button
                                 key={college.id}
@@ -137,42 +160,61 @@ function CollegesContent() {
                                 initial="hidden"
                                 animate="visible"
                                 custom={idx}
-                                whileHover={{ y: -12, scale: 1.02 }}
+                                whileHover={{ y: -8, scale: 1.01 }}
                                 onClick={() => handleCollegeSelect(college.name || college.title)}
-                                className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm hover:shadow-[0_50px_100px_-20px_rgba(37,99,235,0.12)] hover:border-blue-500 transition-all text-left group relative flex flex-col justify-between overflow-hidden min-h-[400px]"
+                                className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-blue-500 transition-all text-left group relative flex flex-row items-center gap-8 overflow-hidden min-h-[160px] md:min-h-[220px]"
                             >
-                                <div className="absolute top-0 right-0 w-40 h-40 bg-linear-to-br from-blue-50/50 to-transparent rounded-bl-[5rem] group-hover:from-blue-100 transition-colors" />
-
-                                <div className="relative z-10 flex flex-col h-full">
-                                    <div className="mb-12">
-                                        <div className="w-20 h-20 rounded-[2rem] bg-slate-50 flex items-center justify-center mb-10 group-hover:bg-blue-600 transition-all duration-500 group-hover:rotate-6 shadow-sm">
-                                            <GraduationCap className="w-10 h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                {college.isRecommended && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
+                                        className="absolute top-0 right-0 z-20 cursor-help"
+                                        title="Specially recommended by Adotzee for quality education and placements"
+                                    >
+                                        <div className="bg-linear-to-r from-amber-400 via-orange-500 to-amber-500 text-white text-[10px] font-black uppercase tracking-widest px-6 py-2.5 rounded-bl-3xl shadow-lg flex items-center gap-2 border-b border-l border-white/20">
+                                            <Sparkles className="w-3 h-3 animate-pulse" />
+                                            Adotzee's Choice
                                         </div>
-                                        <h3 className="text-3xl font-black text-slate-900 leading-[1.1] mb-6 group-hover:text-blue-600 transition-colors">{college.name || college.title}</h3>
-                                        <div className="flex items-center text-green-600 font-black text-[10px] uppercase tracking-[0.2em] border border-green-100 bg-green-50/50 px-4 py-2 rounded-full w-fit group-hover:bg-green-100 transition-colors">
-                                            <span className="w-2 h-2 rounded-full bg-green-500 mr-2.5 animate-pulse" />
-                                            Direct Placement
+                                    </motion.div>
+                                )}
+                                <div className="absolute top-0 right-0 w-32 md:w-48 h-full bg-linear-to-l from-blue-50/20 to-transparent pointer-events-none" />
+
+                                {/* Icon Section */}
+                                <div className="w-20 h-20 md:w-32 md:h-32 rounded-[1.5rem] md:rounded-[2.5rem] bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-all duration-500 group-hover:rotate-6 shadow-xs">
+                                    <GraduationCap className="size-10 md:size-16 text-blue-600 group-hover:text-white transition-colors" />
+                                </div>
+
+                                {/* Content Section */}
+                                <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                                    <div className="flex flex-col gap-4">
+                                        <h3 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
+                                            {college.name || college.title}
+                                        </h3>
+                                        <div className="flex flex-wrap items-center gap-2">
+                                            <div className="flex items-center text-green-600 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] border border-green-100 bg-green-50/50 px-3 py-1.5 rounded-full w-fit group-hover:bg-green-100 transition-colors">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse" />
+                                                Direct Placement
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="mt-auto pt-10 border-t border-slate-50 flex items-center justify-between group-hover:border-blue-100 transition-colors">
-                                        <div className="flex flex-col">
-                                            <span className="text-slate-300 font-black text-[9px] uppercase tracking-widest mb-1">Status</span>
-                                            <span className="text-slate-900 font-bold text-sm">Connect with expert</span>
+                                    <div className="flex items-center gap-4 md:gap-8 shrink-0">
+                                        <div className="hidden md:flex flex-col text-right">
+                                            <span className="text-slate-300 font-black text-[9px] uppercase tracking-widest mb-1">Final Step</span>
+                                            <span className="text-slate-900 font-bold text-sm">Consultation</span>
                                         </div>
-                                        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-2xl group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
-                                            <MessageCircle className="w-5 h-5 text-green-700 hover:text-white" />
+                                        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-blue-50 flex items-center justify-center shadow-xs group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
+                                            <MessageCircle className="size-6 md:size-8 text-blue-600 group-hover:text-white" />
                                         </div>
                                     </div>
                                 </div>
                             </motion.button>
                         )) : (
-                            <div className="col-span-full py-40 text-center bg-white rounded-[5rem] border-4 border-dashed border-slate-50 italic">
-                                <p className="text-slate-300 font-black text-3xl mb-12 tracking-tight">No institutional partnerships found for this path.</p>
-                                <Link href="https://wa.me/918281060462" target="_blank">
-                                    <button className="bg-blue-600 text-white px-20 py-7 rounded-[2rem] font-black shadow-[0_30px_60px_-15px_rgba(37,99,235,0.4)] hover:bg-black transition-all hover:scale-105 active:scale-95 group flex items-center mx-auto">
-                                        Consult Admissions Command <ChevronRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
-                                    </button>
+                            <div className="col-span-full py-40 text-center bg-white rounded-[4rem] border-2 border-dashed border-slate-100">
+                                <p className="text-slate-300 font-bold text-3xl mb-10 tracking-tight italic">No institutional partnerships found for this path.</p>
+                                <Link href="https://wa.me/918281060462" target="_blank" className="inline-flex items-center text-blue-600 font-black text-lg underline decoration-[4px] underline-offset-10 hover:text-indigo-600 transition-colors">
+                                    Consult Admissions Desk <ChevronRight className="w-5 h-5 ml-2" />
                                 </Link>
                             </div>
                         )}
@@ -183,15 +225,16 @@ function CollegesContent() {
     );
 }
 
-export default function CollegesPage() {
+export default function CollegesPage({ initialData }: CollegesClientProps) {
     return (
         <Suspense fallback={
-            <div className="min-h-screen bg-white flex flex-col items-center justify-center">
-                <Loader2 className="w-12 h-12 text-blue-500 animate-spin mb-4" />
-                <span className="text-xs font-black text-slate-300 uppercase tracking-widest">Loading Colleges</span>
+            <div className="min-h-screen bg-slate-50/30 px-6 py-24">
+                <div className="max-w-7xl mx-auto">
+                    <SkeletonList count={4} />
+                </div>
             </div>
         }>
-            <CollegesContent />
+            <CollegesContent initialData={initialData} />
         </Suspense>
     );
 }

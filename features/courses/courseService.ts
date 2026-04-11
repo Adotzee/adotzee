@@ -1,4 +1,4 @@
-import { apiClient } from "./apiClient";
+import { apiClient } from "@/lib/apiClient";
 import { Course } from "@/types";
 
 export const courseService = {
@@ -7,5 +7,8 @@ export const courseService = {
     },
     getById: async (id: string): Promise<Course> => {
         return apiClient.get(`/Courses/${id}`);
+    },
+    getByStream: async (streamId: string): Promise<Course[]> => {
+        return apiClient.get(`/Courses/filter?stream=${streamId}`);
     },
 };

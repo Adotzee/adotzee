@@ -1,10 +1,19 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import CollegesClient from "@/components/pages/CollegesClient";
 import { COMPANY_INFO } from "@/lib/constants";
-import { JsonLd, CourseSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { collegeService } from "@/features/colleges/collegeService";
+import { College } from "@/types";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563EB",
 };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -38,26 +47,30 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export default async function CollegesPage({ searchParams }: Props) {
   const params = await searchParams;
-  const courseName = params.courseName ? String(params.courseName) : "Your Selected Course";
+  const courseName = params.courseName ? String(params.courseName) : "Your Course";
+  const addonId = params.addonId ? String(params.addonId) : "";
+
+  // Pre-fetch colleges on the server
+  let initialColleges: College[] = [];
+  try {
+    if (addonId) {
+      initialColleges = await collegeService.getByAddon(addonId);
+    }
+  } catch (error) {
+    console.error("Server-side College Fetch Error:", error);
+  }
 
   const breadcrumbData = BreadcrumbSchema([
     { name: "Home", url: COMPANY_INFO.fullUrl },
-    { name: "Colleges", url: `${COMPANY_INFO.fullUrl}/colleges` },
-    { name: courseName, url: `${COMPANY_INFO.fullUrl}/colleges?courseName=${encodeURIComponent(courseName)}` }
+    { name: "Courses", url: `${COMPANY_INFO.fullUrl}/courses` },
+    { name: courseName, url: `${COMPANY_INFO.fullUrl}/addons?courseName=${encodeURIComponent(courseName)}` },
+    { name: "Colleges", url: `${COMPANY_INFO.fullUrl}/colleges` }
   ]);
-
-  const courseData = CourseSchema({
-    name: `Premier Colleges for ${courseName}`,
-    description: `Discover and apply to premier institutions for ${courseName} through ${COMPANY_INFO.name}.`,
-    providerName: COMPANY_INFO.name,
-    url: `${COMPANY_INFO.fullUrl}/colleges?courseName=${encodeURIComponent(courseName)}`
-  });
 
   return (
     <>
       <JsonLd data={breadcrumbData} />
-      <JsonLd data={courseData} />
-      <CollegesClient />
+      <CollegesClient initialData={initialColleges} />
     </>
   );
 }

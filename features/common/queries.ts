@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { apiClient } from "./apiClient";
+import { apiClient } from "@/lib/apiClient";
 
 export const QUERY_KEYS = {
     COURSES: (streamId: string) => ["courses", streamId],
@@ -20,7 +20,7 @@ export function useCoursesQuery(streamId: string) {
                 return Array.isArray(response) ? response : [];
             } catch (error) {
                 console.error("Courses Fetch Error:", error);
-                throw new Error("Unable to retrieve courses. Please check your connection.");
+                throw error;
             }
         },
         enabled: !!streamId,
@@ -41,7 +41,7 @@ export function useCollegesQuery(addonId: string) {
                 return Array.isArray(response) ? response : [];
             } catch (error) {
                 console.error("Colleges Fetch Error:", error);
-                throw new Error("Unable to retrieve colleges. Please try again later.");
+                throw error;
             }
         },
         enabled: !!addonId,

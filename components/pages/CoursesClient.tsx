@@ -3,18 +3,26 @@
 import { motion } from "framer-motion";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { apiClient } from "@/services/apiClient";
-import { useCoursesQuery } from "@/services/queries";
+import { apiClient } from "@/lib/apiClient";
+import { useCoursesQuery } from "@/features/common/queries";
 import { Loader2, ArrowLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { CourseCard } from "../cards/CourseCard";
+import { SkeletonList } from "../shared/SkeletonCard";
+import { Course } from "@/types";
 
-function CoursesContent() {
+interface CoursesClientProps {
+    initialData?: Course[];
+}
+
+function CoursesContent({ initialData }: CoursesClientProps) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const stream = searchParams.get("stream") || "";
     const streamName = searchParams.get("streamName") || "";
 
-    const { data: courses = [], isLoading, error } = useCoursesQuery(stream);
+    const [loadingCourseId, setLoadingCourseId] = useState<string | null>(null);
+    const { data: courses = initialData || [], isLoading, error } = useCoursesQuery(stream);
 
     useEffect(() => {
         if (!stream) {
@@ -23,7 +31,12 @@ function CoursesContent() {
     }, [stream, router]);
 
     const handleCourseSelect = (courseId: string, courseName: string) => {
+        setLoadingCourseId(courseId);
         router.push(`/addons?courseId=${courseId}&courseName=${encodeURIComponent(courseName)}&streamName=${encodeURIComponent(streamName)}&stream=${stream}`);
+    };
+
+    const handleCourseHover = (courseId: string, courseName: string) => {
+        router.prefetch(`/addons?courseId=${courseId}&courseName=${encodeURIComponent(courseName)}&streamName=${encodeURIComponent(streamName)}&stream=${stream}`);
     };
 
     // Card variants for staggered entrance
@@ -78,57 +91,52 @@ function CoursesContent() {
                 </div>
 
                 {/* Content */}
-                {isLoading ? (
-                    <div className="flex flex-col items-center justify-center py-40">
-                        <div className="relative">
-                            <div className="w-24 h-24 border-4 border-slate-100 border-t-blue-600 rounded-full animate-spin" />
-                            <Loader2 className="w-8 h-8 text-blue-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                        </div>
-                        <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mt-10">Synthesizing Course Data...</p>
+                {isLoading && courses.length === 0 ? (
+                    <div className="py-20">
+                        <SkeletonList count={3} />
                     </div>
                 ) : error ? (
-                    <div className="bg-white p-16 rounded-[4rem] border-2 border-red-50 shadow-2xl text-center max-w-3xl mx-auto">
-                        <div className="w-20 h-20 bg-red-50 rounded-3xl flex items-center justify-center mx-auto mb-8">
-                             <span className="text-red-500 text-3xl">!</span>
+                    <div className="bg-white p-12 md:p-16 rounded-[4rem] border-2 border-slate-50 shadow-2xl text-center max-w-3xl mx-auto relative overflow-hidden">
+                        {(error as any).isDatabaseError && (
+                            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-orange-400 to-amber-500" />
+                        )}
+                        <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${(error as any).isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
+                             <span className={`text-3xl ${(error as any).isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
                         </div>
-                        <h2 className="text-2xl font-black text-slate-900 mb-4">Request Interrupted</h2>
-                        <p className="text-slate-500 font-medium mb-12">{(error as any).message || "Something went wrong while fetching courses."}</p>
-                        <button onClick={() => window.location.reload()} className="bg-slate-900 text-white px-16 py-5 rounded-3xl font-bold hover:bg-black transition-all shadow-xl shadow-slate-200">System Reboot</button>
+                        <h2 className="text-3xl font-black text-slate-900 mb-4">
+                            {(error as any).isDatabaseError ? "System Optimization" : "Request Interrupted"}
+                        </h2>
+                        <p className="text-slate-500 font-medium mb-12 text-lg">
+                            {(error as any).message || "Something went wrong while fetching courses."}
+                        </p>
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                            <button 
+                                onClick={() => window.location.reload()} 
+                                className="bg-slate-900 text-white px-12 py-5 rounded-3xl font-bold hover:bg-black transition-all shadow-xl shadow-slate-200 w-full md:w-auto"
+                            >
+                                Try Refreshing
+                            </button>
+                            {(error as any).isDatabaseError && (
+                                <Link 
+                                    href="/"
+                                    className="bg-white text-slate-600 border border-slate-100 px-12 py-5 rounded-3xl font-bold hover:bg-slate-50 transition-all w-full md:w-auto"
+                                >
+                                    Go to Home
+                                </Link>
+                            )}
+                        </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 gap-10">
                         {courses.length > 0 ? courses.map((course: any, idx: number) => (
-                            <motion.button
-                                key={course.id}
-                                variants={cardVariants}
-                                initial="hidden"
-                                animate="visible"
-                                custom={idx}
-                                whileHover={{ y: -8, scale: 1.01 }}
-                                onClick={() => handleCourseSelect(course.id, course.name || course.title)}
-                                className="group relative p-10 text-left bg-white border border-slate-100 rounded-[3rem] shadow-sm hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between min-h-[220px] overflow-hidden"
-                            >
-                                {/* Decorative Gradient on Hover */}
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-bl-[4rem]" />
-
-                                <div className="relative z-10 flex flex-col h-full">
-                                    <div className="flex justify-between items-start mb-auto">
-                                        <span className="px-4 py-1.5 rounded-full bg-slate-50 text-slate-400 font-bold text-[9px] uppercase tracking-widest border border-slate-100 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
-                                            #{String(idx + 1).padStart(2, '0')} Module
-                                        </span>
-                                        <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-600 group-hover:rotate-12 transition-all duration-500 shadow-xs">
-                                            <ChevronRight className="w-7 h-7 text-slate-300 group-hover:text-white transition-colors" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="mt-8">
-                                        <h3 className="text-3xl font-black text-slate-800 leading-[1.1] mb-2 group-hover:text-blue-600 transition-colors">{course.name || course.title}</h3>
-                                        <p className="text-slate-400 font-medium text-sm line-clamp-1 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                                            Advanced curriculum & global accreditation available.
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.button>
+                            <CourseCard 
+                                key={course.id} 
+                                course={course} 
+                                index={idx} 
+                                isLoading={loadingCourseId === course.id}
+                                onSelect={handleCourseSelect}
+                                onHover={handleCourseHover}
+                            />
                         )) : (
                             <div className="col-span-full py-40 text-center bg-white rounded-[4rem] border-2 border-dashed border-slate-100">
                                 <p className="text-slate-300 font-bold text-3xl mb-10 tracking-tight italic">No modules match this stream filter.</p>
@@ -144,15 +152,16 @@ function CoursesContent() {
     );
 }
 
-export default function CoursesPage() {
+export default function CoursesPage({ initialData }: CoursesClientProps) {
     return (
         <Suspense fallback={
-            <div className="min-h-screen bg-white flex flex-col items-center justify-center">
-                <Loader2 className="w-12 h-12 text-blue-500 animate-spin mb-4" />
-                <span className="text-xs font-black text-slate-300 uppercase tracking-widest">Loading Courses</span>
+            <div className="min-h-screen bg-slate-50/30 px-6 py-24">
+                <div className="max-w-6xl mx-auto">
+                    <SkeletonList count={4} />
+                </div>
             </div>
         }>
-            <CoursesContent />
+            <CoursesContent initialData={initialData} />
         </Suspense>
     );
 }

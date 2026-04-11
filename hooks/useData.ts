@@ -1,9 +1,9 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { courseService } from "@/services/courseService";
-import { collegeService } from "@/services/collegeService";
-import { addonService } from "@/services/addonService";
-import { recommendationService, RecommendationRequest } from "@/services/recommendationService";
-import { apiClient } from "@/services/apiClient";
+import { courseService } from "@/features/courses/courseService";
+import { collegeService } from "@/features/colleges/collegeService";
+import { addonService } from "@/features/addons/addonService";
+import { recommendationService, RecommendationRequest } from "@/features/common/recommendationService";
+import { apiClient } from "@/lib/apiClient";
 import { ENDPOINTS } from "@/lib/endpoints";
 import { Course, College, AddonCourse } from "@/types";
 

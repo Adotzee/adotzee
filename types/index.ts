@@ -24,6 +24,7 @@ export interface College {
   imageUrl?: string;
   rating?: number;
   isActive: boolean;
+  isRecommended?: boolean;
   courses?: Course[];
 }
 

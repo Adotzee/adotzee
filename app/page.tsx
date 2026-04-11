@@ -1,7 +1,14 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { HomePage } from "@/components/pages/HomePage";
 import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, FAQSchema } from "@/components/seo/JsonLd";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563EB",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

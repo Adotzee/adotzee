@@ -1,9 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import ParticlesBackground from "../filters/particles";
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 /**
  * Hero - Entry point for the selection funnel.
@@ -12,10 +14,22 @@ import ParticlesBackground from "../filters/particles";
 export function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
+    const [loadingStream, setLoadingStream] = useState<string | null>(null);
 
     const handleStreamSelect = (streamId: string, streamName: string) => {
-        router.push(`/courses?stream=${streamId}&streamName=${encodeURIComponent(streamName)}`);
+        setLoadingStream(streamId);
+        React.startTransition(() => {
+            router.push(`/courses?stream=${streamId}&streamName=${encodeURIComponent(streamName)}`);
+        });
     };
+
+    const handlePrefetch = (streamId: string, streamName: string) => {
+        router.prefetch(`/courses?stream=${streamId}&streamName=${encodeURIComponent(streamName)}`);
+    };
+
+    React.useEffect(() => {
+        router.prefetch("/courses");
+    }, [router]);
 
     return (
         <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
@@ -28,10 +42,7 @@ export function Hero() {
             <motion.div
                 className="relative z-10 w-full max-w-5xl mx-auto px-6 mt-30 mb-30"
             >
-
-                <div className="bg-white/80 backdrop-blur-xl  rounded-[2.5rem] shadow-xl p-4 md:p-10 text-center">
-
-
+                <div className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-xl p-4 md:p-10 text-center">
                     <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-none">
                         Find the Best College<br />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">After Plus Two</span>
@@ -52,18 +63,24 @@ export function Hero() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mt-6">
                         {[
-                            { id: 'Science', name: 'Science', bg: 'bg-[#E3F2FD]', border: 'border-blue-200', hover: 'hover:bg-blue-100' },
-                            { id: 'Commerce', name: 'Commerce', bg: 'bg-[#FFF3E0]', border: 'border-orange-200', hover: 'hover:bg-orange-100' },
-                            { id: 'Humanities', name: 'Humanities', bg: 'bg-[#E8F5E9]', border: 'border-green-200', hover: 'hover:bg-green-100' }
-                        ].map(s => (
-                            <button
+                            { id: 'Science', name: 'Science', variant: 'default' as const, className: 'bg-blue-50 border-blue-100 text-blue-900 hover:bg-blue-100' },
+                            { id: 'Commerce', name: 'Commerce', variant: 'default' as const, className: 'bg-orange-50 border-orange-100 text-orange-900 hover:bg-orange-100' },
+                            { id: 'Humanities', name: 'Humanities', variant: 'default' as const, className: 'bg-green-50 border-green-100 text-green-900 hover:bg-green-100' }
+                        ].map((s, idx) => (
+                            <Button
                                 key={s.id}
+                                isLoading={loadingStream === s.id}
                                 onClick={() => handleStreamSelect(s.id, s.name)}
-                                aria-label={`Select ${s.name} stream`}
-                                className={`${s.bg} ${s.border} ${s.hover} border-2 p-0 w-full py-2 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col items-center gap-3`}
+                                onMouseEnter={() => handlePrefetch(s.id, s.name)}
+                                className={cn(
+                                    "h-auto py-3 rounded-[2rem] border-2 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-center justify-center gap-2",
+                                    s.className
+                                )}
                             >
-                                <span className="text-2xl font-black text-slate-800">{s.name}</span>
-                            </button>
+                                <span className="text-2xl font-black">
+                                    {s.name}
+                                </span>
+                            </Button>
                         ))}
                     </div>
                 </div>

@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useUiStore } from "../store/useUiStore";
-import { apiClient } from "../lib/apiClient";
-import { ENDPOINTS } from "../lib/endpoints";
+import { useUiStore } from "@/store/useUiStore";
+import { apiClient } from "@/lib/apiClient";
+import { ENDPOINTS } from "@/lib/endpoints";
 import { toast } from "sonner";
-import { COMPANY_INFO } from "../lib/constants";
+import { COMPANY_INFO } from "@/lib/constants";
 
 const leadFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").trim(),

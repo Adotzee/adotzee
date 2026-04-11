@@ -1,9 +1,18 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import AddonsClient from "@/components/pages/AddonsClient";
 import { COMPANY_INFO } from "@/lib/constants";
+import { addonService } from "@/features/addons/addonService";
+import { AddonCourse } from "@/types";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563EB",
 };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -35,6 +44,18 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   };
 }
 
-export default function AddonsPage() {
-  return <AddonsClient />;
+export default async function AddonsPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const courseId = params.courseId ? String(params.courseId) : "";
+  
+  let initialAddons: AddonCourse[] = [];
+  try {
+    if (courseId) {
+      initialAddons = await addonService.getByCourse(courseId);
+    }
+  } catch (error) {
+    console.warn("Server-side Addon Fetch Error:", error);
+  }
+
+  return <AddonsClient initialData={initialAddons} />;
 }

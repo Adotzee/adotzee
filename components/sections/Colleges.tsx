@@ -19,7 +19,7 @@ export function Colleges() {
             location: "Bengaluru, Karnataka",
             tier: "Top Ranked",
             span: "md:col-span-5",
-            image: "/colleges/presidency.jpg",
+            image: "/colleges/presidency_pic.jpg",
             courses: ["BCA", "BBA", "B.Tech"],
         }
     ];
@@ -56,7 +56,7 @@ export function Colleges() {
                                     src={hub.image}
                                     alt={hub.name}
                                     fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                    className=" group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className="absolute top-4 left-4 inline-flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-white bg-brand-accent/80 backdrop-blur-md px-3 py-1.5 rounded-full">
                                     <ShieldCheck className="w-4 h-4" />

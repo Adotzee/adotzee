@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Course } from "../../types";
-import { Card, CardContent, CardFooter } from "../ui/card";
-import { Badge } from "../ui/badge";
+import { Card, CardContent } from "../ui/card";
 import { GraduationCap, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -13,78 +12,81 @@ interface CourseCardProps {
     course: Course;
     index?: number;
     featured?: boolean;
+    isLoading?: boolean;
+    onSelect?: (id: string, name: string) => void;
+    onHover?: (id: string, name: string) => void;
 }
 
-export function CourseCard({ course, index = 0, featured = false }: CourseCardProps) {
+export function CourseCard({ course, index = 0, featured = false, isLoading, onSelect, onHover }: CourseCardProps) {
+    const handleAction = (e: React.MouseEvent) => {
+        if (onSelect) {
+            e.preventDefault();
+            onSelect(course.id, course.name);
+        }
+    };
+
+    const handleMouseEnter = () => {
+        if (onHover) {
+            onHover(course.id, course.name);
+        }
+    };
+
     return (
         <motion.div
+            onMouseEnter={handleMouseEnter}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             whileHover={{ y: -5 }}
-            className="h-full"
+            className="w-full"
         >
             <Card className={cn(
-                "overflow-hidden transition-all duration-300 bg-[#111827] border-[#1E293B] hover:border-[#2563EB]/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)]",
-                featured ? "border-[#2563EB]/40 shadow-[0_0_15px_rgba(37,99,235,0.1)]" : ""
+                "overflow-hidden transition-all p-6 duration-300 bg-card border-border hover:border-brand-accent/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)]",
+                featured ? "border-brand-accent/40 shadow-[0_0_15px_rgba(37,99,235,0.1)]" : ""
             )}>
-                <div className="flex flex-col sm:flex-row h-full sm:h-44">
+                <div className="flex flex-row h-22 md:h-30">
                     {/* Image Section - Compact Rectangle */}
-                    <div className="relative w-full sm:w-1/4 h-48 sm:h-full bg-[#0A1550]/20 overflow-hidden shrink-0">
-                        {course.imageUrl ? (
-                            <img
-                                src={course.imageUrl}
-                                alt={course.name}
-                                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                            />
-                        ) : (
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#0A1550]/40 to-[#070F38]/40 flex items-center justify-center">
-                                <GraduationCap className="size-10 text-white/5" />
-                            </div>
-                        )}
-                        <div className="absolute top-2 left-2">
-                            <Badge className="bg-[#2563EB] text-[10px] h-5 px-2 text-white hover:bg-[#1D4ED8] shadow-sm font-bold">
-                                {course.level}
-                            </Badge>
-                        </div>
-                    </div>
+                    <CardContent className="flex-1 p-0 lg:px-4 flex flex-col justify-center overflow-hidden">
+                        <div className="flex items-center justify-between gap-4 mb-2">
 
-                    <CardContent className="flex-1 p-4 lg:px-8 lg:py-4 flex flex-col justify-center">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                            <h3 className="font-black text-xl lg:text-2xl text-[#F1F5F9] transition-colors group-hover:text-[#60A5FA] line-clamp-1">
-                                {course.name}
-                            </h3>
-                            <div className="flex items-center gap-3 shrink-0">
-                                <div className="flex items-center gap-1.5 text-xs font-bold text-[#60A5FA] bg-[#2563EB]/10 px-2.5 py-1 rounded-lg border border-[#2563EB]/20">
-                                    <Clock className="size-3.5" />
-                                    <span>{course.duration}</span>
+                            {/* LEFT SIDE */}
+                            <div className="flex items-center gap-3 min-w-0">
+                                <div className="p-2 md:p-3 rounded-xl bg-brand-accent/10">
+                                    <GraduationCap className="size-4 md:size-6 text-brand-accent" />
                                 </div>
-                                <div className="text-sm font-black text-white">
-                                    {course.feeRange || "Enquire"}
-                                </div>
+
+                                <h3 className="font-semibold text-base md:text-xl text-mesh-silver truncate">
+                                    {course.name}
+                                </h3>
                             </div>
+
+                            {/* RIGHT SIDE */}
+                            <div className="flex items-center gap-1.5 text-xs font-medium text-brand-light bg-brand-accent/10 px-2 py-1 rounded-lg shrink-0">
+                                <Clock className="size-3 md:size-3.5" />
+                                <span>{course.duration}</span>
+                            </div>
+
                         </div>
-
-                        <p className="text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed max-w-3xl">
-                            {course.description}
-                        </p>
-
-                        <div className="flex items-center justify-between mt-auto pt-2 border-t border-white/5">
-                            <div className="flex flex-wrap gap-2">
-                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest mr-2 py-1">Target:</span>
-                                {course.careerOpportunities?.slice(0, 3).map((career, i) => (
-                                    <span key={i} className="text-[10px] font-bold bg-[#1E293B] text-slate-300 px-2 py-0.5 rounded border border-white/5">
-                                        {career}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <Link href={`/courses/${course.id}`} className="shrink-0 ml-4">
-                                <Button variant="ghost" size="sm" className="h-9 px-4 text-[#60A5FA] hover:text-white hover:bg-[#2563EB] rounded-xl font-black transition-all group/btn">
-                                    View Program
-                                    <ArrowRight className="ml-2 size-4 transition-transform group-hover/btn:translate-x-1" />
+                        <div className="flex m-2 items-center justify-between mt-auto pt-2">
+                            {onSelect ? (
+                                <Button
+                                    onClick={handleAction}
+                                    isLoading={isLoading}
+                                    variant="ghost"
+                                    size="sm"
+                                    className="h-7 md:h-9 px-3 md:px-5 ml-auto text-brand-light hover:text-white hover:bg-brand-accent rounded-xl font-black transition-all group/btn text-[10px] md:text-sm"
+                                >
+                                    Select Course
+                                    <ArrowRight className="ml-1 md:ml-2 size-3 md:size-4 transition-transform group-hover/btn:translate-x-1" />
                                 </Button>
-                            </Link>
+                            ) : (
+                                <Link href={`/courses/${course.id}`} className="shrink-0 ml-auto md:ml-4">
+                                    <Button variant="ghost" size="sm" className="h-7 md:h-9 px-3 md:px-5 text-brand-light hover:text-white hover:bg-brand-accent rounded-xl font-black transition-all group/btn text-[10px] md:text-sm">
+                                        View Program
+                                        <ArrowRight className="ml-1 md:ml-2 size-3 md:size-4 transition-transform group-hover/btn:translate-x-1" />
+                                    </Button>
+                                </Link>
+                            )}
                         </div>
                     </CardContent>
                 </div>

@@ -1,6 +1,13 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import RecommendationsClient from "@/components/pages/RecommendationsClient";
 import { COMPANY_INFO } from "@/lib/constants";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563EB",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

@@ -1,6 +1,13 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import SearchClient from "@/components/pages/SearchClient";
 import { COMPANY_INFO } from "@/lib/constants";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563EB",
+};
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

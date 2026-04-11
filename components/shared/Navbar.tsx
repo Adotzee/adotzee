@@ -72,7 +72,7 @@ export function Navbar() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-brand-soft">
+                    <div className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-black/50">
                         <Link href="/courses" className="relative group px-2 py-1">
                             <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Courses</span>
                             <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />

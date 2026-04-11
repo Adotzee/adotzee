@@ -11,6 +11,7 @@ import { CourseCard } from "@/components/cards/CourseCard";
 import { CollegeCard } from "@/components/cards/CollegeCard";
 import { useRecommendations } from "@/hooks/useData";
 import { AddonCard } from "@/components/cards/AddonCard";
+import { SkeletonList } from "../shared/SkeletonCard";
 
 const STEPS = [
     { number: 1, label: "Interests" },
@@ -158,7 +159,7 @@ export default function RecommendationsPage() {
 
                 {/* Page Header */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 shadow-lg shadow-blue-200 mb-6">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-linear-to-br from-blue-500 to-indigo-500 shadow-lg shadow-blue-200 mb-6">
                         <GraduationCap className="size-7 text-white" />
                     </div>
                     <h1 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight">Find Your Path</h1>
@@ -171,7 +172,7 @@ export default function RecommendationsPage() {
                     {/* Progress bar */}
                     <div className="h-1 bg-slate-100 relative">
                         <motion.div
-                            className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"
+                            className="h-full bg-linear-to-r from-blue-500 to-indigo-500 rounded-full"
                             initial={{ width: `${((step - 1) / 3) * 100}%` }}
                             animate={{ width: `${(step / 3) * 100}%` }}
                             transition={{ duration: 0.4, ease: "easeInOut" as const }}
@@ -202,9 +203,9 @@ export default function RecommendationsPage() {
                     <div className="p-8">
                         {isLoading ? (
                             <div className="flex flex-col items-center justify-center py-16 text-center">
-                                <Loader2 className="size-10 text-blue-500 animate-spin mb-6" />
-                                <h3 className="text-xl font-black text-slate-800 mb-2">Finding your matches…</h3>
-                                <p className="text-slate-500 text-sm">This will only take a moment.</p>
+                                <SkeletonList count={2} />
+                                <h3 className="text-xl font-black text-slate-800 mb-2 mt-8">Finding your matches…</h3>
+                                <p className="text-slate-500 text-sm">Our AI is analyzing the best institutional paths for you.</p>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="flex flex-col min-h-[300px]">
@@ -316,6 +317,7 @@ export default function RecommendationsPage() {
 
                                     <Button
                                         type="submit"
+                                        isLoading={isLoading}
                                         disabled={step === 1 && formData.interests.length < 3}
                                         className="bg-blue-600 hover:bg-blue-700 min-w-[140px] h-11 rounded-xl text-white font-bold shadow-sm shadow-blue-200 transition-all gap-2 disabled:opacity-40"
                                     >
