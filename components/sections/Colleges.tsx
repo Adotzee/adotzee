@@ -1,17 +1,24 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, ShieldCheck, MessageCircle, BookOpen, Sparkles } from "lucide-react";
 
 import { COLLEGES_DATA } from "@/lib/constants/landing-data";
+import { useEffect, useState } from "react";
 
 export function Colleges() {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleConnect = (collegeName: string) => {
         const message = `Hi Adotzee, I'm interested in admission at ${collegeName}. Can you provide more details?`;
         window.open(`https://wa.me/918281060462?text=${encodeURIComponent(message)}`, "_blank");
     };
+
+    if (!mounted) return null;
 
     return (
         <section className="py-16 md:py-24 bg-transparent relative overflow-hidden">
@@ -27,20 +34,22 @@ export function Colleges() {
 
                 {/* Colleges Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                    {COLLEGES_DATA.map((hub, i) => (
+                    {(COLLEGES_DATA as any[]).map((hub, idx) => (
                         <motion.div
-                            key={i}
-                            whileHover={{ y: -10 }}
-                            className={`${hub.span} group flex flex-col xl:flex-row bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-[3rem] p-4 transition-all duration-500`}
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className={`${hub.span} group relative bg-white rounded-[3rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col xl:flex-row`}
                         >
-
-                            {/* Image Area */}
-                            <div className="relative w-full xl:w-1/2 min-h-[300px] xl:min-h-full rounded-[2rem] overflow-hidden border border-white/50 shrink-0">
+                            {/* Image Container */}
+                            <div className="relative w-full xl:w-1/2 min-h-[300px] overflow-hidden">
                                 <Image
                                     src={hub.image}
                                     alt={hub.name}
                                     fill
-                                    className=" group-hover:scale-110 transition-transform duration-700"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 left-4 inline-flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-white bg-brand-accent/80 backdrop-blur-md px-3 py-1.5 rounded-full">
                                     <ShieldCheck className="w-4 h-4" />
@@ -54,9 +63,9 @@ export function Colleges() {
                                     {hub.name}
                                 </h3>
 
-                                <div className="flex items-center text-foreground opacity-60 font-medium mb-6">
-                                    <MapPin className="w-4 h-4 mr-2" />
-                                    {hub.location}
+                                <div className="flex items-center text-foreground opacity-60 font-medium mb-10">
+                                    <MapPin className="w-4 h-4 mr-2 text-brand-primary" />
+                                    <span>{hub.city}, {hub.state}</span>
                                 </div>
 
                                 <button

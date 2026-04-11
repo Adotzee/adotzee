@@ -10,6 +10,7 @@ import Link from "next/link";
 import { CourseCard } from "../cards/CourseCard";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { Course } from "@/types";
+import { COURSES_DATA } from "@/lib/constants/landing-data";
 
 interface CoursesClientProps {
     initialData?: Course[];
@@ -22,13 +23,15 @@ function CoursesContent({ initialData }: CoursesClientProps) {
     const streamName = searchParams.get("streamName") || "";
 
     const [loadingCourseId, setLoadingCourseId] = useState<string | null>(null);
-    const { data: courses = initialData || [], isLoading, error } = useCoursesQuery(stream);
+    const { data: apiCourses, isLoading, error } = useCoursesQuery(stream);
 
-    useEffect(() => {
-        if (!stream) {
-            router.push("/");
-        }
-    }, [stream, router]);
+    // Dynamic data consolidation: API Data > Initial Data > Curated Fallback
+    const courses = (apiCourses && apiCourses.length > 0)
+        ? apiCourses
+        : (initialData && initialData.length > 0)
+            ? initialData
+            : (!stream ? COURSES_DATA : []);
+
 
     const handleCourseSelect = (courseId: string, courseName: string) => {
         setLoadingCourseId(courseId);
@@ -77,16 +80,20 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                         <span className="h-px w-12 bg-blue-600" />
                         <span className="text-blue-600 font-bold uppercase tracking-[0.2em] text-[10px]">Academic Selection</span>
                     </motion.div>
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-6xl md:text-8xl font-black text-slate-900 tracking-[-0.04em] leading-[0.9] flex flex-col"
                     >
-                        <span>Expertise in</span>
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">{streamName}</span>
+                        <span>{streamName ? "Expertise in" : "Browse All"}</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
+                            {streamName || "Academic Modules"}
+                        </span>
                     </motion.h1>
                     <p className="text-slate-500 font-medium text-lg mt-8 max-w-xl leading-relaxed">
-                        Curated collection of industry-leading courses and global specializations for your chosen path.
+                        {streamName
+                            ? `Curated collection of industry-leading courses and global specializations for ${streamName}.`
+                            : "Explore our comprehensive directory of premier degree programs and professional certifications across South India."}
                     </p>
                 </div>
 
@@ -101,7 +108,7 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                             <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-orange-400 to-amber-500" />
                         )}
                         <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${(error as any).isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
-                             <span className={`text-3xl ${(error as any).isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
+                            <span className={`text-3xl ${(error as any).isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
                         </div>
                         <h2 className="text-3xl font-black text-slate-900 mb-4">
                             {(error as any).isDatabaseError ? "System Optimization" : "Request Interrupted"}
@@ -110,14 +117,14 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                             {(error as any).message || "Something went wrong while fetching courses."}
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                            <button 
-                                onClick={() => window.location.reload()} 
+                            <button
+                                onClick={() => window.location.reload()}
                                 className="bg-slate-900 text-white px-12 py-5 rounded-3xl font-bold hover:bg-black transition-all shadow-xl shadow-slate-200 w-full md:w-auto"
                             >
                                 Try Refreshing
                             </button>
                             {(error as any).isDatabaseError && (
-                                <Link 
+                                <Link
                                     href="/"
                                     className="bg-white text-slate-600 border border-slate-100 px-12 py-5 rounded-3xl font-bold hover:bg-slate-50 transition-all w-full md:w-auto"
                                 >
@@ -127,12 +134,12 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                         </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 gap-10">
+                    <div className="grid grid-cols-1 gap-4">
                         {courses.length > 0 ? courses.map((course: any, idx: number) => (
-                            <CourseCard 
-                                key={course.id} 
-                                course={course} 
-                                index={idx} 
+                            <CourseCard
+                                key={course.id}
+                                course={course}
+                                index={idx}
                                 isLoading={loadingCourseId === course.id}
                                 onSelect={handleCourseSelect}
                                 onHover={handleCourseHover}

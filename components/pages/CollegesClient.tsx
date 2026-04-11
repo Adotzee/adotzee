@@ -9,6 +9,7 @@ import { Loader2, ArrowLeft, ChevronRight, GraduationCap, MessageCircle, Sparkle
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { College } from "@/types";
+import { COLLEGES_DATA } from "@/lib/constants/landing-data";
 
 interface CollegesClientProps {
     initialData?: College[];
@@ -24,7 +25,15 @@ function CollegesContent({ initialData }: CollegesClientProps) {
     const addonId = searchParams.get("addonId") || "";
     const addonName = searchParams.get("addonName") || "None";
 
-    const { data: colleges = initialData || [], isLoading, error } = useCollegesQuery(addonId);
+    const { data: apiColleges, isLoading, error } = useCollegesQuery(addonId);
+    
+    // Dynamic data fallback: API > Initial > Curated Constants
+    const colleges = (apiColleges && apiColleges.length > 0)
+        ? apiColleges
+        : (initialData && initialData.length > 0)
+            ? initialData
+            : (!addonId ? COLLEGES_DATA : []);
+
     const [submitting, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -108,7 +117,9 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                         className="text-5xl md:text-8xl font-black text-slate-900 mt-4 tracking-tighter leading-[0.95]"
                     >
                         Premier Institutions <br />
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">for {courseName}</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">
+                            {courseName ? `for ${courseName}` : "across South India"}
+                        </span>
                     </motion.h1>
                     <p className="text-slate-500 font-medium text-xl mt-10 max-w-2xl leading-relaxed italic">
                         Select an institution below to finalize your interest and receive direct consultation via WhatsApp.

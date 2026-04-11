@@ -35,7 +35,7 @@ export function Hero() {
     return (
         <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
             <Image
-                src="https://images.unsplash.com/photo-1541339907198-e08756ebafe1?auto=format&fit=crop&q=80&w=2000"
+                src="/hero_bg.png"
                 alt="University Campus"
                 fill
                 priority

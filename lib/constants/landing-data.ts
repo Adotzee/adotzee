@@ -34,60 +34,134 @@ export const LOCATIONS_DATA = [
 
 export const COURSES_DATA = [
     { 
-        id: 9, 
-        title: "Computer Applications (BCA)", 
-        tags: ["Technology", "3 Years"], 
-        span: "md:col-span-6",
-        aeoAnswer: "BCA is a 3-year undergraduate degree in computer applications, focusing on software development and IT management."
+        id: "9", 
+        name: "Computer Applications (BCA)", 
+        title: "Computer Applications (BCA)",
+        description: "BCA focuses on software development and IT management.",
+        stream: "Technology",
+        level: "UG",
+        duration: "3 Years",
+        careerOpportunities: ["Software Engineer", "Web Developer", "System Analyst"],
+        tags: ["Technology", "3 Years"],
+        isActive: true,
+        span: "md:col-span-6"
     },
     { 
-        id: 10, 
-        title: "Business Administration (BBA)", 
-        tags: ["Management", "3 Years"], 
-        span: "md:col-span-3",
-        aeoAnswer: "BBA provides foundational knowledge in business principles and management, ideal for aspiring corporate leaders."
+        id: "10", 
+        name: "Business Administration (BBA)", 
+        title: "Business Administration (BBA)",
+        description: "BBA provides foundational knowledge in business principles.",
+        stream: "Management",
+        level: "UG",
+        duration: "3 Years",
+        careerOpportunities: ["Business Manager", "HR Executive", "Marketing Analyst"],
+        tags: ["Management", "3 Years"],
+        isActive: true,
+        span: "md:col-span-3"
     },
     { 
-        id: 8, 
-        title: "B.Tech Computer Science", 
-        tags: ["Engineering", "4 Years"], 
-        span: "md:col-span-3",
-        aeoAnswer: "Bachelor of Technology in CS focuses on computation, software engineering, and hardware-software integration."
+        id: "8", 
+        name: "B.Tech Computer Science", 
+        title: "B.Tech Computer Science",
+        description: "Bachelor of Technology in CS focuses on computation and software engineering.",
+        stream: "Engineering",
+        level: "UG",
+        duration: "4 Years",
+        careerOpportunities: ["Full Stack Developer", "Data Scientist", "Cloud Engineer"],
+        tags: ["Engineering", "4 Years"],
+        isActive: true,
+        span: "md:col-span-3"
     },
     { 
-        id: 7, 
-        title: "Allied Health Sciences", 
-        tags: ["Medicine", "4 Years"], 
-        span: "md:col-span-4",
-        aeoAnswer: "Allied Health Sciences includes courses like Nursing, Radiology, and MLT, focusing on medical support services."
+        id: "7", 
+        name: "Allied Health Sciences", 
+        title: "Allied Health Sciences",
+        description: "Focuses on medical support services like Radiology and MLT.",
+        stream: "Medicine",
+        level: "UG",
+        duration: "4 Years",
+        careerOpportunities: ["Lab Technician", "Radiologist", "Health Coordinator"],
+        tags: ["Nursing", "4 Years"],
+        isActive: true,
+        span: "md:col-span-4"
     },
     { 
-        id: 11, 
-        title: "Commerce (B.Com)", 
-        tags: ["Accounting", "3 Years"], 
-        span: "md:col-span-8",
-        aeoAnswer: "B.Com is a foundational commerce degree covering accounting, finance, and business law."
+        id: "11", 
+        name: "Commerce (B.Com)", 
+        title: "Commerce (B.Com)",
+        description: "Foundational commerce degree covering accounting and finance.",
+        stream: "Accounting",
+        level: "UG",
+        duration: "3 Years",
+        careerOpportunities: ["Accountant", "Financial Analyst", "Tax Specialist"],
+        tags: ["Accounting", "3 Years"],
+        isActive: true,
+        span: "md:col-span-8"
     }
 ];
 
 export const COLLEGES_DATA = [
     {
+        id: "c1",
         name: "Jain University",
-        location: "Bengaluru, Karnataka",
+        description: "A premier Deemed-to-be University known for academic excellence and top-tier placements in Bangalore.",
+        address: "Jayanagar",
+        city: "Bengaluru",
+        state: "Karnataka",
+        establishedYear: 1990,
+        accreditation: ["NAAC A++", "UGC Recognized"],
+        facilities: ["Digital Library", "FinTech Lab", "Sports Complex"],
+        isRecommended: true,
+        isActive: true,
         tier: "Verified Partner",
         span: "md:col-span-7",
-        image: "/colleges/jain.png",
-        courses: ["Nursing", "Allied Health", "BPT"],
-        description: "A premier Deemed-to-be University known for academic excellence and top-tier placements in Bangalore."
+        image: "/colleges/jain.png"
     },
     {
+        id: "c2",
         name: "Presidency University",
-        location: "Bengaluru, Karnataka",
+        description: "Renowned for its state-of-the-art infrastructure and industry-aligned curriculum in South India.",
+        address: "Itgalpur",
+        city: "Bengaluru",
+        state: "Karnataka",
+        establishedYear: 2013,
+        accreditation: ["Approved by AICTE", "BCI Recognized"],
+        facilities: ["Modern Labs", "Innovation Hub", "Cafeteria"],
+        isRecommended: true,
+        isActive: true,
         tier: "Top Ranked",
         span: "md:col-span-5",
-        image: "/colleges/presidency_pic.jpg",
-        courses: ["BCA", "BBA", "B.Tech"],
-        description: "Renowned for its state-of-the-art infrastructure and industry-aligned curriculum in South India."
+        image: "/colleges/presidency_pic.jpg"
+    }
+];
+
+export const ADDONS_DATA = [
+    {
+        id: "1",
+        name: "Artificial Intelligence & ML",
+        description: "Advanced certification in AI/ML to complement your technical degree.",
+        price: 0,
+        duration: "6 Months",
+        certifyingBody: "TCS iON / Microsoft",
+        isActive: true
+    },
+    {
+        id: "2",
+        name: "Cloud Computing (AWS/Azure)",
+        description: "Industry-standard cloud infrastructure expertise.",
+        price: 0,
+        duration: "4 Months",
+        certifyingBody: "AWS Academy",
+        isActive: true
+    },
+    {
+        id: "3",
+        name: "Digital Marketing Strategy",
+        description: "Modern marketing techniques for the digital era.",
+        price: 0,
+        duration: "3 Months",
+        certifyingBody: "Google Digital Garage",
+        isActive: true
     }
 ];
 

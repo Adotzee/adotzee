@@ -8,6 +8,7 @@ import { Loader2, ArrowLeft, ChevronRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { AddonCourse } from "@/types";
+import { ADDONS_DATA } from "@/lib/constants/landing-data";
 
 interface AddonsClientProps {
     initialData?: AddonCourse[];
@@ -29,11 +30,6 @@ function AddonsContent({ initialData }: AddonsClientProps) {
     const [error, setError] = useState<any | null>(null);
 
     useEffect(() => {
-        if (!courseId) {
-            router.push("/courses");
-            return;
-        }
-
         // Only fetch if we don't have initial data or if courseId changed
         if (initialData && initialData.length > 0 && addons.length > 0) {
             setLoading(false);
@@ -44,13 +40,23 @@ function AddonsContent({ initialData }: AddonsClientProps) {
             setLoading(true);
             setError(null);
             try {
-                const data = await apiClient.get(`/Addons/by-course/${courseId}`);
+                const url = courseId ? `/Addons/by-course/${courseId}` : "/Addons";
+                const data = await apiClient.get(url);
                 const addonList = Array.isArray(data) ? data : [];
-                setAddons(addonList);
+                
+                // Fallback to curated data if direct navigation returns empty results
+                if (addonList.length === 0 && !courseId) {
+                    setAddons(ADDONS_DATA);
+                } else {
+                    setAddons(addonList);
+                }
             } catch (err: any) {
                 console.error("Addon Fetch Error:", err);
-                // Only swallow if it's a 404 (No specialization exists), otherwise report
-                if (err.response?.status === 404) {
+                
+                // Fallback on error if navigating from navbar
+                if (!courseId) {
+                    setAddons(ADDONS_DATA);
+                } else if (err.response?.status === 404) {
                     setAddons([]);
                 } else {
                     setError(err);
@@ -92,7 +98,7 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                     <div className="p-2 rounded-full bg-slate-50 group-hover:bg-blue-50 mr-4 transition-colors">
                         <ArrowLeft className="w-5 h-5" />
                     </div>
-                    Back to Courses
+                    {courseName ? `Back to ${courseName}` : "Explore All Courses"}
                 </button>
 
                 {/* Header */}
@@ -100,17 +106,20 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                     <motion.span
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="text-blue-600 font-black uppercase tracking-widest text-sm"
+                        className="text-blue-600 font-black uppercase tracking-widest text-[10px]"
                     >
-                        Step 03
+                        {courseId ? "Step 03 — Selection" : "Skill Specializations"}
                     </motion.span>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-7xl font-black text-slate-900 mt-4 tracking-tighter leading-tight"
+                        className="text-5xl md:text-8xl font-black text-slate-900 mt-4 tracking-tighter leading-none"
                     >
-                        Pick a Specialization for<br />
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">{courseName}</span>
+                        {courseName ? (
+                            <>Specialized for <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">{courseName}</span></>
+                        ) : (
+                            <>Professional <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-500">Add-on Skills</span></>
+                        )}
                     </motion.h1>
                 </div>
 
