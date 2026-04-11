@@ -59,3 +59,89 @@ export const CourseSchema = (course: { name: string; description: string; provid
     sameAs: course.url,
   },
 });
+
+export const CollegeSchema = (college: { 
+  name: string; 
+  description: string; 
+  url: string; 
+  imageUrl?: string;
+  address: string;
+  city: string;
+  state: string;
+  rating?: number;
+}) => {
+  const schema: any = {
+    "@context": "https://schema.org",
+    "@type": "CollegeOrUniversity",
+    name: college.name,
+    description: college.description,
+    url: college.url,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: college.city,
+      addressRegion: college.state,
+      streetAddress: college.address,
+      addressCountry: "IN"
+    }
+  };
+
+  if (college.imageUrl) {
+    schema.image = college.imageUrl;
+  }
+
+  if (college.rating) {
+    schema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: college.rating,
+      bestRating: "5",
+      ratingCount: "10"
+    };
+  }
+
+  // AI-optimized properties for GEO (Generative Engine Optimization)
+  schema.knowsAbout = [
+    "Higher Education in India",
+    "College Admissions",
+    "Scholarship Assistance",
+    "Career Guidance"
+  ];
+  schema.areaServed = ["IN", "AE", "QA"]; // India and Middle-East contexts
+
+  return schema;
+};
+
+export const AdmissionServiceSchema = (companyInfo: { name: string; description: string; url: string }) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "College Admission Guidance",
+  provider: {
+    "@type": "Organization",
+    name: companyInfo.name,
+    url: companyInfo.url
+  },
+  description: companyInfo.description,
+  areaServed: {
+    "@type": "Country",
+    name: "India"
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Admission Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Direct Admission Guidance"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Scholarship Assistance"
+        }
+      }
+    ]
+  }
+});

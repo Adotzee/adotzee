@@ -50,11 +50,13 @@ export default async function CoursesPage({ searchParams }: Props) {
   const stream = params.stream ? String(params.stream) : "";
   const streamName = params.streamName ? String(params.streamName) : "Academic Stream";
 
-  // Pre-fetch courses on the server
+  // Pre-fetch courses on the server (SSR Optimization)
   let initialCourses: Course[] = [];
   try {
     if (stream) {
       initialCourses = await courseService.getByStream(stream);
+    } else {
+      initialCourses = await courseService.getAll();
     }
   } catch (error) {
     console.error("Server-side Course Fetch Error:", error);

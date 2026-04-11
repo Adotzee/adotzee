@@ -52,6 +52,8 @@ export default async function AddonsPage({ searchParams }: Props) {
   try {
     if (courseId) {
       initialAddons = await addonService.getByCourse(courseId);
+    } else {
+      initialAddons = await addonService.getAll();
     }
   } catch (error) {
     console.warn("Server-side Addon Fetch Error:", error);

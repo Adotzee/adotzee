@@ -25,6 +25,10 @@ export interface College {
   rating?: number;
   isActive: boolean;
   isRecommended?: boolean;
+  googleMapsUrl?: string;
+  latitude?: number;
+  longitude?: number;
+  placeId?: string;
   courses?: Course[];
 }
 

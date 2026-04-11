@@ -4,25 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, ShieldCheck, MessageCircle, BookOpen, Sparkles } from "lucide-react";
 
+import { COLLEGES_DATA } from "@/lib/constants/landing-data";
+
 export function Colleges() {
-    const colleges = [
-        {
-            name: "Jain University",
-            location: "Bengaluru, Karnataka",
-            tier: "Verified Partner",
-            span: "md:col-span-7",
-            image: "/colleges/jain.png",
-            courses: ["Nursing", "Allied Health", "BPT"]
-        },
-        {
-            name: "Presidency University",
-            location: "Bengaluru, Karnataka",
-            tier: "Top Ranked",
-            span: "md:col-span-5",
-            image: "/colleges/presidency_pic.jpg",
-            courses: ["BCA", "BBA", "B.Tech"],
-        }
-    ];
 
     const handleConnect = (collegeName: string) => {
         const message = `Hi Adotzee, I'm interested in admission at ${collegeName}. Can you provide more details?`;
@@ -43,7 +27,7 @@ export function Colleges() {
 
                 {/* Colleges Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                    {colleges.map((hub, i) => (
+                    {COLLEGES_DATA.map((hub, i) => (
                         <motion.div
                             key={i}
                             whileHover={{ y: -10 }}

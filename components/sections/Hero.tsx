@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import ParticlesBackground from "../filters/particles";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
@@ -33,11 +34,19 @@ export function Hero() {
 
     return (
         <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+            <Image
+                src="https://images.unsplash.com/photo-1541339907198-e08756ebafe1?auto=format&fit=crop&q=80&w=2000"
+                alt="University Campus"
+                fill
+                priority
+                className="object-cover opacity-10"
+            />
+            
             <ParticlesBackground />
 
             {/* Background aesthetic blobs */}
-            <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-50 rounded-full blur-[120px] opacity-60 animate-pulse" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-indigo-50 rounded-full blur-[120px] opacity-60 animate-pulse" />
+            <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-50/50 rounded-full blur-[120px] opacity-40 animate-pulse" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-indigo-50/50 rounded-full blur-[120px] opacity-40 animate-pulse" />
 
             <motion.div
                 className="relative z-10 w-full max-w-5xl mx-auto px-6 mt-30 mb-30"

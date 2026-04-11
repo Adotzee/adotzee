@@ -1,10 +1,27 @@
 import { MetadataRoute } from 'next';
 import { COMPANY_INFO } from '@/lib/constants';
+import { collegeService } from '@/features/colleges/collegeService';
+import { courseService } from '@/features/courses/courseService';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = COMPANY_INFO.fullUrl;
 
-    return [
+    // Fetch dynamic data for colleges and courses
+    let colleges: any[] = [];
+    let courses: any[] = [];
+
+    try {
+        const [collegesData, coursesData] = await Promise.all([
+            collegeService.getAll(),
+            courseService.getAll()
+        ]);
+        colleges = Array.isArray(collegesData) ? collegesData : [];
+        courses = Array.isArray(coursesData) ? coursesData : [];
+    } catch (error) {
+        console.error("Failed to fetch sitemap data:", error);
+    }
+
+    const staticRoutes: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
             lastModified: new Date(),
@@ -36,4 +53,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
     ];
+
+    const collegeRoutes: MetadataRoute.Sitemap = colleges.map((college) => ({
+        url: `${baseUrl}/colleges/${college.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.7,
+    }));
+
+    const courseRoutes: MetadataRoute.Sitemap = courses.map((course) => ({
+        url: `${baseUrl}/courses/${course.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.6,
+    }));
+
+    return [...staticRoutes, ...collegeRoutes, ...courseRoutes];
 }

@@ -53,49 +53,55 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         </div>
 
                         {/* Navigation Links */}
-                        <div className="flex-1 overflow-y-auto p-6 space-y-2">
-                            {menuItems.map((item) => (
-                                <Link
+                        <div className="flex-1 overflow-y-auto p-6 space-y-3">
+                            {menuItems.map((item, i) => (
+                                <motion.div
                                     key={item.href}
-                                    href={item.href}
-                                    onClick={onClose}
-                                    className="flex items-center gap-4 p-4 rounded-2xl hover:bg-blue-50 transition-all group"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.05 }}
                                 >
-                                    <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover:bg-white group-hover:shadow-sm transition-all">
-                                        <item.icon className="w-5 h-5 text-gray-500 group-hover:text-brand-accent" />
-                                    </div>
-                                    <span className="text-lg font-bold text-foreground group-hover:text-brand-accent">{item.label}</span>
-                                </Link>
+                                    <Link
+                                        href={item.href}
+                                        onClick={onClose}
+                                        className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-transparent hover:border-brand-accent hover:bg-white hover:shadow-xl transition-all group"
+                                    >
+                                        <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-xs group-hover:bg-brand-accent group-hover:text-white transition-all">
+                                            <item.icon className="w-6 h-6 text-slate-500 group-hover:text-white transition-colors" />
+                                        </div>
+                                        <span className="text-xl font-black text-slate-900 leading-none">{item.label}</span>
+                                    </Link>
+                                </motion.div>
                             ))}
 
-                            <div className="pt-6">
+                            <div className="pt-8">
                                 <Link href="/recommendations" onClick={onClose}>
-                                    <Button className="w-full h-14 rounded-2xl bg-brand-accent hover:bg-[#1D4ED8] text-white font-bold text-lg shadow-lg">
+                                    <Button className="w-full h-16 rounded-[1.5rem] bg-brand-accent hover:bg-blue-700 text-white font-black text-xl shadow-brand-glow hover:shadow-brand-glow-lg transition-all">
                                         Get Admission Guidance
                                     </Button>
                                 </Link>
                             </div>
                         </div>
 
-                        {/* Footer Contact */}
-                        <div className="p-8 bg-gray-50/50 space-y-4">
-                            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Need Expert Help?</p>
+                        {/* Footer Contact - SXO optimized */}
+                        <div className="p-8 bg-slate-50/80 backdrop-blur-sm space-y-4 border-t border-slate-100">
+                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2">Technical Admission Desk</p>
                             <div className="grid grid-cols-2 gap-4">
                                 <a
-                                    href={`tel:${COMPANY_INFO.phone}`}
-                                    className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:border-brand-accent transition-colors gap-2"
+                                    href={`tel:${COMPANY_INFO.phone.replace(/\s/g, '')}`}
+                                    className="flex flex-col items-center justify-center p-5 bg-white rounded-3xl border border-slate-100 shadow-xs hover:border-brand-accent transition-all gap-2"
                                 >
-                                    <Phone className="w-5 h-5 text-brand-accent" />
-                                    <span className="text-xs font-bold text-gray-600">Call Now</span>
+                                    <Phone className="w-6 h-6 text-brand-accent" />
+                                    <span className="text-xs font-black text-slate-900">Call Now</span>
                                 </a>
                                 <a
                                     href={COMPANY_INFO.socials.whatsapp}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:border-[#22C55E] transition-colors gap-2"
+                                    className="flex flex-col items-center justify-center p-5 bg-white rounded-3xl border border-slate-100 shadow-xs hover:border-[#22C55E] transition-all gap-2"
                                 >
-                                    <MessageCircle className="w-5 h-5 text-[#22C55E]" />
-                                    <span className="text-xs font-bold text-gray-600">WhatsApp</span>
+                                    <MessageCircle className="w-6 h-6 text-[#22C55E]" />
+                                    <span className="text-xs font-black text-slate-900">WhatsApp</span>
                                 </a>
                             </div>
                         </div>

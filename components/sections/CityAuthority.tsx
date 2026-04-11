@@ -1,38 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Building2, GraduationCap, Map } from "lucide-react";
-
-const locations = [
-    {
-        city: "Bengaluru",
-        description: "The Silicon Valley of India, offering premier engineering and management institutes with great placement opportunities.",
-        icon: Building2
-    },
-    {
-        city: "Mangalore",
-        description: "A hub for medical and allied health sciences, known for its high-quality education and coastal campus life.",
-        icon: GraduationCap
-    },
-    {
-        city: "Mysore",
-        description: "The cultural capital of Karnataka, home to historic universities and specialized research institutions.",
-        icon: Map
-    },
-    {
-        city: "Coimbatore",
-        description: "An industrial and educational powerhouse in Tamil Nadu, famous for its textile and engineering excellence.",
-        icon: MapPin
-    }
-];
+import { LOCATIONS_DATA } from "@/lib/constants/landing-data";
 
 export function CityAuthority() {
     return (
         <section className="py-24 bg-transparent relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
                 <div className="mb-16">
-                    <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-6">
+                    <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-6 relative inline-block">
                         Study in India's Best Cities
+                        <div className="absolute -bottom-2 left-0 w-20 h-1.5 bg-brand-accent rounded-full" />
                     </h2>
                     <p className="text-xl text-foreground font-medium opacity-70 max-w-2xl leading-loose">
                         We provide specialized admission support for colleges in the most sought-after educational hubs in South India.
@@ -40,14 +18,14 @@ export function CityAuthority() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {locations.map((loc, i) => (
+                    {LOCATIONS_DATA.map((loc, i) => (
                         <motion.div
                             key={loc.city}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-[2.5rem] p-8 group hover:-translate-y-3 transition-transform duration-500"
+                            className="bg-white/40 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-[2.5rem] p-8 group hover:-translate-y-3 transition-transform duration-500"
                         >
                             <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-brand-accent group-hover:text-white transition-colors duration-300">
                                 <loc.icon className="w-7 h-7" />

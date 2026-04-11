@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+import { COURSES_DATA } from "@/lib/constants/landing-data";
+
 export function Courses() {
     const router = useRouter();
 
@@ -16,8 +18,9 @@ export function Courses() {
             <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 text-center md:text-left">
                     <div>
-                        <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-4">
+                        <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-4 relative inline-block">
                             Trending Courses.
+                            <div className="absolute -bottom-2 left-0 w-24 h-1.5 bg-brand-accent rounded-full" />
                         </h2>
                         <p className="text-xl text-[#0F172A] font-medium opacity-70 max-w-xl">
                             Find the right degree program after Plus Two to kickstart your career.
@@ -26,13 +29,7 @@ export function Courses() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                    {[
-                        { id: 9, title: "Computer Applications (BCA)", tags: ["Technology", "3 Years"], span: "md:col-span-6" },
-                        { id: 10, title: "Business Administration (BBA)", tags: ["Management", "3 Years"], span: "md:col-span-3" },
-                        { id: 8, title: "B.Tech Computer Science", tags: ["Engineering", "4 Years"], span: "md:col-span-3" },
-                        { id: 7, title: "Allied Health Sciences", tags: ["Medicine", "4 Years"], span: "md:col-span-4" },
-                        { id: 11, title: "Commerce (B.Com)", tags: ["Accounting", "3 Years"], span: "md:col-span-8" }
-                    ].map((course, i) => (
+                    {COURSES_DATA.map((course, i) => (
                         <button
                             key={i}
                             onClick={() => handleCourseSelect(course.id, course.title)}

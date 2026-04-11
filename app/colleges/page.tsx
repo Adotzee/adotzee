@@ -55,6 +55,8 @@ export default async function CollegesPage({ searchParams }: Props) {
   try {
     if (addonId) {
       initialColleges = await collegeService.getByAddon(addonId);
+    } else {
+      initialColleges = await collegeService.getAll();
     }
   } catch (error) {
     console.error("Server-side College Fetch Error:", error);

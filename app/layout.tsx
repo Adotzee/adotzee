@@ -21,7 +21,10 @@ const geistMono = Geist_Mono({
 import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: COMPANY_INFO.seo.title,
+  title: {
+    default: `${COMPANY_INFO.name} | ${COMPANY_INFO.seo.title}`,
+    template: `%s | ${COMPANY_INFO.name}`,
+  },
   description: COMPANY_INFO.seo.description,
   keywords: COMPANY_INFO.seo.keywords,
   authors: [{ name: "Adotzee Team" }],
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: COMPANY_INFO.seo.title,
+    title: COMPANY_INFO.name,
     description: COMPANY_INFO.seo.description,
     url: COMPANY_INFO.fullUrl,
     siteName: COMPANY_INFO.name,
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: COMPANY_INFO.seo.title,
+    title: COMPANY_INFO.name,
     description: COMPANY_INFO.seo.description,
     images: ["/Logos/AdotzeeLogoTextNoBG.png"],
   },
@@ -62,6 +65,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  category: 'education',
 };
 
 export const viewport = {
@@ -73,6 +77,7 @@ export const viewport = {
 
 import { JsonLd, OrganizationSchema } from "@/components/seo/JsonLd";
 import { StickyBottomCTA } from "@/components/shared/StickyBottomCTA";
+import { ScrollTracker } from "@/components/shared/ScrollTracker";
 
 import Script from "next/script";
 
@@ -114,6 +119,7 @@ export default function RootLayout({
         />
         <Providers>
           <Navbar />
+          <ScrollTracker />
           <main className="flex-1">
             {children}
           </main>

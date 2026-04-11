@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { HomePage } from "@/components/pages/HomePage";
 import { COMPANY_INFO } from "@/lib/constants";
-import { JsonLd, FAQSchema } from "@/components/seo/JsonLd";
+import { JsonLd, FAQSchema, AdmissionServiceSchema } from "@/components/seo/JsonLd";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -51,16 +51,18 @@ export default function Home() {
     {
       question: "How can I get admission guidance for South Indian colleges?",
       answer: "Adotzee offers comprehensive admission consultancy for colleges in Kerala, Karnataka, and Tamil Nadu. You can begin by selecting your academic stream on our homepage and talking to our expert counselors."
-    },
-    {
-      question: "Does Adotzee provide direct admission assistance?",
-      answer: "Yes, Adotzee specializes in direct admission guidance and placement for various UG and PG courses in premier institutions across South India."
     }
   ]);
 
+  const admissionSchema = AdmissionServiceSchema({
+    name: COMPANY_INFO.name,
+    description: COMPANY_INFO.seo.description,
+    url: COMPANY_INFO.fullUrl
+  });
+
   return (
     <>
-      <JsonLd data={faqData} />
+      <JsonLd data={[faqData, admissionSchema]} />
       <HomePage />
     </>
   );
