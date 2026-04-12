@@ -5,6 +5,47 @@ import { Building2, GraduationCap, Map, MapPin } from "lucide-react";
  * Optimized for SEO (Keyword-rich descriptions) and AEO (Concise answer blocks).
  */
 
+export interface CourseData {
+    id: string;
+    name: string;
+    title: string;
+    description: string;
+    stream: string;
+    level: string;
+    duration: string;
+    careerOpportunities: string[];
+    tags: string[];
+    isActive: boolean;
+    span: string;
+}
+
+export interface CollegeData {
+    id: string;
+    name: string;
+    description: string;
+    address: string;
+    city: string;
+    state: string;
+    establishedYear: number;
+    accreditation: string[];
+    facilities: string[];
+    isRecommended: boolean;
+    isActive: boolean;
+    tier: string;
+    span: string;
+    image: string;
+}
+
+export interface AddonData {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    duration: string;
+    certifyingBody: string;
+    isActive: boolean;
+}
+
 export const LOCATIONS_DATA = [
     {
         city: "Bengaluru",
@@ -32,7 +73,7 @@ export const LOCATIONS_DATA = [
     }
 ];
 
-export const COURSES_DATA = [
+export const COURSES_DATA: CourseData[] = [
     { 
         id: "9", 
         name: "Computer Applications (BCA)", 
@@ -100,7 +141,7 @@ export const COURSES_DATA = [
     }
 ];
 
-export const COLLEGES_DATA = [
+export const COLLEGES_DATA: CollegeData[] = [
     {
         id: "c1",
         name: "Jain University",
@@ -135,7 +176,7 @@ export const COLLEGES_DATA = [
     }
 ];
 
-export const ADDONS_DATA = [
+export const ADDONS_DATA: AddonData[] = [
     {
         id: "1",
         name: "Artificial Intelligence & ML",

@@ -5,7 +5,8 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { apiClient } from "@/lib/apiClient";
 import { useCollegesQuery } from "@/features/common/queries";
-import { Loader2, ArrowLeft, ChevronRight, GraduationCap, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, ChevronRight, GraduationCap, Sparkles } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { College } from "@/types";
@@ -26,7 +27,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
     const addonName = searchParams.get("addonName") || "None";
 
     const { data: apiColleges, isLoading, error } = useCollegesQuery(addonId);
-    
+
     // Dynamic data fallback: API > Initial > Curated Constants
     const colleges = (apiColleges && apiColleges.length > 0)
         ? apiColleges
@@ -163,7 +164,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                         </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 gap-8">
+                    <div className="grid grid-cols-1 gap-4">
                         {colleges.length > 0 ? colleges.map((college: any, idx: number) => (
                             <motion.button
                                 key={college.id}
@@ -171,52 +172,52 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                 initial="hidden"
                                 animate="visible"
                                 custom={idx}
-                                whileHover={{ y: -8, scale: 1.01 }}
+                                whileHover={{ y: -5, scale: 1.01 }}
                                 onClick={() => handleCollegeSelect(college.name || college.title)}
-                                className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-blue-500 transition-all text-left group relative flex flex-row items-center gap-8 overflow-hidden min-h-[160px] md:min-h-[220px]"
+                                className="bg-white p-4 md:mx-12 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-500 transition-all text-left group relative flex flex-row items-center gap-4 md:gap-18 overflow-hidden min-h-[110px] md:min-h-[130px]"
                             >
                                 {college.isRecommended && (
-                                    <motion.div 
+                                    <motion.div
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
                                         className="absolute top-0 right-0 z-20 cursor-help"
                                         title="Specially recommended by Adotzee for quality education and placements"
                                     >
-                                        <div className="bg-linear-to-r from-amber-400 via-orange-500 to-amber-500 text-white text-[10px] font-black uppercase tracking-widest px-6 py-2.5 rounded-bl-3xl shadow-lg flex items-center gap-2 border-b border-l border-white/20">
-                                            <Sparkles className="w-3 h-3 animate-pulse" />
-                                            Adotzee's Choice
+                                        <div className="bg-linear-to-r from-amber-400 via-orange-500 to-amber-500 text-white text-[8px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
+                                            <Sparkles className="w-2.5 h-2.5 animate-pulse" />
+                                            Choice
                                         </div>
                                     </motion.div>
                                 )}
                                 <div className="absolute top-0 right-0 w-32 md:w-48 h-full bg-linear-to-l from-blue-50/20 to-transparent pointer-events-none" />
 
                                 {/* Icon Section */}
-                                <div className="w-20 h-20 md:w-32 md:h-32 rounded-[1.5rem] md:rounded-[2.5rem] bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-all duration-500 group-hover:rotate-6 shadow-xs">
-                                    <GraduationCap className="size-10 md:size-16 text-blue-600 group-hover:text-white transition-colors" />
+                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-[1rem] md:rounded-[1.5rem] bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-all duration-500 group-hover:rotate-6 shadow-xs">
+                                    <GraduationCap className="size-8 md:size-10 text-blue-600 group-hover:text-white transition-colors" />
                                 </div>
 
                                 {/* Content Section */}
-                                <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                                    <div className="flex flex-col gap-4">
-                                        <h3 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
+                                <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+                                    <div className="flex flex-col gap-1.5">
+                                        <h3 className="text-xl md:text-3xl font-black text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
                                             {college.name || college.title}
                                         </h3>
                                         <div className="flex flex-wrap items-center gap-2">
-                                            <div className="flex items-center text-green-600 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] border border-green-100 bg-green-50/50 px-3 py-1.5 rounded-full w-fit group-hover:bg-green-100 transition-colors">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse" />
+                                            <div className="flex items-center text-green-600 font-bold text-[7px] md:text-[9px] uppercase tracking-[0.15em] border border-green-100 bg-green-50/50 px-2 py-1 rounded-full w-fit group-hover:bg-green-100 transition-colors">
+                                                <span className="w-1 h-1 rounded-full bg-green-500 mr-1.5 animate-pulse" />
                                                 Direct Placement
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center gap-4 md:gap-8 shrink-0">
+                                    <div className="flex items-center gap-4 shrink-0">
                                         <div className="hidden md:flex flex-col text-right">
-                                            <span className="text-slate-300 font-black text-[9px] uppercase tracking-widest mb-1">Final Step</span>
-                                            <span className="text-slate-900 font-bold text-sm">Consultation</span>
+                                            <span className="text-slate-300 font-black text-[8px] uppercase tracking-widest mb-0.5">Final Step</span>
+                                            <span className="text-slate-900 font-bold text-xs">Consultation</span>
                                         </div>
-                                        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-blue-50 flex items-center justify-center shadow-xs group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
-                                            <MessageCircle className="size-6 md:size-8 text-blue-600 group-hover:text-white" />
+                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center shadow-xs group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
+                                            <FaWhatsapp className="size-6 md:size-8 text-blue-600 group-hover:text-white" />
                                         </div>
                                     </div>
                                 </div>

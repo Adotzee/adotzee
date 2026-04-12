@@ -58,19 +58,19 @@ export function CourseCard({
                         : ""
                 )}
             >
-                <div className="flex flex-row h-22 md:h-30">
+                <div className="flex flex-row h-20 md:h-24">
                     <CardContent className="flex-1 p-0 lg:px-4 flex flex-col justify-center overflow-hidden">
 
                         {/* Top Section */}
-                        <div className="flex items-center justify-between gap-4 mb-2">
+                        <div className="flex items-center justify-between gap-4 mb-1">
 
                             {/* LEFT */}
                             <div className="flex items-center gap-3 min-w-0">
-                                <div className="p-2 md:p-3 rounded-xl bg-brand-accent/10">
-                                    <GraduationCap className="size-4 md:size-6 text-brand-accent" />
+                                <div className="p-2 md:p-2.5 rounded-xl bg-brand-accent/10">
+                                    <GraduationCap className="size-4 md:size-5 text-brand-accent" />
                                 </div>
 
-                                <h3 className="font-semibold text-base md:text-xl text-mesh-silver truncate">
+                                <h3 className="font-semibold text-base md:text-lg text-mesh-silver truncate">
                                     {course.name}
                                 </h3>
                             </div>
@@ -83,14 +83,14 @@ export function CourseCard({
                         </div>
 
                         {/* Bottom Section */}
-                        <div className="flex m-2 items-center justify-between mt-auto pt-2">
+                        <div className="flex m-2 items-center justify-between mt-auto">
                             {onSelect ? (
                                 <Button
                                     onClick={handleSelectClick}
                                     isLoading={isLoading}
                                     variant="ghost"
                                     size="sm"
-                                    className="h-7 md:h-9 px-3 md:px-5 ml-auto hover:text-brand-light text-white bg-brand-accent rounded-xl font-black transition-all group/btn text-[10px] md:text-sm"
+                                    className="h-7 md:h-8 px-3 md:px-5 ml-auto hover:text-brand-light text-white bg-brand-accent rounded-xl font-black transition-all group/btn text-[10px] md:text-xs"
                                 >
                                     Select Course
                                     <ArrowRight className="ml-1 md:ml-2 size-3 md:size-4 transition-transform group-hover/btn:translate-x-1" />
@@ -100,7 +100,7 @@ export function CourseCard({
                                     <Button
                                         variant="ghost"
                                         size="sm"
-                                        className="h-7 md:h-9 px-3 md:px-5 hover:text-brand-light text-white bg-brand-accent rounded-xl font-black transition-all group/btn text-[10px] md:text-sm"
+                                        className="h-7 md:h-8 px-3 md:px-5 hover:text-brand-light text-white bg-brand-accent rounded-xl font-black transition-all group/btn text-[10px] md:text-xs"
                                     >
                                         View Program
                                         <ArrowRight className="ml-1 md:ml-2 size-3 md:size-4 transition-transform group-hover/btn:translate-x-1" />

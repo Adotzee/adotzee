@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Home, BookOpen, Building2, Sparkles, Phone, MessageCircle, GraduationCap } from "lucide-react";
+import { X, Home, BookOpen, Building2, Sparkles, Phone, GraduationCap } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { COMPANY_INFO } from "@/lib/constants";
@@ -100,7 +101,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center justify-center p-5 bg-white rounded-3xl border border-slate-100 shadow-xs hover:border-[#22C55E] transition-all gap-2"
                                 >
-                                    <MessageCircle className="w-6 h-6 text-[#22C55E]" />
+                                    <FaWhatsapp className="w-6 h-6 text-[#22C55E]" />
                                     <span className="text-xs font-black text-slate-900">WhatsApp</span>
                                 </a>
                             </div>

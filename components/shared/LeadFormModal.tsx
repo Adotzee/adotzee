@@ -1,7 +1,7 @@
 "use client";
 
 import { useUiStore } from "../../store/useUiStore";
-import { useLeadForm, STEPS, LeadFormValues } from "../../hooks/useLeadForm";
+import { useLeadForm, STEPS } from "../../hooks/useLeadForm";
 import {
     Dialog,
     DialogContent,

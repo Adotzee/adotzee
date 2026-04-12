@@ -124,7 +124,7 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                 </div>
 
                 {/* Content */}
-                <div className="grid grid-cols-1 gap-8">
+                <div className="grid grid-cols-1 gap-4">
                     {loading ? (
                         <div className="py-10">
                             <SkeletonList count={2} />
@@ -170,23 +170,23 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                                 onClick={() => handleAddonSelect(addon.id.toString(), addon.name)}
                                 onMouseEnter={() => handleAddonHover(addon.id.toString(), addon.name)}
                                 disabled={selectingAddonId !== null}
-                                className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border-2 border-slate-50 shadow-sm hover:shadow-2xl hover:border-blue-500 transition-all text-left group flex flex-row items-center gap-6 disabled:opacity-70"
+                                className="bg-white p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-2 border-slate-50 shadow-sm hover:shadow-xl hover:border-blue-500 transition-all text-left group flex flex-row items-center gap-4 md:gap-6 disabled:opacity-70 min-h-[100px] md:min-h-[120px]"
                             >
-                                <div className="p-4 rounded-2xl bg-blue-50 group-hover:bg-blue-600 transition-colors shrink-0">
+                                <div className="p-3 rounded-2xl bg-blue-50 group-hover:bg-blue-600 transition-colors shrink-0">
                                     {selectingAddonId === addon.id.toString() ? (
-                                        <Loader2 className="w-6 h-6 md:w-8 md:h-8 text-blue-600 animate-spin" />
+                                        <Loader2 className="w-5 h-5 md:w-7 md:h-7 text-blue-600 animate-spin" />
                                     ) : (
-                                        <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-blue-600 group-hover:text-white transition-colors" />
+                                        <Sparkles className="w-5 h-5 md:w-7 md:h-7 text-blue-600 group-hover:text-white transition-colors" />
                                     )}
                                 </div>
                                 <div className="flex-1">
-                                    <div className="flex justify-between items-center mb-1">
-                                        <span className="text-xl md:text-2xl font-black text-slate-800 block">{addon.name}</span>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-blue-300">Specialization</div>
+                                    <div className="flex justify-between items-center mb-0.5">
+                                        <span className="text-lg md:text-xl font-bold text-slate-800 block">{addon.name}</span>
+                                        <div className="text-[8px] font-black uppercase tracking-widest text-blue-300">Specialization</div>
                                     </div>
-                                    <div className="flex items-center text-blue-600 font-bold group-hover:translate-x-2 transition-transform text-sm md:text-base">
+                                    <div className="flex items-center text-blue-600 font-bold group-hover:translate-x-2 transition-transform text-xs md:text-sm">
                                         {selectingAddonId === addon.id.toString() ? "Preparing matched colleges..." : "Explore this path"} 
-                                        {selectingAddonId !== addon.id.toString() && <ChevronRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />}
+                                        {selectingAddonId !== addon.id.toString() && <ChevronRight className="ml-2 w-3.5 h-3.5 md:w-4 md:h-4" />}
                                     </div>
                                 </div>
                             </motion.button>

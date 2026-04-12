@@ -12,6 +12,7 @@ import { CollegeCard } from "@/components/cards/CollegeCard";
 import { useRecommendations } from "@/hooks/useData";
 import { AddonCard } from "@/components/cards/AddonCard";
 import { SkeletonList } from "../shared/SkeletonCard";
+import { Course, College, AddonCourse } from "@/types";
 
 const STEPS = [
     { number: 1, label: "Interests" },
@@ -83,7 +84,7 @@ export default function RecommendationsPage() {
                                     <div className="flex-1 h-px bg-slate-200" />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {results.courses.map((course) => (
+                                    {results.courses.map((course: Course) => (
                                         <CourseCard key={course.id} course={course} featured />
                                     ))}
                                 </div>
@@ -100,7 +101,7 @@ export default function RecommendationsPage() {
                                     <div className="flex-1 h-px bg-slate-200" />
                                 </div>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                    {results.colleges.map((college) => (
+                                    {results.colleges.map((college: College) => (
                                         <CollegeCard key={college.id} college={college} />
                                     ))}
                                 </div>
@@ -117,7 +118,7 @@ export default function RecommendationsPage() {
                                     <div className="flex-1 h-px bg-slate-200" />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    {results.addons.map((addon) => (
+                                    {results.addons.map((addon: AddonCourse) => (
                                         <AddonCard key={addon.id} addon={addon} />
                                     ))}
                                 </div>
@@ -253,7 +254,7 @@ export default function RecommendationsPage() {
 
                                             <RadioGroup
                                                 value={formData.stream}
-                                                onValueChange={(v) => setFormData({ ...formData, stream: v })}
+                                                onValueChange={(v: string) => setFormData({ ...formData, stream: v })}
                                                 className="grid grid-cols-2 gap-3"
                                             >
                                                 {[

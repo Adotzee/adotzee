@@ -8,6 +8,16 @@ export interface ApiResponse<T> {
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.adotzee.in/api";
 
+interface BaseApiResponse {
+    success?: boolean;
+    Success?: boolean;
+    data?: unknown;
+    Data?: unknown;
+    message?: string;
+    Message?: string;
+    title?: string;
+}
+
 export const apiClient = axios.create({
     baseURL: API_BASE_URL,
     headers: {
@@ -27,30 +37,27 @@ apiClient.interceptors.request.use((config) => {
 // Response Interceptor: Extracts the nested data and handles success: false
 apiClient.interceptors.response.use(
     (response) => {
-        const res = response.data as any;
+        const res = response.data as BaseApiResponse;
 
-        // Support both lowercase (Node.js convention) and PascalCase (.NET convention)
         const isSuccess = res.success !== undefined ? res.success : res.Success;
         
         if (isSuccess === true) {
-            return res.data !== undefined ? res.data : res.Data;
+            return (res.data !== undefined ? res.data : res.Data) as any;
         }
         
         if (isSuccess === false) {
             const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(res);
-            const error = new Error(errorMsg) as any;
+            const error = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string };
             error.isDatabaseError = isDatabaseError;
             error.originalMessage = rawMsg;
             return Promise.reject(error);
         }
 
-        // If no success flag exists, assume it's just raw data (e.g. GET /Courses array)
-        return res;
+        return response;
     },
     (error) => {
-        // Safely extract error data, prioritizing message strings or stringifying objects
-        let errorData = error.response?.data;
-        let consoleData = errorData;
+        const errorData = error.response?.data as BaseApiResponse | undefined;
+        let consoleData: string | undefined;
         
         if (errorData && typeof errorData === 'object') {
             consoleData = JSON.stringify(errorData);
@@ -66,7 +73,7 @@ apiClient.interceptors.response.use(
         
         const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(errorData || {}, error.message);
             
-        const customError = new Error(errorMsg) as any;
+        const customError = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string };
         customError.isDatabaseError = isDatabaseError;
         customError.originalMessage = rawMsg;
         
@@ -75,7 +82,7 @@ apiClient.interceptors.response.use(
 );
 
 // Helper to extract error message and check for database errors
-function formatErrorMessage(res: any, defaultMsg: string = "Something went wrong") {
+function formatErrorMessage(res: BaseApiResponse, defaultMsg: string = "Something went wrong") {
     const rawMsg = res.message || res.Message || res.title || defaultMsg;
     let errorMsg = rawMsg;
     let isDatabaseError = false;

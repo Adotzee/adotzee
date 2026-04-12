@@ -75,7 +75,7 @@ export function Hero() {
                             { id: 'Science', name: 'Science', variant: 'default' as const, className: 'bg-blue-50 border-blue-100 text-blue-900 hover:bg-blue-100' },
                             { id: 'Commerce', name: 'Commerce', variant: 'default' as const, className: 'bg-orange-50 border-orange-100 text-orange-900 hover:bg-orange-100' },
                             { id: 'Humanities', name: 'Humanities', variant: 'default' as const, className: 'bg-green-50 border-green-100 text-green-900 hover:bg-green-100' }
-                        ].map((s, idx) => (
+                        ].map((s) => (
                             <Button
                                 key={s.id}
                                 isLoading={loadingStream === s.id}

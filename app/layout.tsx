@@ -93,10 +93,26 @@ export default function RootLayout({
     description: COMPANY_INFO.seo.description,
   });
 
+  // AI-Search & Google Searchbox Optimization
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": COMPANY_INFO.name,
+    "url": COMPANY_INFO.fullUrl,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${COMPANY_INFO.fullUrl}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <JsonLd data={orgData} />
+        <JsonLd data={[orgData, websiteSchema]} />
         {/* Google Analytics - Add your GA_MEASUREMENT_ID to your .env file */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}

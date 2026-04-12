@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import { COURSES_DATA } from "@/lib/constants/landing-data";
+import { COURSES_DATA, CourseData } from "@/lib/constants/landing-data";
 
 export function Courses() {
     const router = useRouter();
@@ -15,7 +15,7 @@ export function Courses() {
         setMounted(true);
     }, []);
 
-    const handleCourseSelect = (courseId: number, courseName: string) => {
+    const handleCourseSelect = (courseId: string, courseName: string) => {
         router.push(`/addons?courseId=${courseId}&courseName=${encodeURIComponent(courseName)}&streamName=Science&stream=1`);
     };
 
@@ -37,7 +37,7 @@ export function Courses() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                    {(COURSES_DATA as any[]).map((course, i) => (
+                    {COURSES_DATA.map((course: CourseData, i) => (
                         <button
                             key={i}
                             onClick={() => handleCourseSelect(course.id, course.title || course.name)}

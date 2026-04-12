@@ -9,7 +9,7 @@ declare global {
     gtag: (
       command: 'event' | 'config' | 'set',
       action: string,
-      params?: Record<string, any>
+      params?: Record<string, string | number | boolean | undefined>
     ) => void;
   }
 }
@@ -26,7 +26,7 @@ export const pageview = (url: string) => {
 };
 
 // Log specific events
-export const event = (action: string, params: Record<string, any>) => {
+export const event = (action: string, params: Record<string, string | number | boolean | undefined>) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', action, params);
   }

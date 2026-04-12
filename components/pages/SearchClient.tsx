@@ -8,9 +8,7 @@ import { Search as SearchIcon, Loader2, BookOpen, Building2, Award } from "lucid
 import { CourseCard } from "@/components/cards/CourseCard";
 import { CollegeCard } from "@/components/cards/CollegeCard";
 import { AddonCard } from "@/components/cards/AddonCard";
-import { Course, College, AddonCourse } from "@/types";
-
-import { useGlobalSearch } from "@/hooks/useData";
+import { useGlobalSearch, GlobalSearchResponse } from "@/hooks/useData";
 
 function SearchInterface() {
     const searchParams = useSearchParams();
@@ -106,7 +104,7 @@ function SearchInterface() {
                         {data.colleges.length > 0 && (
                             <section className="space-y-10">
                                 <div className="flex items-center gap-4 pt-16 border-t border-border">
-                                    <div className="p-3 bg-[#2563EB]/20 text-[#60A5FA] rounded-xl border border-white/5"><Building2 className="size-6" /></div>
+                                    <div className="p-3 bg-[#2563EB]/20 text-[#60A5FA] rounded-xl border border-white/50"><Building2 className="size-6" /></div>
                                     <h2 className="text-3xl font-black text-white">Partner Institutions</h2>
                                 </div>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -118,7 +116,7 @@ function SearchInterface() {
                         {data.addons.length > 0 && (
                             <section className="space-y-10">
                                 <div className="flex items-center gap-4 pt-16 border-t border-border">
-                                    <div className="p-3 bg-[#2563EB]/20 text-[#60A5FA] rounded-xl border border-white/5"><Award className="size-6" /></div>
+                                    <div className="p-3 bg-[#2563EB]/20 text-[#60A5FA] rounded-xl border border-white/50"><Award className="size-6" /></div>
                                     <h2 className="text-3xl font-black text-white">Addon Specializations</h2>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl">

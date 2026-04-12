@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export function WhatsAppButton() {
@@ -19,7 +19,7 @@ export function WhatsAppButton() {
             className="fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 hover:bg-[#20BE5A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
             aria-label="Chat with us on WhatsApp"
         >
-            <MessageCircle className="size-7" />
+            <FaWhatsapp className="size-8" />
 
             {/* Pulse animation ring */}
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-30"></span>

@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { MapPin, ShieldCheck, MessageCircle, BookOpen, Sparkles } from "lucide-react";
+import { MapPin, ShieldCheck, BookOpen, Sparkles } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
-import { COLLEGES_DATA } from "@/lib/constants/landing-data";
+import { COLLEGES_DATA, CollegeData } from "@/lib/constants/landing-data";
 import { useEffect, useState } from "react";
 
 export function Colleges() {
@@ -34,7 +35,7 @@ export function Colleges() {
 
                 {/* Colleges Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                    {(COLLEGES_DATA as any[]).map((hub, idx) => (
+                    {COLLEGES_DATA.map((hub: CollegeData, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 30 }}
@@ -73,7 +74,7 @@ export function Colleges() {
                                     className="mt-auto w-full group/btn flex items-center justify-center space-x-3 bg-slate-900 text-white rounded-2xl py-4 font-black hover:bg-brand-primary transition-all duration-300 shadow-xl shadow-slate-200"
                                 >
                                     <span>Proceed to Admission</span>
-                                    <MessageCircle className="w-5 h-5 group-hover/btn:rotate-12 transition-transform" />
+                                    <FaWhatsapp className="w-5 h-5 group-hover/btn:rotate-12 transition-transform" />
                                 </button>
                             </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 type JsonLdProps = {
-  data: Record<string, any> | Record<string, any>[];
+  data: Record<string, unknown> | Record<string, unknown>[];
 };
 
 export function JsonLd({ data }: JsonLdProps) {
@@ -70,7 +70,7 @@ export const CollegeSchema = (college: {
   state: string;
   rating?: number;
 }) => {
-  const schema: any = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "CollegeOrUniversity",
     name: college.name,
