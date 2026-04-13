@@ -9,7 +9,7 @@ export function CityAuthority() {
             <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
                 <div className="mb-16">
                     <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-6 relative inline-block">
-                        Study in India's Best Cities
+                        Study in India&apos;s Best Cities
                         <div className="absolute -bottom-2 left-0 w-20 h-1.5 bg-brand-accent rounded-full" />
                     </h2>
                     <p className="text-xl text-foreground font-medium opacity-70 max-w-2xl leading-loose">

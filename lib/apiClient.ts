@@ -36,13 +36,13 @@ apiClient.interceptors.request.use((config) => {
 
 // Response Interceptor: Extracts the nested data and handles success: false
 apiClient.interceptors.response.use(
-    (response) => {
+    (response: any) => {
         const res = response.data as BaseApiResponse;
 
         const isSuccess = res.success !== undefined ? res.success : res.Success;
         
         if (isSuccess === true) {
-            return (res.data !== undefined ? res.data : res.Data) as any;
+            return (res.data !== undefined ? res.data : res.Data) as unknown;
         }
         
         if (isSuccess === false) {

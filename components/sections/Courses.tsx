@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -9,17 +7,10 @@ import { COURSES_DATA, CourseData } from "@/lib/constants/landing-data";
 
 export function Courses() {
     const router = useRouter();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     const handleCourseSelect = (courseId: string, courseName: string) => {
         router.push(`/addons?courseId=${courseId}&courseName=${encodeURIComponent(courseName)}&streamName=Science&stream=1`);
     };
-
-    if (!mounted) return null;
 
     return (
         <section className="py-16 md:py-24 bg-transparent relative overflow-hidden">

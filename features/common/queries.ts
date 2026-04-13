@@ -37,8 +37,14 @@ export function useCollegesQuery(addonId: string) {
         queryFn: async () => {
             try {
                 const response = addonId 
-                    ? await apiClient.get(`/Addons/${addonId}/colleges`)
-                    : await apiClient.get("/Colleges");
+                    ? await apiClient.get<any>(`/Addons/${addonId}/colleges`)
+                    : await apiClient.get<any>("/Colleges?pageSize=100");
+
+                // If response is paginated (object with .data array), extract the array
+                if (response && typeof response === 'object' && 'data' in response && Array.isArray(response.data)) {
+                    return response.data;
+                }
+                
                 return Array.isArray(response) ? response : [];
             } catch (error) {
                 console.error("Colleges Fetch Error:", error);

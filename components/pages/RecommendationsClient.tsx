@@ -287,7 +287,7 @@ export default function RecommendationsPage() {
                                     {step === 3 && (
                                         <motion.div key="step3" variants={slideVariants} initial="hidden" animate="visible" exit="exit" transition={slideTransition} className="flex-1">
                                             <h2 className="text-2xl font-black text-slate-900 mb-1">Preferred city or region?</h2>
-                                            <p className="text-slate-500 mb-7 text-sm font-medium">We'll find colleges near you. Leave blank to see all.</p>
+                                            <p className="text-slate-500 mb-7 text-sm font-medium">We&apos;ll find colleges near you. Leave blank to see all.</p>
 
                                             <div className="space-y-3">
                                                 <Label htmlFor="location" className="text-slate-600 font-semibold text-xs uppercase tracking-widest">Location (Optional)</Label>

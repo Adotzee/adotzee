@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+// import Image from "next/image";
 import ParticlesBackground from "../filters/particles";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
@@ -34,14 +34,14 @@ export function Hero() {
 
     return (
         <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-            <Image
+            {/* <Image
                 src="/hero_bg.png"
                 alt="University Campus"
                 fill
                 priority
-                className="object-cover opacity-10"
-            />
-            
+                className="object-cover opacity-20"
+            /> */}
+
             <ParticlesBackground />
 
             {/* Background aesthetic blobs */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Users, Award, CheckCircle } from "lucide-react";
+import { ShieldCheck, Users, Award } from "lucide-react";
 
 /**
  * TrustSignals - Builds authority and reduces bounce rate (SXO).
@@ -9,10 +9,9 @@ import { ShieldCheck, Users, Award, CheckCircle } from "lucide-react";
  */
 export function TrustSignals() {
     const stats = [
-        { label: "Students Assisted", value: "5,000+", icon: Users },
-        { label: "Partner Colleges", value: "450+", icon: Award },
-        { label: "Success Rate", value: "99%", icon: CheckCircle },
-        { label: "Verified Admissions", value: "Direct", icon: ShieldCheck }
+        { label: "Students Assisted", value: "432+", icon: Users },
+        { label: "Partner Colleges", value: "110+", icon: Award },
+        { label: "Admissions", value: "Direct", icon: ShieldCheck }
     ];
 
     return (
@@ -45,7 +44,7 @@ export function TrustSignals() {
 
                 {/* Implicit Trust Text - AI Optimized */}
                 <p className="mt-12 text-center text-sm font-medium text-slate-400 max-w-2xl mx-auto leading-relaxed italic">
-                    All institutional partnerships are verified for NAAC accreditation and regulatory compliance. 
+                    All institutional partnerships are verified for NAAC accreditation and regulatory compliance.
                     Adotzee acts as an authorized admission gateway for premier higher education campuses.
                 </p>
             </div>

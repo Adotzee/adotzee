@@ -1,14 +1,14 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search as SearchIcon, Loader2, BookOpen, Building2, Award } from "lucide-react";
 import { CourseCard } from "@/components/cards/CourseCard";
 import { CollegeCard } from "@/components/cards/CollegeCard";
 import { AddonCard } from "@/components/cards/AddonCard";
-import { useGlobalSearch, GlobalSearchResponse } from "@/hooks/useData";
+import { useGlobalSearch } from "@/hooks/useData";
 
 function SearchInterface() {
     const searchParams = useSearchParams();
@@ -35,7 +35,7 @@ function SearchInterface() {
             <div className="container py-20 px-4 text-center">
                 <div className="bg-red-50 text-red-800 p-8 rounded-3xl border border-red-100 max-w-2xl mx-auto shadow-sm">
                     <h2 className="text-2xl font-bold mb-3">Search Service Unavailable</h2>
-                    <p className="mb-6 opacity-80">We're experiencing issues with our search engine. Please try again in a few moments.</p>
+                    <p className="mb-6 opacity-80">We&apos;re experiencing issues with our search engine. Please try again in a few moments.</p>
                     <Button onClick={() => window.location.reload()} className="bg-red-600 hover:bg-red-700 rounded-xl px-8 h-12">
                         Retry Search
                     </Button>
@@ -81,12 +81,12 @@ function SearchInterface() {
                             <SearchIcon className="size-10 text-slate-600" />
                         </div>
                         <h2 className="text-2xl font-bold text-white mb-3">No matches found</h2>
-                        <p className="text-slate-400 max-w-md leading-relaxed">No entities matching <span className="text-white font-bold italic">"{activeQuery}"</span> were identified in our database. Try alternative keywords.</p>
+                        <p className="text-slate-400 max-w-md leading-relaxed">No entities matching <span className="text-white font-bold italic">&quot;{activeQuery}&quot;</span> were identified in our database. Try alternative keywords.</p>
                     </div>
                 ) : activeQuery && hasResults ? (
                     <div className="space-y-24 animate-in fade-in duration-700">
                         <h2 className="text-xl font-bold text-slate-500 uppercase tracking-[0.2em] border-b border-border pb-6 flex items-center justify-between">
-                            <span>Intelligence Report for <span className="text-white italic">"{activeQuery}"</span></span>
+                            <span>Intelligence Report for <span className="text-white italic">&quot;{activeQuery}&quot;</span></span>
                         </h2>
 
                         {data.courses.length > 0 && (

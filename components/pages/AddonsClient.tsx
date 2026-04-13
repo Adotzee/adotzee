@@ -7,8 +7,9 @@ import { apiClient } from "@/lib/apiClient";
 import { Loader2, ArrowLeft, ChevronRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
-import { AddonCourse } from "@/types";
+import { AddonCourse, ApiError } from "@/types";
 import { ADDONS_DATA } from "@/lib/constants/landing-data";
+import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 interface AddonsClientProps {
     initialData?: AddonCourse[];
@@ -27,7 +28,7 @@ function AddonsContent({ initialData }: AddonsClientProps) {
     const [selectingAddonId, setSelectingAddonId] = useState<string | null>(null);
     const [addons, setAddons] = useState<AddonCourse[]>(initialData || []);
     const [loading, setLoading] = useState(!initialData || initialData.length === 0);
-    const [error, setError] = useState<any | null>(null);
+    const [apiError, setApiError] = useState<ApiError | null>(null);
 
     useEffect(() => {
         // Only fetch if we don't have initial data or if courseId changed
@@ -38,10 +39,10 @@ function AddonsContent({ initialData }: AddonsClientProps) {
 
         const fetchAddons = async () => {
             setLoading(true);
-            setError(null);
+            setApiError(null);
             try {
                 const url = courseId ? `/Addons/by-course/${courseId}` : "/Addons";
-                const data = await apiClient.get(url);
+                const data = await apiClient.get<AddonCourse[]>(url);
                 const addonList = Array.isArray(data) ? data : [];
                 
                 // Fallback to curated data if direct navigation returns empty results
@@ -50,16 +51,17 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                 } else {
                     setAddons(addonList);
                 }
-            } catch (err: any) {
-                console.error("Addon Fetch Error:", err);
+            } catch (err) {
+                const error = err as ApiError;
+                console.error("Addon Fetch Error:", error);
                 
                 // Fallback on error if navigating from navbar
                 if (!courseId) {
                     setAddons(ADDONS_DATA);
-                } else if (err.response?.status === 404) {
+                } else if (error.name === 'AxiosError' && (error as ApiError & { response?: { status: number } }).response?.status === 404) {
                     setAddons([]);
                 } else {
-                    setError(err);
+                    setApiError(error);
                     setAddons([]);
                 }
             } finally {
@@ -68,7 +70,7 @@ function AddonsContent({ initialData }: AddonsClientProps) {
         };
 
         fetchAddons();
-    }, [courseId, router, initialData]);
+    }, [courseId, router, initialData, addons.length]);
 
     const handleAddonSelect = (addonId: string, addonName: string) => {
         setSelectingAddonId(addonId);
@@ -85,8 +87,16 @@ function AddonsContent({ initialData }: AddonsClientProps) {
         router.prefetch(`/colleges?${params.toString()}`);
     };
 
+    // Breadcrumb Schema for search engine navigation
+    const breadcrumbData = BreadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: streamName || "Courses", url: `/courses?stream=${stream}` },
+        { name: "Addons", url: `/addons?stream=${stream}&courseId=${courseId}` }
+    ]);
+
     return (
         <main className="min-h-screen bg-white py-24 px-6 relative overflow-hidden">
+            <JsonLd data={breadcrumbData} />
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-50 rounded-full blur-[120px] opacity-40" />
 
             <div className="max-w-5xl mx-auto relative z-10">
@@ -129,19 +139,19 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                         <div className="py-10">
                             <SkeletonList count={2} />
                         </div>
-                    ) : error ? (
+                    ) : apiError ? (
                         <div className="bg-white p-12 md:p-16 rounded-[4rem] border-2 border-slate-50 shadow-2xl text-center max-w-3xl mx-auto relative overflow-hidden">
-                            {(error as any)?.isDatabaseError && (
+                            {apiError.isDatabaseError && (
                                 <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-orange-400 to-amber-500" />
                             )}
-                            <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${(error as any)?.isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
-                                <span className={`text-3xl ${(error as any)?.isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
+                            <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${apiError.isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
+                                <span className={`text-3xl ${apiError.isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
                             </div>
                             <h2 className="text-3xl font-black text-slate-900 mb-4">
-                                {(error as any)?.isDatabaseError ? "System Optimization" : "Request Interrupted"}
+                                {apiError.isDatabaseError ? "System Optimization" : "Request Interrupted"}
                             </h2>
                             <p className="text-slate-500 font-medium mb-12 text-lg">
-                                {(error as any)?.message || "Something went wrong while fetching specializations."}
+                                {apiError.message || "Something went wrong while fetching specializations."}
                             </p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <button
@@ -150,7 +160,7 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                                 >
                                     Try Refreshing
                                 </button>
-                                {(error as any)?.isDatabaseError && (
+                                {apiError.isDatabaseError && (
                                     <Link
                                         href="/"
                                         className="bg-white text-slate-600 border border-slate-100 px-12 py-5 rounded-3xl font-bold hover:bg-slate-50 transition-all w-full md:w-auto"

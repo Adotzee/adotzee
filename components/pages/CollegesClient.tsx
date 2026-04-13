@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { apiClient } from "@/lib/apiClient";
 import { useCollegesQuery } from "@/features/common/queries";
-import { ArrowLeft, ChevronRight, GraduationCap, Sparkles } from "lucide-react";
+import { ArrowLeft, ChevronRight, GraduationCap } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
-import { College } from "@/types";
+import { College, ApiError } from "@/types";
 import { COLLEGES_DATA } from "@/lib/constants/landing-data";
+import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 interface CollegesClientProps {
     initialData?: College[];
@@ -21,12 +22,15 @@ function CollegesContent({ initialData }: CollegesClientProps) {
     const router = useRouter();
 
     // All data from previous steps
+    const stream = searchParams.get("stream") || "";
     const streamName = searchParams.get("streamName") || "";
+    const courseId = searchParams.get("courseId") || "";
     const courseName = searchParams.get("courseName") || "";
     const addonId = searchParams.get("addonId") || "";
     const addonName = searchParams.get("addonName") || "None";
 
     const { data: apiColleges, isLoading, error } = useCollegesQuery(addonId);
+    const apiError = error as ApiError | null;
 
     // Dynamic data fallback: API > Initial > Curated Constants
     const colleges = (apiColleges && apiColleges.length > 0)
@@ -35,7 +39,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
             ? initialData
             : (!addonId ? COLLEGES_DATA : []);
 
-    const [submitting, setSubmitting] = useState(false);
+    const [, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
 
     const handleCollegeSelect = async (collegeName: string) => {
@@ -66,7 +70,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
 
             window.open(whatsappUrl, "_blank");
             router.push("/");
-        } catch (err: any) {
+        } catch (_) {
             setSubmitError("Failed to process your request. Please try again.");
             setSubmitting(false);
         }
@@ -86,8 +90,17 @@ function CollegesContent({ initialData }: CollegesClientProps) {
         })
     };
 
+    // Breadcrumb Schema for search engine navigation
+    const breadcrumbData = BreadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: streamName || "Courses", url: `/courses?stream=${stream}` },
+        { name: courseName || "Addons", url: `/addons?stream=${stream}&courseId=${courseId}` },
+        { name: "Colleges", url: `/colleges?${searchParams.toString()}` }
+    ]);
+
     return (
         <main className="min-h-screen bg-slate-50/30 py-24 px-6 relative overflow-hidden">
+            <JsonLd data={breadcrumbData} />
             <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-blue-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
             <div className="absolute bottom-[-20%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
 
@@ -132,19 +145,19 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                     <div className="py-20">
                         <SkeletonList count={3} />
                     </div>
-                ) : error || submitError ? (
+                ) : apiError || submitError ? (
                     <div className="bg-white p-12 md:p-16 rounded-[4rem] border-2 border-slate-50 shadow-2xl text-center max-w-3xl mx-auto relative overflow-hidden">
-                        {(error as any)?.isDatabaseError && (
+                        {apiError?.isDatabaseError && (
                             <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-orange-400 to-amber-500" />
                         )}
-                        <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${(error as any)?.isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
-                            <span className={`text-3xl ${(error as any)?.isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
+                        <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${apiError?.isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
+                            <span className={`text-3xl ${apiError?.isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
                         </div>
                         <h2 className="text-3xl font-black text-slate-900 mb-4">
-                            {(error as any)?.isDatabaseError ? "System Optimization" : "Request Interrupted"}
+                            {apiError?.isDatabaseError ? "System Optimization" : "Request Interrupted"}
                         </h2>
                         <p className="text-slate-500 font-medium mb-12 text-lg">
-                            {(error ? (error as any).message : submitError) || "Something went wrong while fetching colleges."}
+                            {(apiError ? apiError.message : submitError) || "Something went wrong while fetching colleges."}
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                             <button
@@ -153,7 +166,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                             >
                                 Try Refreshing
                             </button>
-                            {(error as any)?.isDatabaseError && (
+                            {apiError?.isDatabaseError && (
                                 <Link
                                     href="/"
                                     className="bg-white text-slate-600 border border-slate-100 px-12 py-5 rounded-3xl font-bold hover:bg-slate-50 transition-all w-full md:w-auto"
@@ -165,16 +178,16 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-4">
-                        {colleges.length > 0 ? colleges.map((college: any, idx: number) => (
-                            <motion.button
+                        {colleges.length > 0 ? colleges.map((college, idx) => (
+                            <motion.div
                                 key={college.id}
                                 variants={cardVariants}
                                 initial="hidden"
                                 animate="visible"
                                 custom={idx}
                                 whileHover={{ y: -5, scale: 1.01 }}
-                                onClick={() => handleCollegeSelect(college.name || college.title)}
-                                className="bg-white p-4 md:mx-12 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-500 transition-all text-left group relative flex flex-row items-center gap-4 md:gap-18 overflow-hidden min-h-[110px] md:min-h-[130px]"
+                                onClick={() => handleCollegeSelect(college.name)}
+                                className="bg-white p-4 md:mx-12 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-500 transition-all text-left group relative flex flex-row items-center gap-4 md:gap-18 overflow-hidden min-h-[110px] md:min-h-[130px] cursor-pointer"
                             >
                                 {college.isRecommended && (
                                     <motion.div
@@ -184,9 +197,8 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                         className="absolute top-0 right-0 z-20 cursor-help"
                                         title="Specially recommended by Adotzee for quality education and placements"
                                     >
-                                        <div className="bg-linear-to-r from-amber-400 via-orange-500 to-amber-500 text-white text-[8px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
-                                            <Sparkles className="w-2.5 h-2.5 animate-pulse" />
-                                            Choice
+                                        <div className="bg-linear-to-r from-blue-400 via-brand-primary to-blue-500 text-white text-[8px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
+                                            Adotzee&apos;s Choice
                                         </div>
                                     </motion.div>
                                 )}
@@ -201,13 +213,23 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                 <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
                                     <div className="flex flex-col gap-1.5">
                                         <h3 className="text-xl md:text-3xl font-black text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
-                                            {college.name || college.title}
+                                            {college.name}
                                         </h3>
-                                        <div className="flex flex-wrap items-center gap-2">
+                                        <div className="flex flex-wrap items-center gap-3">
                                             <div className="flex items-center text-green-600 font-bold text-[7px] md:text-[9px] uppercase tracking-[0.15em] border border-green-100 bg-green-50/50 px-2 py-1 rounded-full w-fit group-hover:bg-green-100 transition-colors">
                                                 <span className="w-1 h-1 rounded-full bg-green-500 mr-1.5 animate-pulse" />
                                                 Direct Placement
                                             </div>
+
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleCollegeSelect(college.name);
+                                                }}
+                                                className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold text-[10px] md:text-xs transition-all shadow-md hover:shadow-lg active:scale-95 group/btn"
+                                            >
+                                                Click fees and details
+                                            </button>
                                         </div>
                                     </div>
 
@@ -221,7 +243,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.button>
+                            </motion.div>
                         )) : (
                             <div className="col-span-full py-40 text-center bg-white rounded-[4rem] border-2 border-dashed border-slate-100">
                                 <p className="text-slate-300 font-bold text-3xl mb-10 tracking-tight italic">No institutional partnerships found for this path.</p>

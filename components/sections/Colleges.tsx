@@ -1,25 +1,16 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { MapPin, ShieldCheck, BookOpen, Sparkles } from "lucide-react";
+import { MapPin, ShieldCheck } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { COLLEGES_DATA, CollegeData } from "@/lib/constants/landing-data";
-import { useEffect, useState } from "react";
 
 export function Colleges() {
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     const handleConnect = (collegeName: string) => {
         const message = `Hi Adotzee, I'm interested in admission at ${collegeName}. Can you provide more details?`;
         window.open(`https://wa.me/918281060462?text=${encodeURIComponent(message)}`, "_blank");
     };
-
-    if (!mounted) return null;
 
     return (
         <section className="py-16 md:py-24 bg-transparent relative overflow-hidden">

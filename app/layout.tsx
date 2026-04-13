@@ -5,7 +5,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/shared/Navbar";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
-import { LeadFormModal } from "@/components/shared/LeadFormModal";
+// import { LeadFormModal } from "@/components/shared/LeadFormModal";
 import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
@@ -140,7 +140,7 @@ export default function RootLayout({
             {children}
           </main>
           <WhatsAppButton />
-          <LeadFormModal />
+          {/* <LeadFormModal /> */}
           <StickyBottomCTA />
           <Toaster position="top-center" expand={false} richColors />
         </Providers>

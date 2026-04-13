@@ -2,21 +2,22 @@ import { MetadataRoute } from 'next';
 import { COMPANY_INFO } from '@/lib/constants';
 import { collegeService } from '@/features/colleges/collegeService';
 import { courseService } from '@/features/courses/courseService';
+import { College, Course } from '@/types';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = COMPANY_INFO.fullUrl;
 
-    // Fetch dynamic data for colleges and courses
-    let colleges: any[] = [];
-    let courses: any[] = [];
+    // Fetch dynamic data for colleges and courses with strict typing
+    let colleges: College[] = [];
+    let courses: Course[] = [];
 
     try {
         const [collegesData, coursesData] = await Promise.all([
             collegeService.getAll(),
             courseService.getAll()
         ]);
-        colleges = Array.isArray(collegesData) ? collegesData : [];
-        courses = Array.isArray(coursesData) ? coursesData : [];
+        colleges = Array.isArray(collegesData) ? (collegesData as College[]) : [];
+        courses = Array.isArray(coursesData) ? (coursesData as Course[]) : [];
     } catch (error) {
         console.error("Failed to fetch sitemap data:", error);
     }

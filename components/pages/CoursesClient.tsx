@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { apiClient } from "@/lib/apiClient";
 import { useCoursesQuery } from "@/features/common/queries";
-import { Loader2, ArrowLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { CourseCard } from "../cards/CourseCard";
 import { SkeletonList } from "../shared/SkeletonCard";
-import { Course } from "@/types";
+import { Course, ApiError } from "@/types";
 import { COURSES_DATA } from "@/lib/constants/landing-data";
+import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 interface CoursesClientProps {
     initialData?: Course[];
@@ -24,6 +24,9 @@ function CoursesContent({ initialData }: CoursesClientProps) {
 
     const [loadingCourseId, setLoadingCourseId] = useState<string | null>(null);
     const { data: apiCourses, isLoading, error } = useCoursesQuery(stream);
+    
+    // Cast error to ApiError for safe access
+    const apiError = error as ApiError | null;
 
     // Dynamic data consolidation: API Data > Initial Data > Curated Fallback
     const courses = (apiCourses && apiCourses.length > 0)
@@ -42,23 +45,16 @@ function CoursesContent({ initialData }: CoursesClientProps) {
         router.prefetch(`/addons?courseId=${courseId}&courseName=${encodeURIComponent(courseName)}&streamName=${encodeURIComponent(streamName)}&stream=${stream}`);
     };
 
-    // Card variants for staggered entrance
-    const cardVariants = {
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
-        visible: (idx: number) => ({
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                delay: idx * 0.08,
-                duration: 0.5,
-                ease: [0.21, 0.45, 0.32, 0.9] as any,
-            },
-        }),
-    };
+
+    // Breadcrumb Schema for search engine navigation
+    const breadcrumbData = BreadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: streamName || "All Courses", url: `/courses?stream=${stream}` }
+    ]);
 
     return (
         <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-hidden">
+            <JsonLd data={breadcrumbData} />
             {/* Improved Background Aesthetic */}
             <div className="absolute top-[-15%] right-[-10%] w-[70%] h-[70%] bg-blue-100/20 rounded-full blur-[140px] mix-blend-multiply" />
             <div className="absolute bottom-[-15%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/20 rounded-full blur-[140px] mix-blend-multiply" />
@@ -102,19 +98,19 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                     <div className="py-20">
                         <SkeletonList count={3} />
                     </div>
-                ) : error ? (
+                ) : apiError ? (
                     <div className="bg-white p-12 md:p-16 rounded-[4rem] border-2 border-slate-50 shadow-2xl text-center max-w-3xl mx-auto relative overflow-hidden">
-                        {(error as any).isDatabaseError && (
+                        {apiError.isDatabaseError && (
                             <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-orange-400 to-amber-500" />
                         )}
-                        <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${(error as any).isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
-                            <span className={`text-3xl ${(error as any).isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
+                        <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-8 ${apiError.isDatabaseError ? "bg-amber-50" : "bg-red-50"}`}>
+                            <span className={`text-3xl ${apiError.isDatabaseError ? "text-amber-500" : "text-red-500"}`}>!</span>
                         </div>
                         <h2 className="text-3xl font-black text-slate-900 mb-4">
-                            {(error as any).isDatabaseError ? "System Optimization" : "Request Interrupted"}
+                            {apiError.isDatabaseError ? "System Optimization" : "Request Interrupted"}
                         </h2>
                         <p className="text-slate-500 font-medium mb-12 text-lg">
-                            {(error as any).message || "Something went wrong while fetching courses."}
+                            {apiError.message || "Something went wrong while fetching courses."}
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                             <button
@@ -123,7 +119,7 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                             >
                                 Try Refreshing
                             </button>
-                            {(error as any).isDatabaseError && (
+                            {apiError.isDatabaseError && (
                                 <Link
                                     href="/"
                                     className="bg-white text-slate-600 border border-slate-100 px-12 py-5 rounded-3xl font-bold hover:bg-slate-50 transition-all w-full md:w-auto"
@@ -135,7 +131,7 @@ function CoursesContent({ initialData }: CoursesClientProps) {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-4">
-                        {courses.length > 0 ? courses.map((course: any, idx: number) => (
+                        {courses.length > 0 ? courses.map((course, idx) => (
                             <CourseCard
                                 key={course.id}
                                 course={course}

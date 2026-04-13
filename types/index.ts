@@ -29,6 +29,7 @@ export interface College {
   latitude?: number;
   longitude?: number;
   placeId?: string;
+  recommendationReason?: string;
   courses?: Course[];
 }
 
@@ -65,4 +66,9 @@ export interface SearchResult {
   courses: Course[];
   colleges: College[];
   addons: AddonCourse[];
+}
+
+export interface ApiError extends Error {
+  isDatabaseError?: boolean;
+  originalMessage?: string;
 }

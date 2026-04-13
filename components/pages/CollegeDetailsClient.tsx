@@ -158,11 +158,11 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                                 <ul className="space-y-6 relative z-10">
                                     <li className="flex items-start gap-4">
                                         <div className="size-2 bg-[#60A5FA] rounded-full mt-2.5"></div>
-                                        <p className="text-slate-300 text-base font-medium italic leading-relaxed">"Top placement trajectory in the regional matrix with 100+ institutional recruiter access."</p>
+                                        <p className="text-slate-300 text-base font-medium italic leading-relaxed">&quot;Top placement trajectory in the regional matrix with 100+ institutional recruiter access.&quot;</p>
                                     </li>
                                     <li className="flex items-start gap-4">
                                         <div className="size-2 bg-[#60A5FA] rounded-full mt-2.5"></div>
-                                        <p className="text-slate-300 text-base font-medium italic leading-relaxed">"Dynamic institutional ecosystem featuring high-throughput student hubs and annual fests."</p>
+                                        <p className="text-slate-300 text-base font-medium italic leading-relaxed">&quot;Dynamic institutional ecosystem featuring high-throughput student hubs and annual fests.&quot;</p>
                                     </li>
                                 </ul>
                             </div>

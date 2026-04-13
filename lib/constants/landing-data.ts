@@ -34,6 +34,7 @@ export interface CollegeData {
     tier: string;
     span: string;
     image: string;
+    recommendationReason?: string;
 }
 
 export interface AddonData {
@@ -156,7 +157,8 @@ export const COLLEGES_DATA: CollegeData[] = [
         isActive: true,
         tier: "Verified Partner",
         span: "md:col-span-7",
-        image: "/colleges/jain.png"
+        image: "/colleges/jain.png",
+        recommendationReason: "Direct Placements & Premium Infrastructure"
     },
     {
         id: "c2",
@@ -172,7 +174,8 @@ export const COLLEGES_DATA: CollegeData[] = [
         isActive: true,
         tier: "Top Ranked",
         span: "md:col-span-5",
-        image: "/colleges/presidency_pic.jpg"
+        image: "/colleges/presidency_pic.jpg",
+        recommendationReason: "Industry-Aligned Curriculum"
     }
 ];
 
