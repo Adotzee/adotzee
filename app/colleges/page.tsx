@@ -5,6 +5,8 @@ import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { collegeService } from "@/features/colleges/collegeService";
 import { College } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };

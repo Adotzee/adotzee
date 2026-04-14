@@ -6,6 +6,8 @@ import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, CollegeSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 // Next.js 15+ Params are a Promise
 interface PageProps {
     params: Promise<{ id: string }>;

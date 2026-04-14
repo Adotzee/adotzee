@@ -2,6 +2,8 @@ import { Metadata, Viewport } from "next";
 import RecommendationsClient from "@/components/pages/RecommendationsClient";
 import { COMPANY_INFO } from "@/lib/constants";
 
+export const dynamic = "force-dynamic";
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,

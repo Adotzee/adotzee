@@ -4,6 +4,8 @@ import { COMPANY_INFO } from "@/lib/constants";
 import { addonService } from "@/features/addons/addonService";
 import { AddonCourse } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
