@@ -4,7 +4,6 @@ import "./globals.css";
 
 import { Providers } from "./providers";
 import { Navbar } from "@/components/shared/Navbar";
-import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 // import { LeadFormModal } from "@/components/shared/LeadFormModal";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -139,7 +138,6 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
-          <WhatsAppButton />
           {/* <LeadFormModal /> */}
           <StickyBottomCTA />
           <Toaster position="top-center" expand={false} richColors />

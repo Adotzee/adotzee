@@ -37,15 +37,14 @@ export function Protocol() {
 
                             <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${i % 2 === 0 ? "md:pr-24 text-left md:text-right" : "md:pl-24 text-left"}`}>
                                 <div className="bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-3xl p-10 hover:-translate-y-3 transition-transform duration-700 ease-out group">
-                                    <h3 className="text-2xl font-black text-[#0F172A] mb-3 tracking-tighter group-hover:text-[#2563EB] transition-colors">{item.title}</h3>
-                                    <p className="text-[#0F172A] opacity-70 leading-loose font-medium text-lg">{item.desc}</p>
+                                    <h3 className="md:text-2xl text-xl font-black text-[#0F172A] mb-3 tracking-tighter group-hover:text-[#2563EB] transition-colors">{item.title}</h3>
+                                    <p className="text-[#0F172A] opacity-70 leading-loose font-medium text-sm md:text-lg">{item.desc}</p>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
             </div>
-
             <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-[#E0F2FE] rounded-full blur-[150px] mix-blend-multiply opacity-50 -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
         </section>
     );

@@ -34,6 +34,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api-proxy/:path*',
+        destination: 'https://api.adotzee.in/api/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

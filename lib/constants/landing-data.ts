@@ -75,9 +75,9 @@ export const LOCATIONS_DATA = [
 ];
 
 export const COURSES_DATA: CourseData[] = [
-    { 
-        id: "9", 
-        name: "Computer Applications (BCA)", 
+    {
+        id: "9",
+        name: "Computer Applications (BCA)",
         title: "Computer Applications (BCA)",
         description: "BCA focuses on software development and IT management.",
         stream: "Technology",
@@ -88,9 +88,9 @@ export const COURSES_DATA: CourseData[] = [
         isActive: true,
         span: "md:col-span-6"
     },
-    { 
-        id: "10", 
-        name: "Business Administration (BBA)", 
+    {
+        id: "10",
+        name: "Business Administration (BBA)",
         title: "Business Administration (BBA)",
         description: "BBA provides foundational knowledge in business principles.",
         stream: "Management",
@@ -101,9 +101,9 @@ export const COURSES_DATA: CourseData[] = [
         isActive: true,
         span: "md:col-span-3"
     },
-    { 
-        id: "8", 
-        name: "B.Tech Computer Science", 
+    {
+        id: "8",
+        name: "B.Tech Computer Science",
         title: "B.Tech Computer Science",
         description: "Bachelor of Technology in CS focuses on computation and software engineering.",
         stream: "Engineering",
@@ -114,9 +114,9 @@ export const COURSES_DATA: CourseData[] = [
         isActive: true,
         span: "md:col-span-3"
     },
-    { 
-        id: "7", 
-        name: "Allied Health Sciences", 
+    {
+        id: "7",
+        name: "Allied Health Sciences",
         title: "Allied Health Sciences",
         description: "Focuses on medical support services like Radiology and MLT.",
         stream: "Medicine",
@@ -127,10 +127,10 @@ export const COURSES_DATA: CourseData[] = [
         isActive: true,
         span: "md:col-span-4"
     },
-    { 
-        id: "11", 
-        name: "Commerce (B.Com)", 
-        title: "Commerce (B.Com)",
+    {
+        id: "11",
+        name: "Commerce",
+        title: "Commerce",
         description: "Foundational commerce degree covering accounting and finance.",
         stream: "Accounting",
         level: "UG",

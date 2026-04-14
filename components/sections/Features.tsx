@@ -50,7 +50,7 @@ export function Features() {
                     {/* Large Main Feature (Span 8 Cols) */}
                     <motion.div
                         variants={itemVariants}
-                        className="md:col-span-8 bg-white/40 backdrop-blur-3xl border border-white/80 shadow-[0_40px_80px_-15px_rgba(37,99,235,0.08)] rounded-[4rem] p-12 md:p-16 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-700 ease-[0.22,1,0.36,1] relative overflow-hidden"
+                        className="md:col-span-8 bg-white/40 backdrop-blur-3xl border border-white/80 shadow-[0_40px_80px_-15px_rgba(37,99,235,0.08)] rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-700 ease-[0.22,1,0.36,1] relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-linear-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -65,7 +65,7 @@ export function Features() {
                         </div>
 
                         {/* Interactive accent */}
-                        <div className="mt-16 h-48 w-full rounded-[2.5rem] bg-linear-to-tr from-blue-50 to-indigo-50 border border-white/50 relative overflow-hidden flex items-center justify-center shadow-inner group-hover:shadow-2xl transition-all">
+                        <div className="mt-10 md:mt-16 h-32 md:h-48 w-full rounded-[2rem] md:rounded-[2.5rem] bg-linear-to-tr from-blue-50 to-indigo-50 border border-white/50 relative overflow-hidden flex items-center justify-center shadow-inner group-hover:shadow-2xl transition-all">
                             <div className="absolute w-[150%] h-[150%] bg-white/40 rounded-full blur-[80px] -top-1/2 -right-1/2 animate-pulse" />
                             <span className="relative z-10 text-[10px] font-black tracking-[0.5em] uppercase text-blue-600 opacity-60">Consultation Protocol Active</span>
                         </div>

@@ -6,7 +6,10 @@ export interface ApiResponse<T> {
     data: T;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.adotzee.in/api";
+const IS_SERVER = typeof window === 'undefined';
+const API_BASE_URL = IS_SERVER 
+    ? "https://api.adotzee.in/api" 
+    : (process.env.NEXT_PUBLIC_API_URL || "/api-proxy");
 
 interface BaseApiResponse {
     success?: boolean;
@@ -53,6 +56,11 @@ apiClient.interceptors.response.use(
             return Promise.reject(error);
         }
 
+        // If the response is success but doesn't follow our standard wrapper, return data directly
+        if (isSuccess === undefined) {
+            return response.data;
+        }
+
         return response;
     },
     (error) => {
@@ -68,7 +76,14 @@ apiClient.interceptors.response.use(
             const method = error.config?.method?.toUpperCase() || 'UNKNOWN';
             const url = error.config?.url || 'UNKNOWN URL';
             const status = error.response?.status || 'NETWORK ERROR';
-            console.error(`❌ [API Error] ${method} ${url} | Status: ${status}:`, consoleData || error.message);
+            const baseURL = error.config?.baseURL || '';
+            const fullUrl = baseURL.startsWith('http') 
+                ? baseURL + url 
+                : (typeof window !== 'undefined' ? window.location.origin : '') + baseURL + url;
+            console.error(`❌ [API Error] ${method} ${fullUrl} | Status: ${status}:`, consoleData || error.message);
+            if (status === 'NETWORK ERROR') {
+                console.warn(`💡 [Diagnostic] Please check if the API server is running. (Proxying through ${baseURL})`);
+            }
         }
         
         const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(errorData || {}, error.message);

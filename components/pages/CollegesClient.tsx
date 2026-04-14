@@ -197,7 +197,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                         className="absolute top-0 right-0 z-20 cursor-help"
                                         title="Specially recommended by Adotzee for quality education and placements"
                                     >
-                                        <div className="bg-linear-to-r from-blue-400 via-brand-primary to-blue-500 text-white text-[8px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
+                                        <div className="bg-linear-to-r from-blue-400 via-brand-primary to-blue-500 text-white text-[8px] font-black uppercase tracking-widest px-8 py-3 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
                                             Adotzee&apos;s Choice
                                         </div>
                                     </motion.div>
@@ -210,36 +210,32 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                 </div>
 
                                 {/* Content Section */}
-                                <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-                                    <div className="flex flex-col gap-1.5">
+                                <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4 relative z-10">
+                                    <div className="flex flex-col gap-1.5 flex-1">
                                         <h3 className="text-xl md:text-3xl font-black text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
                                             {college.name}
                                         </h3>
-                                        <div className="flex flex-wrap items-center gap-3">
-                                            <div className="flex items-center text-green-600 font-bold text-[7px] md:text-[9px] uppercase tracking-[0.15em] border border-green-100 bg-green-50/50 px-2 py-1 rounded-full w-fit group-hover:bg-green-100 transition-colors">
-                                                <span className="w-1 h-1 rounded-full bg-green-500 mr-1.5 animate-pulse" />
-                                                Direct Placement
-                                            </div>
-
-                                            <button
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleCollegeSelect(college.name);
-                                                }}
-                                                className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold text-[10px] md:text-xs transition-all shadow-md hover:shadow-lg active:scale-95 group/btn"
-                                            >
-                                                Click fees and details
-                                            </button>
-                                        </div>
                                     </div>
 
-                                    <div className="flex items-center gap-4 shrink-0">
-                                        <div className="hidden md:flex flex-col text-right">
-                                            <span className="text-slate-300 font-black text-[8px] uppercase tracking-widest mb-0.5">Final Step</span>
-                                            <span className="text-slate-900 font-bold text-xs">Consultation</span>
-                                        </div>
-                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center shadow-xs group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
-                                            <FaWhatsapp className="size-6 md:size-8 text-blue-600 group-hover:text-white" />
+                                    <div className="flex items-center justify-between md:justify-end gap-4 shrink-0">
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleCollegeSelect(college.name);
+                                            }}
+                                            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-[10px] md:text-xs transition-all shadow-md hover:shadow-lg active:scale-95 group/btn whitespace-nowrap"
+                                        >
+                                            Click fees and details
+                                        </button>
+                                        
+                                        <div className="flex items-center gap-3">
+                                            <div className="hidden md:flex flex-col text-right">
+                                                <span className="text-slate-300 font-black text-[8px] uppercase tracking-widest mb-0.5">Final Step</span>
+                                                <span className="text-slate-900 font-bold text-xs">Consultation</span>
+                                            </div>
+                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center shadow-xs group-hover:bg-green-500 group-hover:scale-110 transition-all duration-500">
+                                                <FaWhatsapp className="size-6 md:size-8 text-blue-600 group-hover:text-white" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
