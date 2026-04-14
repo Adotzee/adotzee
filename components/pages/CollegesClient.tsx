@@ -197,7 +197,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                         className="absolute top-0 right-0 z-20 cursor-help"
                                         title="Specially recommended by Adotzee for quality education and placements"
                                     >
-                                        <div className="bg-linear-to-r from-blue-400 via-brand-primary to-blue-500 text-white text-[8px] font-black uppercase tracking-widest px-8 py-3 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
+                                        <div className="bg-brand-primary text-white text-[8px] font-black uppercase tracking-widest px-3 py-1 md:px-8 md:py-3 rounded-bl-2xl shadow-lg flex items-center gap-1.5 border-b border-l border-white/20">
                                             Adotzee&apos;s Choice
                                         </div>
                                     </motion.div>
@@ -205,7 +205,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                 <div className="absolute top-0 right-0 w-32 md:w-48 h-full bg-linear-to-l from-blue-50/20 to-transparent pointer-events-none" />
 
                                 {/* Icon Section */}
-                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-[1rem] md:rounded-[1.5rem] bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-all duration-500 group-hover:rotate-6 shadow-xs">
+                                <div className="w-12 h-12 md:w-20 md:h-20 rounded-[1rem] md:rounded-[1.5rem] bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-all duration-500 group-hover:rotate-6 shadow-xs">
                                     <GraduationCap className="size-8 md:size-10 text-blue-600 group-hover:text-white transition-colors" />
                                 </div>
 
@@ -227,7 +227,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                         >
                                             Click fees and details
                                         </button>
-                                        
+
                                         <div className="flex items-center gap-3">
                                             <div className="hidden md:flex flex-col text-right">
                                                 <span className="text-slate-300 font-black text-[8px] uppercase tracking-widest mb-0.5">Final Step</span>
