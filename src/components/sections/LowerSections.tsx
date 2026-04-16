@@ -9,7 +9,7 @@ export function CTA() {
     return (
         <section className="py-20 md:py-40 bg-transparent relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-[900px] relative z-10 text-center">
-                <div className="p-10 md:p-20">
+                <div className="p-4 md:p-20">
 
                     <div className="inline-block mb-8 px-6 py-2 rounded-full border border-[#60A5FA]/40 bg-blue-50/50 backdrop-blur-sm shadow-sm">
                         <span className="text-xs font-black tracking-widest uppercase text-[#2563EB]">
@@ -21,12 +21,12 @@ export function CTA() {
                         Ready to find your college?
                     </h2>
 
-                    <p className="text-xl text-[#0F172A] opacity-70 font-medium mb-10 max-w-2xl mx-auto leading-loose">
+                    <p className="text-xl text-[#0F172A] opacity-70 font-medium mb-10 max-w-2xl mx-auto leading-normal">
                         Talk to an expert today for direct admission guidance to premier colleges in Bangalore, Mangalore, Mysore, and Coimbatore.
                     </p>
 
                     <Link href={COMPANY_INFO.socials.whatsapp} target="_blank">
-                        <Button className="h-14 md:h-16 px-10 md:px-12 rounded-full bg-brand-accent hover:bg-brand-accent/80 text-white font-bold text-lg md:text-xl transition-all shadow-brand-glow hover:shadow-brand-glow-lg hover:-translate-y-1">
+                        <Button className="h-14 md:h-16 px-4 py-4 text-center whitespace-normal md:px-12 rounded-full bg-brand-accent hover:bg-brand-accent/80 text-white font-bold text-lg md:text-xl transition-all shadow-brand-glow hover:shadow-brand-glow-lg hover:-translate-y-1">
                             Talk to an Admission Expert
                         </Button>
                     </Link>

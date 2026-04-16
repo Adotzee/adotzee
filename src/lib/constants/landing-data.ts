@@ -174,7 +174,7 @@ export const COLLEGES_DATA: CollegeData[] = [
         isActive: true,
         tier: "Top Ranked",
         span: "md:col-span-5",
-        image: "/colleges/presidency_pic.jpg",
+        image: "/colleges/presidency.webp",
         recommendationReason: "Industry-Aligned Curriculum"
     }
 ];

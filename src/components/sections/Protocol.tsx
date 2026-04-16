@@ -28,17 +28,17 @@ export function Protocol() {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.2 }}
                             key={i}
-                            className={`relative flex flex-col md:flex-row items-center mb-16 last:mb-0 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                            className={`relative flex flex-col md:flex-row items-center mb-6 last:mb-0 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                         >
                             {/* Liquid Node */}
                             <div className="absolute left-8 md:left-1/2 w-14 h-14 bg-white/60 backdrop-blur-xl rounded-full border border-white shadow-white-glow flex items-center justify-center transform -translate-x-1/2 z-10">
                                 <span className="font-black text-[#2563EB] text-lg tracking-tighter">{item.step}</span>
                             </div>
 
-                            <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${i % 2 === 0 ? "md:pr-24 text-left md:text-right" : "md:pl-24 text-left"}`}>
-                                <div className="bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-3xl p-10 hover:-translate-y-3 transition-transform duration-700 ease-out group">
-                                    <h3 className="md:text-2xl text-xl font-black text-[#0F172A] mb-3 tracking-tighter group-hover:text-[#2563EB] transition-colors">{item.title}</h3>
-                                    <p className="text-[#0F172A] opacity-70 leading-loose font-medium text-sm md:text-lg">{item.desc}</p>
+                            <div className={`w-full md:w-1/2 pl-16 md:pl-10 ${i % 2 === 0 ? "md:pr-24 text-left md:text-right" : "md:pl-24 text-left"}`}>
+                                <div className="bg-white/30 backdrop-blur-2xl border border-white/60 shadow-white-glow rounded-3xl p-4 md:p-10 hover:-translate-y-3 transition-transform duration-700 ease-out group">
+                                    <h3 className=" text-xl font-black text-[#0F172A] mb-3 tracking-tighter group-hover:text-[#2563EB] transition-colors">{item.title}</h3>
+                                    <p className="text-[#0F172A] opacity-70 leading-loose font-medium text-sm ">{item.desc}</p>
                                 </div>
                             </div>
                         </motion.div>
