@@ -38,7 +38,7 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                         </div>
                         <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter drop-shadow-2xl">{college.name}</h1>
                         <div className="flex flex-wrap items-center gap-8 text-slate-300 font-bold uppercase tracking-widest text-sm">
-                            <span className="flex items-center gap-2"><MapPin className="size-5 text-[#2563EB]" /> {college.city}, {college.state}</span>
+                            <span className="flex items-center gap-2"><MapPin className="size-5 text-[#2563EB]" /> {college.city}</span>
                             <span className="hidden sm:flex items-center gap-2 border-l border-white/20 pl-8"><Star className="size-5 fill-amber-400 text-amber-400" /> {college.rating} / 5.0 Rating</span>
                             <span className="hidden sm:flex items-center gap-2 border-l border-white/20 pl-8">Established {college.establishedYear}</span>
                         </div>

@@ -5,7 +5,7 @@ import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { apiClient } from "@/lib/apiClient";
 import { useCollegesQuery } from "@/features/common/queries";
-import { ArrowLeft, ChevronRight, GraduationCap } from "lucide-react";
+import { ArrowLeft, ChevronRight, GraduationCap, MapPin } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
@@ -215,6 +215,10 @@ function CollegesContent({ initialData }: CollegesClientProps) {
                                         <h3 className="text-xl md:text-3xl font-black text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
                                             {college.name}
                                         </h3>
+                                        <div className="flex items-center gap-2 text-slate-500 font-bold text-xs md:text-sm">
+                                            <MapPin className="size-3 md:size-4 text-blue-600" />
+                                            <span>{college.address}</span>
+                                        </div>
                                     </div>
 
                                     <div className="flex items-center justify-between md:justify-end gap-4 shrink-0">
