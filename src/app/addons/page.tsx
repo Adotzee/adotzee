@@ -3,8 +3,10 @@ import AddonsClient from "@/components/pages/AddonsClient";
 import { COMPANY_INFO } from "@/lib/constants";
 import { addonService } from "@/features/addons/addonService";
 import { AddonCourse } from "@/types";
+import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
+// Enable ISR: Revalidate every hour
+export const revalidate = 3600;
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -61,5 +63,10 @@ export default async function AddonsPage({ searchParams }: Props) {
     console.warn("Server-side Addon Fetch Error:", error);
   }
 
-  return <AddonsClient initialData={initialAddons} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white animate-pulse" />}>
+      <AddonsClient initialData={initialAddons} />
+    </Suspense>
+  );
 }
+

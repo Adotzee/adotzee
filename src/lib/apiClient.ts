@@ -1,4 +1,3 @@
-import axios from "axios";
 
 export interface ApiResponse<T> {
     success: boolean;
@@ -21,83 +20,103 @@ interface BaseApiResponse {
     title?: string;
 }
 
-export const apiClient = axios.create({
-    baseURL: API_BASE_URL,
-    headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        "Pragma": "no-cache",
-        "Expires": "0",
-    },
-    timeout: 60000,
-});
-
-// Request Interceptor for diagnostics
-apiClient.interceptors.request.use((config) => {
-    if (process.env.NODE_ENV === 'development') {
-        console.log(`🚀 [API Request] ${config.method?.toUpperCase()} ${config.url}`, config.params || '');
-    }
-    return config;
-});
-
-// Response Interceptor: Extracts the nested data and handles success: false
-apiClient.interceptors.response.use(
-    (response: any) => {
-        const res = response.data as BaseApiResponse;
-
-        const isSuccess = res.success !== undefined ? res.success : res.Success;
+/**
+ * Optimized fetch wrapper for Next.js 14+
+ * Leverages native fetch for Data Cache and Request Memoization.
+ */
+class ApiClient {
+    private async request<T>(
+        url: string,
+        options: RequestInit & { next?: NextFetchRequestConfig; cache?: RequestCache } = {}
+    ): Promise<T> {
+        const fullUrl = url.startsWith("http") ? url : `${API_BASE_URL}${url}`;
         
-        if (isSuccess === true) {
-            return (res.data !== undefined ? res.data : res.Data) as unknown;
-        }
-        
-        if (isSuccess === false) {
-            const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(res);
-            const error = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string };
-            error.isDatabaseError = isDatabaseError;
-            error.originalMessage = rawMsg;
-            return Promise.reject(error);
-        }
+        // Remove no-cache headers for server-side fetches to allow Next.js caching
+        const defaultHeaders: HeadersInit = {
+            "Content-Type": "application/json",
+        };
 
-        // If the response is success but doesn't follow our standard wrapper, return data directly
-        if (isSuccess === undefined) {
-            return response.data;
-        }
+        const config = {
+            ...options,
+            headers: {
+                ...defaultHeaders,
+                ...options.headers,
+            },
+        };
 
-        return response;
-    },
-    (error) => {
-        const errorData = error.response?.data as BaseApiResponse | undefined;
-        let consoleData: string | undefined;
-        
-        if (errorData && typeof errorData === 'object') {
-            consoleData = JSON.stringify(errorData);
-        }
-
-        // Handle network errors or HTTP error codes
         if (process.env.NODE_ENV === 'development') {
-            const method = error.config?.method?.toUpperCase() || 'UNKNOWN';
-            const url = error.config?.url || 'UNKNOWN URL';
-            const status = error.response?.status || 'NETWORK ERROR';
-            const baseURL = error.config?.baseURL || '';
-            const fullUrl = baseURL.startsWith('http') 
-                ? baseURL + url 
-                : (typeof window !== 'undefined' ? window.location.origin : '') + baseURL + url;
-            console.error(`❌ [API Error] ${method} ${fullUrl} | Status: ${status}:`, consoleData || error.message);
-            if (status === 'NETWORK ERROR') {
-                console.warn(`💡 [Diagnostic] Please check if the API server is running. (Proxying through ${baseURL})`);
-            }
+            console.log(`🚀 [API Request] ${config.method || 'GET'} ${fullUrl}`);
         }
-        
-        const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(errorData || {}, error.message);
+
+        try {
+            const response = await fetch(fullUrl, config);
+            const data = await response.json() as BaseApiResponse;
+
+            if (!response.ok) {
+                const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(data, response.statusText);
+                const error = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string; status?: number };
+                error.isDatabaseError = isDatabaseError;
+                error.originalMessage = rawMsg;
+                error.status = response.status;
+                throw error;
+            }
+
+            const isSuccess = data.success !== undefined ? data.success : data.Success;
             
-        const customError = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string };
-        customError.isDatabaseError = isDatabaseError;
-        customError.originalMessage = rawMsg;
-        
-        return Promise.reject(customError);
+            if (isSuccess === true) {
+                return (data.data !== undefined ? data.data : data.Data) as T;
+            }
+            
+            if (isSuccess === false) {
+                const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(data);
+                const error = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string };
+                error.isDatabaseError = isDatabaseError;
+                error.originalMessage = rawMsg;
+                throw error;
+            }
+
+            // Fallback for non-standard responses
+            if (isSuccess === undefined) {
+                return data as unknown as T;
+            }
+
+            return data as unknown as T;
+        } catch (error: any) {
+            if (process.env.NODE_ENV === 'development') {
+                console.error(`❌ [API Error] ${url}:`, error.message);
+            }
+            throw error;
+        }
     }
-);
+
+    async get<T>(url: string, config?: RequestInit & { next?: NextFetchRequestConfig }): Promise<T> {
+        return this.request<T>(url, { ...config, method: "GET" });
+    }
+
+    async post<T>(url: string, data?: any, config?: RequestInit & { next?: NextFetchRequestConfig }): Promise<T> {
+        return this.request<T>(url, { 
+            ...config, 
+            method: "POST", 
+            body: JSON.stringify(data),
+            cache: 'no-store' // POSTs should generally not be cached
+        });
+    }
+
+    async put<T>(url: string, data?: any, config?: RequestInit & { next?: NextFetchRequestConfig }): Promise<T> {
+        return this.request<T>(url, { 
+            ...config, 
+            method: "PUT", 
+            body: JSON.stringify(data),
+            cache: 'no-store'
+        });
+    }
+
+    async delete<T>(url: string, config?: RequestInit & { next?: NextFetchRequestConfig }): Promise<T> {
+        return this.request<T>(url, { ...config, method: "DELETE", cache: 'no-store' });
+    }
+}
+
+export const apiClient = new ApiClient();
 
 // Helper to extract error message and check for database errors
 function formatErrorMessage(res: BaseApiResponse, defaultMsg: string = "Something went wrong") {
@@ -110,9 +129,10 @@ function formatErrorMessage(res: BaseApiResponse, defaultMsg: string = "Somethin
         rawMsg.toLowerCase().includes("sql server")) {
         errorMsg = "Our database is currently undergoing maintenance. Please try again in a few minutes.";
         isDatabaseError = true;
-    } else if (!rawMsg || rawMsg === "Network Error") {
+    } else if (!rawMsg || rawMsg === "Network Error" || rawMsg === "Failed to fetch") {
         errorMsg = "Service Temporarily Unavailable. Please check your connection.";
     }
 
     return { errorMsg, isDatabaseError, rawMsg };
 }
+

@@ -3,7 +3,7 @@ import { HomePage } from "@/components/pages/HomePage";
 import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, FAQSchema, AdmissionServiceSchema } from "@/components/seo/JsonLd";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // Revalidate hourly
 
 export const viewport: Viewport = {
   width: "device-width",

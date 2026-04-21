@@ -12,7 +12,7 @@ export function StickyBottomCTA() {
     const [isVisible, setIsVisible] = useState(false);
 
     // WhatsApp Configuration
-    const whatsappNumber = "917907805626";
+    const whatsappNumber = "917012627835";
     const message = "Hi Adotzee, I need course guidance";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 

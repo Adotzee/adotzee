@@ -4,8 +4,10 @@ import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { collegeService } from "@/features/colleges/collegeService";
 import { College } from "@/types";
+import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
+// Enable ISR: Revalidate every hour
+export const revalidate = 3600;
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -52,7 +54,7 @@ export default async function CollegesPage({ searchParams }: Props) {
   const courseName = params.courseName ? String(params.courseName) : "Your Course";
   const addonId = params.addonId ? String(params.addonId) : "";
 
-  // Pre-fetch colleges on the server
+  // Pre-fetch colleges on the server (Leveraging Next.js Data Cache)
   let initialColleges: College[] = [];
   try {
     if (addonId) {
@@ -74,7 +76,10 @@ export default async function CollegesPage({ searchParams }: Props) {
   return (
     <>
       <JsonLd data={breadcrumbData} />
-      <CollegesClient initialData={initialColleges} />
+      <Suspense fallback={<div className="min-h-screen bg-slate-50 animate-pulse" />}>
+        <CollegesClient initialData={initialColleges} />
+      </Suspense>
     </>
   );
 }
+

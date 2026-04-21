@@ -4,8 +4,10 @@ import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, CourseSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { courseService } from "@/features/courses/courseService";
 import { Course } from "@/types";
+import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
+// Enable ISR: Revalidate every hour
+export const revalidate = 3600;
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -52,7 +54,7 @@ export default async function CoursesPage({ searchParams }: Props) {
   const stream = params.stream ? String(params.stream) : "";
   const streamName = params.streamName ? String(params.streamName) : "Academic Stream";
 
-  // Pre-fetch courses on the server (SSR Optimization)
+  // Pre-fetch courses on the server (Leveraging Next.js Data Cache)
   let initialCourses: Course[] = [];
   try {
     if (stream) {
@@ -81,7 +83,10 @@ export default async function CoursesPage({ searchParams }: Props) {
     <>
       <JsonLd data={breadcrumbData} />
       <JsonLd data={courseData} />
-      <CoursesClient initialData={initialCourses} />
+      <Suspense fallback={<div className="min-h-screen bg-white animate-pulse" />}>
+        <CoursesClient initialData={initialCourses} />
+      </Suspense>
     </>
   );
 }
+

@@ -11,7 +11,7 @@ export interface CourseData {
     title: string;
     description: string;
     stream: string;
-    level: string;
+    level: "UG" | "PG";
     duration: string;
     careerOpportunities: string[];
     tags: string[];

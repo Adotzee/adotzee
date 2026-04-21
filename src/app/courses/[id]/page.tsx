@@ -5,10 +5,11 @@ import { CourseDetailsClient } from "@/components/pages/CourseDetailsClient";
 import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, CourseSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
+// Enable ISR: Revalidate daily
+export const revalidate = 86400;
 
-// Next.js 15+ Params are a Promise
 interface PageProps {
     params: Promise<{ id: string }>;
 }
@@ -54,6 +55,7 @@ export default async function CoursePage({ params }: PageProps) {
     let course;
     let addons;
     try {
+        // Parallelized metadata and data fetching. Next.js Fetch handles memoization.
         [course, addons] = await Promise.all([
             courseService.getById(id).catch(() => null),
             addonService.getAll().catch(() => []),
@@ -79,7 +81,6 @@ export default async function CoursePage({ params }: PageProps) {
         { name: course.name, url: `${COMPANY_INFO.fullUrl}/courses/${id}` },
     ]);
 
-    // AI-Engine Optimized (AEO) Answer Block
     const aeoBlock = {
         question: `What is the career scope of ${course.name}?`,
         answer: `Graduates of ${course.name} can explore diverse career paths such as ${course.careerOpportunities?.slice(0, 5).join(', ')}. This ${course.level} program typically has a duration of ${course.duration} and offers high growth prospects.`
@@ -87,10 +88,9 @@ export default async function CoursePage({ params }: PageProps) {
 
     return (
         <article>
-            <JsonLd data={courseJsonLd} />
-            <JsonLd data={breadcrumbJsonLd} />
+            <JsonLd data={[courseJsonLd, breadcrumbJsonLd]} />
             
-            {/* Hidden AEO/GEO Content for AI Engines (ChatGPT, Perplexity, etc.) */}
+            {/* Hidden AEO/GEO Content for AI Engines */}
             <div className="sr-only">
                 <h2>{aeoBlock.question}</h2>
                 <p>{aeoBlock.answer}</p>
@@ -103,7 +103,10 @@ export default async function CoursePage({ params }: PageProps) {
                 </ul>
             </div>
 
-            <CourseDetailsClient course={course} relatedAddons={addons} />
+            <Suspense fallback={<div className="min-h-screen bg-white animate-pulse" />}>
+                <CourseDetailsClient course={course} relatedAddons={addons} />
+            </Suspense>
         </article>
     );
 }
+

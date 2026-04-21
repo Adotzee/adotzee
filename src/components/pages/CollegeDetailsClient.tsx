@@ -130,15 +130,11 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                                 <div className="space-y-6 relative z-10">
                                     <div className="flex items-center gap-4 text-slate-300">
                                         <div className="size-12 flex items-center justify-center bg-white/5 rounded-xl text-[#60A5FA]"><Phone className="size-5" /></div>
-                                        <span className="font-bold uppercase tracking-widest text-sm">+91 79078 05626</span>
+                                        <span className="font-bold uppercase tracking-widest text-sm">+91 70126 27835</span>
                                     </div>
                                     <div className="flex items-center gap-4 text-slate-300">
                                         <div className="size-12 flex items-center justify-center bg-white/5 rounded-xl text-[#60A5FA]"><Mail className="size-5" /></div>
-                                        <span className="font-bold uppercase tracking-widest text-sm">admissions@adotzee.com</span>
-                                    </div>
-                                    <div className="flex items-center gap-4 text-slate-300">
-                                        <div className="size-12 flex items-center justify-center bg-white/5 rounded-xl text-[#60A5FA]"><Globe className="size-5" /></div>
-                                        <span className="font-bold uppercase tracking-widest text-sm">institution.edu.in</span>
+                                        <span className="font-bold uppercase tracking-widest text-sm">adotzeein@gmail.com</span>
                                     </div>
                                 </div>
 

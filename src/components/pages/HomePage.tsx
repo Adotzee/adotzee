@@ -31,25 +31,9 @@ const Footer = dynamic(() => import("@/components/sections/LowerSections").then(
  * dynamic imports for supplementary and AI-rich sections.
  */
 export function HomePage() {
-  // AI-Search & Google Rich Result Optimization
-  const faqData = FAQSchema([
-    {
-        question: "How does the Adotzee college admission process work?",
-        answer: AEO_ANSWER_BLOCKS.ADMISSION_PROCESS
-    },
-    {
-        question: "Why should I choose colleges in Bangalore?",
-        answer: AEO_ANSWER_BLOCKS.WHY_BANGALORE
-    },
-    {
-        question: "Are scholarships available for South Indian colleges?",
-        answer: AEO_ANSWER_BLOCKS.SCHOLARSHIPS
-    }
-  ]);
-
   return (
     <div className="flex flex-col min-h-screen bg-white font-sans selection:bg-brand-light/30 selection:text-brand-primary">
-      <JsonLd data={faqData} />
+      {/* SEO handled by Server Component in app/page.tsx */}
       
       {/* Critical Path */}
       <Hero />

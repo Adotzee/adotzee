@@ -5,10 +5,11 @@ import { CollegeDetailsClient } from "@/components/pages/CollegeDetailsClient";
 import { COMPANY_INFO } from "@/lib/constants";
 import { JsonLd, CollegeSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
+// Enable ISR: Revalidate daily as college info is stable
+export const revalidate = 86400;
 
-// Next.js 15+ Params are a Promise
 interface PageProps {
     params: Promise<{ id: string }>;
 }
@@ -54,7 +55,7 @@ export default async function CollegePage({ params }: PageProps) {
     let college;
     let courses;
     try {
-        // Fetch data on the server for SEO and Performance (LCP)
+        // Fetch data on the server. Next.js Fetch wrapper handles memoization between generateMetadata and this component.
         [college, courses] = await Promise.all([
             collegeService.getById(id).catch(() => null),
             courseService.getAll().catch(() => []),
@@ -82,7 +83,6 @@ export default async function CollegePage({ params }: PageProps) {
         { name: college.name, url: `${COMPANY_INFO.fullUrl}/colleges/${id}` },
     ]);
 
-    // AI-Engine Optimized (AEO) Answer Block
     const aeoBlock = {
         question: `What makes ${college.name} a preferred choice for students?`,
         answer: `${college.name} is a premier institution located in ${college.city}, ${college.state}. Established in ${college.establishedYear}, it is known for its excellent ${college.accreditation?.join(', ')} accreditation and facilities like ${college.facilities?.slice(0, 3).join(', ')}.`
@@ -90,8 +90,7 @@ export default async function CollegePage({ params }: PageProps) {
 
     return (
         <article>
-            <JsonLd data={collegeJsonLd} />
-            <JsonLd data={breadcrumbJsonLd} />
+            <JsonLd data={[collegeJsonLd, breadcrumbJsonLd]} />
 
             {/* Hidden AEO/GEO Content for AI Engines */}
             <div className="sr-only">
@@ -99,7 +98,10 @@ export default async function CollegePage({ params }: PageProps) {
                 <p>{aeoBlock.answer}</p>
             </div>
 
-            <CollegeDetailsClient college={college} collegeCourses={courses} />
+            <Suspense fallback={<div className="min-h-screen bg-white animate-pulse" />}>
+                <CollegeDetailsClient college={college} collegeCourses={courses} />
+            </Suspense>
         </article>
     );
 }
+
