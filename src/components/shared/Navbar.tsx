@@ -46,88 +46,107 @@ export function Navbar() {
             <motion.nav
                 variants={{
                     visible: { y: 0, opacity: 1 },
-                    hidden: { y: "-110%", opacity: 0 }
+                    hidden: { y: "-120%", opacity: 0 }
                 }}
                 animate={hidden ? "hidden" : "visible"}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="fixed top-0 left-0 right-0 z-50 flex justify-center mt-4 md:mt-6 px-4 will-change-transform"
+                className="fixed top-0 left-0 right-0 z-50 flex justify-center mt-4 md:mt-6 px-4 pointer-events-none"
             >
                 <motion.div
-                    layout
                     initial={false}
                     animate={{
-                        width: scrolled ? "100%" : "100%",
                         maxWidth: scrolled ? "768px" : "1152px",
                         padding: scrolled ? "8px 24px" : "16px 40px",
+                        backgroundColor: scrolled ? "rgba(255, 255, 255, 0.85)" : "rgba(0, 0, 0, 0.45)",
+                        borderRadius: scrolled ? "9999px" : "32px",
+                        backdropFilter: scrolled ? "blur(20px)" : "blur(32px)",
+                        border: scrolled ? "1px solid rgba(226, 232, 240, 0.8)" : "1px solid rgba(255, 255, 255, 0.15)",
+                        boxShadow: scrolled 
+                            ? "0 20px 40px -10px rgba(0, 0, 0, 0.1)" 
+                            : "0 25px 50px -12px rgba(0, 0, 0, 0.2)"
                     }}
                     transition={{ 
                         type: "spring", 
                         stiffness: 200, 
-                        damping: 30,
+                        damping: 28,
+                        mass: 0.5
                     }}
-                    className={cn(
-                        "flex items-center gap-4 justify-between transition-colors duration-500",
-                        scrolled
-                            ? "bg-white/70 backdrop-blur-2xl shadow-floating rounded-full border border-slate-200/50"
-                            : "rounded-3xl shadow-2xl bg-black/40 backdrop-blur-3xl border border-white/10"
-                    )}
+                    className="flex items-center gap-4 justify-between w-full pointer-events-auto relative overflow-hidden"
+                    style={{ 
+                        backfaceVisibility: "hidden",
+                        transformStyle: "preserve-3d",
+                        willChange: "max-width, padding, background-color"
+                    }}
                 >
                     <Link href="/" className="flex items-center gap-1 shrink-0">
                         <Image
                             src="/Logos/AdotzeeLogoNoBG2.png"
                             alt="Adotzee Logo"
-                            width={32}
-                            height={32}
-                            className="object-contain md:w-10 h-auto will-change-transform"
+                            width={40}
+                            height={40}
+                            className="object-contain w-8 h-8 md:w-10 md:h-10 will-change-transform"
                             priority
                         />
-
                         <Image
                             src="/Logos/AdotzeeLogoTextNoBG2.png"
                             alt="Adotzee Text"
-                            width={100}
-                            height={32}
-                            className="object-contain md:w-[120px] h-auto will-change-transform"
+                            width={120}
+                            height={40}
+                            className={cn(
+                                "object-contain w-24 md:w-[120px] h-8 md:h-10 will-change-transform transition-all duration-500",
+                                scrolled ? "brightness-100" : "brightness-0 invert"
+                            )}
                             priority
                         />
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-black/50">
-                        <Link href="/courses" className="relative group px-2 py-1">
-                            <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Courses</span>
-                            <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
-                        </Link>
-                        <Link href="/colleges" className="relative group px-2 py-1">
-                            <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Colleges</span>
-                            <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
-                        </Link>
-                        <Link href="/addons" className="relative group px-2 py-1">
-                            <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Add-ons</span>
-                            <motion.span className="absolute inset-0  rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
-                        </Link>
-                        <Link href="/recommendations" className="relative group px-2 py-1">
-                            <span className="relative z-10 transition-colors duration-300 group-hover:text-brand-accent">Recommendations</span>
-                            <motion.span className="absolute inset-0 rounded-md scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0" />
-                        </Link>
+                    <div className={cn(
+                        "hidden lg:flex items-center space-x-8 text-sm font-bold transition-colors duration-500",
+                        scrolled ? "text-slate-600" : "text-white/80"
+                    )}>
+                        {[
+                            { label: "Courses", href: "/courses" },
+                            { label: "Colleges", href: "/colleges" },
+                            { label: "Add-ons", href: "/addons" },
+                            { label: "Recommendations", href: "/recommendations" }
+                        ].map((item) => (
+                            <Link key={item.href} href={item.href} className="relative group px-2 py-1">
+                                <span className={cn(
+                                    "relative z-10 transition-colors duration-300",
+                                    scrolled ? "group-hover:text-blue-600" : "group-hover:text-white"
+                                )}>
+                                    {item.label}
+                                </span>
+                                <motion.span className={cn(
+                                    "absolute inset-0 rounded-full scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0",
+                                    scrolled ? "bg-blue-50" : "bg-white/10"
+                                )} />
+                            </Link>
+                        ))}
                     </div>
 
                     <div className="flex items-center space-x-2 md:space-x-4">
-                        {/* Desktop CTA */}
                         <Button
                             onClick={() => useUiStore.getState().openLeadModal(undefined, "navbar_cta")}
-                            className="hidden sm:block bg-brand-accent hover:bg-[#60A5FA] text-white px-6 h-10 rounded-full text-sm font-semibold transition-all shadow-brand-glow hover:shadow-brand-glow-lg"
+                            className={cn(
+                                "hidden sm:block px-6 h-10 rounded-full text-sm font-black transition-all shadow-xl",
+                                scrolled 
+                                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20" 
+                                    : "bg-white hover:bg-white/90 text-blue-600 shadow-white/10"
+                            )}
                         >
-                            Begin
+                            Get Started
                         </Button>
 
-                        {/* Mobile Menu Trigger */}
                         <button
                             onClick={() => setIsMenuOpen(true)}
-                            aria-label="Open navigation menu"
-                            className="lg:hidden p-2 rounded-full bg-white/50 backdrop-blur-md  shadow-sm"
+                            className={cn(
+                                "lg:hidden p-2.5 rounded-full backdrop-blur-md transition-all",
+                                scrolled ? "bg-slate-100 text-slate-900" : "bg-white/10 text-white"
+                            )}
                         >
-                            <Menu className="w-6 h-6 text-foreground" />
+                            <Menu className="w-5 h-5" />
                         </button>
                     </div>
                 </motion.div>

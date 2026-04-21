@@ -9,7 +9,7 @@ export function GlobalLoader() {
 
     useEffect(() => {
         // Complete loading after initial mount
-        const timer = setTimeout(() => setIsLoading(false), 800);
+        const timer = setTimeout(() => setIsLoading(false), 1200);
         return () => clearTimeout(timer);
     }, []);
 
