@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-// import Image from "next/image";
+import Image from "next/image";
 import ParticlesBackground from "../filters/particles";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
@@ -33,20 +33,21 @@ export function Hero() {
     }, [router]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-            {/* <Image
+        <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-x-clip bg-white">
+            <Image
                 src="/hero_bg.png"
                 alt="University Campus"
                 fill
                 priority
-                className="object-cover opacity-20"
-            /> */}
+                className="object-cover opacity-10 pointer-events-none"
+                sizes="100vw"
+            />
 
             <ParticlesBackground />
 
             {/* Background aesthetic blobs */}
-            <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-50/50 rounded-full blur-[120px] opacity-40 animate-pulse" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-indigo-50/50 rounded-full blur-[120px] opacity-40 animate-pulse" />
+            <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-50/50 rounded-full blur-[120px] opacity-40 animate-pulse will-change-transform" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-indigo-50/50 rounded-full blur-[120px] opacity-40 animate-pulse will-change-transform" />
 
             <motion.div
                 className="relative z-10 w-full max-w-5xl mx-auto px-6 mt-30 mb-30"

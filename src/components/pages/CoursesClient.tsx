@@ -28,12 +28,12 @@ function CoursesContent({ initialData }: CoursesClientProps) {
     // Cast error to ApiError for safe access
     const apiError = error as ApiError | null;
 
-    // Dynamic data consolidation: API Data > Initial Data > Curated Fallback
+    // Dynamic data consolidation: API Data > Initial Data
     const courses = (apiCourses && apiCourses.length > 0)
         ? apiCourses
         : (initialData && initialData.length > 0)
             ? initialData
-            : (!stream ? COURSES_DATA : []);
+            : [];
 
 
     const handleCourseSelect = (courseId: string, courseName: string) => {
@@ -53,7 +53,7 @@ function CoursesContent({ initialData }: CoursesClientProps) {
     ]);
 
     return (
-        <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-hidden">
+        <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-x-clip">
             <JsonLd data={breadcrumbData} />
             {/* Improved Background Aesthetic */}
             <div className="absolute top-[-15%] right-[-10%] w-[70%] h-[70%] bg-blue-100/20 rounded-full blur-[140px] mix-blend-multiply" />

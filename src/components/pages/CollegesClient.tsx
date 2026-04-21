@@ -32,12 +32,12 @@ function CollegesContent({ initialData }: CollegesClientProps) {
     const { data: apiColleges, isLoading, error } = useCollegesQuery(addonId);
     const apiError = error as ApiError | null;
 
-    // Dynamic data fallback: API > Initial > Curated Constants
+    // Dynamic data consolidation: API Data > Initial Data
     const colleges = (apiColleges && apiColleges.length > 0)
         ? apiColleges
         : (initialData && initialData.length > 0)
             ? initialData
-            : (!addonId ? COLLEGES_DATA : []);
+            : [];
 
     const [, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
@@ -99,7 +99,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
     ]);
 
     return (
-        <main className="min-h-screen bg-slate-50/30 py-24 px-6 relative overflow-hidden">
+        <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-x-clip">
             <JsonLd data={breadcrumbData} />
             <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-blue-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
             <div className="absolute bottom-[-20%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />

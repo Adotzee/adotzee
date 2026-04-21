@@ -40,7 +40,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         animate={{ x: 0 }}
                         exit={{ x: "100%" }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="fixed right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white z-101 shadow-2xl flex flex-col"
+                        className="fixed right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white z-101 shadow-2xl flex flex-col will-change-transform"
                     >
                         {/* Header */}
                         <div className="p-6 flex justify-between items-center border-b border-gray-100">

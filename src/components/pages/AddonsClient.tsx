@@ -45,19 +45,15 @@ function AddonsContent({ initialData }: AddonsClientProps) {
                 const data = await apiClient.get<AddonCourse[]>(url);
                 const addonList = Array.isArray(data) ? data : [];
                 
-                // Fallback to curated data if direct navigation returns empty results
-                if (addonList.length === 0 && !courseId) {
-                    setAddons(ADDONS_DATA);
-                } else {
-                    setAddons(addonList);
-                }
+                // Set addons from API
+                setAddons(addonList);
             } catch (err) {
                 const error = err as ApiError;
                 console.error("Addon Fetch Error:", error);
                 
-                // Fallback on error if navigating from navbar
+                // No fallback on error
                 if (!courseId) {
-                    setAddons(ADDONS_DATA);
+                    setAddons([]);
                 } else if (error.name === 'AxiosError' && (error as ApiError & { response?: { status: number } }).response?.status === 404) {
                     setAddons([]);
                 } else {
@@ -95,7 +91,7 @@ function AddonsContent({ initialData }: AddonsClientProps) {
     ]);
 
     return (
-        <main className="min-h-screen bg-white py-24 px-6 relative overflow-hidden">
+        <main className="min-h-screen bg-white py-24 px-6 relative overflow-x-clip">
             <JsonLd data={breadcrumbData} />
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-50 rounded-full blur-[120px] opacity-40" />
 

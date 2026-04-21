@@ -28,7 +28,7 @@ export function Features() {
     };
 
     return (
-        <section className="py-24 md:py-32 bg-blue-100 relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-blue-100 relative overflow-x-clip">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"

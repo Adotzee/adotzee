@@ -35,7 +35,7 @@ export function BaseCard({
         >
             <Card
                 className={cn(
-                    "overflow-hidden transition-all duration-300 bg-card border-border hover:border-brand-accent/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] group h-full",
+                    "overflow-hidden bg-card border-border hover:border-brand-accent/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] group h-full transition-colors duration-500",
                     featured && "border-brand-accent/40 shadow-[0_0_15px_rgba(37,99,235,0.1)]",
                     className
                 )}

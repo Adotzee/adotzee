@@ -13,7 +13,7 @@ export function Courses() {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-transparent relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-transparent relative overflow-x-clip">
             <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 text-center md:text-left">
                     <div>

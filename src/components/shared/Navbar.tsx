@@ -1,19 +1,26 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { useUiStore } from "@/store/useUiStore";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Initialize scrolled state on mount to prevent flickering on reload
+    useEffect(() => {
+        const initialScroll = window.scrollY;
+        if (initialScroll > 50) setScrolled(true);
+    }, []);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -26,9 +33,10 @@ export function Navbar() {
         }
 
         // Hide navbar completely when scrolling down, show when scrolling up
-        if (latest > 150 && latest > previous && !isMenuOpen) {
+        // Add a 50px buffer to prevent rapid flickering on small scrolls
+        if (latest > 200 && latest > previous + 10 && !isMenuOpen) {
             setHidden(true);
-        } else {
+        } else if (previous > latest + 10 || latest <= 200) {
             setHidden(false);
         }
     });
@@ -38,26 +46,39 @@ export function Navbar() {
             <motion.nav
                 variants={{
                     visible: { y: 0, opacity: 1 },
-                    hidden: { y: "-100%", opacity: 0 }
+                    hidden: { y: "-110%", opacity: 0 }
                 }}
                 animate={hidden ? "hidden" : "visible"}
-                transition={{ duration: 0.35, ease: "easeInOut" as const }}
-                className={`fixed top-0 left-0 right-0 z-50 flex justify-center mt-4 md:mt-6 px-4`}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="fixed top-0 left-0 right-0 z-50 flex justify-center mt-4 md:mt-6 px-4 will-change-transform"
             >
-                <div className={`
-                    flex items-center gap-4 justify-between px-4 md:px-6 py-2 md:py-3 transition-all duration-500
-                    ${scrolled
-                        ? "w-full max-w-3xl bg-white/70 backdrop-blur-2xl shadow-floating rounded-full "
-                        : "w-full max-w-6xl rounded-2xl shadow-xl bg-black/20 backdrop-blur-2xl p-4 md:p-10"
-                    }
-                `}>
+                <motion.div
+                    layout
+                    initial={false}
+                    animate={{
+                        width: scrolled ? "100%" : "100%",
+                        maxWidth: scrolled ? "768px" : "1152px",
+                        padding: scrolled ? "8px 24px" : "16px 40px",
+                    }}
+                    transition={{ 
+                        type: "spring", 
+                        stiffness: 200, 
+                        damping: 30,
+                    }}
+                    className={cn(
+                        "flex items-center gap-4 justify-between transition-colors duration-500",
+                        scrolled
+                            ? "bg-white/70 backdrop-blur-2xl shadow-floating rounded-full border border-slate-200/50"
+                            : "rounded-3xl shadow-2xl bg-black/40 backdrop-blur-3xl border border-white/10"
+                    )}
+                >
                     <Link href="/" className="flex items-center gap-1 shrink-0">
                         <Image
                             src="/Logos/AdotzeeLogoNoBG2.png"
                             alt="Adotzee Logo"
                             width={32}
                             height={32}
-                            className="object-contain md:w-10 md:h-10"
+                            className="object-contain md:w-10 h-auto will-change-transform"
                             priority
                         />
 
@@ -66,7 +87,7 @@ export function Navbar() {
                             alt="Adotzee Text"
                             width={100}
                             height={32}
-                            className="object-contain md:w-[120px] md:h-10"
+                            className="object-contain md:w-[120px] h-auto will-change-transform"
                             priority
                         />
                     </Link>
@@ -109,7 +130,7 @@ export function Navbar() {
                             <Menu className="w-6 h-6 text-foreground" />
                         </button>
                     </div>
-                </div>
+                </motion.div>
             </motion.nav>
 
             {/* Mobile Navigation Sheet */}

@@ -13,7 +13,7 @@ export function Colleges() {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-transparent relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-blue-100 relative overflow-x-clip">
             <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
 
                 {/* Heading */}
@@ -41,7 +41,7 @@ export function Colleges() {
                                     src={hub.image}
                                     alt={hub.name}
                                     fill
-                                    className="object-contain transition-transform duration-700 group-hover:scale-110"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 left-4 inline-flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-white bg-brand-accent/80 backdrop-blur-md px-3 py-1.5 rounded-full">
                                     <ShieldCheck className="w-4 h-4" />

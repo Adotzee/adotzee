@@ -7,19 +7,11 @@ import { JsonLd, FAQSchema } from "@/components/seo/JsonLd";
 import { AEO_ANSWER_BLOCKS } from "@/lib/constants/landing-data";
 
 // Dynamic imports for below-the-fold content to improve TBT and LCP
-const Features = dynamic(() => import("@/components/sections/Features").then(m => m.Features), {
-    loading: () => <div className="h-[400px] w-full bg-slate-50 animate-pulse rounded-3xl" />
-});
+const Features = dynamic(() => import("@/components/sections/Features").then(m => m.Features));
 const AnswerBlocks = dynamic(() => import("@/components/sections/AnswerBlocks").then(m => m.AnswerBlocks));
 const TrustSignals = dynamic(() => import("@/components/sections/TrustSignals").then(m => m.TrustSignals));
-const Courses = dynamic(() => import("@/components/sections/Courses").then(m => m.Courses), {
-    ssr: false,
-    loading: () => <div className="h-[600px] w-full bg-white animate-pulse" />
-});
-const Colleges = dynamic(() => import("@/components/sections/Colleges").then(m => m.Colleges), {
-    ssr: false,
-    loading: () => <div className="h-[600px] w-full bg-slate-50 animate-pulse" />
-});
+const Courses = dynamic(() => import("@/components/sections/Courses").then(m => m.Courses), { ssr: false });
+const Colleges = dynamic(() => import("@/components/sections/Colleges").then(m => m.Colleges), { ssr: false });
 const CityAuthority = dynamic(() => import("@/components/sections/CityAuthority").then(m => m.CityAuthority), { ssr: false });
 const Protocol = dynamic(() => import("@/components/sections/Protocol").then(m => m.Protocol), { ssr: false });
 const CTA = dynamic(() => import("@/components/sections/LowerSections").then(m => m.CTA), { ssr: false });
