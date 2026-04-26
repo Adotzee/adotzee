@@ -74,7 +74,7 @@ export function Colleges() {
                 </div>
             </div>
 
-            <div className="absolute bottom-0 left-0 w-full h-[500px] bg-linear-to-t from-[#E0F2FE]/50 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-[500px] bg-linear-to-t from-mesh-blue/50 to-transparent pointer-events-none" />
         </section>
     );
 }

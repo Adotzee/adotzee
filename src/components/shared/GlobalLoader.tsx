@@ -20,12 +20,12 @@ export function GlobalLoader() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white"
+                    className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-white"
                 >
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        transition={{ 
+                        transition={{
                             duration: 0.5,
                             repeat: Infinity,
                             repeatType: "reverse"
@@ -36,21 +36,22 @@ export function GlobalLoader() {
                             src="/Logos/AdotzeeLogoNoBG2.png"
                             alt="Adotzee Loading"
                             fill
+                            sizes="96px"
                             className="object-contain"
                             priority
                         />
                     </motion.div>
-                    
-                    <motion.div 
+
+                    <motion.div
                         className="mt-8 h-1 w-48 bg-slate-100 rounded-full overflow-hidden"
                     >
-                        <motion.div 
+                        <motion.div
                             initial={{ x: "-100%" }}
                             animate={{ x: "100%" }}
-                            transition={{ 
-                                duration: 1.5, 
-                                repeat: Infinity, 
-                                ease: "linear" 
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "linear"
                             }}
                             className="h-full w-full bg-linear-to-r from-blue-500 to-indigo-500"
                         />

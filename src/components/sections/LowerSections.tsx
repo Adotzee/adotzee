@@ -58,6 +58,7 @@ export function Footer() {
                                 alt="Adotzee"
                                 width={110}
                                 height={32}
+                                style={{ width: "auto" }}
                                 className="object-contain"
                             />
                         </Link>

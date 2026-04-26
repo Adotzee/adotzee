@@ -16,6 +16,9 @@ export function useCoursesQuery(streamId: string) {
     return useQuery({
         queryKey: QUERY_KEYS.COURSES(streamId),
         queryFn: async () => {
+            if (streamId) {
+                return courseService.getByStream(streamId);
+            }
             return courseService.getAll();
         },
         staleTime: 5 * 60 * 1000, // 5 minutes

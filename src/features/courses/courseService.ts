@@ -17,6 +17,6 @@ export const courseService = {
         const response = await apiClient.get<any>(`/Courses/filter?stream=${streamId}`, {
             next: { revalidate: 3600 }
         });
-        return response?.items || [];
+        return Array.isArray(response) ? response : (response?.items || []);
     },
 };

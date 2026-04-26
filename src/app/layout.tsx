@@ -10,11 +10,13 @@ import { Toaster } from "@/components/ui/sonner";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: false,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 import { COMPANY_INFO } from "@/lib/constants";
@@ -110,7 +112,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <JsonLd data={[orgData, websiteSchema]} />
         {/* Google Analytics - Add your GA_MEASUREMENT_ID to your .env file */}

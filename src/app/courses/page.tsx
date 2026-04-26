@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const params = await searchParams;
   const streamName = params.streamName ? String(params.streamName) : "Academic Stream";
-  
+
   return {
     title: `Courses for ${streamName} | ${COMPANY_INFO.name}`,
     description: `Explore top-rated courses and premier colleges tailored for ${streamName}. Select a stream to begin your journey with ${COMPANY_INFO.name}.`,

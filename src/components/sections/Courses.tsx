@@ -21,7 +21,7 @@ export function Courses() {
                             Trending Courses.
                             <div className="absolute -bottom-2 left-0 w-24 h-1.5 bg-brand-accent rounded-full" />
                         </h2>
-                        <p className="text-xl text-[#0F172A] font-medium opacity-70 max-w-xl">
+                        <p className="text-xl text-foreground font-medium opacity-70 max-w-xl">
                             Find the right degree program after Plus Two to kickstart your career.
                         </p>
                     </div>
@@ -37,13 +37,13 @@ export function Courses() {
                             <div className="flex justify-between items-start mb-12 relative z-10 w-full">
                                 <div className="flex flex-wrap gap-2">
                                     {(course.tags || []).map((tag: string, j: number) => (
-                                        <span key={j} className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 bg-white rounded-full border border-white shadow-sm text-[#2563EB]">
+                                        <span key={j} className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 bg-white rounded-full border border-white shadow-sm text-brand-accent">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
-                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:bg-[#2563EB] transition-colors duration-300">
-                                    <ArrowUpRight className="w-5 h-5 text-[#0F172A] group-hover:text-white transition-colors" />
+                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:bg-brand-accent transition-colors duration-300">
+                                    <ArrowUpRight className="w-5 h-5 text-foreground group-hover:text-white transition-colors" />
                                 </div>
                             </div>
 
@@ -52,13 +52,13 @@ export function Courses() {
                             </h3>
 
                             {/* Hover Vaporwave Glow */}
-                            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#E0F2FE] rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 mix-blend-multiply pointer-events-none" />
+                            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-mesh-blue rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 mix-blend-multiply pointer-events-none" />
                         </button>
                     ))}
                 </div>
             </div>
 
-            <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-[#F1F5F9] rounded-full blur-[200px] mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-mesh-blue rounded-full blur-[200px] mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         </section>
     );
 }
