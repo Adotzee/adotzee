@@ -57,6 +57,7 @@ export default async function CoursesPage({ searchParams }: Props) {
   // Pre-fetch courses on the server (Leveraging Next.js Data Cache)
   let initialCourses: Course[] = [];
   try {
+    console.log("stream", stream)
     if (stream) {
       initialCourses = await courseService.getByStream(stream);
     } else {
