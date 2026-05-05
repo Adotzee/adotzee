@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.adotzee.in/api";
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://adotzeebackend.onrender.com/api";
 
 export const ENDPOINTS = {
     COURSES: {
