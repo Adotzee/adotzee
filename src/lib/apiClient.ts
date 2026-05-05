@@ -6,8 +6,8 @@ export interface ApiResponse<T> {
 }
 
 const IS_SERVER = typeof window === 'undefined';
-const API_BASE_URL = IS_SERVER 
-    ? "https://api.adotzee.in/api" 
+const API_BASE_URL = IS_SERVER
+    ? "https://adotzeebackend.onrender.com/api"
     : (process.env.NEXT_PUBLIC_API_URL || "/api-proxy");
 
 interface BaseApiResponse {
@@ -30,7 +30,7 @@ class ApiClient {
         options: RequestInit & { next?: NextFetchRequestConfig; cache?: RequestCache } = {}
     ): Promise<T> {
         const fullUrl = url.startsWith("http") ? url : `${API_BASE_URL}${url}`;
-        
+
         // Remove no-cache headers for server-side fetches to allow Next.js caching
         const defaultHeaders: HeadersInit = {
             "Content-Type": "application/json",
@@ -62,11 +62,11 @@ class ApiClient {
             }
 
             const isSuccess = data.success !== undefined ? data.success : data.Success;
-            
+
             if (isSuccess === true) {
                 return (data.data !== undefined ? data.data : data.Data) as T;
             }
-            
+
             if (isSuccess === false) {
                 const { errorMsg, isDatabaseError, rawMsg } = formatErrorMessage(data);
                 const error = new Error(errorMsg) as Error & { isDatabaseError?: boolean; originalMessage?: string };
@@ -94,18 +94,18 @@ class ApiClient {
     }
 
     async post<T>(url: string, data?: any, config?: RequestInit & { next?: NextFetchRequestConfig }): Promise<T> {
-        return this.request<T>(url, { 
-            ...config, 
-            method: "POST", 
+        return this.request<T>(url, {
+            ...config,
+            method: "POST",
             body: JSON.stringify(data),
             cache: 'no-store' // POSTs should generally not be cached
         });
     }
 
     async put<T>(url: string, data?: any, config?: RequestInit & { next?: NextFetchRequestConfig }): Promise<T> {
-        return this.request<T>(url, { 
-            ...config, 
-            method: "PUT", 
+        return this.request<T>(url, {
+            ...config,
+            method: "PUT",
             body: JSON.stringify(data),
             cache: 'no-store'
         });
@@ -124,8 +124,8 @@ function formatErrorMessage(res: BaseApiResponse, defaultMsg: string = "Somethin
     let errorMsg = rawMsg;
     let isDatabaseError = false;
 
-    if (rawMsg.toLowerCase().includes("login-failed") || 
-        rawMsg.toLowerCase().includes("login failed") || 
+    if (rawMsg.toLowerCase().includes("login-failed") ||
+        rawMsg.toLowerCase().includes("login failed") ||
         rawMsg.toLowerCase().includes("sql server")) {
         errorMsg = "Our database is currently undergoing maintenance. Please try again in a few minutes.";
         isDatabaseError = true;

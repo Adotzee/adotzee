@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api-proxy/:path*',
-        destination: 'https://api.adotzee.in/api/:path*',
+        destination: 'https://adotzeebackend.onrender.com/api/:path*',
       },
     ];
   },
