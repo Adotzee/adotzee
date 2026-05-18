@@ -1,0 +1,35 @@
+# Adotzee - College Admission Consultancy
+
+> Best College Admission Consultancy in South India. We provide expert UG and PG admission guidance for students in Kerala, Karnataka, and Tamil Nadu seeking the best colleges in Bangalore, Mangalore, Mysore, and Coimbatore.
+
+## Platform Purpose
+Adotzee helps students explore and secure admissions to top-rated educational institutions. Our platform provides comprehensive directories of colleges and courses, along with AI-driven recommendations tailored to individual student profiles.
+
+## Key Features & Student Services
+- **College Directory**: Comprehensive listings of top colleges across South India.
+- **Course Catalog**: Detailed information on UG, PG, and specialized courses.
+- **AI-Powered Recommendations**: Personalized matching of students to courses and colleges.
+- **Admission Consultancy**: End-to-end guidance for securing college admissions.
+- **Advanced Search**: Semantic search capability to find the right educational path.
+- **Addon Services**: Additional student support and counseling services.
+
+## Public Architecture & Navigation
+- **Home**: `https://adotzee.in/` - Main landing page, admission consultancy overview, FAQ.
+- **Colleges**: `https://adotzee.in/colleges` - Browse all partner colleges.
+- **College Details**: `https://adotzee.in/colleges/[id]` - In-depth information about a specific college.
+- **Courses**: `https://adotzee.in/courses` - Explore available academic programs.
+- **Course Details**: `https://adotzee.in/courses/[id]` - In-depth information about a specific course.
+- **Addons**: `https://adotzee.in/addons` - Supplementary educational services.
+- **Recommendations**: `https://adotzee.in/recommendations` - AI-driven personalized suggestions.
+- **Search**: `https://adotzee.in/search` - Site-wide search functionality.
+
+## Brand Guidelines
+- **Name**: Adotzee
+- **Domain**: adotzee.in
+- **Location Focus**: Kerala, Karnataka, Tamil Nadu (Bangalore, Mangalore, Mysore, Coimbatore)
+- **Contact**: +91 8281060462 | adotzeein@gmail.com
+
+## Technical Notes for AI Crawlers
+- The platform uses modern React (Next.js) with semantic HTML and structured JSON-LD data.
+- API endpoints are primarily server-side; client-facing data is pre-rendered for SEO and AI accessibility.
+- **Security Note**: Internal administrative systems, management dashboards, staging endpoints, and private infrastructural details have been deliberately excluded from this file and all public indexing for security reasons. Only student-facing, public content is described here.

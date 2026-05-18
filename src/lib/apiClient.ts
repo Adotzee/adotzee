@@ -27,9 +27,13 @@ interface BaseApiResponse {
 class ApiClient {
     private async request<T>(
         url: string,
-        options: RequestInit & { next?: NextFetchRequestConfig; cache?: RequestCache } = {}
+        options: RequestInit & { next?: NextFetchRequestConfig; cache?: RequestCache; timeout?: number } = {}
     ): Promise<T> {
         const fullUrl = url.startsWith("http") ? url : `${API_BASE_URL}${url}`;
+        const timeout = options.timeout || 8000; // Default 8s timeout
+
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
 
         // Remove no-cache headers for server-side fetches to allow Next.js caching
         const defaultHeaders: HeadersInit = {
@@ -38,6 +42,7 @@ class ApiClient {
 
         const config = {
             ...options,
+            signal: controller.signal,
             headers: {
                 ...defaultHeaders,
                 ...options.headers,
@@ -50,6 +55,7 @@ class ApiClient {
 
         try {
             const response = await fetch(fullUrl, config);
+            clearTimeout(id);
             const data = await response.json() as BaseApiResponse;
 
             if (!response.ok) {
@@ -129,7 +135,7 @@ function formatErrorMessage(res: BaseApiResponse, defaultMsg: string = "Somethin
         rawMsg.toLowerCase().includes("sql server")) {
         errorMsg = "Our database is currently undergoing maintenance. Please try again in a few minutes.";
         isDatabaseError = true;
-    } else if (!rawMsg || rawMsg === "Network Error" || rawMsg === "Failed to fetch") {
+    } else if (!rawMsg || rawMsg === "Network Error" || rawMsg === "Failed to fetch" || rawMsg.includes("abort")) {
         errorMsg = "Service Temporarily Unavailable. Please check your connection.";
     }
 

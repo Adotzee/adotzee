@@ -12,7 +12,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
                         staleTime: 5 * 60 * 1000, // 5 minutes - educational content is relatively static
                         gcTime: 10 * 60 * 1000, // 10 minutes cache duration
                         refetchOnWindowFocus: false,
-                        retry: 1, // Minimize retry overhead for production
+                        retry: 3, // Handle temporary timeouts during backend cold starts
                     },
                 },
             })
