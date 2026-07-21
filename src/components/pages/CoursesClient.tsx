@@ -10,7 +10,6 @@ import { CourseCard } from "../cards/CourseCard";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { Course, ApiError } from "@/types";
 import { COURSES_DATA } from "@/lib/constants/landing-data";
-import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 interface CoursesClientProps {
     initialData?: Course[];
@@ -46,15 +45,8 @@ function CoursesContent({ initialData }: CoursesClientProps) {
     };
 
 
-    // Breadcrumb Schema for search engine navigation
-    const breadcrumbData = BreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: streamName || "All Courses", url: `/courses?stream=${stream}` }
-    ]);
-
     return (
         <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-x-clip">
-            <JsonLd data={breadcrumbData} />
             {/* Improved Background Aesthetic */}
             <div className="absolute top-[-15%] right-[-10%] w-[70%] h-[70%] bg-blue-100/20 rounded-full blur-[140px] mix-blend-multiply" />
             <div className="absolute bottom-[-15%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/20 rounded-full blur-[140px] mix-blend-multiply" />

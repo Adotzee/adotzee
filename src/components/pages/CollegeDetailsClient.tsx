@@ -123,8 +123,10 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                             <div className="bg-card rounded-[2.5rem] p-10 border border-border shadow-2xl space-y-10 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 size-32 bg-[#2563EB]/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000"></div>
                                 <div className="space-y-6 relative z-10">
-                                    <h3 className="text-3xl font-black text-white tracking-tight">Incentivized Admission</h3>
-                                    <p className="text-slate-400 text-lg font-light leading-relaxed">Secure your terminal with exclusive Adotzee institutional support and merit-based financial aid.</p>
+                                    <h3 className="text-3xl font-black text-white tracking-tight">Verified Admission Support</h3>
+                                    <p className="text-slate-400 text-lg font-light leading-relaxed">
+                                        Get accurate fee structures, verified placement records, and transparent admission guidance directly from our experts.
+                                    </p>
                                 </div>
 
                                 <div className="space-y-6 relative z-10">
@@ -140,9 +142,9 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
 
                                 <Button
                                     onClick={handleInitiate}
-                                    className="w-full h-16 bg-[#2563EB] hover:bg-[#1D4ED8] rounded-xl text-xl font-black shadow-2xl shadow-[#2563EB]/20 transition-all border border-white/10 relative z-10"
+                                    className="w-full h-16 bg-[#2563EB] hover:bg-[#1D4ED8] rounded-xl text-lg font-black shadow-2xl shadow-[#2563EB]/20 transition-all border border-white/10 relative z-10"
                                 >
-                                    Initiate Process
+                                    Speak to a Verified Counsellor
                                 </Button>
                             </div>
 
@@ -154,11 +156,11 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                                 <ul className="space-y-6 relative z-10">
                                     <li className="flex items-start gap-4">
                                         <div className="size-2 bg-[#60A5FA] rounded-full mt-2.5"></div>
-                                        <p className="text-slate-300 text-base font-medium italic leading-relaxed">&quot;Top placement trajectory in the regional matrix with 100+ institutional recruiter access.&quot;</p>
+                                        <p className="text-slate-300 text-sm font-medium italic leading-relaxed">&quot;Fees, facilities, and accreditations for this institution are rigorously verified by our field teams.&quot;</p>
                                     </li>
                                     <li className="flex items-start gap-4">
                                         <div className="size-2 bg-[#60A5FA] rounded-full mt-2.5"></div>
-                                        <p className="text-slate-300 text-base font-medium italic leading-relaxed">&quot;Dynamic institutional ecosystem featuring high-throughput student hubs and annual fests.&quot;</p>
+                                        <p className="text-slate-300 text-sm font-medium italic leading-relaxed">&quot;Adotzee provides transparent guidance with zero hidden capitation fees or false placement guarantees.&quot;</p>
                                     </li>
                                 </ul>
                             </div>

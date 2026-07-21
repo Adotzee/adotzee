@@ -3,8 +3,8 @@ import { Course, College, AddonCourse } from "@/types";
 
 export interface RecommendationRequest {
     interests: string;
-    budget: number;
-    location: string;
+    budget?: number;
+    location?: string;
     preferredStream: string;
 }
 

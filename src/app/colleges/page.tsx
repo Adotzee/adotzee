@@ -25,11 +25,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const courseName = params.courseName ? String(params.courseName) : "Your Selected Course";
   
   return {
-    title: `Premier Colleges for ${courseName} | ${COMPANY_INFO.name}`,
-    description: `Discover and apply to premier institutions for ${courseName} through ${COMPANY_INFO.name}. Get direct admission assistance and expert consultation.`,
+    title: `Verified Colleges for ${courseName} | Expert Admission Support | ${COMPANY_INFO.name}`,
+    description: `Discover verified institutions for ${courseName} across India. Get transparent admission guidance and expert support with ${COMPANY_INFO.name}.`,
     openGraph: {
-      title: `Premier Colleges for ${courseName} | ${COMPANY_INFO.name}`,
-      description: `Discover and apply to premier institutions for ${courseName} through ${COMPANY_INFO.name}.`,
+      title: `Verified Colleges for ${courseName} | Expert Admission Support | ${COMPANY_INFO.name}`,
+      description: `Discover verified institutions for ${courseName} across India. Get transparent admission guidance and expert support with ${COMPANY_INFO.name}.`,
       url: `${COMPANY_INFO.fullUrl}/colleges`,
       siteName: COMPANY_INFO.name,
       images: [

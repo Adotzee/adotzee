@@ -9,7 +9,6 @@ import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { AddonCourse, ApiError } from "@/types";
 import { ADDONS_DATA } from "@/lib/constants/landing-data";
-import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 interface AddonsClientProps {
     initialData?: AddonCourse[];
@@ -37,17 +36,21 @@ function AddonsContent({ initialData }: AddonsClientProps) {
             return;
         }
 
+        const controller = new AbortController();
+
         const fetchAddons = async () => {
             setLoading(true);
             setApiError(null);
             try {
                 const url = courseId ? `/Addons/by-course/${courseId}` : "/Addons";
-                const data = await apiClient.get<AddonCourse[]>(url);
+                const data = await apiClient.get<AddonCourse[]>(url, { signal: controller.signal } as any);
                 const addonList = Array.isArray(data) ? data : [];
                 
                 // Set addons from API
                 setAddons(addonList);
-            } catch (err) {
+            } catch (err: any) {
+                if (err.name === 'AbortError') return;
+                
                 const error = err as ApiError;
                 console.error("Addon Fetch Error:", error);
                 
@@ -66,6 +69,10 @@ function AddonsContent({ initialData }: AddonsClientProps) {
         };
 
         fetchAddons();
+
+        return () => {
+            controller.abort();
+        };
     }, [courseId, router, initialData, addons.length]);
 
     const handleAddonSelect = (addonId: string, addonName: string) => {
@@ -83,16 +90,8 @@ function AddonsContent({ initialData }: AddonsClientProps) {
         router.prefetch(`/colleges?${params.toString()}`);
     };
 
-    // Breadcrumb Schema for search engine navigation
-    const breadcrumbData = BreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: streamName || "Courses", url: `/courses?stream=${stream}` },
-        { name: "Addons", url: `/addons?stream=${stream}&courseId=${courseId}` }
-    ]);
-
     return (
         <main className="min-h-screen bg-white py-24 px-6 relative overflow-x-clip">
-            <JsonLd data={breadcrumbData} />
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-50 rounded-full blur-[120px] opacity-40" />
 
             <div className="max-w-5xl mx-auto relative z-10">

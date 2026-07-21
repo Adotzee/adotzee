@@ -3,10 +3,10 @@ import { College } from "@/types";
 
 export const collegeService = {
     getAll: async (): Promise<College[]> => {
-        const response = await apiClient.get<any>("/Colleges", {
+        const response = await apiClient.get<any>("/Colleges/all", {
             next: { revalidate: 3600 } // Cache for 1 hour
         });
-        return response?.items || [];
+        return response || [];
     },
     getById: async (id: string): Promise<College> => {
         return apiClient.get(`/Colleges/${id}`, {

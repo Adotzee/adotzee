@@ -34,25 +34,24 @@ export default function Loading() {
           className="relative z-10 mb-6"
         >
           <div className="relative w-24 h-24 flex items-center justify-center">
-              <motion.div
-                animate={{ scale: [1, 1.02, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              >
-                <Image
-                  src="/Logos/AdotzeeLogoTextNoBG.png"
-                  alt="Adotzee Logo"
-                  width={100}
-                  height={100}
-                  className="object-contain"
-                  priority
-                />
-              </motion.div>
+            <motion.div
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Image
+                src="/Logos/AdotzeeLogoTextNoBG.png"
+                alt="Adotzee Logo"
+                width={100}
+                height={100}
+                className="object-contain"
+                priority
+              />
+            </motion.div>
           </div>
         </motion.div>
 
         {/* Minimalist Loading Text */}
         <div className="flex flex-col items-center gap-1">
-          <p className="text-slate-900 font-bold text-lg">Adotzee</p>
           <p className="text-slate-400 text-xs font-medium">Securing your future...</p>
         </div>
 

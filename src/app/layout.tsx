@@ -23,7 +23,7 @@ import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: {
-    default: `${COMPANY_INFO.name} | ${COMPANY_INFO.seo.title}`,
+    default: COMPANY_INFO.seo.title,
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: COMPANY_INFO.seo.description,
@@ -81,6 +81,7 @@ import { StickyBottomCTA } from "@/components/shared/StickyBottomCTA";
 import { ScrollTracker } from "@/components/shared/ScrollTracker";
 
 import { GlobalLoader } from "@/components/shared/GlobalLoader";
+import { Footer } from "@/components/shared/Footer";
 import Script from "next/script";
 
 export default function RootLayout({
@@ -142,7 +143,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
-          {/* <LeadFormModal /> */}
+          <Footer />
           <StickyBottomCTA />
           <Toaster position="top-center" expand={false} richColors />
         </Providers>

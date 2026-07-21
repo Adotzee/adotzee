@@ -12,20 +12,19 @@ export const COMPANY_INFO = {
         whatsapp: "https://wa.me/918281060462",
     },
     seo: {
-        title: "Adotzee | Best College Admission Consultancy in South India",
-        description: "Find the best colleges in Bangalore, Mangalore, Mysore, and Coimbatore after Plus Two. Adotzee offers expert UG and PG admission guidance for students in Kerala, Karnataka, and Tamil Nadu.",
+        title: "Adotzee | India's Trusted College Admission & Career Guidance Platform",
+        description: "Discover verified colleges, compare courses, and get expert admission guidance with Adotzee. Your trusted platform for higher education in India.",
         keywords: [
-            "college admission after plus two",
-            "best colleges in Bangalore after 12th",
+            "verified college admission platform",
+            "college discovery India",
+            "expert admission guidance",
+            "trusted education consultancy",
+            "best colleges in Bangalore",
             "best colleges in Mangalore",
-            "best colleges in Mysore",
-            "best colleges in Coimbatore",
-            "degree courses after plus two",
-            "college admission consultancy Kerala",
-            "admission guidance Bangalore colleges",
-            "UG admission South India",
-            "admission consultancy Karnataka",
-            "college admission Tamil Nadu"
+            "engineering admissions India",
+            "MBA admissions India",
+            "direct admission assistance",
+            "student counselling services"
         ]
     },
     locations: {

@@ -14,10 +14,10 @@ export const viewport: Viewport = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: `Home | ${COMPANY_INFO.name} - ${COMPANY_INFO.seo.title}`,
+    title: COMPANY_INFO.seo.title,
     description: COMPANY_INFO.seo.description,
     openGraph: {
-      title: `Home | ${COMPANY_INFO.name}`,
+      title: COMPANY_INFO.seo.title,
       description: COMPANY_INFO.seo.description,
       url: COMPANY_INFO.fullUrl,
       siteName: COMPANY_INFO.name,
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `Home | ${COMPANY_INFO.name}`,
+      title: COMPANY_INFO.seo.title,
       description: COMPANY_INFO.seo.description,
       images: ["/Logos/AdotzeeLogoTextNoBG.png"],
     },

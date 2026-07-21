@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://adotzeebackend.onrender.com/api";
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://backend.adotzee.in/api";
 
 export const ENDPOINTS = {
     COURSES: {
@@ -22,4 +22,9 @@ export const ENDPOINTS = {
     LEADS: {
         CREATE: "/Leads",
     },
+    REVIEWS: {
+        GET_ALL: "/Reviews",
+        GET_FEATURED: "/Reviews/featured",
+        SUBMIT: "/Reviews",
+    }
 };

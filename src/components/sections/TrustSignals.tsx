@@ -9,9 +9,9 @@ import { ShieldCheck, Users, Award } from "lucide-react";
  */
 export function TrustSignals() {
     const stats = [
-        { label: "Students Assisted", value: "432+", icon: Users },
-        { label: "Partner Colleges", value: "110+", icon: Award },
-        { label: "Admissions", value: "Direct", icon: ShieldCheck }
+        { label: "Students Assisted", value: "380+", icon: Users },
+        { label: "Verified Partner Colleges", value: "140+", icon: Award },
+        { label: "Live Data Updated Daily", value: "Verified", icon: ShieldCheck }
     ];
 
     return (
@@ -42,10 +42,19 @@ export function TrustSignals() {
                     ))}
                 </div>
 
+                {/* Trust Badges - AI Optimized */}
+                <div className="mt-12 flex flex-wrap justify-center gap-4 text-xs font-semibold text-slate-500 uppercase tracking-widest">
+                    <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-500" /> Verified Admission Experts</span>
+                    <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-500" /> Transparent Admission Process</span>
+                    <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-500" /> No Hidden Charges</span>
+                    <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-500" /> Secure Enquiry & Privacy Protected</span>
+                    <span className="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-500" /> Real Student Experiences</span>
+                </div>
+
                 {/* Implicit Trust Text - AI Optimized */}
-                <p className="mt-12 text-center text-sm font-medium text-slate-400 max-w-2xl mx-auto leading-relaxed italic">
+                <p className="mt-8 text-center text-sm font-medium text-slate-400 max-w-2xl mx-auto leading-relaxed italic">
                     All institutional partnerships are verified for NAAC accreditation and regulatory compliance.
-                    Adotzee acts as an authorized admission gateway for premier higher education campuses.
+                    Adotzee acts as an authorized admission gateway for premier higher education campuses, offering trusted student guidance and fast support.
                 </p>
             </div>
         </section>

@@ -7,7 +7,7 @@ export interface ApiResponse<T> {
 
 const IS_SERVER = typeof window === 'undefined';
 const API_BASE_URL = IS_SERVER
-    ? "https://adotzeebackend.onrender.com/api"
+    ? "https://backend.adotzee.in/api"
     : (process.env.NEXT_PUBLIC_API_URL || "/api-proxy");
 
 interface BaseApiResponse {

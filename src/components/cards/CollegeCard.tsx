@@ -21,22 +21,33 @@ export function CollegeCard({ college, index = 0 }: CollegeCardProps) {
                         <Building className="size-6 md:size-10 text-brand-accent/40 group-hover:text-brand-accent transition-colors" />
                     </div>
 
-                    {/* Content Section - Horizontal */}
                     <div className="flex-1 p-4 md:px-6 flex items-center justify-between">
-                        <div className="flex flex-col gap-0.5 overflow-hidden">
+                        <div className="flex flex-col gap-1 overflow-hidden">
                             <h3 className="font-bold text-base md:text-xl text-mesh-silver group-hover:text-brand-light transition-colors truncate">
                                 {college.name}
                             </h3>
-                            <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold text-slate-400">
-                                <MapPin className="size-3 md:size-3.5 text-brand-accent" />
-                                <span className="truncate">{college.address}</span>
+                            <div className="flex items-center gap-3 text-[10px] md:text-xs font-bold text-slate-400">
+                                <span className="flex items-center gap-1">
+                                    <MapPin className="size-3 md:size-3.5 text-brand-accent" />
+                                    <span className="truncate">{college.address}</span>
+                                </span>
+                                {college.accreditation && college.accreditation.length > 0 && (
+                                    <span className="bg-brand-primary/20 text-brand-accent px-2 py-0.5 rounded-md border border-brand-primary/30">
+                                        {college.accreditation[0]}
+                                    </span>
+                                )}
                             </div>
+                            {college.recommendationReason && (
+                                <p className="text-xs text-slate-500 mt-1 line-clamp-1 italic">
+                                    <span className="text-emerald-500 font-semibold mr-1">Match:</span>
+                                    {college.recommendationReason}
+                                </p>
+                            )}
                         </div>
 
-
-                        <div className="shrink-0 ml-4">
+                        <div className="shrink-0 ml-4 flex flex-col gap-2">
                             <Button size="sm" className="h-8 md:h-9 px-4 md:px-6 bg-brand-primary hover:bg-brand-primary/90 text-white transition-all font-black rounded-xl text-[10px] md:text-xs uppercase tracking-widest shadow-lg shadow-brand-primary/20">
-                                View Profile
+                                View College
                             </Button>
                         </div>
                     </div>

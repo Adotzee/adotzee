@@ -96,8 +96,16 @@ export function Footer() {
 
                 <div className="pt-8 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center text-sm text-[#0F172A] opacity-50 font-medium">
 
-                    <span>
-                        © {new Date().getFullYear()} Adotzee. All rights synchronized.
+                    <span className="flex flex-col md:flex-row items-center gap-2">
+                        <span>© {new Date().getFullYear()} Adotzee. All rights synchronized.</span>
+                        <span className="hidden md:inline-block w-1 h-1 rounded-full bg-slate-300"></span>
+                        <span className="text-xs text-emerald-600/80 font-semibold flex items-center gap-1.5">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            Live data updated daily
+                        </span>
                     </span>
 
                     <div className="flex space-x-6 mt-4 md:mt-0 items-center">

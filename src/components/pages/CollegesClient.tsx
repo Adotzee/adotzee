@@ -11,7 +11,7 @@ import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { College, ApiError } from "@/types";
 import { COLLEGES_DATA } from "@/lib/constants/landing-data";
-import { JsonLd, BreadcrumbSchema } from "@/components/seo/JsonLd";
+
 
 interface CollegesClientProps {
     initialData?: College[];
@@ -90,17 +90,8 @@ function CollegesContent({ initialData }: CollegesClientProps) {
         })
     };
 
-    // Breadcrumb Schema for search engine navigation
-    const breadcrumbData = BreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: streamName || "Courses", url: `/courses?stream=${stream}` },
-        { name: courseName || "Addons", url: `/addons?stream=${stream}&courseId=${courseId}` },
-        { name: "Colleges", url: `/colleges?${searchParams.toString()}` }
-    ]);
-
     return (
         <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-x-clip">
-            <JsonLd data={breadcrumbData} />
             <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-blue-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
             <div className="absolute bottom-[-20%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
 

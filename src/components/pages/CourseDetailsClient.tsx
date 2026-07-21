@@ -80,7 +80,7 @@ export function CourseDetailsClient({ course, relatedAddons }: CourseDetailsClie
                                     onClick={handleInitiate}
                                     className="w-full h-16 rounded-2xl bg-[#2563EB] text-white hover:bg-[#1D4ED8] text-xl font-black shadow-2xl shadow-[#2563EB]/30 transition-all relative z-10 border border-white/10"
                                 >
-                                    Get Free Guidance
+                                    Speak to a Verified Counsellor
                                 </Button>
                                 <div className="text-center flex items-center justify-center gap-2 text-slate-500 text-xs mt-6 font-bold uppercase tracking-widest relative z-10">
                                     <span className="size-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -99,7 +99,7 @@ export function CourseDetailsClient({ course, relatedAddons }: CourseDetailsClie
                         {/* Overview */}
                         <div className="bg-card rounded-[2rem] p-10 shadow-2xl border border-border">
                             <h2 className="text-3xl font-black text-white mb-8 flex items-center gap-4">
-                                <GraduationCap className="text-[#60A5FA] size-8" /> Program Thesis
+                                <GraduationCap className="text-[#60A5FA] size-8" /> Program Overview
                             </h2>
                             <div className="prose prose-invert prose-lg max-w-none text-slate-400 leading-relaxed font-light">
                                 <p>
@@ -114,7 +114,7 @@ export function CourseDetailsClient({ course, relatedAddons }: CourseDetailsClie
                         {/* Career Opportunities */}
                         <div className="bg-card rounded-[2rem] p-10 shadow-2xl border border-border">
                             <h2 className="text-3xl font-black text-white mb-8 flex items-center gap-4">
-                                <TrendingUp className="text-[#60A5FA] size-8" /> Strategic Career Paths
+                                <TrendingUp className="text-[#60A5FA] size-8" /> Career Opportunities
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 {course.careerOpportunities?.map((job, idx) => (
@@ -132,7 +132,7 @@ export function CourseDetailsClient({ course, relatedAddons }: CourseDetailsClie
                         <div className="space-y-10">
                             <div className="flex items-center justify-between">
                                 <h2 className="text-3xl font-black text-white flex items-center gap-4">
-                                    <Sparkles className="text-[#60A5FA] size-8" /> Intelligence Boosters
+                                    <Sparkles className="text-[#60A5FA] size-8" /> Specializations
                                 </h2>
                                 <Link href="/addons" className="text-[#60A5FA] font-black text-sm uppercase tracking-widest hover:text-white transition-colors">View Directory</Link>
                             </div>
@@ -148,7 +148,7 @@ export function CourseDetailsClient({ course, relatedAddons }: CourseDetailsClie
                     <aside className="space-y-10">
                         <div className="bg-[#0A1550] rounded-[2rem] p-10 text-white shadow-2xl lg:sticky lg:top-24 border border-white/10 relative overflow-hidden group">
                             <div className="absolute top-0 right-0 size-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-                            <h3 className="text-2xl font-black mb-8 relative z-10">Institutional Intake</h3>
+                            <h3 className="text-2xl font-black mb-8 relative z-10">Admission Overview</h3>
                             <div className="space-y-8 relative z-10">
                                 <div>
                                     <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mb-2">Investment Scope</p>
@@ -163,7 +163,7 @@ export function CourseDetailsClient({ course, relatedAddons }: CourseDetailsClie
                                         onClick={() => openLeadModal(course.name)}
                                         className="w-full h-16 bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-xl font-black text-lg transition-all shadow-xl shadow-[#2563EB]/20"
                                     >
-                                        Check Eligibility
+                                        Check Eligibility & Fees
                                     </Button>
                                 </div>
                             </div>

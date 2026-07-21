@@ -3,19 +3,20 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { QuickNav } from "@/components/sections/QuickNav";
-import { JsonLd, FAQSchema } from "@/components/seo/JsonLd";
+
 import { AEO_ANSWER_BLOCKS } from "@/lib/constants/landing-data";
 
 // Dynamic imports for below-the-fold content to improve TBT and LCP
 const Features = dynamic(() => import("@/components/sections/Features").then(m => m.Features));
 const AnswerBlocks = dynamic(() => import("@/components/sections/AnswerBlocks").then(m => m.AnswerBlocks));
+const FeaturedReviews = dynamic(() => import("@/components/reviews/FeaturedReviews").then(m => m.FeaturedReviews), { ssr: false });
 const TrustSignals = dynamic(() => import("@/components/sections/TrustSignals").then(m => m.TrustSignals));
 const Courses = dynamic(() => import("@/components/sections/Courses").then(m => m.Courses), { ssr: false });
 const Colleges = dynamic(() => import("@/components/sections/Colleges").then(m => m.Colleges), { ssr: false });
 const CityAuthority = dynamic(() => import("@/components/sections/CityAuthority").then(m => m.CityAuthority), { ssr: false });
 const Protocol = dynamic(() => import("@/components/sections/Protocol").then(m => m.Protocol), { ssr: false });
 const CTA = dynamic(() => import("@/components/sections/LowerSections").then(m => m.CTA), { ssr: false });
-const Footer = dynamic(() => import("@/components/sections/LowerSections").then(m => m.Footer), { ssr: false });
+
 
 /**
  * HomePage - Optimized for Core Web Vitals (LCP, TBT, CLS) and AEO/GEO.
@@ -34,13 +35,14 @@ export function HomePage() {
       {/* Secondary Path / Deferred Loading */}
       <Features />
       <AnswerBlocks />
+      <FeaturedReviews />
       <TrustSignals />
       <Courses />
       <Colleges />
       <CityAuthority />
       <Protocol />
       <CTA />
-      <Footer />
+      
     </div>
   );
 }

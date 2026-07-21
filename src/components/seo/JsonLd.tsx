@@ -145,3 +145,15 @@ export const AdmissionServiceSchema = (companyInfo: { name: string; description:
     ]
   }
 });
+
+export const AboutPageSchema = (aboutInfo: { name: string; description: string; url: string }) => ({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: aboutInfo.name,
+  description: aboutInfo.description,
+  url: aboutInfo.url,
+  mainEntity: {
+    "@type": "Organization",
+    "@id": `${aboutInfo.url}/#organization`
+  }
+});

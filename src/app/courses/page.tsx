@@ -25,11 +25,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const streamName = params.streamName ? String(params.streamName) : "Academic Stream";
 
   return {
-    title: `Courses for ${streamName} | ${COMPANY_INFO.name}`,
-    description: `Explore top-rated courses and premier colleges tailored for ${streamName}. Select a stream to begin your journey with ${COMPANY_INFO.name}.`,
+    title: `Verified Courses for ${streamName} | Expert Guidance | ${COMPANY_INFO.name}`,
+    description: `Explore verified courses and premier colleges tailored for ${streamName}. Make informed career choices with trusted guidance from ${COMPANY_INFO.name}.`,
     openGraph: {
-      title: `Courses for ${streamName} | ${COMPANY_INFO.name}`,
-      description: `Explore top-rated courses and premier colleges tailored for ${streamName}.`,
+      title: `Verified Courses for ${streamName} | Expert Guidance | ${COMPANY_INFO.name}`,
+      description: `Explore verified courses and premier colleges tailored for ${streamName}. Make informed career choices with trusted guidance from ${COMPANY_INFO.name}.`,
       url: `${COMPANY_INFO.fullUrl}/courses`,
       siteName: COMPANY_INFO.name,
       images: [
