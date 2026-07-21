@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Sparkles, MapPin, GraduationCap, ArrowRight, BookOpen, RotateCcw, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/cards/CourseCard";
@@ -28,7 +29,7 @@ const slideVariants = {
 const slideTransition = { duration: 0.3, ease: "easeOut" as const };
 
 const INTEREST_OPTIONS = [
-    "Engineering", "Medical", "Management", "Computer Science", 
+    "Engineering", "Medical", "Management", "Computer Science",
     "Design", "Commerce", "Arts", "Nursing", "Pharmacy", "Aviation"
 ];
 
@@ -51,7 +52,7 @@ export default function RecommendationsPage() {
         stream: "Science",
         location: [],
     });
-    
+
     // For storing error messages
     const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -68,7 +69,7 @@ export default function RecommendationsPage() {
     const toggleInterest = (interest: string) => {
         setFormData(prev => ({
             ...prev,
-            interests: prev.interests.includes(interest) 
+            interests: prev.interests.includes(interest)
                 ? prev.interests.filter(i => i !== interest)
                 : [...prev.interests, interest]
         }));
@@ -77,12 +78,12 @@ export default function RecommendationsPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitError(null);
-        
-        if (step < 3) { 
-            handleNext(); 
-            return; 
+
+        if (step < 3) {
+            handleNext();
+            return;
         }
-        
+
         // Build payload dynamically to omit empty strings/arrays completely
         // The service layer might expect interests as a string based on old type, or array based on new type.
         // The implementation plan says "serialize them as comma-separated strings" if backend expects it.
@@ -115,9 +116,9 @@ export default function RecommendationsPage() {
 
     /* ── Results View ── */
     if (results) {
-        const hasResults = (results.courses && results.courses.length > 0) || 
-                           (results.colleges && results.colleges.length > 0) || 
-                           (results.addons && results.addons.length > 0);
+        const hasResults = (results.courses && results.courses.length > 0) ||
+            (results.colleges && results.colleges.length > 0) ||
+            (results.addons && results.addons.length > 0);
 
         return (
             <div className="min-h-screen bg-slate-50 py-16 px-4 md:px-6">
@@ -208,14 +209,34 @@ export default function RecommendationsPage() {
                     </div>
 
                     {hasResults && (
-                        <div className="mt-16 text-center">
-                            <Button
-                                onClick={() => { mutation.reset(); setStep(1); }}
-                                variant="outline"
-                                className="border-slate-200 text-slate-600 hover:bg-slate-50 px-8 h-12 rounded-full font-semibold gap-2"
-                            >
-                                <RotateCcw className="size-4" /> Start Over
-                            </Button>
+                        <div className="mt-12">
+                            <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-3xl p-8 md:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-black mb-3 text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">
+                                        Adotzee Merit Scholarship
+                                    </h3>
+                                    <p className="text-blue-100 max-w-xl text-lg">
+                                        Found your dream course? Apply for our merit scholarship and get up to 50% tuition assistance for partner colleges.
+                                    </p>
+                                </div>
+                                <div className="shrink-0 w-full md:w-auto">
+                                    <Link href="/scholarships/adotzee-merit-scholarship">
+                                        <Button className="w-full md:w-auto h-14 px-8 rounded-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-black text-lg shadow-xl shadow-yellow-500/20 transition-all">
+                                            Check Eligibility
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </div>
+                            
+                            <div className="mt-12 text-center">
+                                <Button
+                                    onClick={() => { mutation.reset(); setStep(1); }}
+                                    variant="outline"
+                                    className="border-slate-200 text-slate-600 hover:bg-slate-50 px-8 h-12 rounded-full font-semibold gap-2"
+                                >
+                                    <RotateCcw className="size-4" /> Start Over
+                                </Button>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -263,9 +284,9 @@ export default function RecommendationsPage() {
                             <div key={s.number} className="flex flex-col items-center gap-2 relative z-10">
                                 <div className={cn(
                                     "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ring-4 ring-white",
-                                    step > s.number ? "bg-emerald-500 text-white" : 
-                                    step === s.number ? "bg-blue-600 text-white shadow-md shadow-blue-200" : 
-                                    "bg-slate-100 text-slate-400"
+                                    step > s.number ? "bg-emerald-500 text-white" :
+                                        step === s.number ? "bg-blue-600 text-white shadow-md shadow-blue-200" :
+                                            "bg-slate-100 text-slate-400"
                                 )}>
                                     {step > s.number ? "✓" : s.number}
                                 </div>
@@ -307,8 +328,8 @@ export default function RecommendationsPage() {
                                                             onClick={() => toggleInterest(interest)}
                                                             className={cn(
                                                                 "h-14 rounded-xl border-2 text-sm font-bold transition-all duration-200 flex items-center justify-center px-3",
-                                                                isSelected 
-                                                                    ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm" 
+                                                                isSelected
+                                                                    ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm"
                                                                     : "border-slate-100 bg-white text-slate-600 hover:border-blue-200 hover:bg-slate-50"
                                                             )}
                                                             aria-pressed={isSelected}
@@ -367,7 +388,7 @@ export default function RecommendationsPage() {
                                             <p className="text-slate-500 mb-8 text-sm font-medium">Select where you'd like to study. (Leave blank to search everywhere)</p>
 
                                             <div className="space-y-2">
-                                                <MultiSelectLocation 
+                                                <MultiSelectLocation
                                                     selected={formData.location}
                                                     onChange={(selected) => setFormData({ ...formData, location: selected })}
                                                     placeholder="Search cities or states..."
@@ -409,8 +430,8 @@ export default function RecommendationsPage() {
                                         disabled={step === 1 && formData.interests.length === 0}
                                         className={cn(
                                             "min-w-[140px] h-12 rounded-xl text-white font-bold transition-all gap-2 px-8",
-                                            step === 3 
-                                                ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/30" 
+                                            step === 3
+                                                ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/30"
                                                 : "bg-slate-900 hover:bg-slate-800 disabled:opacity-40"
                                         )}
                                     >

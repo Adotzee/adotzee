@@ -3,6 +3,7 @@ import { CheckCircle2, Info, ArrowRight, ShieldCheck, HelpCircle } from "lucide-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardPremium } from "@/components/ui/card-premium";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 export interface FAQ {
   question: string;
@@ -48,8 +49,14 @@ export function ToolPageLayout({
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-4 md:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-neutral-950 to-neutral-950 -z-10" />
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="flex justify-center mb-6">
+            <Breadcrumbs items={[
+                { label: "Student Tools", href: "/tools" },
+                { label: title }
+            ]} className="text-slate-300" />
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
             {title}
           </h1>
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">

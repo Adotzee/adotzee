@@ -16,7 +16,13 @@ const Colleges = dynamic(() => import("@/components/sections/Colleges").then(m =
 const CityAuthority = dynamic(() => import("@/components/sections/CityAuthority").then(m => m.CityAuthority), { ssr: false });
 const Protocol = dynamic(() => import("@/components/sections/Protocol").then(m => m.Protocol), { ssr: false });
 const CTA = dynamic(() => import("@/components/sections/LowerSections").then(m => m.CTA), { ssr: false });
-
+const StudentToolsSection = dynamic(() => import("@/components/sections/StudentToolsSection").then(m => m.StudentToolsSection), { ssr: false });
+const ScholarshipsHighlight = dynamic(() => import("@/components/sections/ScholarshipsHighlight").then(m => m.ScholarshipsHighlight), { ssr: false });
+const StudentJourney = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.StudentJourney), { ssr: false });
+const CareerGuidance = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.CareerGuidance), { ssr: false });
+const SuccessMetrics = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.SuccessMetrics), { ssr: false });
+const AdmissionProcess = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.AdmissionProcess), { ssr: false });
+const LatestBlogs = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.LatestBlogs), { ssr: false });
 
 /**
  * HomePage - Optimized for Core Web Vitals (LCP, TBT, CLS) and AEO/GEO.
@@ -31,14 +37,30 @@ export function HomePage() {
       {/* Critical Path */}
       <Hero />
       <QuickNav />
-      
-      {/* Secondary Path / Deferred Loading */}
-      <Features />
-      <AnswerBlocks />
-      <FeaturedReviews />
       <TrustSignals />
-      <Courses />
+      
+      {/* Student Funnel */}
+      <StudentJourney />
+      
       <Colleges />
+      <Courses />
+      
+      <CareerGuidance />
+      
+      {/* Financial & Tools */}
+      <ScholarshipsHighlight />
+      <StudentToolsSection />
+      
+      {/* Social Proof & Why Us */}
+      <Features />
+      <FeaturedReviews />
+      <SuccessMetrics />
+      
+      {/* Logistics & Resources */}
+      <AdmissionProcess />
+      <AnswerBlocks />
+      <LatestBlogs />
+      
       <CityAuthority />
       <Protocol />
       <CTA />

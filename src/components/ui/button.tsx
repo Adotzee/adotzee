@@ -50,6 +50,15 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, isLoading, children, ...props }, ref) => {
     if (asChild) {
+      let singleChild = children;
+      if (Array.isArray(children)) {
+        // Find all non-null, non-boolean children (valid elements)
+        const validChildren = children.filter(c => c !== null && c !== undefined && typeof c !== 'boolean');
+        if (validChildren.length === 1) {
+          singleChild = validChildren[0];
+        }
+      }
+
       return (
         <Slot.Root
           data-slot="button"
@@ -59,7 +68,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ref={ref as any}
           {...props}
         >
-          {children}
+          {singleChild}
         </Slot.Root>
       )
     }

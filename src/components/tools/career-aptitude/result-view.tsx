@@ -3,6 +3,7 @@ import { CardPremium } from "@/components/ui/card-premium";
 import { CTABlock } from "@/components/shared/cta-block";
 import { BrainCircuit, Briefcase, GraduationCap, Lightbulb, Target, ArrowRight, Download, BarChart2, ShieldCheck, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function AptitudeResultView({ results }: { results: any }) {
   // Mock enterprise generation based on results
@@ -147,9 +148,11 @@ export function AptitudeResultView({ results }: { results: any }) {
             <h4 className="font-bold text-lg mb-1">Ready to start applying?</h4>
             <p className="text-indigo-200 text-sm">Get personalized shortlists and direct admission support.</p>
           </div>
-          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold px-8 h-12 whitespace-nowrap">
-            Book Admission Counselling
-          </Button>
+          <Link href="/recommendations">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold px-8 h-12 whitespace-nowrap">
+              Get College Recommendations
+            </Button>
+          </Link>
         </div>
       </CardPremium>
 

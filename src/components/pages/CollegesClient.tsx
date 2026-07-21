@@ -93,7 +93,7 @@ function CollegesContent({ initialData }: CollegesClientProps) {
     return (
         <main className="min-h-screen bg-slate-50/50 py-24 px-6 relative overflow-x-clip">
             <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-blue-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
-            <div className="absolute bottom-[-20%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
+            <div className="absolute bottom-[0%] left-[-10%] w-[70%] h-[70%] bg-indigo-100/30 rounded-full blur-[140px] opacity-40 mix-blend-multiply" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Navigation - Ultra Premium */}

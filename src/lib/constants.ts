@@ -10,6 +10,8 @@ export const COMPANY_INFO = {
         facebook: "https://facebook.com/Adotzee.in",
         instagram: "https://instagram.com/adotzee.in",
         whatsapp: "https://wa.me/918281060462",
+        linkedin: "https://linkedin.com/company/adotzee",
+        youtube: "https://youtube.com/@adotzee"
     },
     seo: {
         title: "Adotzee | India's Trusted College Admission & Career Guidance Platform",

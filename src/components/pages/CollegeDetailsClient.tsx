@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { College, Course } from "@/types";
 import Image from "next/image";
 import { trackLeadInitiated } from "@/lib/analytics";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 interface CollegeDetailsClientProps {
     college: College;
@@ -31,10 +32,16 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                 <div className="absolute inset-0 bg-black/30"></div>
                 <div className="absolute bottom-0 left-0 w-full p-8 md:p-20 text-white animate-in slide-in-from-bottom-10 fade-in duration-1000">
                     <div className="container mx-auto">
-                        <div className="flex flex-wrap gap-3 mb-6">
-                            {college.accreditation?.map((acc, i) => (
-                                <Badge key={i} className="bg-white/10 backdrop-blur-xl text-[#60A5FA] border border-white/10 py-1.5 px-4 font-black text-[10px] tracking-widest uppercase">{acc}</Badge>
-                            ))}
+                        <div className="flex flex-col gap-6 mb-6">
+                            <Breadcrumbs items={[
+                                { label: "Colleges", href: "/colleges" },
+                                { label: college.name }
+                            ]} className="text-slate-300" />
+                            <div className="flex flex-wrap gap-3">
+                                {college.accreditation?.map((acc, i) => (
+                                    <Badge key={i} className="bg-white/10 backdrop-blur-xl text-[#60A5FA] border border-white/10 py-1.5 px-4 font-black text-[10px] tracking-widest uppercase">{acc}</Badge>
+                                ))}
+                            </div>
                         </div>
                         <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter drop-shadow-2xl">{college.name}</h1>
                         <div className="flex flex-wrap items-center gap-8 text-slate-300 font-bold uppercase tracking-widest text-sm">
@@ -146,6 +153,35 @@ export function CollegeDetailsClient({ college, collegeCourses }: CollegeDetails
                                 >
                                     Speak to a Verified Counsellor
                                 </Button>
+                            </div>
+
+                            {/* Student Tools Widget */}
+                            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-[2.5rem] p-8 border border-blue-100 shadow-sm space-y-6">
+                                <h3 className="text-xl font-bold text-slate-800">Check Your Options</h3>
+                                <div className="space-y-3">
+                                    <Link href="/tools/college-eligibility-checker" className="block p-4 rounded-2xl bg-white border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg group-hover:scale-110 transition-transform">
+                                                <CheckCircle className="size-5" />
+                                            </div>
+                                            <div>
+                                                <div className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Eligibility Checker</div>
+                                                <div className="text-xs text-slate-500">See if you qualify</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                    <Link href="/scholarships/adotzee-merit-scholarship" className="block p-4 rounded-2xl bg-white border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="p-2 bg-yellow-50 text-yellow-600 rounded-lg group-hover:scale-110 transition-transform">
+                                                <GraduationCap className="size-5" />
+                                            </div>
+                                            <div>
+                                                <div className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Apply for Scholarship</div>
+                                                <div className="text-xs text-slate-500">Up to 50% Tuition Aid</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
 
                             <div className="bg-[#0A1550] rounded-[2.5rem] p-10 text-white relative overflow-hidden border border-white/10 shadow-2xl">

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
+import { DesktopNav } from "./DesktopNav";
 import { useUiStore } from "@/store/useUiStore";
 import { cn } from "@/lib/utils";
 
@@ -101,30 +102,7 @@ export function Navbar() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className={cn(
-                        "hidden lg:flex items-center space-x-8 text-sm font-bold transition-colors duration-500",
-                        scrolled ? "text-slate-600" : "text-white/80"
-                    )}>
-                        {[
-                            { label: "Courses", href: "/courses" },
-                            { label: "Colleges", href: "/colleges" },
-                            { label: "Add-ons", href: "/addons" },
-                            { label: "Recommendations", href: "/recommendations" }
-                        ].map((item) => (
-                            <Link key={item.href} href={item.href} className="relative group px-2 py-1">
-                                <span className={cn(
-                                    "relative z-10 transition-colors duration-300",
-                                    scrolled ? "group-hover:text-blue-600" : "group-hover:text-white"
-                                )}>
-                                    {item.label}
-                                </span>
-                                <motion.span className={cn(
-                                    "absolute inset-0 rounded-full scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-0",
-                                    scrolled ? "bg-blue-50" : "bg-white/10"
-                                )} />
-                            </Link>
-                        ))}
-                    </div>
+                    <DesktopNav scrolled={scrolled} />
 
                     <div className="flex items-center space-x-2 md:space-x-4">
                         <Button
