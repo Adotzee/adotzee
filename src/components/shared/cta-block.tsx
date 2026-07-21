@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { CardPremium } from "@/components/ui/card-premium";
 import { Button } from "@/components/ui/button";
