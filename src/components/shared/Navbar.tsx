@@ -72,7 +72,7 @@ export function Navbar() {
                         damping: 28,
                         mass: 0.5
                     }}
-                    className="flex items-center gap-4 justify-between w-full pointer-events-auto relative overflow-hidden"
+                    className="flex items-center gap-4 justify-between w-full pointer-events-auto relative"
                     style={{ 
                         backfaceVisibility: "hidden",
                         transformStyle: "preserve-3d",

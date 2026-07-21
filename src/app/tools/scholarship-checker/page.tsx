@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { ToolPageLayout } from "@/components/tools/shared/tool-page-layout";
-import { ScholarshipForm } from "@/components/tools/scholarships/scholarship-form";
+import { PremiumToolLayout } from "@/components/tools/shared/premium-tool-layout";
 import { SchemaMarkup } from "@/components/seo/schema-markup";
+import { PremiumScholarshipEngine } from "@/components/tools/scholarships/premium-scholarship-engine";
 
 export const metadata: Metadata = {
   title: "Scholarship Checker | Find Educational Grants | Adotzee",
@@ -58,23 +58,34 @@ export default function ScholarshipCheckerPage() {
   ];
 
   const understandingContent = (
-    <>
-      <p>
-        Higher education can be a significant financial investment, but lack of funds should never be a barrier to achieving your academic dreams. Millions of rupees in scholarships go unclaimed every year simply because students are unaware they exist.
-      </p>
-      <p>
-        Our Scholarship Checker evaluates your academic performance, financial background, and chosen course to match you with available state, central, and private scholarship schemes that can help fund your education.
-      </p>
-    </>
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Understanding Financial Aid</h3>
+        <p className="text-slate-600 leading-relaxed font-medium">
+          Higher education can be a significant financial investment, but lack of funds should never be a barrier to achieving your academic dreams. Millions of rupees in scholarships go unclaimed every year simply because students are unaware they exist.
+        </p>
+      </div>
+      <div>
+        <p className="text-slate-600 leading-relaxed font-medium">
+          Our Scholarship Checker evaluates your academic performance, financial background, and chosen course to match you with available state, central, and private scholarship schemes that can help fund your education.
+        </p>
+      </div>
+    </div>
   );
 
   return (
     <>
       <SchemaMarkup schema={schema} />
       <SchemaMarkup schema={faqSchema} />
-      <ToolPageLayout
+      <PremiumToolLayout
         title="Scholarship Checker"
         subtitle="Don't let finances hold you back. Discover government and private scholarships you are eligible to claim."
+        trustSignals={[
+          "100% Free Service",
+          "Government Schemes",
+          "Private Grants",
+          "Instant Matching"
+        ]}
         understandingContent={understandingContent}
         faqs={faqs}
         relatedTools={[
@@ -82,8 +93,8 @@ export default function ScholarshipCheckerPage() {
           { title: "Career Aptitude Test", href: "/tools/career-aptitude-test" }
         ]}
       >
-        <ScholarshipForm />
-      </ToolPageLayout>
+        <PremiumScholarshipEngine />
+      </PremiumToolLayout>
     </>
   );
 }

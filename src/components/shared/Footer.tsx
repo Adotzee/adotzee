@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8 mb-16">
-          
+
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-black text-white mb-6 tracking-tight">{COMPANY_INFO.name}</h3>
             <p className="text-sm text-slate-400 mb-6 leading-relaxed max-w-xs">{COMPANY_INFO.seo.description}</p>
@@ -48,7 +48,7 @@ export function Footer() {
             <h4 className="text-lg font-bold text-white mb-6">Student Tools</h4>
             <ul className="space-y-3 text-sm font-medium">
               <li><Link href="/tools/plus-two-percentage-calculator" className="text-slate-400 hover:text-indigo-400 transition-colors">+2 Calculator</Link></li>
-              <li><Link href="/tools/kerala-lbs-rank-calculator" className="text-slate-400 hover:text-indigo-400 transition-colors">LBS Rank Predictor</Link></li>
+              <li><Link href="/tools/lbs-rank-calculator" className="text-slate-400 hover:text-indigo-400 transition-colors">LBS Rank Predictor</Link></li>
               <li><Link href="/tools/career-aptitude-test" className="text-slate-400 hover:text-indigo-400 transition-colors">Career Aptitude Test</Link></li>
               <li><Link href="/tools/college-eligibility-checker" className="text-slate-400 hover:text-indigo-400 transition-colors">Eligibility Checker</Link></li>
               <li><Link href="/tools/scholarship-checker" className="text-slate-400 hover:text-indigo-400 transition-colors">Scholarship Checker</Link></li>

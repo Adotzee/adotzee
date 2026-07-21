@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 const MENU_CATEGORIES = [
     {
         label: "Discover",
+        href: "/discover",
         icon: Building2,
         items: [
             { label: "Colleges", href: "/colleges" },
@@ -28,10 +29,11 @@ const MENU_CATEGORIES = [
     },
     {
         label: "Student Tools",
+        href: "/tools",
         icon: Calculator,
         items: [
             { label: "Percentage Calculator", href: "/tools/plus-two-percentage-calculator" },
-            { label: "Kerala LBS Rank", href: "/tools/kerala-lbs-rank-calculator" },
+            { label: "LBS Rank", href: "/tools/lbs-rank-calculator" },
             { label: "Career Aptitude Test", href: "/tools/career-aptitude-test" },
             { label: "Eligibility Checker", href: "/tools/college-eligibility-checker" },
             { label: "Scholarship Checker", href: "/tools/scholarship-checker" },
@@ -40,14 +42,16 @@ const MENU_CATEGORIES = [
     },
     {
         label: "Admissions",
+        href: "/admissions",
         icon: Sparkles,
         items: [
             { label: "Counselling", href: "/recommendations" },
-            { label: "Scholarships", href: "/scholarships/adotzee-merit-scholarship" },
+            { label: "Scholarships", href: "/scholarships" },
         ]
     },
     {
         label: "Resources",
+        href: "/resources",
         icon: BookOpen,
         items: [
             { label: "Education Blog", href: "/blogs" },
@@ -57,6 +61,7 @@ const MENU_CATEGORIES = [
     },
     {
         label: "Company",
+        href: "/company",
         icon: Building2,
         items: [
             { label: "About Us", href: "/about" },
@@ -69,7 +74,9 @@ const MENU_CATEGORIES = [
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     const [openCategory, setOpenCategory] = useState<string | null>(null);
 
-    const toggleCategory = (label: string) => {
+    const toggleCategory = (label: string, e: React.MouseEvent) => {
+        e.stopPropagation();
+        e.preventDefault();
         setOpenCategory(prev => prev === label ? null : label);
     };
 
@@ -115,20 +122,27 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                     transition={{ delay: i * 0.05 }}
                                     className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100"
                                 >
-                                    <button
-                                        onClick={() => toggleCategory(category.label)}
-                                        className="w-full flex items-center justify-between p-4 bg-white hover:bg-slate-50 transition-colors"
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                                    <div className="w-full flex items-center justify-between bg-white hover:bg-slate-50 transition-colors">
+                                        <Link
+                                            href={category.href}
+                                            onClick={onClose}
+                                            className="flex-1 flex items-center gap-4 p-4"
+                                        >
+                                            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                                                 <category.icon className="w-5 h-5" />
                                             </div>
                                             <span className="font-bold text-slate-800">{category.label}</span>
-                                        </div>
-                                        <div className={cn("transition-transform duration-300 text-slate-400", openCategory === category.label ? "rotate-180" : "")}>
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                        </div>
-                                    </button>
+                                        </Link>
+                                        <button 
+                                            onClick={(e) => toggleCategory(category.label, e)}
+                                            className="p-4 flex items-center justify-center h-full hover:bg-slate-100 transition-colors border-l border-slate-100"
+                                            aria-label={`Toggle ${category.label} submenu`}
+                                        >
+                                            <div className={cn("transition-transform duration-300 text-slate-400", openCategory === category.label ? "rotate-180" : "")}>
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                            </div>
+                                        </button>
+                                    </div>
 
                                     <AnimatePresence>
                                         {openCategory === category.label && (

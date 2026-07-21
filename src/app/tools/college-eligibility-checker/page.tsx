@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { ToolPageLayout } from "@/components/tools/shared/tool-page-layout";
+import { PremiumToolLayout } from "@/components/tools/shared/premium-tool-layout";
 import { SchemaMarkup } from "@/components/seo/schema-markup";
-import { CollegeEligibilityForm } from "@/components/tools/college-eligibility/eligibility-form";
+import { PremiumEligibilityEngine } from "@/components/tools/college-eligibility/premium-eligibility-engine";
 
 export const metadata: Metadata = {
   title: "College Eligibility Checker | Check Admission Criteria | Adotzee",
@@ -58,23 +58,34 @@ export default function CollegeEligibilityCheckerPage() {
   ];
 
   const understandingContent = (
-    <>
-      <p>
-        Navigating college admissions can be overwhelming due to varying criteria across institutions. While some universities admit strictly based on board exam percentages, others require specific entrance tests or a combination of both.
-      </p>
-      <p>
-        Our Eligibility Checker simplifies this process. By analyzing your academic background against a vast database of college requirements, it provides a curated list of institutions where you meet the cut-off criteria.
-      </p>
-    </>
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Understanding Admissions</h3>
+        <p className="text-slate-600 leading-relaxed font-medium">
+          Navigating college admissions can be overwhelming due to varying criteria across institutions. While some universities admit strictly based on board exam percentages, others require specific entrance tests or a combination of both.
+        </p>
+      </div>
+      <div>
+        <p className="text-slate-600 leading-relaxed font-medium">
+          Our Eligibility Checker simplifies this process. By analyzing your academic background against a vast database of college requirements, it provides a curated list of institutions where you meet the cut-off criteria.
+        </p>
+      </div>
+    </div>
   );
 
   return (
     <>
       <SchemaMarkup schema={schema} />
       <SchemaMarkup schema={faqSchema} />
-      <ToolPageLayout
+      <PremiumToolLayout
         title="College Eligibility Checker"
         subtitle="Stop guessing. Discover exactly which colleges and courses you qualify for based on your academic profile."
+        trustSignals={[
+          "100% Free",
+          "500+ Colleges",
+          "Instant Match",
+          "Updated Cut-offs"
+        ]}
         understandingContent={understandingContent}
         faqs={faqs}
         relatedTools={[
@@ -82,8 +93,8 @@ export default function CollegeEligibilityCheckerPage() {
           { title: "Scholarship Checker", href: "/tools/scholarship-checker" }
         ]}
       >
-        <CollegeEligibilityForm />
-      </ToolPageLayout>
+        <PremiumEligibilityEngine />
+      </PremiumToolLayout>
     </>
   );
 }

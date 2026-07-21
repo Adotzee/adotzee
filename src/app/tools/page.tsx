@@ -1,94 +1,123 @@
-import React from "react";
+import { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Award, BrainCircuit, GraduationCap, Coins, ArrowRight } from "lucide-react";
-import { CardPremium } from "@/components/ui/card-premium";
+import { Calculator, Compass, FileText, Award, Percent, Sparkles, ArrowRight, Activity } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export const metadata = {
-  title: "Adotzee Student Tools | Calculators & Aptitude Tests",
-  description: "Free tools for students to calculate percentages, predict LBS ranks, test career aptitude, and find eligible colleges and scholarships.",
-  openGraph: {
-    title: "Adotzee Student Tools | Calculators & Aptitude Tests",
-    description: "Free tools for students to calculate percentages, predict LBS ranks, test career aptitude, and find eligible colleges and scholarships.",
-    type: "website",
+export const metadata: Metadata = {
+  title: "Premium Student Admission Tools | Adotzee",
+  description: "Calculate percentages, check eligibility, take career aptitude tests, and discover scholarships with Adotzee's premium student tools.",
+  alternates: {
+    canonical: "/tools",
   },
+  openGraph: {
+    title: "Premium Student Admission Tools | Adotzee",
+    description: "Calculate percentages, check eligibility, take career aptitude tests, and discover scholarships.",
+    url: "https://adotzee.com/tools",
+    type: "website",
+  }
 };
 
 const TOOLS = [
   {
-    id: "percentage-calculator",
-    title: "Plus One & Plus Two Percentage Calculator",
-    description: "Calculate your overall percentage and grade for Kerala State, CBSE, or ICSE boards.",
-    icon: <Calculator className="w-8 h-8 text-blue-500" />,
-    href: "/tools/percentage-calculator",
-    color: "from-blue-500/20 to-transparent",
-  },
-  {
-    id: "lbs-rank-calculator",
-    title: "Kerala LBS Rank Calculator",
-    description: "Estimate your LBS rank based on your Plus Two marks for engineering and medical courses.",
-    icon: <Award className="w-8 h-8 text-purple-500" />,
-    href: "/tools/lbs-rank-calculator",
-    color: "from-purple-500/20 to-transparent",
-  },
-  {
-    id: "career-aptitude",
     title: "Career Aptitude Test",
-    description: "Discover the best careers and courses based on your interests and personality.",
-    icon: <BrainCircuit className="w-8 h-8 text-indigo-500" />,
-    href: "/tools/career-aptitude",
-    color: "from-indigo-500/20 to-transparent",
+    desc: "Discover your ideal career path based on your psychological and behavioral traits.",
+    icon: Compass,
+    href: "/tools/career-aptitude-test",
+    color: "indigo"
   },
   {
-    id: "college-eligibility",
     title: "College Eligibility Checker",
-    description: "Find out which colleges and courses you are eligible for based on your academic profile.",
-    icon: <GraduationCap className="w-8 h-8 text-green-500" />,
-    href: "/tools/college-eligibility",
-    color: "from-green-500/20 to-transparent",
+    desc: "Stop guessing. Instantly check which colleges you qualify for based on your academic profile.",
+    icon: FileText,
+    href: "/tools/college-eligibility-checker",
+    color: "blue"
   },
   {
-    id: "scholarships",
-    title: "Scholarship Eligibility",
-    description: "Check your eligibility for government and private scholarships to fund your education.",
-    icon: <Coins className="w-8 h-8 text-yellow-500" />,
-    href: "/tools/scholarships",
-    color: "from-yellow-500/20 to-transparent",
+    title: "Scholarship Checker",
+    desc: "Find government and private scholarships you are eligible for and calculate the amount.",
+    icon: Award,
+    href: "/tools/scholarship-checker",
+    color: "emerald"
   },
+  {
+    title: "LBS Rank Predictor",
+    desc: "Predict your professional course rank accurately based on previous year trends.",
+    icon: Activity,
+    href: "/tools/lbs-rank-calculator",
+    color: "rose"
+  },
+  {
+    title: "+2 Percentage Calculator",
+    desc: "Instantly calculate your accurate board exam percentages without any math errors.",
+    icon: Percent,
+    href: "/tools/plus-two-percentage-calculator",
+    color: "amber"
+  }
 ];
 
-export default function StudentToolsLandingPage() {
+export default function ToolsHubPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-            Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Success Hub</span>
+    <div className="min-h-screen bg-slate-50 pt-24 pb-20">
+      <div className="container mx-auto px-4">
+
+        {/* Hero Section */}
+        <div className="text-center max-w-4xl mx-auto mb-20 mt-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm mb-6 border border-indigo-200">
+            <Calculator className="w-4 h-4" /> Smart Decision Making
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]">
+            Premium Tools for Your <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">
+              Educational Journey
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Everything you need to plan your academic journey. Calculate scores, find your perfect career, and discover eligible colleges.
+          <p className="text-xl text-slate-500 font-medium mb-10 max-w-2xl mx-auto">
+            Make data-driven decisions. Use our scientifically backed calculators, tests, and eligibility checkers to secure your admission with confidence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TOOLS.map((tool) => (
-            <Link key={tool.id} href={tool.href} className="group block h-full">
-              <CardPremium gradient className="h-full flex flex-col hover:border-blue-500/30 transition-colors">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${tool.color} flex items-center justify-center mb-6`}>
-                  {tool.icon}
+        {/* Tools Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24 max-w-6xl mx-auto">
+          {TOOLS.map(tool => (
+            <Link key={tool.href} href={tool.href} className="group">
+              <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all h-full flex flex-col relative overflow-hidden">
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-${tool.color}-500/5 rounded-full blur-2xl group-hover:bg-${tool.color}-500/10 transition-colors`} />
+                <div className={`w-14 h-14 rounded-2xl mb-6 flex items-center justify-center bg-${tool.color}-50 text-${tool.color}-600 group-hover:scale-110 transition-transform relative z-10`}>
+                  <tool.icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                <h3 className={`text-xl font-bold text-slate-900 mb-3 group-hover:text-${tool.color}-600 transition-colors relative z-10`}>
                   {tool.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6 flex-grow">
-                  {tool.description}
+                <p className="text-slate-500 font-medium leading-relaxed mb-6 flex-1 relative z-10">
+                  {tool.desc}
                 </p>
-                <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-                  Try Now <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className={`flex items-center text-sm font-bold text-slate-400 group-hover:text-${tool.color}-600 transition-colors relative z-10`}>
+                  Launch Tool <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </CardPremium>
+              </div>
             </Link>
           ))}
+
+          {/* AI Callout Card inside grid */}
+          <Link href="/recommendations" className="group">
+            <div className="bg-slate-900 p-8 rounded-[2rem] border border-slate-800 shadow-xl hover:shadow-2xl transition-all h-full flex flex-col relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 z-0" />
+              <div className="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center bg-white/10 text-amber-400 backdrop-blur-md border border-white/20 group-hover:scale-110 transition-transform relative z-10">
+                <Sparkles className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 relative z-10">
+                AI Recommendations
+              </h3>
+              <p className="text-slate-300 font-medium leading-relaxed mb-6 flex-1 relative z-10">
+                Don't want to use calculators? Let our AI analyze your profile and instantly suggest the perfect path.
+              </p>
+              <div className="flex items-center text-sm font-bold text-white transition-colors relative z-10">
+                Try AI Assistant <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </Link>
         </div>
+
       </div>
     </div>
   );

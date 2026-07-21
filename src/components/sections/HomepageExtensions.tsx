@@ -11,10 +11,10 @@ export function StudentJourney() {
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">Your Journey to Success</h2>
           <p className="text-xl text-slate-500 font-medium">A structured path from confusion to college admission.</p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
           <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-blue-100 z-0"></div>
-          
+
           {[
             { step: "01", title: "Explore", desc: "Discover 1000+ courses and colleges matching your profile.", icon: Compass, color: "text-blue-600 bg-blue-50" },
             { step: "02", title: "Calculate", desc: "Check your eligibility and predict ranks instantly.", icon: CheckCircle2, color: "text-emerald-600 bg-emerald-50" },
@@ -78,28 +78,6 @@ export function CareerGuidance() {
   );
 }
 
-export function SuccessMetrics() {
-  return (
-    <section className="py-20 bg-slate-900 text-white border-y border-slate-800">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
-          {[
-            { value: "500+", label: "Verified Colleges", color: "text-blue-400" },
-            { value: "50k+", label: "Students Helped", color: "text-emerald-400" },
-            { value: "100%", label: "Admission Support", color: "text-purple-400" },
-            { value: "₹2Cr+", label: "Scholarships Given", color: "text-amber-400" }
-          ].map((metric, i) => (
-            <div key={i}>
-              <div className={`text-4xl md:text-5xl font-black mb-2 ${metric.color}`}>{metric.value}</div>
-              <div className="text-slate-400 font-medium uppercase tracking-wider text-sm">{metric.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function AdmissionProcess() {
   return (
     <section className="py-24 bg-white">
@@ -147,7 +125,7 @@ export function LatestBlogs() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { title: "Top 10 Engineering Colleges in Bangalore 2026", cat: "Colleges", img: "bg-blue-100" },
-            { title: "How to apply for the Kerala LBS Allotment", cat: "Guides", img: "bg-emerald-100" },
+            { title: "How to apply for the LBS Allotment", cat: "Guides", img: "bg-emerald-100" },
             { title: "BSc Nursing vs Pharm D: Which is better?", cat: "Courses", img: "bg-indigo-100" }
           ].map((blog, i) => (
             <Link key={i} href="/blogs" className="group">

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { ToolPageLayout } from "@/components/tools/shared/tool-page-layout";
-import { CalculatorEngine } from "@/components/tools/percentage-calculator/calculator-engine";
+import { PremiumToolLayout } from "@/components/tools/shared/premium-tool-layout";
+import { PremiumCalculatorEngine } from "@/components/tools/percentage-calculator/premium-calculator-engine";
 import { SchemaMarkup } from "@/components/seo/schema-markup";
 
 export const metadata: Metadata = {
@@ -89,10 +89,10 @@ export default function PlusTwoPercentageCalculatorPage() {
   const understandingContent = (
     <>
       <p>
-        The Directorate of Higher Secondary Education (DHSE) Kerala evaluates students based on a combined score from both Plus One (Class 11) and Plus Two (Class 12). 
+        The Directorate of Higher Secondary Education (DHSE) Kerala evaluates students based on a combined score from both Plus One (Class 11) and Plus Two (Class 12).
         The maximum marks for a subject typically vary between 100 and 200 depending on whether it includes practical examinations.
       </p>
-      <p>
+      <p className="mt-4">
         Understanding your precise percentage is crucial as it heavily influences your eligibility for various higher education avenues, including engineering (KEAM), medical (NEET), and nursing/paramedical admissions through LBS.
       </p>
     </>
@@ -102,20 +102,20 @@ export default function PlusTwoPercentageCalculatorPage() {
     <>
       <SchemaMarkup schema={schema} />
       <SchemaMarkup schema={faqSchema} />
-      <ToolPageLayout
+      <PremiumToolLayout
         title="Kerala Plus Two Percentage Calculator"
-        subtitle="Calculate your exact Kerala HSE percentage for Science, Commerce, and Humanities streams instantly."
+        subtitle="Trusted by thousands of students every admission season. Calculate your exact Kerala HSE percentage instantly."
         understandingContent={understandingContent}
         examples={examples}
         faqs={faqs}
         relatedTools={[
-          { title: "Kerala LBS Rank Calculator", href: "/tools/kerala-lbs-rank-calculator" },
+          { title: "LBS Rank Calculator", href: "/tools/lbs-rank-calculator" },
           { title: "Career Aptitude Test", href: "/tools/career-aptitude-test" },
           { title: "College Eligibility Checker", href: "/tools/college-eligibility-checker" }
         ]}
       >
-        <CalculatorEngine initialBoard="kerala" initialLevel="plus-two" />
-      </ToolPageLayout>
+        <PremiumCalculatorEngine />
+      </PremiumToolLayout>
     </>
   );
 }

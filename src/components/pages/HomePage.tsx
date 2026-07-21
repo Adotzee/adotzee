@@ -17,10 +17,8 @@ const CityAuthority = dynamic(() => import("@/components/sections/CityAuthority"
 const Protocol = dynamic(() => import("@/components/sections/Protocol").then(m => m.Protocol), { ssr: false });
 const CTA = dynamic(() => import("@/components/sections/LowerSections").then(m => m.CTA), { ssr: false });
 const StudentToolsSection = dynamic(() => import("@/components/sections/StudentToolsSection").then(m => m.StudentToolsSection), { ssr: false });
-const ScholarshipsHighlight = dynamic(() => import("@/components/sections/ScholarshipsHighlight").then(m => m.ScholarshipsHighlight), { ssr: false });
 const StudentJourney = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.StudentJourney), { ssr: false });
 const CareerGuidance = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.CareerGuidance), { ssr: false });
-const SuccessMetrics = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.SuccessMetrics), { ssr: false });
 const AdmissionProcess = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.AdmissionProcess), { ssr: false });
 const LatestBlogs = dynamic(() => import("@/components/sections/HomepageExtensions").then(m => m.LatestBlogs), { ssr: false });
 
@@ -33,38 +31,36 @@ export function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-white font-sans selection:bg-brand-light/30 selection:text-brand-primary">
       {/* SEO handled by Server Component in app/page.tsx */}
-      
+
       {/* Critical Path */}
       <Hero />
       <QuickNav />
       <TrustSignals />
-      
+
       {/* Student Funnel */}
       <StudentJourney />
-      
+
       <Colleges />
       <Courses />
-      
+
       <CareerGuidance />
-      
+
       {/* Financial & Tools */}
-      <ScholarshipsHighlight />
       <StudentToolsSection />
-      
+
       {/* Social Proof & Why Us */}
       <Features />
       <FeaturedReviews />
-      <SuccessMetrics />
-      
+
       {/* Logistics & Resources */}
       <AdmissionProcess />
       <AnswerBlocks />
       <LatestBlogs />
-      
+
       <CityAuthority />
       <Protocol />
       <CTA />
-      
+
     </div>
   );
 }

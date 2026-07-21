@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { ToolPageLayout } from "@/components/tools/shared/tool-page-layout";
+import { PremiumToolLayout } from "@/components/tools/shared/premium-tool-layout";
 import { SchemaMarkup } from "@/components/seo/schema-markup";
-import { TestFlow } from "@/components/tools/career-aptitude/test-flow";
+import { PremiumAptitudeEngine } from "@/components/tools/career-aptitude/premium-aptitude-engine";
 
 export const metadata: Metadata = {
   title: "Career Aptitude Test for Students | Find Suitable Courses | Adotzee",
@@ -66,23 +66,34 @@ export default function CareerAptitudeTestPage() {
   ];
 
   const understandingContent = (
-    <>
-      <p>
-        Choosing a career path after 12th grade is one of the most critical decisions in a student's life. Unfortunately, many students make this choice based on peer pressure or incomplete information.
-      </p>
-      <p>
-        An aptitude test scientifically evaluates your natural inclinations, cognitive strengths, and personality traits. By matching these with industry requirements, we help you identify not just a college course, but a fulfilling lifelong career.
-      </p>
-    </>
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Choosing the Right Path</h3>
+        <p className="text-slate-600 leading-relaxed font-medium">
+          Choosing a career path after 12th grade is one of the most critical decisions in a student's life. Unfortunately, many students make this choice based on peer pressure or incomplete information.
+        </p>
+      </div>
+      <div>
+        <p className="text-slate-600 leading-relaxed font-medium">
+          An aptitude test scientifically evaluates your natural inclinations, cognitive strengths, and personality traits. By matching these with industry requirements, we help you identify not just a college course, but a fulfilling lifelong career.
+        </p>
+      </div>
+    </div>
   );
 
   return (
     <>
       <SchemaMarkup schema={schema} />
       <SchemaMarkup schema={faqSchema} />
-      <ToolPageLayout
+      <PremiumToolLayout
         title="Career Aptitude Test"
         subtitle="Discover your true potential. Find the college courses and career paths that perfectly match your natural abilities."
+        trustSignals={[
+          "Scientifically Backed",
+          "Comprehensive Report",
+          "100% Free",
+          "Mobile Friendly"
+        ]}
         understandingContent={understandingContent}
         faqs={faqs}
         relatedTools={[
@@ -90,8 +101,8 @@ export default function CareerAptitudeTestPage() {
           { title: "Scholarship Checker", href: "/tools/scholarship-checker" }
         ]}
       >
-        <TestFlow />
-      </ToolPageLayout>
+        <PremiumAptitudeEngine />
+      </PremiumToolLayout>
     </>
   );
 }

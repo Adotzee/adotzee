@@ -37,7 +37,7 @@ const navItems = [
 
 export function QuickNav() {
     return (
-        <section className="py-12 md:py-20 bg-transparent relative z-20 -mt-10 md:-mt-20">
+        <section className="py-12 md:py-20 bg-transparent relative z-20 mt-10 md:-mt-10">
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {navItems.map((item, i) => (
@@ -61,7 +61,7 @@ export function QuickNav() {
                                         <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight mb-1">{item.title}</h3>
                                         <p className="text-sm md:text-base font-medium text-foreground/60 leading-tight">{item.description}</p>
                                     </div>
-                                    <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300">
+                                    <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center duration-300">
                                         <ChevronRight className="w-5 h-5 text-brand-accent" />
                                     </div>
                                 </div>

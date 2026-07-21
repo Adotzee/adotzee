@@ -2,102 +2,160 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { GraduationCap, CheckCircle2 } from "lucide-react";
+import { GraduationCap, CheckCircle2, ArrowRight, Building2, Landmark, BookOpen, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const SCHOLARSHIP_TYPES = [
+  {
+    title: "Government Scholarships",
+    desc: "State & central fee concession schemes (e-Grantz, NSP).",
+    icon: Landmark,
+    href: "/scholarships",
+    color: "emerald",
+    status: "View →"
+  },
+  {
+    title: "Private Scholarships",
+    desc: "Trusts and corporate CSR initiatives for deserving students.",
+    icon: Building2,
+    href: "/scholarships",
+    color: "blue",
+    status: "View →"
+  },
+  {
+    title: "Institution Scholarships",
+    desc: "Direct tuition waivers from our verified partner colleges.",
+    icon: BookOpen,
+    href: "/scholarships",
+    color: "purple",
+    status: "View →"
+  },
+  {
+    title: "Adotzee Merit Scholarship",
+    desc: "Exclusive financial aid for students applying through Adotzee.",
+    icon: Award,
+    href: "/scholarships/adotzee-merit-scholarship",
+    color: "amber",
+    status: "Coming Soon",
+    highlight: true
+  }
+];
+
+const TRUST_CHIPS = [
+  "Government Scholarships",
+  "Private Scholarships",
+  "Merit Based",
+  "Need Based",
+  "Updated Regularly"
+];
 
 export function ScholarshipsHighlight() {
   return (
-    <section className="py-24 bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-
+    <section className="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-100">
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+          
+          {/* Left Column: Context & CTAs */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:w-1/2"
+            className="lg:w-5/12 flex flex-col"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-              <GraduationCap className="w-5 h-5 text-yellow-400" />
-              <span className="text-sm font-bold tracking-wide uppercase text-yellow-400">Financial Aid Program</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm mb-6 border border-emerald-200 self-start">
+              🎓 Scholarships & Financial Aid
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-              Adotzee Merit <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">Scholarship 2026</span>
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-[1.1] tracking-tight">
+              Find Scholarships That Match Your Profile
             </h2>
             
-            <p className="text-lg text-blue-100 mb-8 max-w-xl leading-relaxed">
-              We believe financial constraints shouldn't hold back bright minds. The Adotzee Merit Scholarship provides financial assistance for eligible students admitted through our partner institutions.
+            <p className="text-lg text-slate-600 font-medium mb-8 max-w-xl leading-relaxed">
+              Discover government, private, institutional, and Adotzee scholarship opportunities based on your academic profile, course, and eligibility.
             </p>
             
-            <ul className="space-y-4 mb-10">
-              {[
-                "Up to 50% Tuition Assistance",
-                "Based on Academic Merit & Need",
-                "Directly applied to College Fees"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                  <span className="font-semibold">{item}</span>
-                </li>
+            {/* Trust Chips */}
+            <div className="flex flex-wrap gap-2 mb-10">
+              {TRUST_CHIPS.map((chip, i) => (
+                <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-sm font-bold text-slate-600 shadow-sm">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  {chip}
+                </div>
               ))}
-            </ul>
+            </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/scholarships/adotzee-merit-scholarship">
-                <Button className="w-full sm:w-auto h-14 px-8 rounded-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-black text-lg shadow-xl shadow-yellow-500/20 transition-all">
+            <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+              <Link href="/tools/scholarship-checker" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto h-14 px-8 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all">
                   Check Eligibility
                 </Button>
               </Link>
-              <Link href="/tools/scholarship-checker">
-                <Button variant="outline" className="w-full sm:w-auto h-14 px-8 rounded-full border-2 border-white/20 hover:bg-white/10 text-white font-bold transition-all">
-                  Calculate Chances
+              <Link href="/scholarships" className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto h-14 px-8 rounded-xl border-2 border-slate-200 hover:bg-slate-100 hover:border-slate-300 text-slate-700 font-bold text-lg transition-all">
+                  Browse Scholarships
                 </Button>
               </Link>
             </div>
           </motion.div>
           
+          {/* Right Column: Premium Dashboard Cards */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:w-5/12 w-full max-w-md"
+            className="lg:w-7/12 w-full"
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl relative">
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg transform rotate-12">
-                <div className="text-center">
-                  <span className="block text-2xl font-black text-slate-900 leading-none">50%</span>
-                  <span className="block text-xs font-bold text-slate-800 uppercase tracking-tighter">Up To</span>
-                </div>
-              </div>
-              
-              <h3 className="text-2xl font-bold mb-6 text-white">Application Status</h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between text-sm font-semibold mb-2 text-blue-100">
-                    <span>Phase 1 Applications</span>
-                    <span>Closing Soon</span>
-                  </div>
-                  <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
-                    <div className="bg-gradient-to-r from-emerald-400 to-emerald-300 h-3 rounded-full w-[85%] relative">
-                      <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {SCHOLARSHIP_TYPES.map((type, idx) => (
+                <Link key={idx} href={type.href} className="group outline-none">
+                  <div className={`bg-white rounded-3xl p-6 border ${type.highlight ? 'border-amber-200 shadow-amber-500/5' : 'border-slate-200'} shadow-sm hover:shadow-xl hover:border-slate-300 transition-all h-full flex flex-col relative overflow-hidden`}>
+                    
+                    {type.highlight && (
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl group-hover:bg-amber-400/20 transition-colors pointer-events-none" />
+                    )}
+
+                    <div className="flex justify-between items-start mb-6 relative z-10">
+                      <div className={`w-12 h-12 rounded-xl bg-${type.color}-50 text-${type.color}-600 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <type.icon className="w-6 h-6" />
+                      </div>
+                      {type.highlight && (
+                        <span className="px-3 py-1 rounded-full text-xs font-bold text-amber-700 bg-amber-100 border border-amber-200">
+                          {type.status}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 relative z-10">{type.title}</h3>
+                    <p className="text-slate-500 font-medium text-sm leading-relaxed mb-6 flex-1 relative z-10">
+                      {type.desc}
+                    </p>
+                    
+                    <div className="mt-auto relative z-10">
+                      {!type.highlight && (
+                        <span className={`text-sm font-bold text-slate-400 group-hover:text-${type.color}-600 transition-colors flex items-center`}>
+                          View <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                      )}
+                      {type.highlight && (
+                        <span className="text-sm font-bold text-amber-600 group-hover:text-amber-700 transition-colors flex items-center">
+                          Learn More <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                      )}
                     </div>
                   </div>
-                </div>
-                
-                <div className="pt-6 border-t border-white/10">
-                  <p className="text-sm text-blue-200 leading-relaxed italic">
-                    "Adotzee is an independent educational platform. This is a private scholarship initiative and is not affiliated with any government schemes."
-                  </p>
-                </div>
-              </div>
+                </Link>
+              ))}
+            </div>
+            
+            {/* Additional Trust Signal below grid */}
+            <div className="mt-6 text-center">
+              <p className="text-sm font-bold text-slate-400 flex items-center justify-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                Verified Scholarship Database • Updated for 2026 Admissions
+              </p>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

@@ -10,7 +10,6 @@ import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { SkeletonList } from "../shared/SkeletonCard";
 import { College, ApiError } from "@/types";
-import { COLLEGES_DATA } from "@/lib/constants/landing-data";
 
 
 interface CollegesClientProps {

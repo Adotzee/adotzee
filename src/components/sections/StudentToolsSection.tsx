@@ -31,10 +31,10 @@ const tools = [
     bgColor: "bg-purple-100",
   },
   {
-    title: "Kerala LBS Rank Predictor",
+    title: "=LBS Rank Predictor",
     description: "Estimate your rank for professional courses in Kerala.",
     icon: Calculator,
-    href: "/tools/kerala-lbs-rank-calculator",
+    href: "/tools/lbs-rank-calculator",
     color: "text-orange-600",
     bgColor: "bg-orange-100",
   },
@@ -81,10 +81,10 @@ export function StudentToolsSection() {
             </motion.div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
           <Link href="/tools">
-            <Button variant="outline" className="rounded-full px-8 py-6 text-base font-bold border-2">
+            <Button variant="outline" className="rounded-full text-slate-700 px-8 py-6 text-base font-bold border-2">
               View All Tools
             </Button>
           </Link>

@@ -1,44 +1,55 @@
 import { Metadata } from 'next';
 import { COMPANY_INFO } from '@/lib/constants';
 import { JsonLd, BreadcrumbSchema } from '@/components/seo/JsonLd';
+import BlogsClient from '@/components/pages/BlogsClient';
+import { getFeaturedPosts, getTrendingPosts, getLatestPosts, BLOG_CATEGORIES } from '@/lib/data/mock-blogs';
 
 export const metadata: Metadata = {
-    title: `Blogs | ${COMPANY_INFO.name}`,
-    description: `Learn more about Blogs at ${COMPANY_INFO.name}, India's trusted college admission platform.`,
+    title: `Education Knowledge Hub | ${COMPANY_INFO.name}`,
+    description: `Read the latest expert guides on engineering admissions, medical courses, scholarships, and career planning. Stay ahead with ${COMPANY_INFO.name}.`,
     alternates: {
         canonical: `${COMPANY_INFO.fullUrl}/blogs`,
+    },
+    openGraph: {
+        title: `Education Knowledge Hub | ${COMPANY_INFO.name}`,
+        description: `Read the latest expert guides on engineering admissions, medical courses, scholarships, and career planning.`,
+        url: `${COMPANY_INFO.fullUrl}/blogs`,
+        type: "website",
     }
 };
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
+    // Fetch data concurrently (simulated server fetch)
+    const [featuredPosts, trendingPosts, latestPosts] = await Promise.all([
+        getFeaturedPosts(),
+        getTrendingPosts(),
+        getLatestPosts()
+    ]);
+    
+    const categories = Object.values(BLOG_CATEGORIES);
+
     const breadcrumbData = BreadcrumbSchema([
         { name: 'Home', url: COMPANY_INFO.fullUrl },
-        { name: 'Blogs', url: `${COMPANY_INFO.fullUrl}/blogs` }
+        { name: 'Knowledge Hub', url: `${COMPANY_INFO.fullUrl}/blogs` }
     ]);
 
     const genericSchema = {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": `Blogs | ${COMPANY_INFO.name}`,
-        "description": `Learn more about Blogs at ${COMPANY_INFO.name}.`,
+        "name": `Education Knowledge Hub | ${COMPANY_INFO.name}`,
+        "description": metadata.description,
         "url": `${COMPANY_INFO.fullUrl}/blogs`
     };
 
     return (
-        <div className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8">
+        <>
             <JsonLd data={[breadcrumbData, genericSchema]} />
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-8">
-                    Blogs
-                </h1>
-                <div className="prose prose-lg text-slate-600 max-w-none">
-          
-      <h2>Education Blog & Insights</h2>
-      <p>Stay updated with the latest trends in higher education, entrance exams, and career opportunities. Our enterprise content team regularly publishes verified articles to help you navigate your student journey.</p>
-      <p><em>Check back soon for our comprehensive series of 100 Pillar Articles covering Engineering, Medical, and MBA admissions.</em></p>
-  
-      </div>
-            </div>
-        </div>
+            <BlogsClient 
+                featuredPosts={featuredPosts}
+                trendingPosts={trendingPosts}
+                latestPosts={latestPosts}
+                categories={categories}
+            />
+        </>
     );
 }
